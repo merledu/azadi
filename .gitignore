@@ -1,3 +1,2 @@
 /tests
-/tests/verilator-test.sh
 *.cpp
