@@ -33,7 +33,11 @@ module azadi_decoder #(
     input  logic                  branch_taken_i,        // branch decision
     
         
-    output azadi_pkg::alu_op_e    alu_operator_o,
+    output azadi_pkg::alu_op_e    alu_operator_o,        // ALU operation selection
+    output ibex_pkg::op_a_sel_e   alu_op_a_mux_sel_o,    // operand a selection: reg value, PC,
+                                                         // immediate or zero
+    output ibex_pkg::op_b_sel_e   alu_op_b_mux_sel_o,    // operand b selection: reg value or
+                                                         // immediate
     output logic                  rf_we_o, 
     output logic [4:0]            rf_addr_a,
     output logic [4:0]            rf_addr_b,
@@ -141,6 +145,19 @@ module azadi_decoder #(
     ecall_insn_o          = 1'b0;
     wfi_insn_o            = 1'b0;
 
+    // for alu
+    alu_operator_o     = ALU_SLTU;
+    alu_op_a_mux_sel_o = OP_A_IMM;
+    alu_op_b_mux_sel_o = OP_B_IMM;
+
+    imm_a_mux_sel_o    = IMM_A_ZERO;
+    imm_b_mux_sel_o    = IMM_B_I;
+
+    bt_a_mux_sel_o     = OP_A_CURRPC;
+    bt_b_mux_sel_o     = IMM_B_I;
+
+    alu_multicycle_o   = 1'b0;
+
     opcode                = opcode_e'(instr[6:0]);
 
     unique case (opcode)
@@ -160,9 +177,30 @@ module azadi_decoder #(
           // Calculate and store PC+4
           rf_we            = 1'b1;
         end
+
+        // alu
+        if (BranchTargetALU) begin
+          bt_a_mux_sel_o = OP_A_CURRPC;
+          bt_b_mux_sel_o = IMM_B_J;
+        end
+        
+        // Jumps take two cycles without the BTALU
+      if (instr_first_cycle_i && !BranchTargetALU) begin
+          // Calculate jump target
+          alu_op_a_mux_sel_o  = OP_A_CURRPC;
+          alu_op_b_mux_sel_o  = OP_B_IMM;
+          imm_b_mux_sel_o     = IMM_B_J;
+          alu_operator_o      = ALU_ADD;
+        end else begin
+          // Calculate and store PC+4
+          alu_op_a_mux_sel_o  = OP_A_CURRPC;
+          alu_op_b_mux_sel_o  = OP_B_IMM;
+          imm_b_mux_sel_o     = IMM_B_INCR_PC;
+          alu_operator_o      = ALU_ADD;
+        end
       end
       
-      OPCODE_JALR: begin  // Jump and Link Register and store PC + 4
+      OPCODE_JALR: begin  // Jump and Link Register and store PC + 4  
         jump_in_dec_o      = 1'b1;
 
         if (instr_first_cycle_i) begin
@@ -178,23 +216,66 @@ module azadi_decoder #(
         end
 
         rf_ren_a_o = 1'b1;
+
+        // alu 
+        if (BranchTargetALU) begin
+          bt_a_mux_sel_o = OP_A_REG_A;
+          bt_b_mux_sel_o = IMM_B_I;
+        end
+
+        // Jumps take two cycles without the BTALU
+        if (instr_first_cycle_i && !BranchTargetALU) begin
+          // Calculate jump target
+          alu_op_a_mux_sel_o  = OP_A_REG_A;
+          alu_op_b_mux_sel_o  = OP_B_IMM;
+          imm_b_mux_sel_o     = IMM_B_I;
+          alu_operator_o      = ALU_ADD;
+        end else begin
+          // Calculate and store PC+4
+          alu_op_a_mux_sel_o  = OP_A_CURRPC;
+          alu_op_b_mux_sel_o  = OP_B_IMM;
+          imm_b_mux_sel_o     = IMM_B_INCR_PC;
+          alu_operator_o      = ALU_ADD;
+        end
       end
 
       OPCODE_BRANCH: begin // Branch
         branch_in_dec_o       = 1'b1;
+        rf_ren_a_o            = 1'b1;
+        rf_ren_b_o            = 1'b1;
+
+        // alu
         // Check branch condition selection
-        unique case (instr[14:12])
-          3'b000,
-          3'b001,
-          3'b100,
-          3'b101,
-          3'b110,
-          3'b111:  illegal_insn = 1'b0;
+        unique case (instr_alu[14:12])
+          3'b000:  alu_operator_o = ALU_EQ;
+          3'b001:  alu_operator_o = ALU_NE;
+          3'b100:  alu_operator_o = ALU_LT;
+          3'b101:  alu_operator_o = ALU_GE;
+          3'b110:  alu_operator_o = ALU_LTU;
+          3'b111:  alu_operator_o = ALU_GEU;
           default: illegal_insn = 1'b1;
         endcase
 
-        rf_ren_a_o = 1'b1;
-        rf_ren_b_o = 1'b1;
+        if (BranchTargetALU) begin
+          bt_a_mux_sel_o = OP_A_CURRPC;
+          // Not-taken branch will jump to next instruction (used in secure mode)
+          bt_b_mux_sel_o = branch_taken_i ? IMM_B_B : IMM_B_INCR_PC;
+        end
+
+        // Without branch target ALU, a branch is a two-stage operation using the Main ALU in both
+        // stages
+        if (instr_first_cycle_i) begin
+          // First evaluate the branch condition
+          alu_op_a_mux_sel_o  = OP_A_REG_A;
+          alu_op_b_mux_sel_o  = OP_B_REG_B;
+        end else begin
+          // Then calculate jump target
+          alu_op_a_mux_sel_o  = OP_A_CURRPC;
+          alu_op_b_mux_sel_o  = OP_B_IMM;
+          // Not-taken branch will jump to next instruction (used in secure mode)
+          imm_b_mux_sel_o     = branch_taken_i ? IMM_B_B : IMM_B_INCR_PC;
+          alu_operator_o      = ALU_ADD;
+        end        
       end
 
       ////////////////
@@ -207,8 +288,17 @@ module azadi_decoder #(
         data_req_o         = 1'b1;
         data_we_o          = 1'b1;
 
+        alu_op_a_mux_sel_o = OP_A_REG_A;
+        alu_op_b_mux_sel_o = OP_B_REG_B;
+        alu_operator_o     = ALU_ADD;
+
         if (instr[14]) begin
           illegal_insn = 1'b1;
+        end else begin
+          // alu
+          // offset from immediate
+          imm_b_mux_sel_o     = IMM_B_S;
+          alu_op_b_mux_sel_o  = OP_B_IMM;
         end
 
         // store size
@@ -224,6 +314,8 @@ module azadi_decoder #(
         rf_ren_a_o          = 1'b1;
         data_req_o          = 1'b1;
         data_type_o         = 2'b00; //lw
+
+        alu_op_a_mux_sel_o  = OP_A_REG_A;
 
         // sign/zero extension
         data_sign_extension_o = ~instr[14];
@@ -242,6 +334,12 @@ module azadi_decoder #(
             illegal_insn = 1'b1;
           end
         endcase
+
+        //alu
+        // offset from immediate
+        alu_operator_o      = ALU_ADD;
+        alu_op_b_mux_sel_o  = OP_B_IMM;
+        imm_b_mux_sel_o     = IMM_B_I;
       end
 
       ////////////////////
@@ -250,28 +348,68 @@ module azadi_decoder #(
 
       OPCODE_LUI: begin  // Load Upper Immediate
         rf_we            = 1'b1;
+
+        // alu
+        alu_op_a_mux_sel_o  = OP_A_IMM;
+        alu_op_b_mux_sel_o  = OP_B_IMM;
+        imm_a_mux_sel_o     = IMM_A_ZERO;
+        imm_b_mux_sel_o     = IMM_B_U;
+        alu_operator_o      = ALU_ADD;
       end
 
       OPCODE_AUIPC: begin  // Add Upper Immediate to PC
         rf_we            = 1'b1;
+
+        // alu
+        alu_op_a_mux_sel_o  = OP_A_CURRPC;
+        alu_op_b_mux_sel_o  = OP_B_IMM;
+        imm_b_mux_sel_o     = IMM_B_U;
+        alu_operator_o      = ALU_ADD;
       end
 
       OPCODE_OP_IMM: begin // Register-Immediate ALU Operations
         rf_ren_a_o       = 1'b1;
         rf_we            = 1'b1;
 
+        // alu
+        alu_op_a_mux_sel_o  = OP_A_REG_A;
+        alu_op_b_mux_sel_o  = OP_B_IMM;
+        imm_b_mux_sel_o     = IMM_B_I;
+
         unique case (instr[14:12])
-          3'b000,
-          3'b010,
-          3'b011,
-          3'b100,
-          3'b110,
-          3'b111: illegal_insn = 1'b0;
-          3'b000: illegal_insn = (instr[31:25] == 7'b0000_000) ? 1'b0 : 1'b1;       // slli
+          3'b000: begin
+            alu_operator_o = ALU_ADD;  // Add Immediate
+          end
+          3'b010: begin
+            alu_operator_o = ALU_SLT;  // Set to one if Lower Than Immediate
+          end
+          3'b011: begin
+            alu_operator_o = ALU_SLTU;    // Set to one if Lower Than Immediate Unsigned
+          end
+          3'b100: begin
+            alu_operator_o = ALU_XOR;     // Exclusive Or with Immediate
+          end
+          3'b110: begin
+            alu_operator_o = ALU_OR;      // Or with Immediate
+          end
+          3'b111: begin 
+            alu_operator_o = ALU_AND;     // And with Immediate
+          end
+          3'b001: begin 
+            if (instr[31:25] == 7'b0000_000) begin
+              alu_operator_o = ALU_SLL;   // Shift Left Logical by Immediate
+            end else begin
+              illegal_insn = 1'b1;
+            end
+          end
           3'b101:
             unique case (instr[31:25])
-              7'b000_0000,                                                        // srli
-              7'b001_0000: illegal_insn = 1'b0;                                   // srai
+              7'b000_0000: begin          // Shift Right Logical by Immediate
+                alu_operator_o = ALU_SRL;
+              end                                                        
+              7'b001_0000: begin          // Shift Right Arithmetically by Immediate
+                alu_operator_o = ALU_SRA;
+              end                                  
               default: illegal_insn = 1'b1; 
         default: illegal_insn = 1'b1;
       end
@@ -280,19 +418,46 @@ module azadi_decoder #(
         rf_ren_a_o      = 1'b1;
         rf_ren_b_o      = 1'b1;
         rf_we           = 1'b1;
+
+        alu_op_a_mux_sel_o = OP_A_REG_A;
+        alu_op_b_mux_sel_o = OP_B_REG_B;
+
         unique case ({instr[31:25], instr[14:12]})
           // RV32I ALU operations
-          {7'b000_0000, 3'b000},  // add
-          {7'b010_0000, 3'b000},  // sub
-          {7'b000_0000, 3'b010},  // slt
-          {7'b000_0000, 3'b011},  // sltu
-          {7'b000_0000, 3'b100},  // xor
-          {7'b000_0000, 3'b110},  // or
-          {7'b000_0000, 3'b111},  // and
-          {7'b000_0000, 3'b001},  // sll
-          {7'b000_0000, 3'b101},  // srl
-          {7'b010_0000, 3'b101}:  // sra
-                               illegal_insn = 1'b0;
+          {7'b000_0000, 3'b000}: begin  // Add
+            alu_operator_o = ALU_ADD;    
+          end
+          {7'b010_0000, 3'b000}: begin  // Sub
+            alu_operator_o = ALU_SUB;   
+          end
+          {7'b000_0000, 3'b010}: begin  // Set Lower Than
+            alu_operator_o = ALU_SLT;   
+          end
+          {7'b000_0000, 3'b011}: begin  // Set Lower Than Unsigned
+            alu_operator_o = ALU_SLTU;  
+          end
+          {7'b000_0000, 3'b100}: begin  // Xor
+            alu_operator_o = ALU_XOR;   
+          end
+          {7'b000_0000, 3'b110}: begin  // Or
+            alu_operator_o = ALU_OR;    
+          end
+          {7'b000_0000, 3'b111}: begin  // And
+            alu_operator_o = ALU_AND;   
+          end
+          {7'b000_0000, 3'b001}: begin  // Shift Left Logical
+            alu_operator_o = ALU_SLL;   
+            illegal_insn = 1'b0;
+          end
+          {7'b000_0000, 3'b101}: begin  // Shift Right Logical
+            alu_operator_o = ALU_SRL;   
+          end
+          {7'b010_0000, 3'b101}: begin  // Shift Right Arithmetic
+            alu_operator_o = ALU_SRA;   
+          end
+          default: illegal_insn = 1'b1;
+      end
+
       /////////////
       // Special //
       /////////////
@@ -302,6 +467,10 @@ module azadi_decoder #(
           3'b000: begin
             // FENCE is treated as a NOP since all memory operations are already strictly ordered.
             rf_we           = 1'b0;
+            // alu  
+            alu_operator_o     = ALU_ADD; // nop
+            alu_op_a_mux_sel_o = OP_A_REG_A;
+            alu_op_b_mux_sel_o = OP_B_IMM;
           end
           3'b001: begin
             // FENCE.I is implemented as a jump to the next PC, this gives the required flushing
@@ -313,6 +482,17 @@ module azadi_decoder #(
             if (instr_first_cycle_i) begin
               jump_set_o       = 1'b1;
             end
+
+            //alu
+            if (BranchTargetALU) begin
+              bt_a_mux_sel_o     = OP_A_CURRPC;
+              bt_b_mux_sel_o     = IMM_B_INCR_PC;
+            end else begin
+              alu_op_a_mux_sel_o = OP_A_CURRPC;
+              alu_op_b_mux_sel_o = OP_B_IMM;
+              imm_b_mux_sel_o    = IMM_B_INCR_PC;
+              alu_operator_o     = ALU_ADD;
+            end
           end
           default: begin
           illegal_insn       = 1'b1;
@@ -323,6 +503,9 @@ module azadi_decoder #(
       OPCODE_SYSTEM: begin
         if (instr[14:12] == 3'b000) begin
           // non CSR related SYSTEM instructions
+          alu_op_a_mux_sel_o = OP_A_REG_A;
+          alu_op_b_mux_sel_o = OP_B_IMM;
+
           unique case (instr[31:20])
             12'h000:  // ECALL
               // environment (system) call
@@ -357,8 +540,16 @@ module azadi_decoder #(
           rf_wdata_sel_o   = RF_WD_CSR;
           rf_we            = 1'b1;
 
+          alu_op_b_mux_sel_o = OP_B_IMM;
+          imm_a_mux_sel_o    = IMM_A_Z;
+          imm_b_mux_sel_o    = IMM_B_I;  // CSR address is encoded in I imm
+          
           if (~instr[14]) begin
             rf_ren_a_o         = 1'b1;
+            alu_op_a_mux_sel_o = OP_A_REG_A;
+          end else begin
+            // rs1 field is used as immediate
+            alu_op_a_mux_sel_o = OP_A_IMM;
           end
 
           unique case (instr[13:12])
