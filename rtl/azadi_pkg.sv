@@ -77,4 +77,26 @@ typedef enum logic[1:0] {
   PRIV_LVL_U = 2'b00
 } priv_lvl_e;
 
+//////////////
+// IF stage //
+//////////////
+
+// PC mux selection
+typedef enum logic [2:0] {
+  PC_BOOT,
+  PC_JUMP,
+  PC_EXC,
+  PC_ERET,
+  PC_DRET,
+  PC_BP
+} pc_sel_e;
+
+// Exception PC mux selection
+typedef enum logic [1:0] {
+  EXC_PC_EXC,
+  EXC_PC_IRQ,
+  EXC_PC_DBD,
+  EXC_PC_DBG_EXC // Exception while in debug mode
+} exc_pc_sel_e;
+
 endpackage
