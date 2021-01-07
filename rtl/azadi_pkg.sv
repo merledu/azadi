@@ -99,4 +99,48 @@ typedef enum logic [1:0] {
   EXC_PC_DBG_EXC // Exception while in debug mode
 } exc_pc_sel_e;
 
+// Exception PC mux selection
+typedef enum logic [1:0] {
+  EXC_PC_EXC,
+  EXC_PC_IRQ,
+  EXC_PC_DBD,
+  EXC_PC_DBG_EXC // Exception while in debug mode
+} exc_pc_sel_e;
+
+// Interrupt requests
+typedef struct packed {
+  logic        irq_software;
+  logic        irq_timer;
+  logic        irq_external;
+  logic [14:0] irq_fast; // 15 fast interrupts,
+                         // one interrupt is reserved for NMI (not visible through mip/mie)
+} irqs_t;
+
+// Exception cause
+typedef enum logic [5:0] {
+  EXC_CAUSE_IRQ_SOFTWARE_M     = {1'b1, 5'd03},
+  EXC_CAUSE_IRQ_TIMER_M        = {1'b1, 5'd07},
+  EXC_CAUSE_IRQ_EXTERNAL_M     = {1'b1, 5'd11},
+  // EXC_CAUSE_IRQ_FAST_0      = {1'b1, 5'd16},
+  // EXC_CAUSE_IRQ_FAST_14     = {1'b1, 5'd30},
+  EXC_CAUSE_IRQ_NM             = {1'b1, 5'd31}, // == EXC_CAUSE_IRQ_FAST_15
+  EXC_CAUSE_INSN_ADDR_MISA     = {1'b0, 5'd00},
+  EXC_CAUSE_INSTR_ACCESS_FAULT = {1'b0, 5'd01},
+  EXC_CAUSE_ILLEGAL_INSN       = {1'b0, 5'd02},
+  EXC_CAUSE_BREAKPOINT         = {1'b0, 5'd03},
+  EXC_CAUSE_LOAD_ACCESS_FAULT  = {1'b0, 5'd05},
+  EXC_CAUSE_STORE_ACCESS_FAULT = {1'b0, 5'd07},
+  EXC_CAUSE_ECALL_UMODE        = {1'b0, 5'd08},
+  EXC_CAUSE_ECALL_MMODE        = {1'b0, 5'd11}
+} exc_cause_e;
+
+// Debug cause
+typedef enum logic [2:0] {
+  DBG_CAUSE_NONE    = 3'h0,
+  DBG_CAUSE_EBREAK  = 3'h1,
+  DBG_CAUSE_TRIGGER = 3'h2,
+  DBG_CAUSE_HALTREQ = 3'h3,
+  DBG_CAUSE_STEP    = 3'h4
+} dbg_cause_e;
+
 endpackage
