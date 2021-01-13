@@ -1,4 +1,10 @@
-package tulul_pkg;
+package tlul_pkg;
+
+
+    parameter ArbiterImpl = "PPC";
+  function automatic integer vbits(integer value);
+    return (value == 1) ? 1 : $clog2(value);
+  endfunction
 
     localparam int TL_AW=32;
     localparam int TL_DW=32;
