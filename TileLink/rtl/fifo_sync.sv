@@ -73,7 +73,7 @@ module fifo_sync #(
     assign rvalid_o = ~empty;
 
     always_ff @(posedge clock or negedge reset) begin
-      if (reset) begin
+      if (!reset) begin
         fifo_wptr <= {(PTR_WIDTH){1'b0}};
       end else if (clr_i) begin
         fifo_wptr <= {(PTR_WIDTH){1'b0}};
@@ -87,7 +87,7 @@ module fifo_sync #(
     end
 
     always_ff @(posedge clock or negedge reset) begin
-      if (reset) begin
+      if (!reset) begin
         fifo_rptr <= {(PTR_WIDTH){1'b0}};
       end else if (clr_i) begin
         fifo_rptr <= {(PTR_WIDTH){1'b0}};
