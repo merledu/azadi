@@ -213,7 +213,7 @@ assign readdata = tl_d_c_d.d_data;
 
   tlul_err u_err (
     .clk_i (clock),
-    .rst_ni (~reset),
+    .rst_ni (reset),
     .tl_i (),
     .err_o (tlul_error)
   );
