@@ -23,22 +23,22 @@ module tlul_host_adapter #(
 // interface with host agent 
     input                               req_i,
     output logic                        gnt_o,
-    input logic [tulul_pkg::TL_AW-1:0]  addr_i,
+    input logic [tlul_pkg::TL_AW-1:0]  addr_i,
     input logic                         we_i,
-    input logic [tulul_pkg::TL_DW-1:0]  wdata_i,
-    input logic [tulul_pkg::TL_DBW-1:0] be_i,
+    input logic [tlul_pkg::TL_DW-1:0]  wdata_i,
+    input logic [tlul_pkg::TL_DBW-1:0] be_i,
     output logic                        valid_o,
-    output logic [tulul_pkg::TL_DW-1:0] rdata_o,
+    output logic [tlul_pkg::TL_DW-1:0] rdata_o,
     output logic                        err_o,
 // interface with other tilelink agents or tlul interface
-    output tulul_pkg::tl_h2d_t          tl_h_c_a, // tilelink host channel A
-    input  tulul_pkg::tl_d2h_t          tl_h_c_d  // tilelink host channel D
+    output tlul_pkg::tl_h2d_t          tl_h_c_a, // tilelink host channel A
+    input  tlul_pkg::tl_d2h_t          tl_h_c_d  // tilelink host channel D
 );
 
-    localparam int WordSize = $clog2(tulul_pkg::TL_DBW);
+    localparam int WordSize = $clog2(tlul_pkg::TL_DBW);
 
-    logic [tulul_pkg::TL_AIW-1:0] tl_source;
-    logic [tulul_pkg::TL_DBW-1:0] tl_be;
+    logic [tlul_pkg::TL_AIW-1:0] tl_source;
+    logic [tlul_pkg::TL_DBW-1:0] tl_be;
 
     if(MAX_REQS == 1) begin
         assign tl_source = '0;
@@ -50,7 +50,7 @@ module tlul_host_adapter #(
             if(reset) begin
                 source_q <= '0;
             end else begin
-                source_qn <= source_d;
+                source_q <= source_d;
             end
         end
     
@@ -63,20 +63,20 @@ module tlul_host_adapter #(
                 else source_d = source_q + 1;
             end
         end
-        assign tl_source = tulul_pkg::TL_AIW'(source_q);
+        assign tl_source = tlul_pkg::TL_AIW'(source_q);
     end
 
 // For TL-UL Get opcode all active bytes must have their mask bit set, so all reads get all tl_be
 // bits set. For writes the supplied be_i is used as the mask.
-    assign tl_be = ~we_i ? {tulul_pkg::TL_DBW{1'b1}} : be_i;
+    assign tl_be = ~we_i ? {tlul_pkg::TL_DBW{1'b1}} : be_i;
 
     assign tl_h_c_a = '{
         a_valid:    (reset) ? 1'b0 : req_i,
-        a_opcode:   (~we_i) ? tulul_pkg::Get         :   
-                    (&be_i) ? tulul_pkg::PutFullData :
-                              tulul_pkg::PutPartialData,
+        a_opcode:   (~we_i) ? tlul_pkg::Get         :   
+                    (&be_i) ? tlul_pkg::PutFullData :
+                              tlul_pkg::PutPartialData,
         a_param:    3'h0,
-        a_size:     tulul_pkg::TL_SZW'(WordSize),
+        a_size:     tlul_pkg::TL_SZW'(WordSize),
         a_mask:     tl_be,
         a_source:   tl_source,
         a_address:  {addr_i[31:WordSize], {WordSize{1'b0}}},
@@ -85,8 +85,11 @@ module tlul_host_adapter #(
     };
 
     assign gnt_o = tl_h_c_d.a_ready;
-    assign rdata_0 = tl_h_c_d.d_data;
+    //assign rdata_0 = tl_h_c_d.d_data;
     assign err_o   = tl_h_c_d.d_error;
-
+    assign valid_o = tl_h_c_d.d_valid;
+    logic [31:0] rddata;
+    assign rddata = tl_h_c_d.d_data;
+    assign rdata_o = rddata;
 
 endmodule

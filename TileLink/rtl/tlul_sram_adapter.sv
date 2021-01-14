@@ -6,12 +6,14 @@
  *   than SRAM size
  */
 module tlul_sram_adapter #(
+  parameter int ByteMask    = 1; // optional parameter for byte masked SRAMS if 1 default a_mask will be passed to SRAM
   parameter int SramAw      = 12,
   parameter int SramDw      = 32, // Must be multiple of the TL width
-  parameter int Outstanding = 1,  // Only one request is accepted
+  parameter int Outstanding = 0,  // Only one request is accepted
   parameter bit ByteAccess  = 1,  // 1: true, 0: false
-
-) (
+  parameter bit ErrOnWrite  = 0,  // 1: Writes not allowed, automatically error
+  parameter bit ErrOnRead   = 0   // 1: Reads not allowed, automatically error
+)(
   input   clock,
   input   reset,
 
@@ -28,7 +30,7 @@ module tlul_sram_adapter #(
   output logic [SramDw-1:0] wmask_o,
   input        [SramDw-1:0] rdata_i,
   input                     rvalid_i,
-//  input        [1:0]        rerror_i // 2 bit error [1]: Uncorrectable, [0]: Correctable
+  input        [1:0]        rerror_i // 2 bit error [1]: Uncorrectable, [0]: Correctable
 );
 
   import tlul_pkg::*;
@@ -59,7 +61,7 @@ module tlul_sram_adapter #(
 
   typedef struct packed {
     logic [SramDw-1:0] data ;
- //   logic              error ;
+    logic              error ;
   } rsp_t ;
 
   localparam int SramReqFifoWidth = $bits(sram_req_t) ;
@@ -86,12 +88,13 @@ module tlul_sram_adapter #(
   logic wr_attr_error;
   logic wr_vld_error;
   logic rd_vld_error;
- // logic tlul_error;     // Error from `tlul_err` module
+  logic tlul_error;     // Error from `tlul_err` module
 
   logic a_ack, d_ack, sram_ack;
   assign a_ack    = tl_d_c_a.a_valid & tl_d_c_d.a_ready ;
   assign d_ack    = tl_d_c_d.d_valid & tl_d_c_a.d_ready ;
   assign sram_ack = req_o        & gnt_i ;
+
 
   // Valid handling
   logic d_valid, d_error;
@@ -136,12 +139,12 @@ module tlul_sram_adapter #(
       d_sink   : 1'b0,
       d_data   : (d_valid && rspfifo_rvalid && reqfifo_rdata.op == OpRead)
                  ? rspfifo_rdata.data : '0,
-      d_user   : '0,
       d_error  : d_valid && d_error,
 
       a_ready  : (gnt_i | error_internal) & reqfifo_wready & sramreqfifo_wready
   };
-
+logic [31:0] readdata;
+assign readdata = tl_d_c_d.d_data;
   // a_ready depends on the FIFO full condition and grant from SRAM (or SRAM arbiter)
   // assemble response, including read response, write response, and error for unsupported stuff
 
@@ -163,24 +166,29 @@ module tlul_sram_adapter #(
     assign woffset = '0;
   end
 
-  // Convert byte mask to SRAM bit mask for writes, and only forward valid data
-  logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wmask_int;
-  logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wdata_int;
+//Convert byte mask to SRAM bit mask for writes, and only forward valid data
+  if (ByteMask == 0) begin : bit_masked_sram 
+    logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wmask_int;
+    logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wdata_int;
+    
+    always_comb begin
+      wmask_int = '0;
+      wdata_int = '0;
 
-  always_comb begin
-    wmask_int = '0;
-    wdata_int = '0;
-
-    if (tl_d_c_a.a_valid) begin
-      for (int i = 0 ; i < tlul_pkg::TL_DW/8 ; i++) begin
-        wmask_int[woffset][8*i +: 8] = {8{tl_d_c_a.a_mask[i]}};
-        wdata_int[woffset][8*i +: 8] = (tl_d_c_a.a_mask[i] && we_o) ? tl_d_c_a.a_data[8*i+:8] : '0;
+      if (tl_d_c_a.a_valid) begin
+        for (int i = 0 ; i < tlul_pkg::TL_DW/8 ; i++) begin
+          wmask_int[woffset][8*i +: 8] = {8{tl_d_c_a.a_mask[i]}};
+          wdata_int[woffset][8*i +: 8] = (tl_d_c_a.a_mask[i] && we_o) ? tl_d_c_a.a_data[8*i+:8] : '0;
+        end
       end
     end
+    assign wmask_o = wmask_int;
+    assign wdata_o = wdata_int;
+  end else begin : byte_maksed_sram
+    assign wmask_o = tl_d_c_a.a_mask;
+    assign wdata_o = tl_d_c_a.a_data;    
   end
 
-  assign wmask_o = wmask_int;
-  assign wdata_o = wdata_int;
 
   // Begin: Request Error Detection
 
@@ -191,26 +199,26 @@ module tlul_sram_adapter #(
                          (ByteAccess == 0) ? (tl_d_c_a.a_mask != '1 || tl_d_c_a.a_size != 2'h2) : 1'b0 :
                          1'b0;
 
-//  if (ErrOnWrite == 1) begin : gen_no_writes
-//    assign wr_vld_error = tl_d_c_a.a_opcode != Get;
-//  end else begin : gen_writes_allowed
+  if (ErrOnWrite == 1) begin : gen_no_writes
+    assign wr_vld_error = tl_d_c_a.a_opcode != Get;
+  end else begin : gen_writes_allowed
     assign wr_vld_error = 1'b0;
-//  end
+ end
 
-//  if (ErrOnRead == 1) begin: gen_no_reads
-//    assign rd_vld_error = tl_d_c_a.a_opcode == Get;
-//  end else begin : gen_reads_allowed
+  if (ErrOnRead == 1) begin: gen_no_reads
+    assign rd_vld_error = tl_d_c_a.a_opcode == Get;
+  end else begin : gen_reads_allowed
     assign rd_vld_error = 1'b0;
-//  end
+  end
 
- /* tlul_err u_err (
-    .clock,
-    .reset,
-    .tl_d_c_a,
+  tlul_err u_err (
+    .clk_i (clock),
+    .rst_ni (~reset),
+    .tl_i (),
     .err_o (tlul_error)
-  );*/
+  );
 
-  assign error_internal = wr_attr_error | wr_vld_error | rd_vld_error; //| tlul_error;
+  assign error_internal = wr_attr_error | wr_vld_error | rd_vld_error; | tlul_error;
   // End: Request Error Detection
 
   assign reqfifo_wvalid = a_ack ; // Push to FIFO only when granted
@@ -249,15 +257,15 @@ module tlul_sram_adapter #(
   assign rdata_tlword = rdata[sramreqfifo_rdata.woffset];
 
   assign rspfifo_wdata  = '{
-    data : rdata_tlword
-//    error: rerror_i[1] // Only care for Uncorrectable error
+    data : rdata_tlword,
+    error: rerror_i[1] // Only care for Uncorrectable error
   };
   assign rspfifo_rready = (reqfifo_rdata.op == OpRead & ~reqfifo_rdata.error)
                         ? reqfifo_rready : 1'b0 ;
 
   // This module only cares about uncorrectable errors.
-//  logic unused_rerror;
-//  assign unused_rerror = rerror_i[0];
+  logic unused_rerror;
+  assign unused_rerror = rerror_i[0];
 
   // FIFO instance: REQ, RSP
 

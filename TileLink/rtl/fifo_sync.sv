@@ -5,7 +5,7 @@
 module fifo_sync #(
   parameter int unsigned Width       = 16,
   parameter bit Pass                 = 1'b1, // if == 1 allow requests to pass through empty FIFO
-  parameter int unsigned Depth       = 4,
+  parameter int unsigned Depth       = 0,
   parameter bit OutputZeroIfEmpty    = 1'b1, // if == 1 always output 0 when FIFO is empty
   // derived parameter
   localparam int          DepthW     = 3

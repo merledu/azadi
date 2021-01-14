@@ -1,6 +1,7 @@
-package tulul_pkg;
+package tlul_pkg;
 
 
+    parameter ArbiterImpl = "PPC";
   function automatic integer vbits(integer value);
     return (value == 1) ? 1 : $clog2(value);
   endfunction
