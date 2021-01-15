@@ -1,6 +1,4 @@
-// Copyright lowRISC contributors.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
+
 
 /**
  * Dummy instruction module
@@ -8,7 +6,7 @@
  * Provides pseudo-randomly inserted fake instructions for secure code obfuscation
  */
 
-module ibex_dummy_instr (
+module brq_ifu_dummy_instr (
     // Clock and reset
     input  logic        clk_i,
     input  logic        rst_ni,

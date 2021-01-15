@@ -1,7 +1,3 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
 
 /**
  * Prefetcher Buffer for 32 bit memory interface
@@ -9,7 +5,7 @@
  * Prefetch Buffer that caches instructions. This cuts overly long critical
  * paths to the instruction cache.
  */
-module ibex_prefetch_buffer #(
+module brq_ifu_prefetch_buffer #(
   parameter bit BranchPredictor = 1'b0
 ) (
     input  logic        clk_i,
@@ -108,7 +104,7 @@ module ibex_prefetch_buffer #(
   // Overlay the fifo fill state with the outstanding requests to see if there is space.
   assign fifo_ready = ~&(fifo_busy | rdata_outstanding_rev);
 
-  ibex_fetch_fifo #(
+  brq_ifu_fifo #(
     .NUM_REQS (NUM_REQS)
   ) fifo_i (
       .clk_i                 ( clk_i             ),
@@ -286,7 +282,7 @@ module ibex_prefetch_buffer #(
   // Push a new entry to the FIFO once complete (and not cancelled by a branch)
   assign fifo_valid = rvalid_or_pmp_err & ~branch_discard_q[0];
 
-  assign fifo_addr = branch_mispredict_i ? branch_mispredict_addr : addr_i;
+  assign fifo_addr = branch_i ? addr_i : branch_mispredict_addr;
 
   ///////////////
   // Registers //

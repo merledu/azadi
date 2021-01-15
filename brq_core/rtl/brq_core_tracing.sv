@@ -1,28 +1,26 @@
-// Copyright lowRISC contributors.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
 
 /**
- * Top level module of the ibex RISC-V core with tracing enabled
+ * Top level module of the brq RISC-V core with tracing enabled
  */
 
-module ibex_core_tracing #(
+module brq_core_tracing #(
     parameter bit                 PMPEnable        = 1'b0,
     parameter int unsigned        PMPGranularity   = 0,
     parameter int unsigned        PMPNumRegions    = 4,
     parameter int unsigned        MHPMCounterNum   = 0,
     parameter int unsigned        MHPMCounterWidth = 40,
     parameter bit                 RV32E            = 1'b0,
-    parameter ibex_pkg::rv32m_e   RV32M            = ibex_pkg::RV32MFast,
-    parameter ibex_pkg::rv32b_e   RV32B            = ibex_pkg::RV32BNone,
-    parameter ibex_pkg::regfile_e RegFile          = ibex_pkg::RegFileFF,
+    parameter brq_pkg::rv32m_e   RV32M            = brq_pkg::RV32MFast,
+    parameter brq_pkg::rv32b_e   RV32B            = brq_pkg::RV32BNone,
+    parameter brq_pkg::regfile_e RegFile          = brq_pkg::RegFileFF,
     parameter bit                 BranchTargetALU  = 1'b0,
     parameter bit                 WritebackStage   = 1'b0,
     parameter bit                 ICache           = 1'b0,
     parameter bit                 ICacheECC        = 1'b0,
     parameter bit                 BranchPredictor  = 1'b0,
     parameter bit                 DbgTriggerEn     = 1'b0,
-    parameter bit                 SecureIbex       = 1'b0,
+    parameter int unsigned        DbgHwBreakNum    = 1,
+    parameter bit                 Securebrq       = 1'b0,
     parameter int unsigned        DmHaltAddr       = 32'h1A110800,
     parameter int unsigned        DmExceptionAddr  = 32'h1A110808
 ) (
@@ -72,9 +70,9 @@ module ibex_core_tracing #(
 
 );
 
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
-  // ibex_tracer relies on the signals from the RISC-V Formal Interface
+  // brq_tracer relies on the signals from the RISC-V Formal Interface
   `ifndef RVFI
     $fatal("Fatal error: RVFI needs to be defined globally.");
   `endif
@@ -103,7 +101,7 @@ module ibex_core_tracing #(
   logic [31:0] rvfi_mem_rdata;
   logic [31:0] rvfi_mem_wdata;
 
-  ibex_core #(
+  brq_core #(
     .PMPEnable        ( PMPEnable        ),
     .PMPGranularity   ( PMPGranularity   ),
     .PMPNumRegions    ( PMPNumRegions    ),
@@ -118,11 +116,12 @@ module ibex_core_tracing #(
     .ICacheECC        ( ICacheECC        ),
     .BranchPredictor  ( BranchPredictor  ),
     .DbgTriggerEn     ( DbgTriggerEn     ),
+    .DbgHwBreakNum    ( DbgHwBreakNum    ),
     .WritebackStage   ( WritebackStage   ),
-    .SecureIbex       ( SecureIbex       ),
+    .Securebrq       ( Securebrq       ),
     .DmHaltAddr       ( DmHaltAddr       ),
     .DmExceptionAddr  ( DmExceptionAddr  )
-  ) u_ibex_core (
+  ) u_brq_core (
     .clk_i,
     .rst_ni,
 
@@ -186,8 +185,8 @@ module ibex_core_tracing #(
     .core_sleep_o
   );
 
-  ibex_tracer
-  u_ibex_tracer (
+  brq_tracer
+  u_brq_tracer (
     .clk_i,
     .rst_ni,
 

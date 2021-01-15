@@ -1,4 +1,4 @@
-module ibex_counter #(
+module brq_counter #(
   parameter int CounterWidth = 32
 ) (
   input  logic        clk_i,

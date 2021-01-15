@@ -1,34 +1,32 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
+
 
 `ifdef RISCV_FORMAL
   `define RVFI
 `endif
 
-// `include "prim_assert.sv"
-
+`include "prim_assert.sv"
+`include "/home/merl/github_repos/brq/rtl/brq_pkg.sv"
 /**
- * Top level module of the ibex RISC-V core
+ * Top level module of the brq RISC-V core
  */
-module ibex_core #(
+module brq_core #(
     parameter bit                 PMPEnable        = 1'b0,
     parameter int unsigned        PMPGranularity   = 0,
     parameter int unsigned        PMPNumRegions    = 4,
     parameter int unsigned        MHPMCounterNum   = 0,
     parameter int unsigned        MHPMCounterWidth = 40,
     parameter bit                 RV32E            = 1'b0,
-    parameter ibex_pkg::rv32m_e   RV32M            = ibex_pkg::RV32MFast,
-    parameter ibex_pkg::rv32b_e   RV32B            = ibex_pkg::RV32BNone,
-    parameter ibex_pkg::regfile_e RegFile          = ibex_pkg::RegFileFF,
+    parameter brq_pkg::rv32m_e   RV32M            = brq_pkg::RV32MFast,
+    parameter brq_pkg::rv32b_e   RV32B            = brq_pkg::RV32BNone,
+    parameter brq_pkg::regfile_e RegFile          = brq_pkg::RegFileFF,
     parameter bit                 BranchTargetALU  = 1'b0,
     parameter bit                 WritebackStage   = 1'b0,
     parameter bit                 ICache           = 1'b0,
     parameter bit                 ICacheECC        = 1'b0,
     parameter bit                 BranchPredictor  = 1'b0,
     parameter bit                 DbgTriggerEn     = 1'b0,
-    parameter bit                 SecureIbex       = 1'b0,
+    parameter int unsigned        DbgHwBreakNum    = 1,
+    parameter bit                 Securebrq       = 1'b0,
     parameter int unsigned        DmHaltAddr       = 32'h1A110800,
     parameter int unsigned        DmExceptionAddr  = 32'h1A110808
 ) (
@@ -106,17 +104,19 @@ module ibex_core #(
     output logic        core_sleep_o
 );
 
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
   localparam int unsigned PMP_NUM_CHAN      = 2;
-  localparam bit          DataIndTiming     = SecureIbex;
-  localparam bit          DummyInstructions = SecureIbex;
+  localparam bit          DataIndTiming     = Securebrq;
+  localparam bit          DummyInstructions = Securebrq;
+  localparam bit          PCIncrCheck       = Securebrq;
+  localparam bit          ShadowCSR         = Securebrq;
   // Speculative branch option, trades-off performance against timing.
   // Setting this to 1 eases branch target critical paths significantly but reduces performance
   // by ~3% (based on CoreMark/MHz score).
   // Set by default in the max PMP config which has the tightest budget for branch target timing.
   localparam bit          SpecBranch        = PMPEnable & (PMPNumRegions == 16);
-  localparam bit          RegFileECC        = SecureIbex;
+  localparam bit          RegFileECC        = Securebrq;
   localparam int unsigned RegFileDataWidth  = RegFileECC ? 32 + 7 : 32;
 
   // IF/ID signals
@@ -128,6 +128,7 @@ module ibex_core #(
                                                // ease fan-out)
   logic [15:0] instr_rdata_c_id;               // Compressed instruction sampled inside IF stage
   logic        instr_is_compressed_id;
+  logic        instr_perf_count_id;
   logic        instr_bp_taken_id;
   logic        instr_fetch_err;                // Bus error on instr fetch
   logic        instr_fetch_err_plus2;          // Instruction error is misaligned
@@ -147,6 +148,7 @@ module ibex_core #(
   logic        icache_enable;
   logic        icache_inval;
   logic        pc_mismatch_alert;
+  logic        csr_shadow_err;
 
   logic        instr_first_cycle_id;
   logic        instr_valid_clear;
@@ -242,6 +244,7 @@ module ibex_core #(
   logic        ex_valid;
 
   logic        lsu_resp_valid;
+  logic        lsu_resp_err;
 
   // Signals between instruction core interface and pipe (if and id stages)
   logic        instr_req_int;          // Id stage asserts a req to instruction core interface
@@ -294,9 +297,10 @@ module ibex_core #(
   // signals relating to instruction movements between pipeline stages
   // used by performance counters and RVFI
   logic        instr_id_done;
-  logic        instr_id_done_compressed;
   logic        instr_done_wb;
 
+  logic        perf_instr_ret_wb;
+  logic        perf_instr_ret_compressed_wb;
   logic        perf_iside_wait;
   logic        perf_dside_wait;
   logic        perf_mul_wait;
@@ -379,27 +383,27 @@ module ibex_core #(
   // main clock gate of the core
   // generates all clocks except the one for the debug unit which is
   // independent
-  //prim_clock_gating core_clock_gate_i (
-  //    .clk_i     ( clk_i           ),
-  //    .en_i      ( clock_en        ),
-  //    .test_en_i ( test_en_i       ),
-  //    .clk_o     ( clk_i            )
-  //);
+  prim_clock_gating core_clock_gate_i (
+      .clk_i     ( clk_i           ),
+      .en_i      ( clock_en        ),
+      .test_en_i ( test_en_i       ),
+      .clk_o     ( clk             )
+  );
 
   //////////////
   // IF stage //
   //////////////
 
-  ibex_if_stage #(
+  brq_ifu #(
       .DmHaltAddr        ( DmHaltAddr        ),
       .DmExceptionAddr   ( DmExceptionAddr   ),
       .DummyInstructions ( DummyInstructions ),
       .ICache            ( ICache            ),
       .ICacheECC         ( ICacheECC         ),
-      .SecureIbex        ( SecureIbex        ),
+      .PCIncrCheck       ( PCIncrCheck       ),
       .BranchPredictor   ( BranchPredictor   )
   ) if_stage_i (
-      .clk_i                    ( clk_i                   ),
+      .clk_i                    ( clk                    ),
       .rst_ni                   ( rst_ni                 ),
 
       .boot_addr_i              ( boot_addr_i            ),
@@ -471,7 +475,7 @@ module ibex_core #(
   // ID stage //
   //////////////
 
-  ibex_id_stage #(
+  brq_idu #(
       .RV32E           ( RV32E           ),
       .RV32M           ( RV32M           ),
       .RV32B           ( RV32B           ),
@@ -481,7 +485,7 @@ module ibex_core #(
       .WritebackStage  ( WritebackStage  ),
       .BranchPredictor ( BranchPredictor )
   ) id_stage_i (
-      .clk_i                        ( clk_i                     ),
+      .clk_i                        ( clk                      ),
       .rst_ni                       ( rst_ni                   ),
 
       // Processor Enable
@@ -612,6 +616,7 @@ module ibex_core #(
 
       .en_wb_o                      ( en_wb                    ),
       .instr_type_wb_o              ( instr_type_wb            ),
+      .instr_perf_count_id_o        ( instr_perf_count_id      ),
       .ready_wb_i                   ( ready_wb                 ),
       .outstanding_load_wb_i        ( outstanding_load_wb      ),
       .outstanding_store_wb_i       ( outstanding_store_wb     ),
@@ -623,19 +628,18 @@ module ibex_core #(
       .perf_dside_wait_o            ( perf_dside_wait          ),
       .perf_mul_wait_o              ( perf_mul_wait            ),
       .perf_div_wait_o              ( perf_div_wait            ),
-      .instr_id_done_o              ( instr_id_done            ),
-      .instr_id_done_compressed_o   ( instr_id_done_compressed )
+      .instr_id_done_o              ( instr_id_done            )
   );
 
   // for RVFI only
   assign unused_illegal_insn_id = illegal_insn_id;
 
-  ibex_ex_block #(
+  brq_exu #(
       .RV32M                    ( RV32M                    ),
       .RV32B                    ( RV32B                    ),
       .BranchTargetALU          ( BranchTargetALU          )
   ) ex_block_i (
-      .clk_i                    ( clk_i                     ),
+      .clk_i                    ( clk                      ),
       .rst_ni                   ( rst_ni                   ),
 
       // ALU signal from ID stage
@@ -679,10 +683,11 @@ module ibex_core #(
   // Load/store unit //
   /////////////////////
 
-  assign data_req_o = data_req_out & ~pmp_req_err[PMP_D];
+  assign data_req_o   = data_req_out & ~pmp_req_err[PMP_D];
+  assign lsu_resp_err = lsu_load_err | lsu_store_err;
 
-  ibex_load_store_unit load_store_unit_i (
-      .clk_i                 ( clk_i                ),
+  brq_lsu load_store_unit_i (
+      .clk_i                 ( clk                 ),
       .rst_ni                ( rst_ni              ),
 
       // data interface
@@ -727,37 +732,42 @@ module ibex_core #(
       .perf_store_o          ( perf_store          )
   );
 
-  ibex_wb_stage #(
+  brq_wbu #(
     .WritebackStage ( WritebackStage )
   ) wb_stage_i (
-    .clk_i                      ( clk_i                     ),
-    .rst_ni                     ( rst_ni                   ),
-    .en_wb_i                    ( en_wb                    ),
-    .instr_type_wb_i            ( instr_type_wb            ),
-    .pc_id_i                    ( pc_id                    ),
+    .clk_i                          ( clk                          ),
+    .rst_ni                         ( rst_ni                       ),
+    .en_wb_i                        ( en_wb                        ),
+    .instr_type_wb_i                ( instr_type_wb                ),
+    .pc_id_i                        ( pc_id                        ),
+    .instr_is_compressed_id_i       ( instr_is_compressed_id       ),
+    .instr_perf_count_id_i          ( instr_perf_count_id          ),
 
-    .ready_wb_o                 ( ready_wb                 ),
-    .rf_write_wb_o              ( rf_write_wb              ),
-    .outstanding_load_wb_o      ( outstanding_load_wb      ),
-    .outstanding_store_wb_o     ( outstanding_store_wb     ),
-    .pc_wb_o                    ( pc_wb                    ),
+    .ready_wb_o                     ( ready_wb                     ),
+    .rf_write_wb_o                  ( rf_write_wb                  ),
+    .outstanding_load_wb_o          ( outstanding_load_wb          ),
+    .outstanding_store_wb_o         ( outstanding_store_wb         ),
+    .pc_wb_o                        ( pc_wb                        ),
+    .perf_instr_ret_wb_o            ( perf_instr_ret_wb            ),
+    .perf_instr_ret_compressed_wb_o ( perf_instr_ret_compressed_wb ),
 
-    .rf_waddr_id_i              ( rf_waddr_id              ),
-    .rf_wdata_id_i              ( rf_wdata_id              ),
-    .rf_we_id_i                 ( rf_we_id                 ),
+    .rf_waddr_id_i                  ( rf_waddr_id                  ),
+    .rf_wdata_id_i                  ( rf_wdata_id                  ),
+    .rf_we_id_i                     ( rf_we_id                     ),
 
-    .rf_wdata_lsu_i             ( rf_wdata_lsu             ),
-    .rf_we_lsu_i                ( rf_we_lsu                ),
+    .rf_wdata_lsu_i                 ( rf_wdata_lsu                 ),
+    .rf_we_lsu_i                    ( rf_we_lsu                    ),
 
-    .rf_wdata_fwd_wb_o          ( rf_wdata_fwd_wb          ),
+    .rf_wdata_fwd_wb_o              ( rf_wdata_fwd_wb              ),
 
-    .rf_waddr_wb_o              ( rf_waddr_wb              ),
-    .rf_wdata_wb_o              ( rf_wdata_wb              ),
-    .rf_we_wb_o                 ( rf_we_wb                 ),
+    .rf_waddr_wb_o                  ( rf_waddr_wb                  ),
+    .rf_wdata_wb_o                  ( rf_wdata_wb                  ),
+    .rf_we_wb_o                     ( rf_we_wb                     ),
 
-    .lsu_resp_valid_i           ( lsu_resp_valid           ),
+    .lsu_resp_valid_i               ( lsu_resp_valid               ),
+    .lsu_resp_err_i                 ( lsu_resp_err                 ),
 
-    .instr_done_wb_o            ( instr_done_wb            )
+    .instr_done_wb_o                ( instr_done_wb                )
   );
 
   ///////////////////////
@@ -820,7 +830,7 @@ module ibex_core #(
   end
 
   if (RegFile == RegFileFF) begin : gen_regfile_ff
-    ibex_register_file_ff #(
+    brq_register_file_ff #(
         .RV32E             ( RV32E             ),
         .DataWidth         ( RegFileDataWidth  ),
         .DummyInstructions ( DummyInstructions )
@@ -840,7 +850,7 @@ module ibex_core #(
         .we_a_i           ( rf_we_wb        )
     );
   end else if (RegFile == RegFileFPGA) begin : gen_regfile_fpga
-    ibex_register_file_fpga #(
+    brq_register_file_fpga #(
         .RV32E             ( RV32E             ),
         .DataWidth         ( RegFileDataWidth  ),
         .DummyInstructions ( DummyInstructions )
@@ -860,7 +870,7 @@ module ibex_core #(
         .we_a_i           ( rf_we_wb        )
     );
   end else if (RegFile == RegFileLatch) begin : gen_regfile_latch
-    ibex_register_file_latch #(
+    brq_register_file_latch #(
         .RV32E             ( RV32E             ),
         .DataWidth         ( RegFileDataWidth  ),
         .DummyInstructions ( DummyInstructions )
@@ -890,10 +900,10 @@ module ibex_core #(
   assign alert_minor_o = 1'b0;
 
   // Major alert - core is unrecoverable
-  assign alert_major_o = rf_ecc_err_comb | pc_mismatch_alert;
+  assign alert_major_o = rf_ecc_err_comb | pc_mismatch_alert | csr_shadow_err;
 
-//  `ASSERT_KNOWN(IbexAlertMinorX, alert_minor_o)
-//  `ASSERT_KNOWN(IbexAlertMajorX, alert_major_o)
+  `ASSERT_KNOWN(brqAlertMinorX, alert_minor_o)
+  `ASSERT_KNOWN(brqAlertMajorX, alert_major_o)
 
   // Explict INC_ASSERT block to avoid unused signal lint warnings were asserts are not included
   `ifdef INC_ASSERT
@@ -951,10 +961,12 @@ module ibex_core #(
   assign csr_wdata  = alu_operand_a_ex;
   assign csr_addr   = csr_num_e'(csr_access ? alu_operand_b_ex[11:0] : 12'b0);
 
-  ibex_cs_registers #(
+  brq_cs_registers #(
       .DbgTriggerEn      ( DbgTriggerEn      ),
+      .DbgHwBreakNum     ( DbgHwBreakNum     ),
       .DataIndTiming     ( DataIndTiming     ),
       .DummyInstructions ( DummyInstructions ),
+      .ShadowCSR         ( ShadowCSR         ),
       .ICache            ( ICache            ),
       .MHPMCounterNum    ( MHPMCounterNum    ),
       .MHPMCounterWidth  ( MHPMCounterWidth  ),
@@ -964,97 +976,98 @@ module ibex_core #(
       .RV32E             ( RV32E             ),
       .RV32M             ( RV32M             )
   ) cs_registers_i (
-      .clk_i                   ( clk_i                     ),
-      .rst_ni                  ( rst_ni                   ),
+      .clk_i                   ( clk                          ),
+      .rst_ni                  ( rst_ni                       ),
 
       // Hart ID from outside
-      .hart_id_i               ( hart_id_i                ),
-      .priv_mode_id_o          ( priv_mode_id             ),
-      .priv_mode_if_o          ( priv_mode_if             ),
-      .priv_mode_lsu_o         ( priv_mode_lsu            ),
+      .hart_id_i               ( hart_id_i                    ),
+      .priv_mode_id_o          ( priv_mode_id                 ),
+      .priv_mode_if_o          ( priv_mode_if                 ),
+      .priv_mode_lsu_o         ( priv_mode_lsu                ),
 
       // mtvec
-      .csr_mtvec_o             ( csr_mtvec                ),
-      .csr_mtvec_init_i        ( csr_mtvec_init           ),
-      .boot_addr_i             ( boot_addr_i              ),
+      .csr_mtvec_o             ( csr_mtvec                    ),
+      .csr_mtvec_init_i        ( csr_mtvec_init               ),
+      .boot_addr_i             ( boot_addr_i                  ),
 
-      // Interface to CSRs     ( SRAM like                )
-      .csr_access_i            ( csr_access               ),
-      .csr_addr_i              ( csr_addr                 ),
-      .csr_wdata_i             ( csr_wdata                ),
-      .csr_op_i                ( csr_op                   ),
-      .csr_op_en_i             ( csr_op_en                ),
-      .csr_rdata_o             ( csr_rdata                ),
+      // Interface to CSRs     ( SRAM like                    )
+      .csr_access_i            ( csr_access                   ),
+      .csr_addr_i              ( csr_addr                     ),
+      .csr_wdata_i             ( csr_wdata                    ),
+      .csr_op_i                ( csr_op                       ),
+      .csr_op_en_i             ( csr_op_en                    ),
+      .csr_rdata_o             ( csr_rdata                    ),
 
       // Interrupt related control signals
-      .irq_software_i          ( irq_software_i           ),
-      .irq_timer_i             ( irq_timer_i              ),
-      .irq_external_i          ( irq_external_i           ),
-      .irq_fast_i              ( irq_fast_i               ),
-      .nmi_mode_i              ( nmi_mode                 ),
-      .irq_pending_o           ( irq_pending              ),
-      .irqs_o                  ( irqs                     ),
-      .csr_mstatus_mie_o       ( csr_mstatus_mie          ),
-      .csr_mstatus_tw_o        ( csr_mstatus_tw           ),
-      .csr_mepc_o              ( csr_mepc                 ),
+      .irq_software_i          ( irq_software_i               ),
+      .irq_timer_i             ( irq_timer_i                  ),
+      .irq_external_i          ( irq_external_i               ),
+      .irq_fast_i              ( irq_fast_i                   ),
+      .nmi_mode_i              ( nmi_mode                     ),
+      .irq_pending_o           ( irq_pending                  ),
+      .irqs_o                  ( irqs                         ),
+      .csr_mstatus_mie_o       ( csr_mstatus_mie              ),
+      .csr_mstatus_tw_o        ( csr_mstatus_tw               ),
+      .csr_mepc_o              ( csr_mepc                     ),
 
       // PMP
-      .csr_pmp_cfg_o           ( csr_pmp_cfg              ),
-      .csr_pmp_addr_o          ( csr_pmp_addr             ),
+      .csr_pmp_cfg_o           ( csr_pmp_cfg                  ),
+      .csr_pmp_addr_o          ( csr_pmp_addr                 ),
 
       // debug
-      .csr_depc_o              ( csr_depc                 ),
-      .debug_mode_i            ( debug_mode               ),
-      .debug_cause_i           ( debug_cause              ),
-      .debug_csr_save_i        ( debug_csr_save           ),
-      .debug_single_step_o     ( debug_single_step        ),
-      .debug_ebreakm_o         ( debug_ebreakm            ),
-      .debug_ebreaku_o         ( debug_ebreaku            ),
-      .trigger_match_o         ( trigger_match            ),
+      .csr_depc_o              ( csr_depc                     ),
+      .debug_mode_i            ( debug_mode                   ),
+      .debug_cause_i           ( debug_cause                  ),
+      .debug_csr_save_i        ( debug_csr_save               ),
+      .debug_single_step_o     ( debug_single_step            ),
+      .debug_ebreakm_o         ( debug_ebreakm                ),
+      .debug_ebreaku_o         ( debug_ebreaku                ),
+      .trigger_match_o         ( trigger_match                ),
 
-      .pc_if_i                 ( pc_if                    ),
-      .pc_id_i                 ( pc_id                    ),
-      .pc_wb_i                 ( pc_wb                    ),
+      .pc_if_i                 ( pc_if                        ),
+      .pc_id_i                 ( pc_id                        ),
+      .pc_wb_i                 ( pc_wb                        ),
 
-      .data_ind_timing_o       ( data_ind_timing          ),
-      .dummy_instr_en_o        ( dummy_instr_en           ),
-      .dummy_instr_mask_o      ( dummy_instr_mask         ),
-      .dummy_instr_seed_en_o   ( dummy_instr_seed_en      ),
-      .dummy_instr_seed_o      ( dummy_instr_seed         ),
-      .icache_enable_o         ( icache_enable            ),
+      .data_ind_timing_o       ( data_ind_timing              ),
+      .dummy_instr_en_o        ( dummy_instr_en               ),
+      .dummy_instr_mask_o      ( dummy_instr_mask             ),
+      .dummy_instr_seed_en_o   ( dummy_instr_seed_en          ),
+      .dummy_instr_seed_o      ( dummy_instr_seed             ),
+      .icache_enable_o         ( icache_enable                ),
+      .csr_shadow_err_o        ( csr_shadow_err               ),
 
-      .csr_save_if_i           ( csr_save_if              ),
-      .csr_save_id_i           ( csr_save_id              ),
-      .csr_save_wb_i           ( csr_save_wb              ),
-      .csr_restore_mret_i      ( csr_restore_mret_id      ),
-      .csr_restore_dret_i      ( csr_restore_dret_id      ),
-      .csr_save_cause_i        ( csr_save_cause           ),
-      .csr_mcause_i            ( exc_cause                ),
-      .csr_mtval_i             ( csr_mtval                ),
-      .illegal_csr_insn_o      ( illegal_csr_insn_id      ),
+      .csr_save_if_i           ( csr_save_if                  ),
+      .csr_save_id_i           ( csr_save_id                  ),
+      .csr_save_wb_i           ( csr_save_wb                  ),
+      .csr_restore_mret_i      ( csr_restore_mret_id          ),
+      .csr_restore_dret_i      ( csr_restore_dret_id          ),
+      .csr_save_cause_i        ( csr_save_cause               ),
+      .csr_mcause_i            ( exc_cause                    ),
+      .csr_mtval_i             ( csr_mtval                    ),
+      .illegal_csr_insn_o      ( illegal_csr_insn_id          ),
 
       // performance counter related signals
-      .instr_ret_i             ( instr_id_done            ),
-      .instr_ret_compressed_i  ( instr_id_done_compressed ),
-      .iside_wait_i            ( perf_iside_wait          ),
-      .jump_i                  ( perf_jump                ),
-      .branch_i                ( perf_branch              ),
-      .branch_taken_i          ( perf_tbranch             ),
-      .mem_load_i              ( perf_load                ),
-      .mem_store_i             ( perf_store               ),
-      .dside_wait_i            ( perf_dside_wait          ),
-      .mul_wait_i              ( perf_mul_wait            ),
-      .div_wait_i              ( perf_div_wait            )
+      .instr_ret_i             ( perf_instr_ret_wb            ),
+      .instr_ret_compressed_i  ( perf_instr_ret_compressed_wb ),
+      .iside_wait_i            ( perf_iside_wait              ),
+      .jump_i                  ( perf_jump                    ),
+      .branch_i                ( perf_branch                  ),
+      .branch_taken_i          ( perf_tbranch                 ),
+      .mem_load_i              ( perf_load                    ),
+      .mem_store_i             ( perf_store                   ),
+      .dside_wait_i            ( perf_dside_wait              ),
+      .mul_wait_i              ( perf_mul_wait                ),
+      .div_wait_i              ( perf_div_wait                )
   );
 
   // These assertions are in top-level as instr_valid_id required as the enable term
-//  `ASSERT(IbexCsrOpValid, instr_valid_id |-> csr_op inside {
-//      CSR_OP_READ,
-//      CSR_OP_WRITE,
-//      CSR_OP_SET,
-//      CSR_OP_CLEAR
-//      })
-//  `ASSERT_KNOWN_IF(IbexCsrWdataIntKnown, cs_registers_i.csr_wdata_int, csr_op_en)
+  `ASSERT(brqCsrOpValid, instr_valid_id |-> csr_op inside {
+      CSR_OP_READ,
+      CSR_OP_WRITE,
+      CSR_OP_SET,
+      CSR_OP_CLEAR
+      })
+  `ASSERT_KNOWN_IF(brqCsrWdataIntKnown, cs_registers_i.csr_wdata_int, csr_op_en)
 
   if (PMPEnable) begin : g_pmp
     logic [33:0] pmp_req_addr [PMP_NUM_CHAN];
@@ -1068,12 +1081,12 @@ module ibex_core #(
     assign pmp_req_type[PMP_D] = data_we_o ? PMP_ACC_WRITE : PMP_ACC_READ;
     assign pmp_priv_lvl[PMP_D] = priv_mode_lsu;
 
-    ibex_pmp #(
+    brq_pmp #(
         .PMPGranularity        ( PMPGranularity ),
         .PMPNumChan            ( PMP_NUM_CHAN   ),
         .PMPNumRegions         ( PMPNumRegions  )
     ) pmp_i (
-        .clk_i                 ( clk_i           ),
+        .clk_i                 ( clk            ),
         .rst_ni                ( rst_ni         ),
         // Interface to CSRs
         .csr_pmp_cfg_i         ( csr_pmp_cfg    ),
@@ -1178,7 +1191,7 @@ module ibex_core #(
 
     assign rvfi_instr_new_wb = rvfi_instr_new_wb_q;
 
-    always_ff @(posedge clk_ior negedge rst_ni) begin
+    always_ff @(posedge clk or negedge rst_ni) begin
       if (~rst_ni) begin
         rvfi_instr_new_wb_q <= 0;
       end else begin
@@ -1195,7 +1208,7 @@ module ibex_core #(
   end
 
   for (genvar i = 0;i < RVFI_STAGES; i = i + 1) begin : g_rvfi_stages
-    always_ff @(posedge clk_ior negedge rst_ni) begin
+    always_ff @(posedge clk or negedge rst_ni) begin
       if (!rst_ni) begin
         rvfi_stage_halt[i]      <= '0;
         rvfi_stage_trap[i]      <= '0;
@@ -1304,7 +1317,7 @@ module ibex_core #(
     end
   end
 
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_mem_addr_q  <= '0;
       rvfi_mem_rdata_q <= '0;
@@ -1352,7 +1365,7 @@ module ibex_core #(
       rvfi_rs3_addr_d = rf_raddr_a;
     end
   end
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_rs1_data_q <= '0;
       rvfi_rs1_addr_q <= '0;
@@ -1391,7 +1404,7 @@ module ibex_core #(
 
   // RD write register is refreshed only once per cycle and
   // then it is kept stable for the cycle.
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_rd_addr_q    <= '0;
       rvfi_rd_wdata_q   <= '0;
@@ -1419,7 +1432,7 @@ module ibex_core #(
     end
   end
 
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_set_trap_pc_q <= 1'b0;
       rvfi_intr_q        <= 1'b0;
@@ -1429,6 +1442,13 @@ module ibex_core #(
     end
   end
 
+`else
+  logic unused_instr_new_id, unused_instr_done_wb;
+  assign unused_instr_new_id = instr_new_id;
+  assign unused_instr_done_wb = instr_done_wb;
 `endif
+
+  // Certain parameter combinations are not supported
+  `ASSERT_INIT(IllegalParamSecure, !(Securebrq && (RV32M == RV32MNone)))
 
 endmodule

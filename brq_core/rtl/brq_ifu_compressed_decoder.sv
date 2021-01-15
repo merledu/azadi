@@ -1,7 +1,3 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
 
 /**
  * Compressed instruction decoder
@@ -11,9 +7,9 @@
  * assertions only.
  */
 
-// `include "prim_assert.sv"
+`include "prim_assert.sv"
 
-module ibex_compressed_decoder (
+module brq_ifu_compressed_decoder (
     input  logic        clk_i,
     input  logic        rst_ni,
     input  logic        valid_i,
@@ -22,7 +18,7 @@ module ibex_compressed_decoder (
     output logic        is_compressed_o,
     output logic        illegal_instr_o
 );
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
   // valid_i indicates if instr_i is valid and is used for assertions only.
   // The following signal is used to avoid possible lint errors.
@@ -283,18 +279,18 @@ module ibex_compressed_decoder (
   ////////////////
 
   // Selectors must be known/valid.
-//  `ASSERT(IbexInstrLSBsKnown, valid_i |->
-//      !$isunknown(instr_i[1:0]))
-//  `ASSERT(IbexC0Known1, (valid_i && (instr_i[1:0] == 2'b00)) |->
-//      !$isunknown(instr_i[15:13]))
-//  `ASSERT(IbexC1Known1, (valid_i && (instr_i[1:0] == 2'b01)) |->
-//      !$isunknown(instr_i[15:13]))
-//  `ASSERT(IbexC1Known2, (valid_i && (instr_i[1:0] == 2'b01) && (instr_i[15:13] == 3'b100)) |->
-//      !$isunknown(instr_i[11:10]))
-//  `ASSERT(IbexC1Known3, (valid_i &&
-//      (instr_i[1:0] == 2'b01) && (instr_i[15:13] == 3'b100) && (instr_i[11:10] == 2'b11)) |->
-//      !$isunknown({instr_i[12], instr_i[6:5]}))
-//  `ASSERT(IbexC2Known1, (valid_i && (instr_i[1:0] == 2'b10)) |->
-//      !$isunknown(instr_i[15:13]))
+  `ASSERT(brqInstrLSBsKnown, valid_i |->
+      !$isunknown(instr_i[1:0]))
+  `ASSERT(brqC0Known1, (valid_i && (instr_i[1:0] == 2'b00)) |->
+      !$isunknown(instr_i[15:13]))
+  `ASSERT(brqC1Known1, (valid_i && (instr_i[1:0] == 2'b01)) |->
+      !$isunknown(instr_i[15:13]))
+  `ASSERT(brqC1Known2, (valid_i && (instr_i[1:0] == 2'b01) && (instr_i[15:13] == 3'b100)) |->
+      !$isunknown(instr_i[11:10]))
+  `ASSERT(brqC1Known3, (valid_i &&
+      (instr_i[1:0] == 2'b01) && (instr_i[15:13] == 3'b100) && (instr_i[11:10] == 2'b11)) |->
+      !$isunknown({instr_i[12], instr_i[6:5]}))
+  `ASSERT(brqC2Known1, (valid_i && (instr_i[1:0] == 2'b10)) |->
+      !$isunknown(instr_i[15:13]))
 
 endmodule

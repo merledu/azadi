@@ -1,6 +1,3 @@
-// Copyright lowRISC contributors.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
 
 /**
  * Writeback Stage
@@ -11,23 +8,27 @@
  * a simple passthrough to write data direct to the register file.
  */
 
-// `include "prim_assert.sv"
+`include "prim_assert.sv"
 
-module ibex_wb_stage #(
+module brq_wbu #(
   parameter bit WritebackStage = 1'b0
 ) (
   input  logic                     clk_i,
   input  logic                     rst_ni,
 
   input  logic                     en_wb_i,
-  input  ibex_pkg::wb_instr_type_e instr_type_wb_i,
+  input  brq_pkg::wb_instr_type_e instr_type_wb_i,
   input  logic [31:0]              pc_id_i,
+  input  logic                     instr_is_compressed_id_i,
+  input  logic                     instr_perf_count_id_i,
 
   output logic                     ready_wb_o,
   output logic                     rf_write_wb_o,
   output logic                     outstanding_load_wb_o,
   output logic                     outstanding_store_wb_o,
   output logic [31:0]              pc_wb_o,
+  output logic                     perf_instr_ret_wb_o,
+  output logic                     perf_instr_ret_compressed_wb_o,
 
   input  logic [4:0]               rf_waddr_id_i,
   input  logic [31:0]              rf_wdata_id_i,
@@ -43,11 +44,12 @@ module ibex_wb_stage #(
   output logic                     rf_we_wb_o,
 
   input logic                      lsu_resp_valid_i,
+  input logic                      lsu_resp_err_i,
 
   output logic                     instr_done_wb_o
 );
 
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
   // 0 == RF write from ID
   // 1 == RF write from LSU
@@ -63,6 +65,8 @@ module ibex_wb_stage #(
 
     logic           wb_valid_q;
     logic [31:0]    wb_pc_q;
+    logic           wb_compressed_q;
+    logic           wb_count_q;
     wb_instr_type_e wb_instr_type_q;
 
     logic           wb_valid_d;
@@ -91,6 +95,8 @@ module ibex_wb_stage #(
         rf_wdata_wb_q   <= rf_wdata_id_i;
         wb_instr_type_q <= instr_type_wb_i;
         wb_pc_q         <= pc_id_i;
+        wb_compressed_q <= instr_is_compressed_id_i;
+        wb_count_q      <= instr_perf_count_id_i;
       end
     end
 
@@ -111,6 +117,11 @@ module ibex_wb_stage #(
 
     assign instr_done_wb_o = wb_valid_q & wb_done;
 
+    // Increment instruction retire counters for valid instructions which are not lsu errors
+    assign perf_instr_ret_wb_o            = instr_done_wb_o & wb_count_q &
+                                            ~(lsu_resp_valid_i & lsu_resp_err_i);
+    assign perf_instr_ret_compressed_wb_o = perf_instr_ret_wb_o & wb_compressed_q;
+
     // Forward data that will be written to the RF back to ID to resolve data hazards. The flopped
     // rf_wdata_wb_q is used rather than rf_wdata_wb_o as the latter includes read data from memory
     // that returns too late to be used on the forwarding path.
@@ -121,6 +132,11 @@ module ibex_wb_stage #(
     assign rf_wdata_wb_mux[0]    = rf_wdata_id_i;
     assign rf_wdata_wb_mux_we[0] = rf_we_id_i;
 
+    // Increment instruction retire counters for valid instructions which are not lsu errors
+    assign perf_instr_ret_wb_o            = instr_perf_count_id_i & en_wb_i &
+                                            ~(lsu_resp_valid_i & lsu_resp_err_i);
+    assign perf_instr_ret_compressed_wb_o = perf_instr_ret_wb_o & instr_is_compressed_id_i;
+
     // ready needs to be constant 1 without writeback stage (otherwise ID/EX stage will stall)
     assign ready_wb_o    = 1'b1;
 
@@ -129,17 +145,13 @@ module ibex_wb_stage #(
     // Tie-off outputs to constant values
     logic           unused_clk;
     logic           unused_rst;
-    logic           unused_en_wb;
     wb_instr_type_e unused_instr_type_wb;
     logic [31:0]    unused_pc_id;
-    logic           unused_lsu_resp_valid;
 
     assign unused_clk            = clk_i;
     assign unused_rst            = rst_ni;
-    assign unused_en_wb          = en_wb_i;
     assign unused_instr_type_wb  = instr_type_wb_i;
     assign unused_pc_id          = pc_id_i;
-    assign unused_lsu_resp_valid = lsu_resp_valid_i;
 
     assign outstanding_load_wb_o  = 1'b0;
     assign outstanding_store_wb_o = 1'b0;
@@ -157,5 +169,5 @@ module ibex_wb_stage #(
   assign rf_wdata_wb_o = rf_wdata_wb_mux_we[0] ? rf_wdata_wb_mux[0] : rf_wdata_wb_mux[1];
   assign rf_we_wb_o    = |rf_wdata_wb_mux_we;
 
-//  `ASSERT(RFWriteFromOneSourceOnly, $onehot0(rf_wdata_wb_mux_we))
+  `ASSERT(RFWriteFromOneSourceOnly, $onehot0(rf_wdata_wb_mux_we))
 endmodule

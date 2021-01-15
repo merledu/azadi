@@ -1,7 +1,3 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
 
 `define OP_L 15:0
 `define OP_H 31:16
@@ -12,10 +8,10 @@
  * 16x16 kernel multiplier and Long Division
  */
 
-// `include "prim_assert.sv"
+`include "prim_assert.sv"
 
-module ibex_multdiv_fast #(
-    parameter ibex_pkg::rv32m_e RV32M = ibex_pkg::RV32MFast
+module brq_exu_multdiv_fast #(
+    parameter brq_pkg::rv32m_e RV32M = brq_pkg::RV32MFast
   ) (
     input  logic             clk_i,
     input  logic             rst_ni,
@@ -23,7 +19,7 @@ module ibex_multdiv_fast #(
     input  logic             div_en_i,   // dynamic enable signal, for FSM control
     input  logic             mult_sel_i, // static decoder output, for data muxes
     input  logic             div_sel_i,  // static decoder output, for data muxes
-    input  ibex_pkg::md_op_e operator_i,
+    input  brq_pkg::md_op_e operator_i,
     input  logic  [1:0]      signed_mode_i,
     input  logic [31:0]      op_a_i,
     input  logic [31:0]      op_b_i,
@@ -45,7 +41,7 @@ module ibex_multdiv_fast #(
     output logic             valid_o
 );
 
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
   // Both multiplier variants
   logic signed [34:0] mac_res_signed;
@@ -73,7 +69,7 @@ module ibex_multdiv_fast #(
   logic [31:0] op_quotient_d;
   logic [31:0] next_remainder;
   logic [32:0] next_quotient;
-  logic [32:0] res_adder_h;
+  logic [31:0] res_adder_h;
   logic        div_valid;
   logic [ 4:0] div_counter_q, div_counter_d;
   logic        multdiv_en;
@@ -111,9 +107,9 @@ module ibex_multdiv_fast #(
     end
   end
 
-//  `ASSERT_KNOWN(DivEnKnown, div_en_internal);
-//  `ASSERT_KNOWN(MultEnKnown, mult_en_internal);
-//  `ASSERT_KNOWN(MultDivEnKnown, multdiv_en);
+  `ASSERT_KNOWN(DivEnKnown, div_en_internal)
+  `ASSERT_KNOWN(MultEnKnown, mult_en_internal)
+  `ASSERT_KNOWN(MultDivEnKnown, multdiv_en)
 
   assign multdiv_en = mult_en_internal | div_en_internal;
 
@@ -126,6 +122,8 @@ module ibex_multdiv_fast #(
   assign op_denominator_q = imd_val_q_i[1][31:0];
   logic [1:0] unused_imd_val;
   assign unused_imd_val = imd_val_q_i[1][33:32];
+  logic unused_mac_res_ext;
+  assign unused_mac_res_ext = mac_res_ext[34];
 
   assign signed_mult      = (signed_mode_i != 2'b00);
   assign multdiv_result_o = div_sel_i ? imd_val_q_i[0][31:0] : mac_res_d[31:0];
@@ -140,6 +138,8 @@ module ibex_multdiv_fast #(
     mult_fsm_e mult_state_q, mult_state_d;
 
     logic signed [33:0] mult1_res, mult2_res, mult3_res;
+    logic [33:0]        mult1_res_uns;
+    logic [33:32]       unused_mult1_res_uns;
     logic [15:0]        mult1_op_a, mult1_op_b;
     logic [15:0]        mult2_op_a, mult2_op_b;
     logic [15:0]        mult3_op_a, mult3_op_b;
@@ -154,6 +154,7 @@ module ibex_multdiv_fast #(
 
     assign mac_res_signed = $signed(summand1) + $signed(summand2) + $signed(summand3);
 
+    assign mult1_res_uns  = $unsigned(mult1_res);
     assign mac_res_ext    = $unsigned(mac_res_signed);
     assign mac_res        = mac_res_ext[33:0];
 
@@ -186,12 +187,12 @@ module ibex_multdiv_fast #(
       mult3_op_a = op_a_i[`OP_H];
       mult3_op_b = op_b_i[`OP_L];
 
-      summand1 = {18'h0, mult1_res[`OP_H]};
-      summand2 = mult2_res;
-      summand3 = mult3_res;
+      summand1 = {18'h0, mult1_res_uns[`OP_H]};
+      summand2 = $unsigned(mult2_res);
+      summand3 = $unsigned(mult3_res);
 
       // mac_res = A*B[47:16], mult1_res = A*B[15:0]
-      mac_res_d = {2'b0, mac_res[`OP_L], mult1_res[`OP_L]};
+      mac_res_d = {2'b0, mac_res[`OP_L], mult1_res_uns[`OP_L]};
       mult_valid = mult_en_i;
       mult_state_d = MULL;
 
@@ -244,8 +245,10 @@ module ibex_multdiv_fast #(
       end
     end
 
+    assign unused_mult1_res_uns = mult1_res_uns[33:32];
+
     // States must be knwon/valid.
-//    `ASSERT_KNOWN(IbexMultStateKnown, mult_state_q)
+    `ASSERT_KNOWN(brqMultStateKnown, mult_state_q)
 
   // The fast multiplier uses one 17 bit multiplier to compute MUL instructions in 3 cycles
   // and MULH instructions in 4 cycles.
@@ -271,7 +274,7 @@ module ibex_multdiv_fast #(
       mult_op_a    = op_a_i[`OP_L];
       mult_op_b    = op_b_i[`OP_L];
       sign_a       = 1'b0;
-      sign_b       = 1'b0;
+      sign_b  PC_BOOT: fetch_addr_n = { boot_addr_i[31:8], 8'h80      = 1'b0;
       accum        = imd_val_q_i[0];
       mac_res_d    = mac_res;
       mult_state_d = mult_state_q;
@@ -297,7 +300,7 @@ module ibex_multdiv_fast #(
           mult_op_b = op_b_i[`OP_H];
           sign_a    = 1'b0;
           sign_b    = signed_mode_i[1] & op_b_i[31];
-          // result of AL*BL (in imd_val_q_i[0]) always unsigned with no carry, so carries_q always 00
+          // result of AL*BL (in imd_val_q_i[0]) always unsigned with no carry
           accum     = {18'b0, imd_val_q_i[0][31:16]};
           if (operator_i == MD_OP_MULL) begin
             mac_res_d = {2'b0, mac_res[`OP_L], imd_val_q_i[0][`OP_L]};
@@ -363,12 +366,14 @@ module ibex_multdiv_fast #(
     end
 
     // States must be knwon/valid.
-//    `ASSERT_KNOWN(IbexMultStateKnown, mult_state_q)
+    `ASSERT_KNOWN(brqMultStateKnown, mult_state_q)
 
   end // gen_mult_fast
 
   // Divider
-  assign res_adder_h    = alu_adder_ext_i[33:1];
+  assign res_adder_h    = alu_adder_ext_i[32:1];
+  logic [1:0] unused_alu_adder_ext;
+  assign unused_alu_adder_ext = {alu_adder_ext_i[33],alu_adder_ext_i[0]};
 
   assign next_remainder = is_greater_equal ? res_adder_h[31:0] : imd_val_q_i[0][31:0];
   assign next_quotient  = is_greater_equal ? {1'b0, op_quotient_q} | {1'b0, one_shift} :
@@ -510,8 +515,8 @@ module ibex_multdiv_fast #(
   assign valid_o = mult_valid | div_valid;
 
   // States must be knwon/valid.
-//  `ASSERT(IbexMultDivStateValid, md_state_q inside {
-//      MD_IDLE, MD_ABS_A, MD_ABS_B, MD_COMP, MD_LAST, MD_CHANGE_SIGN, MD_FINISH})
+  `ASSERT(brqMultDivStateValid, md_state_q inside {
+      MD_IDLE, MD_ABS_A, MD_ABS_B, MD_COMP, MD_LAST, MD_CHANGE_SIGN, MD_FINISH})
 
 `ifdef FORMAL
   `ifdef YOSYS
@@ -519,4 +524,4 @@ module ibex_multdiv_fast #(
   `endif
 `endif
 
-endmodule // ibex_mult
+endmodule // brq_mult

@@ -1,7 +1,4 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
+
 
 /**
  * Slow Multiplier and Division
@@ -9,9 +6,9 @@
  * Baugh-Wooley multiplier and Long Division
  */
 
-// `include "prim_assert.sv"
+`include "prim_assert.sv"
 
-module ibex_multdiv_slow
+module brq_exu_multdiv_slow
 (
     input  logic             clk_i,
     input  logic             rst_ni,
@@ -19,7 +16,7 @@ module ibex_multdiv_slow
     input  logic             div_en_i,   // dynamic enable signal, for FSM control
     input  logic             mult_sel_i, // static decoder output, for data muxes
     input  logic             div_sel_i,  // static decoder output, for data muxes
-    input  ibex_pkg::md_op_e operator_i,
+    input  brq_pkg::md_op_e operator_i,
     input  logic  [1:0]      signed_mode_i,
     input  logic [31:0]      op_a_i,
     input  logic [31:0]      op_b_i,
@@ -42,7 +39,7 @@ module ibex_multdiv_slow
     output logic             valid_o
 );
 
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
   typedef enum logic [2:0] {
     MD_IDLE, MD_ABS_A, MD_ABS_B, MD_COMP, MD_LAST, MD_CHANGE_SIGN, MD_FINISH
@@ -361,9 +358,9 @@ module ibex_multdiv_slow
   ////////////////
 
   // State must be valid.
-//  `ASSERT(IbexMultDivStateValid, md_state_q inside {
-//      MD_IDLE, MD_ABS_A, MD_ABS_B, MD_COMP, MD_LAST, MD_CHANGE_SIGN, MD_FINISH
-//      }, clk_i, !rst_ni)
+  `ASSERT(brqMultDivStateValid, md_state_q inside {
+      MD_IDLE, MD_ABS_A, MD_ABS_B, MD_COMP, MD_LAST, MD_CHANGE_SIGN, MD_FINISH
+      }, clk_i, !rst_ni)
 
 `ifdef FORMAL
   `ifdef YOSYS

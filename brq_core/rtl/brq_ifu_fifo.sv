@@ -1,7 +1,4 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
+
 
 /**
  * Fetch Fifo for 32 bit memory interface
@@ -10,9 +7,9 @@
  * clear_i clears the FIFO for the following cycle, including any new request
  */
 
-// `include "prim_assert.sv"
+`include "prim_assert.sv"
 
-module ibex_fetch_fifo #(
+module brq_fetch_fifo #(
   parameter int unsigned NUM_REQS = 2
 ) (
     input  logic                clk_i,
@@ -103,7 +100,7 @@ module ibex_fetch_fifo #(
                                         (valid_q[0] & in_valid_i);
 
   // If there is an error, rdata is unknown
-  assign unaligned_is_compressed = (rdata[17:16] != 2'b11) | err;
+  assign unaligned_is_compressed = (rdata[17:16] != 2'b11) & ~err;
   assign aligned_is_compressed   = (rdata[ 1: 0] != 2'b11) & ~err;
 
   ////////////////////////////////////////
@@ -240,11 +237,11 @@ module ibex_fetch_fifo #(
   ////////////////
 
   // Must not push and pop simultaneously when FIFO full.
-//  `ASSERT(IbexFetchFifoPushPopFull,
-//      (in_valid_i && pop_fifo) |-> (!valid_q[DEPTH-1] || clear_i))
+  `ASSERT(brqFetchFifoPushPopFull,
+      (in_valid_i && pop_fifo) |-> (!valid_q[DEPTH-1] || clear_i))
 
-//  // Must not push to FIFO when full.
-//  `ASSERT(IbexFetchFifoPushFull,
-//      (in_valid_i) |-> (!valid_q[DEPTH-1] || clear_i))
+  // Must not push to FIFO when full.
+  `ASSERT(brqFetchFifoPushFull,
+      (in_valid_i) |-> (!valid_q[DEPTH-1] || clear_i))
 
 endmodule

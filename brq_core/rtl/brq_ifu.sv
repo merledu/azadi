@@ -1,7 +1,4 @@
-// Copyright lowRISC contributors.
-// Copyright 2018 ETH Zurich and University of Bologna, see also CREDITS.md.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
+
 
 /**
  * Instruction Fetch Stage
@@ -10,15 +7,15 @@
  * the read instruction.
  */
 
-// `include "prim_assert.sv"
+`include "prim_assert.sv"
 
-module ibex_if_stage #(
+module brq_ifu #(
     parameter int unsigned DmHaltAddr        = 32'h1A110800,
     parameter int unsigned DmExceptionAddr   = 32'h1A110808,
     parameter bit          DummyInstructions = 1'b0,
     parameter bit          ICache            = 1'b0,
     parameter bit          ICacheECC         = 1'b0,
-    parameter bit          SecureIbex        = 1'b0,
+    parameter bit          PCIncrCheck       = 1'b0,
     parameter bit          BranchPredictor   = 1'b0
 ) (
     input  logic                   clk_i,
@@ -61,11 +58,11 @@ module ibex_if_stage #(
     input  logic                  instr_valid_clear_i,      // clear instr valid bit in IF-ID
     input  logic                  pc_set_i,                 // set the PC to a new value
     input  logic                  pc_set_spec_i,
-    input  ibex_pkg::pc_sel_e     pc_mux_i,                 // selector for PC multiplexer
+    input  brq_pkg::pc_sel_e     pc_mux_i,                 // selector for PC multiplexer
     input  logic                  nt_branch_mispredict_i,   // Not-taken branch in ID/EX was
                                                             // mispredicted (predicted taken)
-    input  ibex_pkg::exc_pc_sel_e exc_pc_mux_i,             // selects ISR address
-    input  ibex_pkg::exc_cause_e  exc_cause,                // selects ISR address for
+    input  brq_pkg::exc_pc_sel_e exc_pc_mux_i,             // selects ISR address
+    input  brq_pkg::exc_cause_e  exc_cause,                // selects ISR address for
                                                             // vectorized interrupt lines
     input logic                   dummy_instr_en_i,
     input logic [2:0]             dummy_instr_mask_i,
@@ -93,7 +90,7 @@ module ibex_if_stage #(
     output logic                  if_busy_o                 // IF stage is busy fetching instr
 );
 
-  import ibex_pkg::*;
+  import brq_pkg::*;
 
   logic              instr_valid_id_d, instr_valid_id_q;
   logic              instr_new_id_d, instr_new_id_q;
@@ -104,6 +101,7 @@ module ibex_if_stage #(
   logic              branch_spec;
   logic              predicted_branch;
   logic       [31:0] fetch_addr_n;
+  logic              unused_fetch_addr_n0;
 
   logic              fetch_valid;
   logic              fetch_ready;
@@ -134,7 +132,7 @@ module ibex_if_stage #(
   logic              predict_branch_taken;
   logic       [31:0] predict_branch_pc;
 
-  ibex_pkg::pc_sel_e pc_mux_internal;
+  brq_pkg::pc_sel_e pc_mux_internal;
 
   logic        [7:0] unused_boot_addr;
   logic        [7:0] unused_csr_mtvec;
@@ -157,7 +155,7 @@ module ibex_if_stage #(
     endcase
   end
 
-  // The Branch predictor can provide a new PC which is internal to if_stage. Only override the mux
+  // The Branch predictor can provide a new PC which is internal to ifu. Only override the mux
   // select to choose this if the core isn't already trying to set a PC.
   assign pc_mux_internal =
     (BranchPredictor && predict_branch_taken && !pc_set_i) ? PC_BP : pc_mux_i;
@@ -165,7 +163,7 @@ module ibex_if_stage #(
   // fetch address selection mux
   always_comb begin : fetch_addr_mux
     unique case (pc_mux_internal)
-      PC_BOOT: fetch_addr_n = { boot_addr_i[31:8], 8'h00 };
+      PC_BOOT: fetch_addr_n = { boot_addr_i[31:8], 8'h80 };
       PC_JUMP: fetch_addr_n = branch_target_ex_i;
       PC_EXC:  fetch_addr_n = exc_pc;                       // set PC to exception handler
       PC_ERET: fetch_addr_n = csr_mepc_i;                   // restore PC when returning from EXC
@@ -180,44 +178,47 @@ module ibex_if_stage #(
   // tell CS register file to initialize mtvec on boot
   assign csr_mtvec_init_o = (pc_mux_i == PC_BOOT) & pc_set_i;
 
-  if (ICache) begin : gen_icache
+  if (ICache) begin : gen_ifu_icache
     // Full I-Cache option
-    ibex_icache #(
-      .ICacheECC (ICacheECC)
+    brq_ifu_icache #(
+      .BranchPredictor (BranchPredictor),
+      .ICacheECC       (ICacheECC)
     ) icache_i (
-        .clk_i             ( clk_i                       ),
-        .rst_ni            ( rst_ni                      ),
+        .clk_i               ( clk_i                      ),
+        .rst_ni              ( rst_ni                     ),
 
-        .req_i             ( req_i                       ),
+        .req_i               ( req_i                      ),
 
-        .branch_i          ( branch_req                  ),
-        .branch_spec_i     ( branch_spec                 ),
-        .addr_i            ( {fetch_addr_n[31:1], 1'b0}  ),
+        .branch_i            ( branch_req                 ),
+        .branch_spec_i       ( branch_spec                ),
+        .predicted_branch_i  ( predicted_branch           ),
+        .branch_mispredict_i ( nt_branch_mispredict_i     ),
+        .addr_i              ( {fetch_addr_n[31:1], 1'b0} ),
 
-        .ready_i           ( fetch_ready                 ),
-        .valid_o           ( fetch_valid                 ),
-        .rdata_o           ( fetch_rdata                 ),
-        .addr_o            ( fetch_addr                  ),
-        .err_o             ( fetch_err                   ),
-        .err_plus2_o       ( fetch_err_plus2             ),
+        .ready_i             ( fetch_ready                ),
+        .valid_o             ( fetch_valid                ),
+        .rdata_o             ( fetch_rdata                ),
+        .addr_o              ( fetch_addr                 ),
+        .err_o               ( fetch_err                  ),
+        .err_plus2_o         ( fetch_err_plus2            ),
 
-        .instr_req_o       ( instr_req_o                 ),
-        .instr_addr_o      ( instr_addr_o                ),
-        .instr_gnt_i       ( instr_gnt_i                 ),
-        .instr_rvalid_i    ( instr_rvalid_i              ),
-        .instr_rdata_i     ( instr_rdata_i               ),
-        .instr_err_i       ( instr_err_i                 ),
-        .instr_pmp_err_i   ( instr_pmp_err_i             ),
+        .instr_req_o         ( instr_req_o                ),
+        .instr_addr_o        ( instr_addr_o               ),
+        .instr_gnt_i         ( instr_gnt_i                ),
+        .instr_rvalid_i      ( instr_rvalid_i             ),
+        .instr_rdata_i       ( instr_rdata_i              ),
+        .instr_err_i         ( instr_err_i                ),
+        .instr_pmp_err_i     ( instr_pmp_err_i            ),
 
-        .icache_enable_i   ( icache_enable_i             ),
-        .icache_inval_i    ( icache_inval_i              ),
-        .busy_o            ( prefetch_busy               )
+        .icache_enable_i     ( icache_enable_i            ),
+        .icache_inval_i      ( icache_inval_i             ),
+        .busy_o              ( prefetch_busy              )
     );
-  end else begin : gen_prefetch_buffer
+  end else begin : gen_ifu_prefetch_buffer
     // prefetch buffer, caches a fixed number of instructions
-    ibex_prefetch_buffer #(
+    brq_ifu_prefetch_buffer #(
       .BranchPredictor (BranchPredictor)
-    ) prefetch_buffer_i (
+    ) ifu_prefetch_buffer_i (
         .clk_i               ( clk_i                      ),
         .rst_ni              ( rst_ni                     ),
 
@@ -252,6 +253,8 @@ module ibex_if_stage #(
     assign unused_icinv = icache_inval_i;
   end
 
+  assign unused_fetch_addr_n0 = fetch_addr_n[0];
+
   assign branch_req  = pc_set_i | predict_branch_taken;
   assign branch_spec = pc_set_spec_i | predict_branch_taken;
 
@@ -267,7 +270,7 @@ module ibex_if_stage #(
   logic        illegal_c_insn;
   logic        instr_is_compressed;
 
-  ibex_compressed_decoder compressed_decoder_i (
+  brq_ifu_compressed_decoder ifu_compressed_decoder_i (
       .clk_i           ( clk_i                    ),
       .rst_ni          ( rst_ni                   ),
       .valid_i         ( fetch_valid & ~fetch_err ),
@@ -282,13 +285,13 @@ module ibex_if_stage #(
     logic        insert_dummy_instr;
     logic [31:0] dummy_instr_data;
 
-    ibex_dummy_instr dummy_instr_i (
+    brq_ifu_dummy_instr dummy_instr_i (
       .clk_i                 ( clk_i                 ),
       .rst_ni                ( rst_ni                ),
-      .dummy_instr_en_i      ( dummy_instr_en_i      ), // ibex_cs_registers
-      .dummy_instr_mask_i    ( dummy_instr_mask_i    ), // same
-      .dummy_instr_seed_en_i ( dummy_instr_seed_en_i ), // same
-      .dummy_instr_seed_i    ( dummy_instr_seed_i    ), // same
+      .dummy_instr_en_i      ( dummy_instr_en_i      ),
+      .dummy_instr_mask_i    ( dummy_instr_mask_i    ),
+      .dummy_instr_seed_en_i ( dummy_instr_seed_en_i ),
+      .dummy_instr_seed_i    ( dummy_instr_seed_i    ),
       .fetch_valid_i         ( fetch_valid           ),
       .id_in_ready_i         ( id_in_ready_i         ),
       .insert_dummy_instr_o  ( insert_dummy_instr    ),
@@ -372,13 +375,14 @@ module ibex_if_stage #(
   end
 
   // Check for expected increments of the PC when security hardening enabled
-  if (SecureIbex) begin : g_secure_pc
+  if (PCIncrCheck) begin : g_secure_pc
     logic [31:0] prev_instr_addr_incr;
     logic        prev_instr_seq_q, prev_instr_seq_d;
 
     // Do not check for sequential increase after a branch, jump, exception, interrupt or debug
-    // request, all of which will set branch_req. Also do not check after reset.
-    assign prev_instr_seq_d = (prev_instr_seq_q | instr_new_id_d) & ~branch_req;
+    // request, all of which will set branch_req. Also do not check after reset or for dummys.
+    assign prev_instr_seq_d = (prev_instr_seq_q | instr_new_id_d) &
+        ~branch_req & ~stall_dummy_instr;
 
     always_ff @(posedge clk_i or negedge rst_ni) begin
       if (!rst_ni) begin
@@ -388,7 +392,8 @@ module ibex_if_stage #(
       end
     end
 
-    assign prev_instr_addr_incr = pc_id_o + (instr_is_compressed_id_o ? 32'd2 : 32'd4);
+    assign prev_instr_addr_incr = pc_id_o + ((instr_is_compressed_id_o && !instr_fetch_err_o) ?
+                                             32'd2 : 32'd4);
 
     // Check that the address equals the previous address +2/+4
     assign pc_mismatch_alert_o = prev_instr_seq_q & (pc_if_o != prev_instr_addr_incr);
@@ -397,7 +402,7 @@ module ibex_if_stage #(
     assign pc_mismatch_alert_o = 1'b0;
   end
 
-  if (BranchPredictor) begin : g_branch_predictor
+  if (BranchPredictor) begin : g_ifu_branch_predictor
     logic [31:0] instr_skid_data_q;
     logic [31:0] instr_skid_addr_q;
     logic        instr_skid_bp_taken_q;
@@ -443,7 +448,7 @@ module ibex_if_stage #(
       end
     end
 
-    ibex_branch_predict branch_predict_i (
+    brq_ifu_branch_predict branch_predict_i (
       .clk_i                  ( clk_i                    ),
       .rst_ni                 ( rst_ni                   ),
       .fetch_rdata_i          ( fetch_rdata              ),
@@ -476,9 +481,9 @@ module ibex_if_stage #(
 
     assign instr_bp_taken_o = instr_bp_taken_q;
 
-//    `ASSERT(NoPredictSkid, instr_skid_valid_q |-> ~predict_branch_taken);
-//    `ASSERT(NoPredictIllegal, predict_branch_taken |-> ~illegal_c_insn);
-  end else begin : g_no_branch_predictor
+    `ASSERT(NoPredictSkid, instr_skid_valid_q |-> ~predict_branch_taken)
+    `ASSERT(NoPredictIllegal, predict_branch_taken |-> ~illegal_c_insn)
+  end else begin : g_no_ifu_branch_predictor
     assign instr_bp_taken_o     = 1'b0;
     assign predict_branch_taken = 1'b0;
     assign predicted_branch     = 1'b0;
@@ -496,17 +501,17 @@ module ibex_if_stage #(
   ////////////////
 
   // Selectors must be known/valid.
-//  `ASSERT_KNOWN(IbexExcPcMuxKnown, exc_pc_mux_i)
+  `ASSERT_KNOWN(brqExcPcMuxKnown, exc_pc_mux_i)
 
-  if (BranchPredictor) begin : g_branch_predictor_asserts
-//    `ASSERT_IF(IbexPcMuxValid, pc_mux_internal inside {
-//        PC_BOOT,
-//        PC_JUMP,
-//        PC_EXC,
-//        PC_ERET,
-//        PC_DRET,
-//        PC_BP},
-//      pc_set_i)
+  if (BranchPredictor) begin : g_ifu_branch_predictor_asserts
+    `ASSERT_IF(brqPcMuxValid, pc_mux_internal inside {
+        PC_BOOT,
+        PC_JUMP,
+        PC_EXC,
+        PC_ERET,
+        PC_DRET,
+        PC_BP},
+      pc_set_i)
 
 `ifdef INC_ASSERT
     /**
@@ -568,37 +573,41 @@ module ibex_if_stage #(
 
     // Must only see mispredict after we've performed a predicted branch but before we've accepted
     // any instruction (with fetch_ready & fetch_valid) that follows that predicted branch.
-//    `ASSERT(MispredictOnlyImmediatelyAfterPredictedBranch,
-//      nt_branch_mispredict_i |-> predicted_branch_live_q);
-//    // Check that on mispredict we get the correct PC for the non-taken side of the branch when
-//    // prefetch buffer/icache makes that PC available.
-//    `ASSERT(CorrectPCOnMispredict,
-//      predicted_branch_live_q & mispredicted_d & fetch_valid |-> fetch_addr == predicted_branch_nt_pc_q);
-//    // Must not signal mispredict over multiple cycles but it's possible to have back to back
-//    // mispredicts for different branches (core signals mispredict, prefetch buffer/icache immediate
-//    // has not-taken side of the mispredicted branch ready, which itself is a predicted branch,
-//    // following cycle core signal that that branch has mispredicted).
-//    `ASSERT(MispredictSingleCycle,
-//      nt_branch_mispredict_i & ~(fetch_valid & fetch_ready) |=> ~nt_branch_mispredict_i);
+    `ASSERT(MispredictOnlyImmediatelyAfterPredictedBranch,
+      nt_branch_mispredict_i |-> predicted_branch_live_q)
+    // Check that on mispredict we get the correct PC for the non-taken side of the branch when
+    // prefetch buffer/icache makes that PC available.
+    `ASSERT(CorrectPCOnMispredict,
+      predicted_branch_live_q & mispredicted_d & fetch_valid |->
+      fetch_addr == predicted_branch_nt_pc_q)
+    // Must not signal mispredict over multiple cycles but it's possible to have back to back
+    // mispredicts for different branches (core signals mispredict, prefetch buffer/icache immediate
+    // has not-taken side of the mispredicted branch ready, which itself is a predicted branch,
+    // following cycle core signal that that branch has mispredicted).
+    `ASSERT(MispredictSingleCycle,
+      nt_branch_mispredict_i & ~(fetch_valid & fetch_ready) |=> ~nt_branch_mispredict_i)
+    // Note that we should never see a mispredict and an incoming branch on the same cycle.
+    // The mispredict also cancels any predicted branch so overall branch_req must be low.
+    `ASSERT(NoMispredBranch, nt_branch_mispredict_i |-> ~branch_req)
 `endif
 
-  end else begin : g_no_branch_predictor_asserts
-//    `ASSERT_IF(IbexPcMuxValid, pc_mux_internal inside {
-//        PC_BOOT,
-//        PC_JUMP,
-//        PC_EXC,
-//        PC_ERET,
-//        PC_DRET},
-//      pc_set_i)
+  end else begin : g_no_ifu_branch_predictor_asserts
+    `ASSERT_IF(brqPcMuxValid, pc_mux_internal inside {
+        PC_BOOT,
+        PC_JUMP,
+        PC_EXC,
+        PC_ERET,
+        PC_DRET},
+      pc_set_i)
   end
 
-//  // Boot address must be aligned to 256 bytes.
-//  `ASSERT(IbexBootAddrUnaligned, boot_addr_i[7:0] == 8'h00)
+  // Boot address must be aligned to 256 bytes.
+  `ASSERT(brqBootAddrUnaligned, boot_addr_i[7:0] == 8'h00)
 
-//  // Address must not contain X when request is sent.
-//  `ASSERT(IbexInstrAddrUnknown, instr_req_o |-> !$isunknown(instr_addr_o))
+  // Address must not contain X when request is sent.
+  `ASSERT(brqInstrAddrUnknown, instr_req_o |-> !$isunknown(instr_addr_o))
 
-//  // Address must be word aligned when request is sent.
-//  `ASSERT(IbexInstrAddrUnaligned, instr_req_o |-> (instr_addr_o[1:0] == 2'b00))
+  // Address must be word aligned when request is sent.
+  `ASSERT(brqInstrAddrUnaligned, instr_req_o |-> (instr_addr_o[1:0] == 2'b00))
 
 endmodule
