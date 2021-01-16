@@ -1,4 +1,4 @@
-/tests
-*.cpp
+/tools/ojb_dir/
+/tools/logs
 /rtl
 /buraq_core
