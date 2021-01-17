@@ -15,8 +15,7 @@
 class Vazadi_soc_top__Syms;
 class Vazadi_soc_top_VerilatedVcd;
 class Vazadi_soc_top_gpio_reg_pkg;
-class Vazadi_soc_top_tlul_fifo_async;
-class Vazadi_soc_top_tlul_socket_m1__pi5;
+class Vazadi_soc_top_tlul_socket_m1__pi4;
 class Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1;
 
 
@@ -28,48 +27,36 @@ VL_MODULE(Vazadi_soc_top) {
     // Public to allow access to /*verilator_public*/ items;
     // otherwise the application code can consider these internals.
     Vazadi_soc_top_gpio_reg_pkg* __PVT__gpio_reg_pkg;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_15;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_17;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_19;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_20;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_21;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_22;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_23;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_24;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_25;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_26;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_27;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_28;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_29;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_30;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_31;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_32;
-    Vazadi_soc_top_tlul_socket_m1__pi5* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_33;
-    Vazadi_soc_top_tlul_fifo_async* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_asf_34;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_host_fifo__BRA__0__KET____DOT__u_hostfifo;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_host_fifo__BRA__1__KET____DOT__u_hostfifo;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_host_fifo__BRA__2__KET____DOT__u_hostfifo;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__3__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__4__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__5__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__6__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__7__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__3__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__4__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__5__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__6__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__7__KET____DOT__fifo_d;
-    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__DCCM;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__FLASH_CTRL;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__TIMER_0;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__TIMER_1;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__TIMER_2;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__TIMER_3;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__TIMER_4;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__PLIC;
+    Vazadi_soc_top_tlul_socket_m1__pi4* __PVT__azadi_soc_top__DOT__main_swith__DOT__XBAR_PERI;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__3__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__4__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__5__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__6__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__7__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__3__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__4__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__5__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__6__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__7__KET____DOT__fifo_d;
+    Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d;
     Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__0__KET____DOT__fifo_d;
     Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__1__KET____DOT__fifo_d;
     Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1* __PVT__azadi_soc_top__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__2__KET____DOT__fifo_d;
@@ -89,14 +76,14 @@ VL_MODULE(Vazadi_soc_top) {
     // propagate new values into/out from the Verilated model.
     VL_IN8(clock,0,0);
     VL_IN8(reset_ni,0,0);
-    VL_INOUT(gpio,19,0);
+    VL_IN(gpio_i,19,0);
+    VL_OUT(gpio_o,19,0);
+    VL_OUT(gpio_oe,19,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
     // Anonymous structures to workaround compiler member-count bugs
     struct {
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__clk_jtag_i;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__rst_jtag_ni;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__instr_req;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__data_req;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_is_compressed_id;
@@ -159,10 +146,10 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__discard_req_d;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__discard_req_q;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__gnt_or_pmp_err;
-    };
-    struct {
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rvalid_or_pmp_err;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_n;
+    };
+    struct {
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__branch_discard_n;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__branch_discard_q;
@@ -225,10 +212,10 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*2:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__imm_b_mux_sel_dec;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__mult_en_dec;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__div_en_id;
-    };
-    struct {
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__div_en_dec;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__multdiv_en_dec;
+    };
+    struct {
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__multdiv_operator;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__multdiv_signed_mode;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we;
@@ -291,10 +278,10 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left;
         CData/*5:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_amt;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__unused_shift_result_ext;
-    };
-    struct {
         CData/*2:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__gen_multdiv_slow__DOT__multdiv_i__DOT__md_state_q;
         CData/*2:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__gen_multdiv_slow__DOT__multdiv_i__DOT__md_state_d;
+    };
+    struct {
         CData/*4:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__gen_multdiv_slow__DOT__multdiv_i__DOT__multdiv_count_q;
         CData/*4:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__gen_multdiv_slow__DOT__multdiv_i__DOT__multdiv_count_d;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__gen_multdiv_slow__DOT__multdiv_i__DOT__sign_a;
@@ -357,10 +344,10 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__tmatch_control_q;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__tmatch_control_we;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__tmatch_value_we;
-    };
-    struct {
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__trigger_match;
         CData/*5:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mstatus_csr__DOT__rdata_q;
+    };
+    struct {
         CData/*5:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mcause_csr__DOT__rdata_q;
         CData/*2:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mstack_csr__DOT__rdata_q;
         CData/*5:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mstack_cause_csr__DOT__rdata_q;
@@ -397,56 +384,46 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__g_dbg_tmatch_reg__BRA__0__KET____DOT__u_tmatch_control_csr__DOT__rdata_q;
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__g_dbg_tmatch_reg__BRA__1__KET____DOT__u_tmatch_control_csr__DOT__rdata_q;
         CData/*1:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__access_fault;
-        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__intr_interface__DOT__genblk1__DOT__source_d;
-        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__intr_interface__DOT__genblk1__DOT__source_q;
-        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__data_interface__DOT__genblk1__DOT__source_d;
-        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__data_interface__DOT__genblk1__DOT__source_q;
+        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__intr_interface__DOT__genblk2__DOT__source_d;
+        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__intr_interface__DOT__genblk2__DOT__source_q;
+        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__data_interface__DOT__genblk2__DOT__source_d;
+        CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__data_interface__DOT__genblk2__DOT__source_q;
         CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__scanmode_i;
-        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__dev_sel_s1n_14;
-        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__dev_sel_s1n_18;
-        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__dev_sel_s1n_35;
-        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__dev_select_outstanding;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__hold_all_requests;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__accept_t_req;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__accept_t_rsp;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__hfifo_reqready;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__err_resp__DOT__err_opcode;
-        CData/*7:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__err_resp__DOT__err_source;
-        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__err_resp__DOT__err_size;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__err_resp__DOT__err_req_pending;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__err_resp__DOT__err_rsp_pending;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__hrequest;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__hgrant;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__hfifo_rspvalid;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__dfifo_rspready;
-        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__masked_req;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__arb_req;
+        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__device_sel_h1;
+        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__device_sel_h2;
+        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__device_sel_h3;
+        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__dev_select_outstanding;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__hold_all_requests;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__accept_t_req;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__accept_t_rsp;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__hfifo_reqready;
+        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_opcode;
+        CData/*7:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_source;
+        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_size;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_req_pending;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_rsp_pending;
+        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__dev_select_outstanding;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__hold_all_requests;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__accept_t_req;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__accept_t_rsp;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__hfifo_reqready;
+        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_opcode;
+        CData/*7:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_source;
+        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_size;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_req_pending;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_rsp_pending;
     };
     struct {
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__mask;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__winner;
-        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__dev_select_outstanding;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__hold_all_requests;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__accept_t_req;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__accept_t_rsp;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__hfifo_reqready;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__err_resp__DOT__err_opcode;
-        CData/*7:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__err_resp__DOT__err_source;
-        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__err_resp__DOT__err_size;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__err_resp__DOT__err_req_pending;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__err_resp__DOT__err_rsp_pending;
-        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__dev_select_outstanding;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__hold_all_requests;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__accept_t_req;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__accept_t_rsp;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__hfifo_reqready;
-        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__err_resp__DOT__err_opcode;
-        CData/*7:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__err_resp__DOT__err_source;
-        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__err_resp__DOT__err_size;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__err_resp__DOT__err_req_pending;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__err_resp__DOT__err_rsp_pending;
+        CData/*3:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__dev_select_outstanding;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__hold_all_requests;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__accept_t_req;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__accept_t_rsp;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__hfifo_reqready;
+        CData/*2:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_opcode;
+        CData/*7:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_source;
+        CData/*1:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_size;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_req_pending;
+        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_rsp_pending;
         CData/*0:0*/ azadi_soc_top__DOT__dccm__DOT__req_i;
         CData/*0:0*/ azadi_soc_top__DOT__dccm__DOT__we_i;
         CData/*0:0*/ azadi_soc_top__DOT__dccm__DOT__valid;
@@ -476,8 +453,7 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full;
         CData/*0:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__empty;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__req;
-        CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__we;
-        CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__memory__DOT__valid;
+        CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__rvalid;
         CData/*1:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__rerror_i;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__rspfifo_wvalid;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__tlul_error;
@@ -489,8 +465,6 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*3:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
         CData/*3:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_incr_wptr;
-    };
-    struct {
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_empty;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__full;
         CData/*3:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_sramreqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
@@ -504,6 +478,8 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_incr_wptr;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_empty;
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full;
+    };
+    struct {
         CData/*0:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__empty;
         CData/*0:0*/ azadi_soc_top__DOT__periph_switch__DOT__scanmode_i;
         CData/*3:0*/ azadi_soc_top__DOT__periph_switch__DOT__dev_sel_s1n_14;
@@ -555,8 +531,6 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__1__KET____DOT__filter__DOT__diff_ctr_d;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__1__KET____DOT__filter__DOT__filter_q;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__1__KET____DOT__filter__DOT__stored_value_q;
-    };
-    struct {
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__2__KET____DOT__filter__DOT__diff_ctr_q;
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__2__KET____DOT__filter__DOT__diff_ctr_d;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__2__KET____DOT__filter__DOT__filter_q;
@@ -570,6 +544,8 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__4__KET____DOT__filter__DOT__filter_q;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__4__KET____DOT__filter__DOT__stored_value_q;
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__5__KET____DOT__filter__DOT__diff_ctr_q;
+    };
+    struct {
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__5__KET____DOT__filter__DOT__diff_ctr_d;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__5__KET____DOT__filter__DOT__filter_q;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__5__KET____DOT__filter__DOT__stored_value_q;
@@ -621,8 +597,6 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__17__KET____DOT__filter__DOT__diff_ctr_d;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__17__KET____DOT__filter__DOT__filter_q;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__17__KET____DOT__filter__DOT__stored_value_q;
-    };
-    struct {
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__18__KET____DOT__filter__DOT__diff_ctr_q;
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__18__KET____DOT__filter__DOT__diff_ctr_d;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__18__KET____DOT__filter__DOT__filter_q;
@@ -636,6 +610,8 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__20__KET____DOT__filter__DOT__filter_q;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__20__KET____DOT__filter__DOT__stored_value_q;
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__21__KET____DOT__filter__DOT__diff_ctr_q;
+    };
+    struct {
         CData/*3:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__21__KET____DOT__filter__DOT__diff_ctr_d;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__21__KET____DOT__filter__DOT__filter_q;
         CData/*0:0*/ azadi_soc_top__DOT__GPIO__DOT__gen_filter__BRA__21__KET____DOT__filter__DOT__stored_value_q;
@@ -687,8 +663,6 @@ VL_MODULE(Vazadi_soc_top) {
         SData/*15:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__pmp_cfg_err;
         SData/*15:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__pmp_addr_we;
         SData/*15:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__pmp_addr_err;
-    };
-    struct {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_match_gt;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_match_lt;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_match_eq;
@@ -696,13 +670,14 @@ VL_MODULE(Vazadi_soc_top) {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_perm_check;
         SData/*11:0*/ azadi_soc_top__DOT__dccm__DOT__addr_i;
         IData/*25:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__storage;
-        SData/*11:0*/ azadi_soc_top__DOT__iccm__DOT__addr;
         IData/*25:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__storage;
         SData/*14:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT__addr_hit;
         IData/*31:0*/ azadi_soc_top__DOT__gpio_intr;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_alu_id;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pc_id;
+    };
+    struct {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_wdata_wb;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__result_ex;
         IData/*17:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__irqs;
@@ -753,8 +728,6 @@ VL_MODULE(Vazadi_soc_top) {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mepc_csr__DOT__rdata_q;
         IData/*17:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mie_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mscratch_csr__DOT__rdata_q;
-    };
-    struct {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mtval_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mtvec_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_dcsr_csr__DOT__rdata_q;
@@ -769,6 +742,8 @@ VL_MODULE(Vazadi_soc_top) {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__g_pmp_csrs__BRA__4__KET____DOT__u_pmp_addr_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__g_pmp_csrs__BRA__5__KET____DOT__u_pmp_addr_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__g_pmp_csrs__BRA__6__KET____DOT__u_pmp_addr_csr__DOT__rdata_q;
+    };
+    struct {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__g_pmp_csrs__BRA__7__KET____DOT__u_pmp_addr_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__g_pmp_csrs__BRA__8__KET____DOT__u_pmp_addr_csr__DOT__rdata_q;
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__g_pmp_csrs__BRA__9__KET____DOT__u_pmp_addr_csr__DOT__rdata_q;
@@ -813,16 +788,13 @@ VL_MODULE(Vazadi_soc_top) {
         WData/*1023:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_regfile_ff__DOT__register_file_i__DOT__rf_reg[32];
         WData/*991:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_regfile_ff__DOT__register_file_i__DOT__rf_reg_q[31];
         IData/*30:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_regfile_ff__DOT__register_file_i__DOT__we_a_dec;
-        IData/*16:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__num_req_outstanding;
-        IData/*31:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i;
-        IData/*16:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__num_req_outstanding;
-        IData/*16:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__num_req_outstanding;
+        IData/*16:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__num_req_outstanding;
+        IData/*16:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__num_req_outstanding;
+        IData/*16:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__num_req_outstanding;
         IData/*31:0*/ azadi_soc_top__DOT__dccm__DOT__rdata_o;
         IData/*31:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__rmask;
-    };
-    struct {
-        IData/*31:0*/ azadi_soc_top__DOT__iccm__DOT__wdata;
         IData/*31:0*/ azadi_soc_top__DOT__iccm__DOT__rdata;
+        IData/*31:0*/ azadi_soc_top__DOT__iccm__DOT__iccm__DOT__Di;
         IData/*31:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__rmask;
         IData/*16:0*/ azadi_soc_top__DOT__periph_switch__DOT__u_s1n_14__DOT__num_req_outstanding;
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__cio_gpio_q;
@@ -836,6 +808,8 @@ VL_MODULE(Vazadi_soc_top) {
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT__u_data_in__DOT__q;
         WData/*85:0*/ azadi_soc_top__DOT__ifu_to_xbar[3];
         QData/*51:0*/ azadi_soc_top__DOT__iccm_to_xbar;
+    };
+    struct {
         WData/*85:0*/ azadi_soc_top__DOT__lsu_to_xbar[3];
         QData/*51:0*/ azadi_soc_top__DOT__dccm_to_xbar;
         QData/*32:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__multdiv_alu_operand_a;
@@ -882,33 +856,28 @@ VL_MODULE(Vazadi_soc_top) {
         QData/*63:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__9__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter_load;
         WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_dm_sba_i[3];
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_debug_rom_i;
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_flash_ctrl_o[3];
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_flash_ctrl_i;
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_timer0_i;
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_timer1_i;
-    };
-    struct {
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_timer2_i;
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_timer3_i;
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_timer4_i;
         QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_plic_i;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_14_us_d2h;
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_16_ds_h2d[3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_18_us_d2h;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_35_us_d2h;
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__tl_t_o[3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__tl_t_i;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__tl_t_p;
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__dreq_fifo_i[3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__drsp_fifo_o;
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_host_fifo__BRA__0__KET____DOT__hreq_fifo_i[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_host_fifo__BRA__1__KET____DOT__hreq_fifo_i[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_host_fifo__BRA__2__KET____DOT__hreq_fifo_i[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__tl_t_o[3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__tl_t_i;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__tl_t_p;
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__tl_t_o[3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__tl_t_i;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__tl_t_p;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__s1n_to_brqifu;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__s1n_to_brqlsu;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__s1n_to_dm;
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_i;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_p;
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_i;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_p;
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[3];
+    };
+    struct {
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_i;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_p;
         QData/*32:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__rspfifo_wdata;
         WData/*65:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__storage[3];
         QData/*32:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__rspfifo_wdata;
@@ -951,47 +920,45 @@ VL_MODULE(Vazadi_soc_top) {
         QData/*63:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mhpmcounter[32];
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mhpmevent[32];
         CData/*5:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__pmp_cfg[16];
-    };
-    struct {
         CData/*5:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__pmp_cfg_wdata[16];
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__g_pmp_registers__DOT__pmp_addr[16];
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_trigger_regs__DOT__tmatch_value_q[2];
         QData/*33:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_start_addr[16];
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask[16];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_14_ds_h2d[3][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_14_ds_d2h[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_16_us_h2d[3][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_16_us_d2h[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_18_ds_h2d[9][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_18_ds_d2h[9];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_19_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_19_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_21_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_21_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_23_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_23_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_25_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_25_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_27_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_27_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_29_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_29_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_31_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_31_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_33_us_h2d[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_sm1_33_us_d2h[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_35_ds_h2d[9][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__tl_s1n_35_ds_d2h[9];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__tl_u_o[4][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__tl_u_i[4];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__hreq_fifo_o[3][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__hrsp_fifo_i[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__tl_u_o[10][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__tl_u_i[10];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__tl_u_o[10][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__tl_u_i[10];
-        IData/*31:0*/ azadi_soc_top__DOT__dccm__DOT__mem[12];
-        IData/*31:0*/ azadi_soc_top__DOT__iccm__DOT__memory__DOT__mem[4096];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__s1n_to_dv[3][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__dv_to_s1n[3];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__h2_s1n_sm1[9][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__sm1_s1n_h2[9];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__h3_s1n_sm1[9][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__sm1_s1n_h3[9];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_0_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_0_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_1_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_1_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_2_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_2_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_3_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_3_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_4_i[2][3];
+    };
+    struct {
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_4_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_5_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_5_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_6_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_6_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_7_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_7_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_8_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__socket_m1_8_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_u_o[4][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_u_i[4];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_u_o[10][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_u_i[10];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[10][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_i[10];
+        IData/*31:0*/ azadi_soc_top__DOT__dccm__DOT__dccm__DOT__mem[4096];
+        IData/*31:0*/ azadi_soc_top__DOT__iccm__DOT__iccm__DOT__mem[4096];
         WData/*85:0*/ azadi_soc_top__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d[13][3];
         QData/*51:0*/ azadi_soc_top__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[13];
         WData/*85:0*/ azadi_soc_top__DOT__periph_switch__DOT__u_s1n_14__DOT__tl_u_o[14][3];
@@ -1003,11 +970,7 @@ VL_MODULE(Vazadi_soc_top) {
     // Anonymous structures to workaround compiler member-count bugs
     struct {
         CData/*0:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_regfile_ff__DOT__register_file_i__DOT____Vlvbound1;
-        CData/*0:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT____Vlvbound1;
-        CData/*7:0*/ azadi_soc_top__DOT__dccm__DOT____Vlvbound1;
-        CData/*7:0*/ azadi_soc_top__DOT__dccm__DOT____Vlvbound2;
-        CData/*7:0*/ azadi_soc_top__DOT__dccm__DOT____Vlvbound3;
-        CData/*7:0*/ azadi_soc_top__DOT__dccm__DOT____Vlvbound4;
+        CData/*3:0*/ azadi_soc_top__DOT__dccm__DOT____Vcellinp__dccm__WE;
         CData/*4:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o;
         CData/*4:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_sramreqfifo__DOT____Vlvbound1;
         CData/*4:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o;
@@ -1018,22 +981,21 @@ VL_MODULE(Vazadi_soc_top) {
         CData/*7:0*/ __Vtableidx4;
         CData/*5:0*/ __Vtableidx5;
         CData/*4:0*/ __Vtableidx6;
-        CData/*2:0*/ __Vtableidx7;
         CData/*3:0*/ __Vdly__azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
         CData/*3:0*/ __Vdly__azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_sramreqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
         CData/*3:0*/ __Vdly__azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
-        CData/*0:0*/ __Vclklast__TOP__azadi_soc_top__DOT__main_swith__DOT__clk_jtag_i;
-        CData/*0:0*/ __Vclklast__TOP__azadi_soc_top__DOT__main_swith__DOT__rst_jtag_ni;
         CData/*0:0*/ __Vclklast__TOP__clock;
         CData/*0:0*/ __Vclklast__TOP__reset_ni;
+        CData/*0:0*/ __Vchglast__TOP__azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_req;
+        CData/*1:0*/ __Vchglast__TOP__azadi_soc_top__DOT__main_swith__DOT__XBAR_PERI__dfifo_rspready;
         SData/*12:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_reqfifo__rdata_o;
         SData/*12:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_reqfifo__DOT____Vlvbound1;
         SData/*12:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT____Vcellout__u_reqfifo__rdata_o;
         SData/*12:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT__u_reqfifo__DOT____Vlvbound1;
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT____Vcellout__gen_arb_ppc__DOT__u_reqarb__data_o[3];
-        WData/*87:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
-        WData/*87:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
+        IData/*31:0*/ __Vchglast__TOP__azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_match_all;
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
+        WData/*87:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
+        WData/*87:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
         WData/*87:0*/ azadi_soc_top__DOT__periph_switch__DOT__u_s1n_14__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[3];
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT____Vcellout__u_intr_state__q;
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT____Vcellout__u_intr_enable__q;
@@ -1042,9 +1004,9 @@ VL_MODULE(Vazadi_soc_top) {
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT____Vcellout__u_intr_ctrl_en_lvlhigh__q;
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT____Vcellout__u_intr_ctrl_en_lvllow__q;
         IData/*31:0*/ azadi_soc_top__DOT__GPIO__DOT__u_reg__DOT____Vcellout__u_ctrl_en_input_filter__q;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_14__DOT____Vcellout__err_resp__tl_h_o;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_18__DOT____Vcellout__err_resp__tl_h_o;
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__u_s1n_35__DOT____Vcellout__err_resp__tl_h_o;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o;
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o;
         QData/*32:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_rspfifo__rdata_o;
         QData/*32:0*/ azadi_soc_top__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT____Vlvbound1;
         QData/*32:0*/ azadi_soc_top__DOT__iccm__DOT__inst_mem__DOT____Vcellout__u_rspfifo__rdata_o;
@@ -1066,36 +1028,35 @@ VL_MODULE(Vazadi_soc_top) {
         IData/*31:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT____Vcellinp__alu_i__imd_val_q_i[2];
         QData/*33:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT____Vcellout__gen_multdiv_slow__DOT__multdiv_i__imd_val_d_o[2];
         QData/*33:0*/ azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT____Vcellinp__gen_multdiv_slow__DOT__multdiv_i__imd_val_q_i[2];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__host_1__tl_d_i[3];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__host_1__tl_d_o[3][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__host_2__tl_d_i[9];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__host_2__tl_d_o[9][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__host_3__tl_d_i[9];
     };
     struct {
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_s1n_14__tl_d_i[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_s1n_14__tl_d_o[3][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_16__tl_h_o[3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_16__tl_h_i[3][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_s1n_18__tl_d_i[9];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_s1n_18__tl_d_o[9][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_19__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_19__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_21__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_21__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_23__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_23__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_25__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_25__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_27__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_27__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_29__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_29__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_31__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_31__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_sm1_33__tl_h_o[2];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_sm1_33__tl_h_i[2][3];
-        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__u_s1n_35__tl_d_i[9];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__u_s1n_35__tl_d_o[9][3];
-        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT____Vcellinp__gen_arb_ppc__DOT__u_reqarb__data_i[3][3];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__host_3__tl_d_o[9][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__DCCM__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__DCCM__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__FLASH_CTRL__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__FLASH_CTRL__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__TIMER_0__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__TIMER_0__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__TIMER_1__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__TIMER_1__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__TIMER_2__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__TIMER_2__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__TIMER_3__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__TIMER_3__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__TIMER_4__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__TIMER_4__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__PLIC__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__PLIC__tl_h_i[2][3];
+        QData/*51:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellout__XBAR_PERI__tl_h_o[2];
+        WData/*85:0*/ azadi_soc_top__DOT__main_swith__DOT____Vcellinp__XBAR_PERI__tl_h_i[2][3];
         QData/*51:0*/ azadi_soc_top__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[13];
         WData/*85:0*/ azadi_soc_top__DOT__periph_switch__DOT____Vcellout__u_s1n_14__tl_d_o[13][3];
-        CData/*0:0*/ __Vm_traceActivity[10];
+        CData/*0:0*/ __Vm_traceActivity[6];
     };
     static CData/*0:0*/ __Vtable1_azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__instr_fetch_err_prio[64];
     static CData/*0:0*/ __Vtable1_azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__illegal_insn_prio[64];
@@ -1108,8 +1069,6 @@ VL_MODULE(Vazadi_soc_top) {
     static CData/*0:0*/ __Vtable4_azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_result[256];
     static CData/*0:0*/ __Vtable5_azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left[64];
     static CData/*3:0*/ __Vtable6_azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be[32];
-    static CData/*1:0*/ __Vtable7_azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
-    static IData/*31:0*/ __Vtable7_azadi_soc_top__DOT__main_swith__DOT__u_sm1_16__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
@@ -1147,11 +1106,9 @@ VL_MODULE(Vazadi_soc_top) {
     static QData _change_request_1(Vazadi_soc_top__Syms* __restrict vlSymsp);
   public:
     static void _combo__TOP__16(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _combo__TOP__22(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    static void _combo__TOP__18(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    static void _combo__TOP__19(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _combo__TOP__23(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _combo__TOP__24(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _combo__TOP__25(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _combo__TOP__26(Vazadi_soc_top__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
@@ -1164,8 +1121,6 @@ VL_MODULE(Vazadi_soc_top) {
     static void _eval_initial(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _eval_settle(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _initial__TOP__1(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    static void _multiclk__TOP__20(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__21(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _sequent__TOP__10(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _sequent__TOP__11(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _sequent__TOP__12(Vazadi_soc_top__Syms* __restrict vlSymsp);
@@ -1173,16 +1128,14 @@ VL_MODULE(Vazadi_soc_top) {
     static void _sequent__TOP__14(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _sequent__TOP__15(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _sequent__TOP__17(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__18(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__19(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _settle__TOP__3(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _settle__TOP__4(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    static void _settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    static void _settle__TOP__6(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    static void _settle__TOP__7(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    static void _settle__TOP__6(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    static void _settle__TOP__7(Vazadi_soc_top__Syms* __restrict vlSymsp);
     static void _settle__TOP__8(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    static void _settle__TOP__9(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _settle__TOP__9(Vazadi_soc_top__Syms* __restrict vlSymsp);
   private:
     static void traceChgSub0(void* userp, VerilatedVcd* tracep);
     static void traceChgTop0(void* userp, VerilatedVcd* tracep);
@@ -1190,7 +1143,6 @@ VL_MODULE(Vazadi_soc_top) {
     static void traceFullSub0(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
     static void traceFullTop0(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
     static void traceInitSub0(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
-    static void traceInitSub1(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
     static void traceInitTop(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
     void traceRegister(VerilatedVcd* tracep) VL_ATTR_COLD;
     static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;

@@ -28,8 +28,8 @@ VM_CLASSES_FAST += \
 	Vazadi_soc_top \
 	Vazadi_soc_top__1 \
 	Vazadi_soc_top__2 \
-	Vazadi_soc_top_tlul_fifo_async \
-	Vazadi_soc_top_tlul_socket_m1__pi5 \
+	Vazadi_soc_top__3 \
+	Vazadi_soc_top_tlul_socket_m1__pi4 \
 	Vazadi_soc_top_gpio_reg_pkg \
 	Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1 \
 
@@ -38,8 +38,7 @@ VM_CLASSES_SLOW += \
 	Vazadi_soc_top__Slow \
 	Vazadi_soc_top__1__Slow \
 	Vazadi_soc_top__2__Slow \
-	Vazadi_soc_top_tlul_fifo_async__Slow \
-	Vazadi_soc_top_tlul_socket_m1__pi5__Slow \
+	Vazadi_soc_top_tlul_socket_m1__pi4__Slow \
 	Vazadi_soc_top_gpio_reg_pkg__Slow \
 	Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1__Slow \
 
