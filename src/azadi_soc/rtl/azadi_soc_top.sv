@@ -3,7 +3,9 @@ module azadi_soc_top (
   input clock,
   input reset_ni,
 
-  inout logic [19:0] gpio
+  input logic [19:0] gpio_i,
+  output logic [19:0] gpio_o,
+  output logic [19:0] gpio_oe
 
 );
 
@@ -26,9 +28,9 @@ module azadi_soc_top (
   tlul_pkg::tl_d2h_t gpio_to_xbarp;
 
   logic [31:0] gpio_intr;
-  logic [91:0] gpio_in;
-  logic [19:0] gpio_out;
-  logic [19:0] gpio_oe;
+
+  //tlul_pkg::tl_h2d_t core_to_gpio;
+  //tlul_pkg::tl_d2h_t gpio_to_core;
 
 brq_core_top u_top (
     .clock (clock),
@@ -65,13 +67,9 @@ brq_core_top u_top (
 );
 
 // main xbar module
-  xbar_main main_swith (
+  xbar_main_t main_swith (
   .clk_main_i         (clock),
-  .clk_jtag_i         (),
-  .clk_periph_i       (clock),
   .rst_main_ni        (reset_ni),
-  .rst_jtag_ni        (),
-  .rst_periph_ni      (reset_ni),
 
   // Host interfaces
   .tl_brqif_i         (ifu_to_xbar),
@@ -120,7 +118,7 @@ data_mem dccm(
 );
 
 //dummy instruction memory
-instructions iccm (
+instr_mem_top iccm (
   .clock    (clock),
   .reset    (reset_ni),
 
@@ -180,19 +178,11 @@ xbar_periph periph_switch (
   .tl_i           (xbarp_to_gpio),
   .tl_o           (gpio_to_xbarp),
 
-  .cio_gpio_i     ({12'b0,gpio_in}),
-  .cio_gpio_o     (gpio_out),
+  .cio_gpio_i     ({12'b0,gpio_i}),
+  .cio_gpio_o     (gpio_o),
   .cio_gpio_en_o  (gpio_oe),
 
   .intr_gpio_o    (gpio_intr)  
 );
-
-assign gpio_in = gpio;
-
-for (genvar i = 0; i>20; i++) begin
-  assign gpio[i]    = gpio_oe[i] ? gpio_out[i] : 1'bZ;
-end
-
-
 
 endmodule
