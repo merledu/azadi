@@ -1,12 +1,3 @@
-// Copyright lowRISC contributors.
-// Licensed under the Apache License, Version 2.0, see LICENSE for details.
-// SPDX-License-Identifier: Apache-2.0
-
-
-/**
- * Tile-Link UL adapter for Register interface
- */
-
 module tlul_adapter_reg import tlul_pkg::*; #(
   parameter  int RegAw = 8,
   parameter  int RegDw = 32, // Shall be matched with TL_DW
@@ -70,12 +61,12 @@ module tlul_adapter_reg import tlul_pkg::*; #(
     if (!rst_ni) begin
       reqid <= '0;
       reqsz <= '0;
-      rspop <= tlul_pkg::AccessAck;
+      rspop <= AccessAck;
     end else if (a_ack) begin
       reqid <= tl_i.a_source;
       reqsz <= tl_i.a_size;
       // Return AccessAckData regardless of error
-      rspop <= (rd_req) ? tlul_pkg::AccessAckData : tlul_pkg::AccessAck ;
+      rspop <= (rd_req) ? AccessAckData : AccessAck ;
     end
   end
 
@@ -126,9 +117,9 @@ module tlul_adapter_reg import tlul_pkg::*; #(
 
   // tl_err : separate checker
   tlul_err u_err (
-    .clk_i,
-    .rst_ni,
-    .tl_i,
+    .clk_i (clk_i),
+    .rst_ni (rst_ni),
+    .tl_i (tl_i),
     .err_o (tl_err)
   );
 
