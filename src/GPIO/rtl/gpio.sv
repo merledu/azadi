@@ -128,14 +128,14 @@ module gpio (
 
   // Register module
   gpio_reg_top u_reg (
-    .clk_i,
-    .rst_ni,
+    .clk_i (clk_i),
+    .rst_ni (rst_ni),
 
-    .tl_i,
-    .tl_o,
+    .tl_i (tl_i),
+    .tl_o (tl_o),
 
-    .reg2hw,
-    .hw2reg,
+    .reg2hw (reg2hw),
+    .hw2reg (hw2reg),
 
     .devmode_i  (1'b1)
   );
