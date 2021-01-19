@@ -37,25 +37,23 @@ int main (int argc, char **argv) {
     tfp->open("logs/sim.vcd");
 
     top -> clock = 0;
-   
-   // top -> gpio_i = 8;
-   
+    
+   top -> gpio_i = 8;
     while (main_time < 1000 && !Verilated::gotFinish()) 
     { 
-        top->clock = top->clock ? 0 : 1;    
-        if(main_time >= 20)
+        top->clock = top->clock ? 0 : 1;  
+        if(main_time < 10)
         {
-            top -> reset_ni = 1;
+            top -> reset_ni = 0;
         }
         else
         {
-            top -> reset_ni = 0;
-        }      // Toggle clock
+            top -> reset_ni = 1;
+        }     // Toggle clock
         top->eval(); 
 
         // redundant
-        //top -> eval();
-
+        //30200073
         if (tfp) tfp -> dump(main_time);
         // or dump always
         //tfp -> dump(main_time);
