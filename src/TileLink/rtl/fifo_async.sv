@@ -198,6 +198,6 @@ module fifo_async #(
       gray2dec = {1'b0,dec_tmp};
   endfunction
 
-  // TODO: assertions on full, empty, gray transitions
+
 
 endmodule
