@@ -88,7 +88,7 @@ module tlul_sram_adapter #(
   logic wr_attr_error;
   logic wr_vld_error;
   logic rd_vld_error;
-  logic tlul_error;     // Error from `tlul_err` module
+//  logic tlul_error;     // Error from `tlul_err` module
 
   logic a_ack, d_ack, sram_ack;
   assign a_ack    = tl_d_c_a.a_valid & tl_d_c_d.a_ready ;
@@ -167,14 +167,13 @@ assign readdata = tl_d_c_d.d_data;
   end
 
 //Convert byte mask to SRAM bit mask for writes, and only forward valid data
-  if (ByteMask == 0) begin : bit_masked_sram 
-    logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wmask_int;
     logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wdata_int;
-    
+ // if (ByteMask == 0) begin : bit_masked_sram 
+
+    logic [WidthMult-1:0][tlul_pkg::TL_DW-1:0] wmask_int;
     always_comb begin
       wmask_int = '0;
       wdata_int = '0;
-
       if (tl_d_c_a.a_valid) begin
         for (int i = 0 ; i < tlul_pkg::TL_DW/8 ; i++) begin
           wmask_int[woffset][8*i +: 8] = {8{tl_d_c_a.a_mask[i]}};
@@ -184,10 +183,19 @@ assign readdata = tl_d_c_d.d_data;
     end
     assign wmask_o = wmask_int;
     assign wdata_o = wdata_int;
-  end else begin : byte_maksed_sram
-    assign wmask_o = tl_d_c_a.a_mask;
-    assign wdata_o = tl_d_c_a.a_data;    
-  end
+  //end else begin : byte_maksed_sram
+
+ //   assign wmask_o = tl_d_c_a.a_mask;
+//        always_comb begin
+//      wdata_int = '0;
+//      if (tl_d_c_a.a_valid) begin
+//        for (int i = 0 ; i < tlul_pkg::TL_DW/8 ; i++) begin
+//          wdata_int[woffset][8*i +: 8] = (tl_d_c_a.a_mask[i] && we_o) ? tl_d_c_a.a_data[8*i+:8] : '0;
+//        end
+//      end
+//    end
+//    assign wdata_o = wdata_int;    
+//  end
 
 
   // Begin: Request Error Detection
@@ -211,14 +219,14 @@ assign readdata = tl_d_c_d.d_data;
     assign rd_vld_error = 1'b0;
   end
 
-  tlul_err u_err (
-    .clk_i (clock),
-    .rst_ni (reset),
-    .tl_i (tl_d_c_a),
-    .err_o (tlul_error)
-  );
+ // tlul_err u_err (
+ //   .clk_i (clock),
+ //   .rst_ni (reset),
+ //   .tl_i (tl_d_c_a),
+ //   .err_o (tlul_error)
+ // );
 
-  assign error_internal = wr_attr_error | wr_vld_error | rd_vld_error | tlul_error;
+  assign error_internal = wr_attr_error | wr_vld_error | rd_vld_error;// | tlul_error;
   // End: Request Error Detection
 
   assign reqfifo_wvalid = a_ack ; // Push to FIFO only when granted
@@ -289,8 +297,8 @@ assign readdata = tl_d_c_d.d_data;
     .Pass    (1'b0),
     .Depth   (Outstanding)
   ) u_reqfifo (
-    .clock,
-    .reset,
+    .clk_i (clock),
+    .rst_ni (reset),
     .clr_i   (1'b0),
     .wvalid_i(reqfifo_wvalid),
     .wready_o(reqfifo_wready),
@@ -310,8 +318,8 @@ assign readdata = tl_d_c_d.d_data;
     .Pass    (1'b0),
     .Depth   (Outstanding)
   ) u_sramreqfifo (
-    .clock,
-    .reset,
+    .clk_i (clock),
+    .rst_ni (reset),
     .clr_i   (1'b0),
     .wvalid_i(sramreqfifo_wvalid),
     .wready_o(sramreqfifo_wready),
@@ -333,8 +341,8 @@ assign readdata = tl_d_c_d.d_data;
     .Pass    (1'b1),
     .Depth   (Outstanding)
   ) u_rspfifo (
-    .clock,
-    .reset,
+    .clk_i (clock),
+    .rst_ni (reset),
     .clr_i   (1'b0),
     .wvalid_i(rspfifo_wvalid),
     .wready_o(rspfifo_wready),
