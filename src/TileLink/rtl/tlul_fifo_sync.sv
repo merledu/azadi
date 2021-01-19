@@ -27,8 +27,8 @@ module tlul_fifo_sync #(
   localparam int unsigned REQFIFO_WIDTH = $bits(tlul_pkg::tl_h2d_t) -2 + SpareReqW;
 
   fifo_sync #(.Width(REQFIFO_WIDTH), .Pass(ReqPass), .Depth(ReqDepth)) reqfifo (
-    .clock (clk_i),
-    .reset (rst_ni),
+    .clk_i (clk_i),
+    .rst_ni (rst_ni),
     .clr_i         (1'b0          ),
     .wvalid_i      (tl_h_i.a_valid),
     .wready_o      (tl_h_o.a_ready),
@@ -57,8 +57,8 @@ module tlul_fifo_sync #(
   localparam int unsigned RSPFIFO_WIDTH = $bits(tlul_pkg::tl_d2h_t) -2 + SpareRspW;
 
   fifo_sync #(.Width(RSPFIFO_WIDTH), .Pass(RspPass), .Depth(RspDepth)) rspfifo (
-    .clock (clk_i),
-    .reset (rst_ni),
+    .clk_i (clk_i),
+    .rst_ni (rst_ni),
     .clr_i         (1'b0          ),
     .wvalid_i      (tl_d_i.d_valid),
     .wready_o      (tl_d_o.d_ready),
