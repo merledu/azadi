@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <iostream>
 #include <utility>
@@ -39,8 +38,7 @@ int main (int argc, char **argv) {
 
     top -> clock = 0;
     
-    top-> gpio_i = 8;
-   
+   top -> gpio_i = 8;
     while (main_time < 1000 && !Verilated::gotFinish()) 
     { 
         top->clock = top->clock ? 0 : 1;  
@@ -55,8 +53,7 @@ int main (int argc, char **argv) {
         top->eval(); 
 
         // redundant
-        //top -> eval();
-
+        //30200073
         if (tfp) tfp -> dump(main_time);
         // or dump always
         //tfp -> dump(main_time);
