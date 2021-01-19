@@ -44,7 +44,7 @@ brq_core_top u_top (
     .tl_d_i (xbar_to_lsu),
     .tl_d_o (lsu_to_xbar),
 
-    .test_en_i (1'b0),     // enable all clock gates for testing
+    .test_en_i (1'b1),     // enable all clock gates for testing
 
     .hart_id_i (32'b0), 
     .boot_addr_i (32'h00000000),
