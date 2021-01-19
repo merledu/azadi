@@ -11,40 +11,40 @@ module data_mem
   logic req_i;
   logic [11:0] addr_i;
   logic [31:0] wdata_i;
-  logic [3:0] wmask_i;
+  logic [31:0] wmask_i;
   logic we_i;
 
   logic rvalid_o;
   logic [31:0] rdata_o; 
 
-  logic [31:0] mem [11:0];
-  logic valid;
-  
-always_ff @(posedge clock) begin
-  if(reset) valid <= 1'b0;
-  else valid <= req_i;
-end
-assign rvalid_o = valid;
-
-always_ff @(posedge clock) begin
-  if(req_i) begin
-    if(~we_i) begin
-      if(reset) rdata_o <= '0;
-      else rdata_o <= mem[addr_i];
-    end else begin
-      if(wmask_i[0]) mem[addr_i][7:0] <= wdata_i[7:0];
-      if(wmask_i[1]) mem[addr_i][15:8] <= wdata_i[15:8];
-      if(wmask_i[2]) mem[addr_i][23:16] <= wdata_i[23:16];
-      if(wmask_i[3]) mem[addr_i][31:24] <= wdata_i[31:24];
+  always_ff @(posedge clock) begin
+    if (!reset) begin
+      rvalid_o <= 1'b0;
+    end else if (we_i) begin
+      rvalid_o <= 1'b0;
+    end else begin 
+      rvalid_o <= req_i;
     end
   end
-end
+
+  logic [3:0] data_we;
+  assign data_we = {4{we_i}};
+  
+DFFRAMD dccm (
+
+    .CLK    (clock),
+    .EN     (req_i), // chip enable
+    .WE     (data_we), //write mask
+    .Di     (wdata_i), //data input
+    .Do     (rdata_o), // data output
+    .A      (addr_i) // address
+);
 
 tlul_sram_adapter #(
   .ByteMask     (1),
   .SramAw       (12),
   .SramDw       (32), 
-  .Outstanding  (2),  
+  .Outstanding  (4),  
   .ByteAccess   (1),
   .ErrOnWrite   (0),  // 1: Writes not allowed, automatically error
   .ErrOnRead    (0) 
@@ -60,8 +60,9 @@ tlul_sram_adapter #(
     .addr_o (addr_i),
     .wdata_o (wdata_i),
     .wmask_o (wmask_i),
-    .rdata_i (rdata_o),
-    .rvalid_i (rvalid_o)
+    .rdata_i (rdata_o), // (reset) ? rdata_o: '0
+    .rvalid_i (rvalid_o),
+    .rerror_i (2'b0)
 
 );
 
