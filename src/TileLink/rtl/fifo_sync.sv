@@ -5,13 +5,13 @@
 module fifo_sync #(
   parameter int unsigned Width       = 16,
   parameter bit Pass                 = 1'b1, // if == 1 allow requests to pass through empty FIFO
-  parameter int unsigned Depth       = 0,
+  parameter int unsigned Depth       = 4,
   parameter bit OutputZeroIfEmpty    = 1'b1, // if == 1 always output 0 when FIFO is empty
   // derived parameter
-  localparam int          DepthW     = 3
+  localparam int          DepthW     = tlul_pkg::vbits(Depth+1)
 ) (
-  input                   clock,
-  input                   reset,
+  input                   clk_i,
+  input                   rst_ni,
   // synchronous clear / flush port
   input                   clr_i,
   // write port
@@ -45,7 +45,7 @@ module fifo_sync #(
   // Normal FIFO construction
   end else begin : gen_normal_fifo
 
-    localparam int unsigned PTRV_W    = 3;
+    localparam int unsigned PTRV_W    = tlul_pkg::vbits(Depth);
     localparam int unsigned PTR_WIDTH = PTRV_W+1;
 
     logic [PTR_WIDTH-1:0] fifo_wptr, fifo_rptr;
@@ -72,8 +72,8 @@ module fifo_sync #(
     assign wready_o = ~full;
     assign rvalid_o = ~empty;
 
-    always_ff @(posedge clock or negedge reset) begin
-      if (!reset) begin
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) begin
         fifo_wptr <= {(PTR_WIDTH){1'b0}};
       end else if (clr_i) begin
         fifo_wptr <= {(PTR_WIDTH){1'b0}};
@@ -86,8 +86,8 @@ module fifo_sync #(
       end
     end
 
-    always_ff @(posedge clock or negedge reset) begin
-      if (!reset) begin
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) begin
         fifo_rptr <= {(PTR_WIDTH){1'b0}};
       end else if (clr_i) begin
         fifo_rptr <= {(PTR_WIDTH){1'b0}};
@@ -111,7 +111,7 @@ module fifo_sync #(
     if (Depth == 1) begin : gen_depth_eq1
       assign storage_rdata = storage[0];
 
-      always_ff @(posedge clock)
+      always_ff @(posedge clk_i)
         if (fifo_incr_wptr) begin
           storage[0] <= wdata_i;
         end
@@ -119,7 +119,7 @@ module fifo_sync #(
     end else begin : gen_depth_gt1
       assign storage_rdata = storage[fifo_rptr[PTR_WIDTH-2:0]];
 
-      always_ff @(posedge clock)
+      always_ff @(posedge clk_i)
         if (fifo_incr_wptr) begin
           storage[fifo_wptr[PTR_WIDTH-2:0]] <= wdata_i;
         end
@@ -141,6 +141,7 @@ module fifo_sync #(
     end
 
   end // block: gen_normal_fifo
+
 
 
 endmodule
