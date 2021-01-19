@@ -71,7 +71,7 @@ module tlul_host_adapter #(
     assign tl_be = ~we_i ? {tlul_pkg::TL_DBW{1'b1}} : be_i;
 
     assign tl_h_c_a = '{
-        a_valid:    (!reset) ? 1'b0 : req_i,
+        a_valid:    req_i,
         a_opcode:   (~we_i) ? tlul_pkg::Get         :   
                     (&be_i) ? tlul_pkg::PutFullData :
                               tlul_pkg::PutPartialData,
