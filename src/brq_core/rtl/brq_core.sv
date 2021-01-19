@@ -382,12 +382,12 @@ module brq_core #(
   // main clock gate of the core
   // generates all clocks except the one for the debug unit which is
   // independent
-  //prim_clock_gating core_clock_gate_i (
-  //    .clk_i     ( clk_i           ),
-  //    .en_i      ( clock_en        ),
-  //    .test_en_i ( test_en_i       ),
-  //    .clk_o     ( clk_i            )
-  //);
+  prim_clock_gating core_clock_gate_i (
+      .clk_i     ( clk_i           ),
+      .en_i      ( clock_en        ),
+      .test_en_i ( test_en_i       ),
+      .clk_o     ( clk            )
+  );
 
   //////////////
   // IF stage //
@@ -402,7 +402,7 @@ module brq_core #(
       .PCIncrCheck       ( PCIncrCheck       ),
       .BranchPredictor   ( BranchPredictor   )
   ) if_stage_i (
-      .clk_i                    ( clk_i                   ),
+      .clk_i                    ( clk                   ),
       .rst_ni                   ( rst_ni                 ),
 
       .boot_addr_i              ( boot_addr_i            ),
@@ -484,7 +484,7 @@ module brq_core #(
       .WritebackStage  ( WritebackStage  ),
       .BranchPredictor ( BranchPredictor )
   ) id_stage_i (
-      .clk_i                        ( clk_i                     ),
+      .clk_i                        ( clk                     ),
       .rst_ni                       ( rst_ni                   ),
 
       // Processor Enable
@@ -638,7 +638,7 @@ module brq_core #(
       .RV32B                    ( RV32B                    ),
       .BranchTargetALU          ( BranchTargetALU          )
   ) ex_block_i (
-      .clk_i                    ( clk_i                     ),
+      .clk_i                    ( clk                     ),
       .rst_ni                   ( rst_ni                   ),
 
       // ALU signal from ID stage
@@ -686,7 +686,7 @@ module brq_core #(
   assign lsu_resp_err = lsu_load_err | lsu_store_err;
 
   brq_lsu load_store_unit_i (
-      .clk_i                 ( clk_i                ),
+      .clk_i                 ( clk                ),
       .rst_ni                ( rst_ni              ),
 
       // data interface
@@ -734,7 +734,7 @@ module brq_core #(
   brq_wbu #(
     .WritebackStage ( WritebackStage )
   ) wb_stage_i (
-    .clk_i                          ( clk_i                         ),
+    .clk_i                          ( clk                         ),
     .rst_ni                         ( rst_ni                       ),
     .en_wb_i                        ( en_wb                        ),
     .instr_type_wb_i                ( instr_type_wb                ),
@@ -854,7 +854,7 @@ module brq_core #(
         .DataWidth         ( RegFileDataWidth  ),
         .DummyInstructions ( DummyInstructions )
     ) register_file_i (
-        .clk_i            ( clk_i           ),
+        .clk_i            ( clk_i          ),
         .rst_ni           ( rst_ni          ),
 
         .test_en_i        ( test_en_i       ),
@@ -970,7 +970,7 @@ module brq_core #(
       .RV32E             ( RV32E             ),
       .RV32M             ( RV32M             )
   ) cs_registers_i (
-      .clk_i                   ( clk_i                         ),
+      .clk_i                   ( clk                         ),
       .rst_ni                  ( rst_ni                       ),
 
       // Hart ID from outside
@@ -1073,7 +1073,7 @@ module brq_core #(
         .PMPNumChan            ( PMP_NUM_CHAN   ),
         .PMPNumRegions         ( PMPNumRegions  )
     ) pmp_i (
-        .clk_i                 ( clk_i           ),
+        .clk_i                 ( clk           ),
         .rst_ni                ( rst_ni         ),
         // Interface to CSRs
         .csr_pmp_cfg_i         ( csr_pmp_cfg    ),
@@ -1178,7 +1178,7 @@ module brq_core #(
 
     assign rvfi_instr_new_wb = rvfi_instr_new_wb_q;
 
-    always_ff @(posedge clk_ior negedge rst_ni) begin
+    always_ff @(posedge clk or negedge rst_ni) begin
       if (~rst_ni) begin
         rvfi_instr_new_wb_q <= 0;
       end else begin
@@ -1195,7 +1195,7 @@ module brq_core #(
   end
 
   for (genvar i = 0;i < RVFI_STAGES; i = i + 1) begin : g_rvfi_stages
-    always_ff @(posedge clk_ior negedge rst_ni) begin
+    always_ff @(posedge clk or negedge rst_ni) begin
       if (!rst_ni) begin
         rvfi_stage_halt[i]      <= '0;
         rvfi_stage_trap[i]      <= '0;
@@ -1304,7 +1304,7 @@ module brq_core #(
     end
   end
 
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_mem_addr_q  <= '0;
       rvfi_mem_rdata_q <= '0;
@@ -1352,7 +1352,7 @@ module brq_core #(
       rvfi_rs3_addr_d = rf_raddr_a;
     end
   end
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_rs1_data_q <= '0;
       rvfi_rs1_addr_q <= '0;
@@ -1391,7 +1391,7 @@ module brq_core #(
 
   // RD write register is refreshed only once per cycle and
   // then it is kept stable for the cycle.
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_rd_addr_q    <= '0;
       rvfi_rd_wdata_q   <= '0;
@@ -1419,7 +1419,7 @@ module brq_core #(
     end
   end
 
-  always_ff @(posedge clk_ior negedge rst_ni) begin
+  always_ff @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
       rvfi_set_trap_pc_q <= 1'b0;
       rvfi_intr_q        <= 1'b0;
