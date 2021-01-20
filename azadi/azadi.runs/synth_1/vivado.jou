@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Wed Jan 20 18:09:16 2021
+# Process ID: 51974
+# Current directory: /home/merl-lab/Documents/Vivado Projects/azadi/azadi.runs/synth_1
+# Command line: vivado -log azadi_soc_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source azadi_soc_top.tcl
+# Log file: /home/merl-lab/Documents/Vivado Projects/azadi/azadi.runs/synth_1/azadi_soc_top.vds
+# Journal file: /home/merl-lab/Documents/Vivado Projects/azadi/azadi.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source azadi_soc_top.tcl -notrace
