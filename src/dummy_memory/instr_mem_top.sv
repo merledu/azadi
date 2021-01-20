@@ -34,10 +34,10 @@ tlul_sram_adapter #(
   .ErrOnRead    (0)   // 1: Reads not allowed, automatically error  
 
 ) inst_mem (
-    .clock (clock),
-    .reset (reset),
-    .tl_d_c_a (tl_d_i),
-    .tl_d_c_d (tl_d_o), 
+    .clk_i (clock),
+    .rst_ni (reset),
+    .tl_i (tl_d_i),
+    .tl_o (tl_d_o), 
     .req_o (req),
     .gnt_i (1'b1),
     .we_o (),

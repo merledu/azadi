@@ -29,8 +29,8 @@ module azadi_soc_top (
 
   logic [31:0] gpio_intr;
 
-  //tlul_pkg::tl_h2d_t core_to_gpio;
-  //tlul_pkg::tl_d2h_t gpio_to_core;
+ // tlul_pkg::tl_h2d_t core_to_dccm;
+ // tlul_pkg::tl_d2h_t dccm_to_core;
 
 brq_core_top u_top (
     .clock (clock),
@@ -110,7 +110,7 @@ brq_core_top u_top (
 
 data_mem dccm(
   .clock    (clock),
-  .reset    (~reset_ni),
+  .reset    (reset_ni),
 
 // tl-ul insterface
   .tl_d_i   (xbar_to_dccm),
