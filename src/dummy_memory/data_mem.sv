@@ -28,7 +28,11 @@ module data_mem
   end
 
   logic [3:0] data_we;
-  assign data_we = {4{we_i}};
+
+  //assign data_we[0] = (wmask_i[7:0] != 8'b0) ? 1'b1: 1'b0;
+  //assign data_we[1] = (wmask_i[15:8] != 8'b0) ? 1'b1: 1'b0;
+  assign data_we[1:0] = (wmask_i[23:16] != 8'b0) ? 2'b11: 2'b0;
+  assign data_we[3:2] = (wmask_i[31:24] != 8'b0) ? 2'b11: 2'b0; 
   
 DFFRAMD dccm (
 
@@ -41,7 +45,6 @@ DFFRAMD dccm (
 );
 
 tlul_sram_adapter #(
-  .ByteMask     (1),
   .SramAw       (12),
   .SramDw       (32), 
   .Outstanding  (4),  
@@ -50,10 +53,10 @@ tlul_sram_adapter #(
   .ErrOnRead    (0) 
 
 ) data_mem (
-    .clock (clock),
-    .reset (reset),
-    .tl_d_c_a (tl_d_i),
-    .tl_d_c_d (tl_d_o), 
+    .clk_i (clock),
+    .rst_ni (reset),
+    .tl_i(tl_d_i),
+    .tl_o (tl_d_o), 
     .req_o (req_i),
     .gnt_i (1'b1),
     .we_o (we_i),
