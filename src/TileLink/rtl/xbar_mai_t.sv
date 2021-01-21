@@ -57,8 +57,8 @@ module xbar_main_t (
   assign tl_brqif_o    = s1n_to_brqifu; 
 
   // host 1 socket connections
-  tlul_pkg::tl_h2d_t s1n_to_dv[3];
-  tlul_pkg::tl_d2h_t dv_to_s1n[3];
+  tlul_pkg::tl_h2d_t s1n_to_dv[2];
+  tlul_pkg::tl_d2h_t dv_to_s1n[2];
 
   // host 1 device connections
   // ICCM
@@ -70,8 +70,8 @@ module xbar_main_t (
   assign tl_debug_rom_o = s1n_to_dv[1];
 
   //FLASH CONTROLLER
-  assign dv_to_s1n[2]    = tl_flash_ctrl_i;
-  assign tl_flash_ctrl_o = s1n_to_dv[2];
+//  assign dv_to_s1n[2]    = tl_flash_ctrl_i;
+//  assign tl_flash_ctrl_o = s1n_to_dv[2];
 
   // host 2 socket connections
 
@@ -188,8 +188,8 @@ module xbar_main_t (
       device_sel_h1 = 2'd0;
     end else if ((brqifu_to_s1n.a_address & ~(ADDR_MASK_DEBUG_ROM)) == ADDR_SPACE_DEBUG_ROM) begin
       device_sel_h1 = 2'd1;
-    end else if ((brqifu_to_s1n.a_address & ~(ADDR_MASK_FLASH_CTRL)) == ADDR_SPACE_FLASH_CTRL) begin
-      device_sel_h1 = 2'd2;
+   // end else if ((brqifu_to_s1n.a_address & ~(ADDR_MASK_FLASH_CTRL)) == ADDR_SPACE_FLASH_CTRL) begin
+   //   device_sel_h1 = 2'd2;
     end
       
   end
@@ -199,7 +199,7 @@ module xbar_main_t (
     .HRspDepth (4'h0),
     .DReqDepth (12'h0),
     .DRspDepth (12'h0),
-    .N         (3)
+    .N         (2)
   ) host_1 (
     .clk_i        (clk_main_i),
     .rst_ni       (rst_main_ni),
