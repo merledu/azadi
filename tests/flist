@@ -59,3 +59,5 @@ $AZADI_ROOT/src/primitives/rtl/prim_generic_flop_2sync.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_gating.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_flop.sv
 $AZADI_ROOT/src/TileLink/rtl/xbar_mai_t.sv
+$AZADI_ROOT/src/azadi_soc/rtl/iccm_controller.v
+$AZADI_ROOT/src/azadi_soc/rtl/uart_rx.v

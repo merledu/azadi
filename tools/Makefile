@@ -42,7 +42,7 @@ clean:
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
-	  -Wno-PINMISSING -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} --top-module azadi_soc_top \
+	  -CFLAGS -DVL_DEBUG -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} --top-module azadi_soc_top \
 	  -exe sim_main.cpp --autoflush --trace
 	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f Vazadi_soc_top.mk $(VERILATOR_MAKE_FLAGS)
