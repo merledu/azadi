@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -30,7 +30,7 @@
 // Example: 10 MHz Clock, 115200 baud UART
 // (10000000)/(115200) = 87
    
-module uart_rx_prog (
+module uart_rx (
  input         i_Clock,
  input         rst_ni,
  input         i_Rx_Serial,
