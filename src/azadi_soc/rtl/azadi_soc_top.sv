@@ -43,6 +43,19 @@ assign gpio_o[3:0] = gpio_out[3:0];
   tlul_pkg::tl_d2h_t gpio_to_xbarp;
 
   logic [31:0] gpio_intr;
+  logic       rx_dv_i;
+logic [7:0] rx_byte_i;
+
+
+logic instr_valid;
+logic [11:0] tlul_addr;
+logic req_i;
+logic [31:0] tlul_data;
+logic iccm_cntrl_reset;
+logic [11:0] iccm_cntrl_addr;
+logic [31:0] iccm_cntrl_data;
+logic iccm_cntrl_we;
+//wire 
 
   //tlul_pkg::tl_h2d_t core_to_gpio;
   //tlul_pkg::tl_d2h_t gpio_to_core;
@@ -183,26 +196,14 @@ xbar_periph periph_switch (
   .tl_i           (xbarp_to_gpio),
   .tl_o           (gpio_to_xbarp),
 
-  .cio_gpio_i     ({12'b0,gpio_i}),
-  .cio_gpio_o     (gpio_o),
+  .cio_gpio_i     ({12'b0,gpio_in}),
+  .cio_gpio_o     (gpio_out),
   .cio_gpio_en_o  (),
 
   .intr_gpio_o    (gpio_intr)  
 );
 
-logic       rx_dv_i;
-logic [7:0] rx_byte_i;
 
-
-logic instr_valid;
-logic [11:0] tlul_addr;
-logic req_i;
-logic [31:0] tlul_data;
-logic iccm_cntrl_reset;
-logic [11:0] iccm_cntrl_addr;
-logic [31:0] iccm_cntrl_data;
-logic iccm_cntrl_we;
-//wire 
 
  iccm_controller u_dut(
 	.clk_i       (clock),
@@ -219,7 +220,7 @@ logic iccm_cntrl_we;
  .i_Clock       (clock),
  .rst_ni        (RESET),
  .i_Rx_Serial   (uart_rx_i),
- .CLKS_PER_BIT  (15'd1042),
+ .CLKS_PER_BIT  (15'd87),
  .o_Rx_DV       (rx_dv_i),
  .o_Rx_Byte     (rx_byte_i)
  );
