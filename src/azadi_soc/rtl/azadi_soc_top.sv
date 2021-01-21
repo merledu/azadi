@@ -11,68 +11,17 @@ module azadi_soc_top (
 
 // added by zeeshan
 
+logic RESET;
+assign RESET = ~reset_ni;
+
+
 wire [19:0] gpio_in;
 wire [19:0] gpio_out;
 
-assign gpio_i[3:0] = gpio_in[3:0];
-assign gpio_i[3:0] = gpio_in[3:0]; 
+assign gpio_in[3:0] = gpio_i[3:0];
+assign gpio_o[3:0] = gpio_out[3:0]; 
 
-wire [19:0] gpio_oe;
-wire RESET = ~reset_ni;
 
-wire        rst_ni;
-wire        ram_main_instr_req;
-wire        ram_main_instr_we;
-reg         ram_main_instr_rvalid;
-wire [1:0]  ram_main_instr_rerror;
-wire [13:0] ram_main_instr_addr;
-wire [31:0] ram_main_instr_wdata;
-wire [31:0] ram_main_instr_wmask;
-wire [31:0] ram_main_instr_rdata;  
-wire [3:0]  instr_WE;
-wire        instr_EN;
-wire        ram_prog_instr_we;
-wire [31:0] instr_Di;
-wire [31:0] ram_prog_instr_wdata;
-wire [13:0] instr_A;
-wire [13:0] ram_prog_instr_addr;
-// dccm
-wire        ram_main_data_req;
-wire        ram_main_data_we;
-wire [13:0] ram_main_data_addr;
-wire [31:0] ram_main_data_wdata;
-wire [31:0] ram_main_data_wmask;
-wire [31:0] ram_main_data_rdata;
-reg         ram_main_data_rvalid;
-wire [1:0]  ram_main_data_rerror;
-
-assign instr_A = (rst_ni ? ram_main_instr_addr : ram_prog_instr_addr);
-assign instr_Di = (rst_ni ? ram_main_instr_wdata : ram_prog_instr_wdata);
-assign instr_WE = {4 {ram_prog_instr_we}} | ({ram_main_instr_wmask[31:24] != 8'b00000000, 
-                   ram_main_instr_wmask[23:16] != 8'b00000000, ram_main_instr_wmask[15:8] != 8'b00000000,
-                   ram_main_instr_wmask[7:0] != 8'b00000000} & {4 {ram_main_instr_we}});
-assign instr_EN = ram_main_instr_req | ram_prog_instr_we;
-
-always @(posedge clock) begin
-    if (!rst_ni)
-        ram_main_instr_rvalid <= 1'b0;
-    else if (ram_main_instr_we || ram_prog_instr_we)
-        ram_main_instr_rvalid <= 1'b0;
-    else
-        ram_main_instr_rvalid <= ram_main_instr_req;
-end        
-
-wire [3:0] data_WE;
-assign data_WE = {ram_main_data_wmask[31:24] != 8'b00000000, ram_main_data_wmask[23:16] != 8'b00000000, ram_main_data_wmask[15:8] != 8'b00000000, ram_main_data_wmask[7:0] != 8'b00000000} & {4 {ram_main_data_we}};
-
-always @(posedge clock) begin
-	if (!rst_ni)
-    	ram_main_data_rvalid <= 1'b0;
-	else if (ram_main_data_we)
-		ram_main_data_rvalid <= 1'b0;
-	else
-		ram_main_data_rvalid <= ram_main_data_req;
-end
 // end here
         
   tlul_pkg::tl_h2d_t ifu_to_xbar;
@@ -100,7 +49,7 @@ end
 
 brq_core_top u_top (
     .clock (clock),
-    .reset (rst_ni),
+    .reset (iccm_cntrl_reset),
 
   // instruction memory interface 
     .tl_i_i (xbar_to_ifu),
@@ -176,21 +125,11 @@ brq_core_top u_top (
 
 data_mem dccm(
   .clock    (clock),
-  .reset    (~reset_ni),
+  .reset    (reset_ni),
 
 // tl-ul insterface
   .tl_d_i   (xbar_to_dccm),
   .tl_d_o   (dccm_to_xbar)
-);
-
-//dummy instruction memory
-instr_mem_top iccm (
-  .clock    (clock),
-  .reset    (reset_ni),
-
-// tlul interface
-  .tl_d_i   (xbar_to_iccm),
-  .tl_d_o   (iccm_to_xbar) 
 );
 
 
@@ -246,42 +185,80 @@ xbar_periph periph_switch (
 
   .cio_gpio_i     ({12'b0,gpio_i}),
   .cio_gpio_o     (gpio_o),
-  .cio_gpio_en_o  (gpio_oe),
+  .cio_gpio_en_o  (),
 
   .intr_gpio_o    (gpio_intr)  
 );
 
-wire       rx_dv_i;
-wire [7:0] rx_byte_i;
+logic       rx_dv_i;
+logic [7:0] rx_byte_i;
+
+
+logic instr_valid;
+logic [11:0] tlul_addr;
+logic req_i;
+logic [31:0] tlul_data;
+logic iccm_cntrl_reset;
+logic [11:0] iccm_cntrl_addr;
+logic [31:0] iccm_cntrl_data;
+logic iccm_cntrl_we;
 //wire 
 
  iccm_controller u_dut(
-	.clk_i(clock),
-	.rst_ni(RESET),
-	.rx_dv_i(rx_dv_i),
-	.rx_byte_i(rx_byte_i),
-	.we_o(ram_prog_instr_we),
-	.addr_o(ram_prog_instr_addr),
-	.wdata_o(ram_prog_instr_wdata),
-	.reset_o(rst_ni)
+	.clk_i       (clock),
+	.rst_ni      (RESET),
+	.rx_dv_i     (rx_dv_i),
+	.rx_byte_i   (rx_byte_i),
+	.we_o        (iccm_cntrl_we),
+	.addr_o      (iccm_cntrl_addr),
+	.wdata_o     (iccm_cntrl_data),
+	.reset_o     (iccm_cntrl_reset)
 );
 
-// uart_rx #(
-//    .CLKS_PER_BIT('d1042)
-// ) u_uart_rx (
-//	.i_Clock(clock),
-//	.rst_ni(RESET),
-//	.i_Rx_Serial(uart_rx_i),
-//	.o_Rx_DV(rx_dv_i),
-//	.o_Rx_Byte(rx_byte_i)
-//);
- uart_rx_prog (
- .i_Clock(clock),
- .rst_ni(RESET),
- .i_Rx_Serial(uart_rx_i),
- .CLKS_PER_BIT(15'd1042),
- .o_Rx_DV(rx_dv_i),
- .o_Rx_Byte(rx_byte_i)
+ uart_rx programmer (
+ .i_Clock       (clock),
+ .rst_ni        (RESET),
+ .i_Rx_Serial   (uart_rx_i),
+ .CLKS_PER_BIT  (15'd1042),
+ .o_Rx_DV       (rx_dv_i),
+ .o_Rx_Byte     (rx_byte_i)
  );
+
+
+instr_mem_top iccm (
+  .clock      (clock),
+  .reset      (reset_ni),
+
+  .req        (req_i | ~iccm_cntrl_reset),
+  .addr       ((iccm_cntrl_reset) ? tlul_addr: iccm_cntrl_addr),
+  .wdata      (iccm_cntrl_data),
+  .rdata      (tlul_data),
+  .rvalid     (instr_valid),
+  .we         ((iccm_cntrl_reset) ? '0: {3'b111,iccm_cntrl_we})
+);
+
+ tlul_sram_adapter #(
+  .SramAw       (12),
+  .SramDw       (32), 
+  .Outstanding  (2),  
+  .ByteAccess   (1),
+  .ErrOnWrite   (0),  // 1: Writes not allowed, automatically error
+  .ErrOnRead    (0)   // 1: Reads not allowed, automatically error  
+
+) inst_mem (
+    .clk_i     (clock),
+    .rst_ni    (reset_ni),
+    .tl_i      (xbar_to_iccm),
+    .tl_o      (iccm_to_xbar), 
+    .req_o     (req_i),
+    .gnt_i     (1'b1),
+    .we_o      (),
+    .addr_o    (tlul_addr),
+    .wdata_o   (),
+    .wmask_o   (),
+    .rdata_i   ((reset_ni) ? tlul_data: '0),
+    .rvalid_i  (instr_valid),
+    .rerror_i  (2'b0)
+    );
 
 endmodule
