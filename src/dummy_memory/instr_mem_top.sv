@@ -12,6 +12,15 @@ module instr_mem_top
   input  logic [3:0]  we
 );
 
+  always_ff @(posedge clock) begin
+  if (!reset) begin
+    rvalid <= 1'b0;
+  end else if (we) begin
+    rvalid <= 1'b0;
+  end else begin 
+    rvalid <= req;
+  end
+  end
 
 DFFRAM iccm (
 
@@ -23,10 +32,6 @@ DFFRAM iccm (
     .A      (addr) // address
 );
 
-    always_ff @(posedge clock) begin
-      if (~reset) rvalid <= 1'b0;
-      else if (~we) rvalid <= 1'b0;
-      else rvalid <= req; 
-    end
+
 
 endmodule

@@ -44,7 +44,7 @@ verilator-build: ${TBFILES} sim_main.cpp
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
 	  -CFLAGS -DVL_DEBUG -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} --top-module azadi_soc_top \
 	  -exe sim_main.cpp --autoflush --trace
-	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
+#	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f Vazadi_soc_top.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
 
@@ -54,3 +54,9 @@ verilator: program.hex verilator-build
 program.hex:
 	cp ${HEX_DIR}/$(TEST).program.hex program.hex
 	cp ${HEX_DIR}/$(TEST).data.hex data.hex
+
+help:
+	@echo Make sure the environment variable SHAHEEN_ROOT is set.
+	@echo Possible targets: verilator vcs irun vlog help clean all verilator-build irun-build vcs-build program.hex
+
+.PHONY: help clean verilator
