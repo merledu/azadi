@@ -1,17 +1,23 @@
-# Allow tool override
-VERILATOR = verilator
+# Directory
 TBDIR = ${AZADI_ROOT}/tests
+TEST_DIR = ${TBDIR}/asm
+HEX_DIR = ${TBDIR}/hex
 
 # Try later (see usage in /home/zain/Documents/Code/tf)
 #RTLSRC=../src
 
 # Define test name
-TEST = test_1
+TEST = add
 
-# Define test name
-TEST_DIR = ${TBDIR}/asm
-HEX_DIR = ${TBDIR}/hex
-
+# Constants
+RISCV_PREFIX = riscv32-unknown-elf-
+GCC_PREFIX = $(RISCV_PREFIX)gcc
+GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99
+LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -lm -lgcc -T $(TEST_DIR)/link.ld
+OBJDUMP_PREFIX = $(RISCV_PREFIX)objdump
+OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes 
+#--section=.text --section=.text.startup --section=.text.init --section=.data
+VERILATOR = verilator
 
 TBFILES = $(AZADI_ROOT)/src/azadi_soc/rtl/azadi_soc_top.sv
 # Package imports
@@ -21,6 +27,8 @@ defines += $(AZADI_ROOT)/src/TileLink/rtl/tlul_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_periph_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_main_pkg.sv
 defines += $(AZADI_ROOT)/src/GPIO/rtl/gpio_reg_pkg.sv
+defines += $(AZADI_ROOT)/src/primitives/rtl/prim_pkg.sv
+
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
 # complains for `auto` variables
@@ -32,7 +40,7 @@ CFLAGS += "-std=c++11"
 VERILATOR_MAKE_FLAGS = OPT_FAST="-O2"
 
 # Targets
-all: clean verilator
+all: clean build verilator
 
 clean:
 	rm -rf logs *.log *.s *.hex *.dis *.tbl irun* vcs* simv* snapshots \
@@ -44,13 +52,16 @@ verilator-build: ${TBFILES} sim_main.cpp
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
 	  -Wno-PINMISSING -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} --top-module azadi_soc_top \
 	  -exe sim_main.cpp --autoflush --trace
-	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f Vazadi_soc_top.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
 
-verilator: program.hex verilator-build
+verilator: verilator-build
 	./obj_dir/Vazadi_soc_top
 
-program.hex:
-	cp ${HEX_DIR}/$(TEST).program.hex program.hex
-	cp ${HEX_DIR}/$(TEST).data.hex data.hex
+build:
+	@rm -rf $(TEST_DIR)/output 
+	@mkdir $(TEST_DIR)/output
+	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/$(TEST).c -o $(TEST_DIR)/output/$(TEST) -lm -lgcc
+	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/start.S $(TEST_DIR)/output/$(TEST) -o $(TEST_DIR)/output/$(TEST).merl 
+	$(OBJDUMP_PREFIX) $(OBJDUMP_FLAGS) $(TEST_DIR)/output/$(TEST).merl > $(TEST_DIR)/output/$(TEST).dump
+	$(RISCV_PREFIX)elf2hex --bit-width 32 --input $(TEST_DIR)/output/$(TEST).merl --output $(TEST_DIR)/output/program.hex

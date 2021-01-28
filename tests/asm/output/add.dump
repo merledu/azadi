@@ -1,0 +1,85 @@
+
+/home/waleed/azadi/tests/asm/output/add.merl:     file format elf32-littleriscv
+
+
+Disassembly of section .init:
+
+00000000 <_start>:
+   0:	10000197          	auipc	gp,0x10000
+   4:	00018193          	mv	gp,gp
+   8:	10001117          	auipc	sp,0x10001
+   c:	ff810113          	addi	sp,sp,-8 # 10001000 <__stack_top>
+  10:	00010433          	add	s0,sp,zero
+  14:	0040006f          	j	18 <main>
+
+Disassembly of section .text:
+
+00000018 <main>:
+  18:	fe010113          	addi	sp,sp,-32
+  1c:	00812e23          	sw	s0,28(sp)
+  20:	02010413          	addi	s0,sp,32
+  24:	00100793          	li	a5,1
+  28:	fef42623          	sw	a5,-20(s0)
+  2c:	00200793          	li	a5,2
+  30:	fef42423          	sw	a5,-24(s0)
+  34:	fec42703          	lw	a4,-20(s0)
+  38:	fe842783          	lw	a5,-24(s0)
+  3c:	00f707b3          	add	a5,a4,a5
+  40:	fef42223          	sw	a5,-28(s0)
+  44:	00000793          	li	a5,0
+  48:	00078513          	mv	a0,a5
+  4c:	01c12403          	lw	s0,28(sp)
+  50:	02010113          	addi	sp,sp,32
+  54:	00008067          	ret
+
+Disassembly of section .eh_frame:
+
+00000058 <__global_pointer$-0xfffffa8>:
+  58:	0014                	0x14
+  5a:	0000                	unimp
+  5c:	0000                	unimp
+  5e:	0000                	unimp
+  60:	00527a03          	0x527a03
+  64:	7c01                	lui	s8,0xfffe0
+  66:	0101                	addi	sp,sp,0
+  68:	07020d1b          	0x7020d1b
+  6c:	0001                	nop
+  6e:	0000                	unimp
+  70:	0010                	0x10
+  72:	0000                	unimp
+  74:	001c                	0x1c
+  76:	0000                	unimp
+  78:	ff88                	fsw	fa0,56(a5)
+  7a:	ffff                	0xffff
+  7c:	0018                	0x18
+  7e:	0000                	unimp
+  80:	0000                	unimp
+  82:	0000                	unimp
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1b41                	addi	s6,s6,-16
+   2:	0000                	unimp
+   4:	7200                	flw	fs0,32(a2)
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,14 <_start+0x14>
+   c:	0011                	c.nop	4
+   e:	0000                	unimp
+  10:	1004                	addi	s1,sp,32
+  12:	7205                	lui	tp,0xfffe1
+  14:	3376                	fld	ft6,376(sp)
+  16:	6932                	flw	fs2,12(sp)
+  18:	7032                	flw	ft0,44(sp)
+  1a:	0030                	addi	a2,sp,8
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
+   4:	2820                	fld	fs0,80(s0)
+   6:	29554e47          	fmsub.s	ft8,fa0,fs5,ft5,rmm
+   a:	3120                	fld	fs0,96(a0)
+   c:	2e30                	fld	fa2,88(a2)
+   e:	2e32                	fld	ft8,264(sp)
+  10:	0030                	addi	a2,sp,8
