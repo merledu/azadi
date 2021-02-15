@@ -13,10 +13,9 @@ TEST = add
 RISCV_PREFIX = riscv32-unknown-elf-
 GCC_PREFIX = $(RISCV_PREFIX)gcc
 GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99
-LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -lm -lgcc -T $(TEST_DIR)/link.ld
+LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -T $(TEST_DIR)/link.ld
 OBJDUMP_PREFIX = $(RISCV_PREFIX)objdump
-OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes 
-#--section=.text --section=.text.startup --section=.text.init --section=.data
+OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes --section=.text --section=.text.startup --section=.text.init --section=.data
 VERILATOR = verilator
 
 TBFILES = $(AZADI_ROOT)/src/azadi_soc/rtl/azadi_soc_top.sv
@@ -62,6 +61,6 @@ build:
 	@rm -rf $(TEST_DIR)/output 
 	@mkdir $(TEST_DIR)/output
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/$(TEST).c -o $(TEST_DIR)/output/$(TEST) -lm -lgcc
-	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/start.S $(TEST_DIR)/output/$(TEST) -o $(TEST_DIR)/output/$(TEST).merl 
+	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/start.S $(TEST_DIR)/output/$(TEST) -o $(TEST_DIR)/output/$(TEST).merl -lgcc
 	$(OBJDUMP_PREFIX) $(OBJDUMP_FLAGS) $(TEST_DIR)/output/$(TEST).merl > $(TEST_DIR)/output/$(TEST).dump
 	$(RISCV_PREFIX)elf2hex --bit-width 32 --input $(TEST_DIR)/output/$(TEST).merl --output $(TEST_DIR)/output/program.hex

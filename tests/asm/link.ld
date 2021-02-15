@@ -11,7 +11,7 @@ DCCM  : ORIGIN = 0x10000000, LENGTH = 4K
 ENTRY(_start)
 SECTIONS
 {
-PROVIDE(__stack_top = ORIGIN(DCCM) + LENGTH(DCCM));
+PROVIDE( __stack_top = ORIGIN(DCCM) + LENGTH(DCCM));
 .init :
 {
   KEEP (*(SORT_NONE(.init)))
