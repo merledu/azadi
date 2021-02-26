@@ -1,7 +1,10 @@
-
+// Copyright lowRISC contributors.
+// Copyright 2017 ETH Zurich and University of Bologna, see also CREDITS.md.
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
 
 /**
- * Package with constants used by brq
+ * Package with constants used by Ibex
  */
 package brq_pkg;
 
@@ -28,6 +31,23 @@ typedef enum integer {
   RV32BFull     = 2
 } rv32b_e;
 
+typedef enum integer { 
+  RV32FNone     = 0,
+  RV32FSingle   = 1,
+  RV32FDouble   = 2
+  // RV32FQuad     = 3
+} rv32f_e;
+
+// typedef enum integer { 
+//   RV32DNone     = 0,
+//   RV32DDouble   = 1
+// } rv32d_e;
+
+// typedef enum integer { 
+//   RV32QNone     = 0,
+//   RV32QQuad     = 1
+// } rv32q_e;
+
 /////////////
 // Opcodes //
 /////////////
@@ -43,7 +63,15 @@ typedef enum logic [6:0] {
   OPCODE_BRANCH   = 7'h63,
   OPCODE_JALR     = 7'h67,
   OPCODE_JAL      = 7'h6f,
-  OPCODE_SYSTEM   = 7'h73
+  OPCODE_SYSTEM   = 7'h73,
+  // Floating Point
+  OPCODE_LOAD_FP  = 7'h07,
+  OPCODE_STORE_FP = 7'h27,
+  OPCODE_MADD_FP  = 7'h43,
+  OPCODE_MSUB_FP  = 7'h47,
+  OPCODE_NMSUB_FP = 7'h4b,
+  OPCODE_NMADD_FP = 7'h4f,
+  OPCODE_OP_FP    = 7'h53
 } opcode_e;
 
 
@@ -159,6 +187,12 @@ typedef enum logic [1:0] {
   MD_OP_REM
 } md_op_e;
 
+// define which type instruction
+// is catered
+typedef enum logic {
+  SINGLE_FP,
+  DOUBLE_FP
+} fp_type_e;
 
 //////////////////////////////////
 // Control and status registers //
