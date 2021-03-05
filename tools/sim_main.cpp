@@ -2,9 +2,10 @@
 #include <iostream>
 #include <utility>
 #include <string>
-#include "Vazadi_soc_top.h"
+#include "VAzadi_top_verilator.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
+#include "VAzadi_top_verilator__Dpi.h"
 
 
 unsigned int main_time = 0;
@@ -21,7 +22,7 @@ int main (int argc, char **argv) {
 
     Verilated::commandArgs(argc, argv);
 
-    Vazadi_soc_top* top = new Vazadi_soc_top;
+    VAzadi_top_verilator* top = new VAzadi_top_verilator;
 
     // init trace dump
     //VerilatedVcdC* tfp = NULL;
@@ -40,7 +41,7 @@ int main (int argc, char **argv) {
     
 
    top -> gpio_i = 8;
-    while (main_time < 1000 && !Verilated::gotFinish()) 
+    while (!Verilated::gotFinish()) 
     { 
         top->clock = top->clock ? 0 : 1; 
               // Toggle clock
