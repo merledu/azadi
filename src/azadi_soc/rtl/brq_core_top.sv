@@ -1,5 +1,5 @@
-//`include "/home/merl/github_repos/brq/rtl/ibex_pkg.sv"
-//`include "/home/merl/github_repos/brq/rtl/prim_pkg.sv"
+//`include "/home/usman/Documents/ibex/rtl/ibex_pkg.sv"
+//`include "/home/merl/Documents/ibex/rtl/prim_pkg.sv"
 
 module brq_core_top
 (
