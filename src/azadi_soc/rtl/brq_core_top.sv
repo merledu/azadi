@@ -1,7 +1,10 @@
 //`include "/home/usman/Documents/ibex/rtl/ibex_pkg.sv"
 //`include "/home/merl/Documents/ibex/rtl/prim_pkg.sv"
 
-module brq_core_top
+module brq_core_top #(
+    .DmHaltAddr       (0),
+    .DmExceptionAddr  (0)
+)
 (
   input clock,
   input reset,
@@ -61,25 +64,8 @@ import brq_pkg::*;
 
 
 brq_core #(
-    .PMPEnable        (1),
-    .PMPGranularity   (0),
-    .PMPNumRegions    (16),
-    .MHPMCounterNum   (10),
-    .MHPMCounterWidth (32),
-    .RV32E            (0),
-    .RV32M            (brq_pkg::RV32MSlow),
-    .RV32B            (brq_pkg::RV32BNone),
-    .RegFile          (brq_pkg::RegFileFF),
-    .BranchTargetALU  (1),
-    .WritebackStage   (1),
-    .ICache           (0),
-    .ICacheECC        (0),
-    .BranchPredictor  (0),
-    .DbgTriggerEn     (1),
-    .DbgHwBreakNum    (2),
-    .Securebrq        (0),
-    .DmHaltAddr       (0),
-    .DmExceptionAddr  (0)
+    .DmHaltAddr       (DmHaltAddr),
+    .DmExceptionAddr  (DmExceptionAddr)
 ) u_core (
     // Clock and Reset
     .clk_i (clock),
