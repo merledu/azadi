@@ -94,8 +94,8 @@ logic iccm_cntrl_we;
   //tlul_pkg::tl_d2h_t gpio_to_core;
 
 brq_core_top #(
-    .DmHaltAddr       (ADDR_SPACE_DEBUG_ROM + dm::HaltAddress),
-    .DmExceptionAddr  (ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
+    .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::HaltAddress),
+    .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
 ) u_top (
     .clock (clock),
     .reset (dbg_rst | reset_ni),
