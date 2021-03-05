@@ -2,8 +2,8 @@
 //`include "/home/merl/Documents/ibex/rtl/prim_pkg.sv"
 
 module brq_core_top #(
-    parameter int unsigned DmHaltAddr       (0),
-    parameter int unsigned DmExceptionAddr  (0)
+    parameter int unsigned DmHaltAddr       =0,
+    parameter int unsigned DmExceptionAddr  =0
 )
 (
   input clock,
