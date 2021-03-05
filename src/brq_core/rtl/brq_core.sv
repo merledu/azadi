@@ -105,6 +105,8 @@ module brq_core #(
 
   import brq_pkg::*;
 
+  localparam int unsigned W = 32;
+
   localparam int unsigned PMP_NUM_CHAN      = 2;
   localparam bit          DataIndTiming     = Securebrq;
   localparam bit          DummyInstructions = Securebrq;
@@ -357,7 +359,7 @@ module brq_core #(
 
   // Before going to sleep, wait for I- and D-side
   // interfaces to finish ongoing operations.
-  assign core_busy_d = ctrl_busy | if_busy | lsu_busy;
+  assign core_busy_d = ctrl_busy | if_busy | lsu_busy | fp_busy;
 
   always_ff @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni) begin
@@ -627,7 +629,21 @@ module brq_core #(
       .perf_dside_wait_o            ( perf_dside_wait          ),
       .perf_mul_wait_o              ( perf_mul_wait            ),
       .perf_div_wait_o              ( perf_div_wait            ),
-      .instr_id_done_o              ( instr_id_done            )
+      .instr_id_done_o              ( instr_id_done            ),
+
+      // Floating point extensions IO
+      .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
+      .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
+      .fp_floating_type                ( fp_floating_type      ),   // Single precision or double 
+      .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
+      .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
+      .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
+      .fp_rf_ren_a_o                   ( fp_rf_ren_a           ),     
+      .fp_rf_ren_b_o                   ( fp_rf_ren_b           ),     
+      .fp_rf_ren_c_o                   ( fp_rf_ren_c           ),
+      .fp_rf_we_o                      ( fp_rf_we              ),
+      .fp_alu_operator_o               ( fp_alu_operator       ),
+      .fp_alu_op_mod_o                 ( fp_alu_op_mod         )
   );
 
   // for RVFI only
@@ -1053,6 +1069,57 @@ module brq_core #(
       .mul_wait_i              ( perf_mul_wait                ),
       .div_wait_i              ( perf_div_wait                )
   );
+       // Floating point extensions IO
+      .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
+      .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
+      .fp_floating_type                ( fp_floating_type      ),   // Single precision or double 
+      .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
+      .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
+      .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
+      .fp_rf_ren_a_o                   ( fp_rf_ren_a           ),     
+      .fp_rf_ren_b_o                   ( fp_rf_ren_b           ),     
+      .fp_rf_ren_c_o                   ( fp_rf_ren_c           ),
+      .fp_rf_we_o                      ( fp_rf_we              ),
+      .fp_alu_operator_o               ( fp_alu_operator       ),
+      .fp_alu_op_mod_o                 ( fp_alu_op_mod         ),
+      .fp_src_fmt_o                    ( fp_src_fmt_o          ),
+      .fp_dst_fmt_o                    ( fp_dst_fmt_o          )
+  
+  logic                   fp_busy;
+  logic [W-1:0]           fp_result;
+  logic [2:0][W-1:0]      fp_operands;
+  fpnew_pkg::status_t     fp_status;
+  fpnew_pkg::operation_e  fp_operation;
+
+// FPU instance
+  fpnew_top #(
+    .Features       ( fpnew_pkg::RV64D          ),
+    .Implementation ( fpnew_pkg::DEFAULT_NOREGS ),
+    .TagType        ( logic                     )
+  ) i_fpnew_top (
+    .clk_i          ( clk                       ),
+    .rst_ni         ( rst_ni                    ),
+    .operands_i     ( fp_operands               ),
+    .rnd_mode_i     ( ),
+    .op_i           ( fp_alu_operator           ),
+    .op_mod_i       ( fp_alu_op_mod             ),
+    .src_fmt_i      ( fp_src_fmt        ),
+    .dst_fmt_i      ( fp_dst_fmt         ),
+    .int_fmt_i      ( fpnew_pkg::INT32   ),
+    .vectorial_op_i ( 1'b0    ),
+    .tag_i          ( logic     ),
+    .in_valid_i     ( instr_valid_id  ),
+    .in_ready_o     (  ),
+    .flush_i        (  ),
+    .result_o       ( fp_result ),
+    .status_o       ( fp_status ),
+    .tag_o          ( ),
+    .out_valid_o    ( ),
+    .out_ready_i    ( ),
+    .busy_o         ( fp_busy )
+  );
+
+  assign data_wb = (is_fp_instr) ? fp_result : result_ex;
 
   // These assertions are in top-level as instr_valid_id required as the enable term
 

@@ -1,5 +1,3 @@
-
-
 /**
  * Execution stage
  *
@@ -8,13 +6,13 @@
 module brq_exu #(
     parameter brq_pkg::rv32m_e RV32M           = brq_pkg::RV32MFast,
     parameter brq_pkg::rv32b_e RV32B           = brq_pkg::RV32BNone,
-    parameter bit               BranchTargetALU = 0
+    parameter bit              BranchTargetALU = 0
 ) (
     input  logic                  clk_i,
     input  logic                  rst_ni,
 
     // ALU
-    input  brq_pkg::alu_op_e     alu_operator_i,
+    input  brq_pkg::alu_op_e      alu_operator_i,
     input  logic [31:0]           alu_operand_a_i,
     input  logic [31:0]           alu_operand_b_i,
     input  logic                  alu_instr_first_cycle_i,
@@ -25,7 +23,7 @@ module brq_exu #(
     input  logic [31:0]           bt_b_operand_i,
 
     // Multiplier/Divider
-    input  brq_pkg::md_op_e      multdiv_operator_i,
+    input  brq_pkg::md_op_e       multdiv_operator_i,
     input  logic                  mult_en_i,             // dynamic enable signal, for FSM control
     input  logic                  div_en_i,              // dynamic enable signal, for FSM control
     input  logic                  mult_sel_i,            // static decoder output, for data muxes

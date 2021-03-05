@@ -12,14 +12,14 @@
  */
 
 module brq_idu #(
-    parameter bit               RV32E           = 0,
+    parameter bit              RV32E           = 0,
     parameter brq_pkg::rv32m_e RV32M           = brq_pkg::RV32MFast,
     parameter brq_pkg::rv32b_e RV32B           = brq_pkg::RV32BNone,
-    parameter bit               DataIndTiming   = 1'b0,
-    parameter bit               BranchTargetALU = 0,
-    parameter bit               SpecBranch      = 0,
-    parameter bit               WritebackStage  = 0,
-    parameter bit               BranchPredictor = 0
+    parameter bit              DataIndTiming   = 1'b0,
+    parameter bit              BranchTargetALU = 0,
+    parameter bit              SpecBranch      = 0,
+    parameter bit              WritebackStage  = 0,
+    parameter bit              BranchPredictor = 0
 ) (
     input  logic                      clk_i,
     input  logic                      rst_ni,
@@ -46,10 +46,10 @@ module brq_idu #(
     // IF and ID stage signals
     output logic                      pc_set_o,
     output logic                      pc_set_spec_o,
-    output brq_pkg::pc_sel_e         pc_mux_o,
+    output brq_pkg::pc_sel_e          pc_mux_o,
     output logic                      nt_branch_mispredict_o,
-    output brq_pkg::exc_pc_sel_e     exc_pc_mux_o,
-    output brq_pkg::exc_cause_e      exc_cause_o,
+    output brq_pkg::exc_pc_sel_e      xc_pc_mux_o,
+    output brq_pkg::exc_cause_e       exc_cause_o,
 
     input  logic                      illegal_c_insn_i,
     input  logic                      instr_fetch_err_i,
@@ -61,7 +61,7 @@ module brq_idu #(
     input  logic                      ex_valid_i,       // EX stage has valid output
     input  logic                      lsu_resp_valid_i, // LSU has valid output, or is done
     // ALU
-    output brq_pkg::alu_op_e         alu_operator_ex_o,
+    output brq_pkg::alu_op_e          alu_operator_ex_o,
     output logic [31:0]               alu_operand_a_ex_o,
     output logic [31:0]               alu_operand_b_ex_o,
 
@@ -79,7 +79,7 @@ module brq_idu #(
     output logic                      div_en_ex_o,
     output logic                      mult_sel_ex_o,
     output logic                      div_sel_ex_o,
-    output brq_pkg::md_op_e          multdiv_operator_ex_o,
+    output brq_pkg::md_op_e           multdiv_operator_ex_o,
     output logic  [1:0]               multdiv_signed_mode_ex_o,
     output logic [31:0]               multdiv_operand_a_ex_o,
     output logic [31:0]               multdiv_operand_b_ex_o,
@@ -87,7 +87,7 @@ module brq_idu #(
 
     // CSR
     output logic                      csr_access_o,
-    output brq_pkg::csr_op_e         csr_op_o,
+    output brq_pkg::csr_op_e          csr_op_o,
     output logic                      csr_op_en_o,
     output logic                      csr_save_if_o,
     output logic                      csr_save_id_o,
@@ -96,7 +96,7 @@ module brq_idu #(
     output logic                      csr_restore_dret_id_o,
     output logic                      csr_save_cause_o,
     output logic [31:0]               csr_mtval_o,
-    input  brq_pkg::priv_lvl_e       priv_mode_i,
+    input  brq_pkg::priv_lvl_e        priv_mode_i,
     input  logic                      csr_mstatus_tw_i,
     input  logic                      illegal_csr_insn_i,
     input  logic                      data_ind_timing_i,
@@ -128,7 +128,7 @@ module brq_idu #(
 
     // Debug Signal
     output logic                      debug_mode_o,
-    output brq_pkg::dbg_cause_e      debug_cause_o,
+    output brq_pkg::dbg_cause_e       debug_cause_o,
     output logic                      debug_csr_save_o,
     input  logic                      debug_req_i,
     input  logic                      debug_single_step_i,
@@ -161,7 +161,7 @@ module brq_idu #(
     input  logic                      rf_write_wb_i,
 
     output  logic                     en_wb_o,
-    output  brq_pkg::wb_instr_type_e instr_type_wb_o,
+    output  brq_pkg::wb_instr_type_e  instr_type_wb_o,
     output  logic                     instr_perf_count_id_o,
     input logic                       ready_wb_i,
     input logic                       outstanding_load_wb_i,
@@ -175,7 +175,25 @@ module brq_idu #(
                                                          // access to finish before proceeding
     output logic                      perf_mul_wait_o,
     output logic                      perf_div_wait_o,
-    output logic                      instr_id_done_o
+    output logic                      instr_id_done_o,
+
+    // Floating point extensions IO
+    output logic [2:0]           fp_rounding_mode_o,       // defines the rounding mode 
+    output buraq_pkg::op_b_sel_e fp_alu_op_b_mux_sel_o,    // operand b selection: reg value or
+                                                           // immediate 
+    output buraq_pkg::fp_type_e  fp_floating_type,         // Single precision or double 
+    output logic [4:0]           fp_rf_raddr_a_o,
+    output logic [4:0]           fp_rf_raddr_b_o,
+    output logic [4:0]           fp_rf_raddr_c_o,
+    output logic                 fp_rf_ren_a_o,     
+    output logic                 fp_rf_ren_b_o,     
+    output logic                 fp_rf_ren_c_o,
+    output logic                 fp_rf_we_o,
+
+    output fpnew_pkg::operation_e fp_alu_operator_o,
+    output logic                  fp_alu_op_mod_o,
+    output fpnew_pkg::fp_format_e fp_src_fmt_o,
+    output fpnew_pkg::fp_format_e fp_dst_fmt_o
 );
 
   import brq_pkg::*;
@@ -470,7 +488,23 @@ module brq_idu #(
 
       // jump/branches
       .jump_in_dec_o                   ( jump_in_dec          ),
-      .branch_in_dec_o                 ( branch_in_dec        )
+      .branch_in_dec_o                 ( branch_in_dec        ),
+
+      // Floating point extensions IO
+      .fp_rounding_mode_o              ( fp_rounding_mode_o    ),   // defines the rounding mode 
+      .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel_o ),   // operand b selection: reg value or immediate                       
+      .fp_floating_type                ( fp_floating_type      ),   // Single precision or double 
+      .fp_rf_raddr_a_o                 ( fp_rf_raddr_a_o       ),
+      .fp_rf_raddr_b_o                 ( fp_rf_raddr_b_o       ),
+      .fp_rf_raddr_c_o                 ( fp_rf_raddr_c_o       ),
+      .fp_rf_ren_a_o                   ( fp_rf_ren_a_o         ),     
+      .fp_rf_ren_b_o                   ( fp_rf_ren_b_o         ),     
+      .fp_rf_ren_c_o                   ( fp_rf_ren_c_o         ),
+      .fp_rf_we_o                      ( fp_rf_we_o            ),
+      .fp_alu_operator_o               ( fp_alu_operator_o     ),
+      .fp_alu_op_mod_o                 ( fp_alu_op_mod_o       ),
+      .fp_src_fmt_o                    ( fp_src_fmt_o          ),
+      .fp_dst_fmt_o                    ( fp_dst_fmt_o          )
   );
 
   /////////////////////////////////
