@@ -93,7 +93,27 @@ logic iccm_cntrl_we;
   //tlul_pkg::tl_h2d_t core_to_gpio;
   //tlul_pkg::tl_d2h_t gpio_to_core;
 
-brq_core_top u_top (
+brq_core_top #(
+    .PMPEnable        (1'b0),
+    .PMPGranularity   (0),
+    .PMPNumRegions    (4),
+    .MHPMCounterNum   (0),
+    .MHPMCounterWidth (40),
+    .RV32E            (1'b0),
+    .RV32M            (brq_pkg::RV32MFast),
+    .RV32B            (brq_pkg::RV32BNone),
+    .RegFile          (brq_pkg::RegFileFF),
+    .BranchTargetALU  (1'b0),
+    .WritebackStage   (1'b0),
+    .ICache           (1'b0),
+    .ICacheECC        (1'b0),
+    .BranchPredictor  (1'b0),
+    .DbgTriggerEn     (1'b0),
+    .DbgHwBreakNum    (1),
+    .Securebrq        (1'b0),
+    .DmHaltAddr       (ADDR_SPACE_DEBUG_ROM + dm::HaltAddress),
+    .DmExceptionAddr  (ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
+) u_top (
     .clock (clock),
     .reset (dbg_rst | reset_ni),
 
