@@ -105,6 +105,7 @@ module brq_core #(
 
   import brq_pkg::*;
 
+  logic                   fp_rm_dynamic;
   localparam int unsigned W = 32;
 
   localparam int unsigned PMP_NUM_CHAN      = 2;
@@ -643,7 +644,8 @@ module brq_core #(
       .fp_rf_ren_c_o                   ( fp_rf_ren_c           ),
       .fp_rf_we_o                      ( fp_rf_we              ),
       .fp_alu_operator_o               ( fp_alu_operator       ),
-      .fp_alu_op_mod_o                 ( fp_alu_op_mod         )
+      .fp_alu_op_mod_o                 ( fp_alu_op_mod         ),
+      .fp_rm_dynamic_o                 ( fp_rm_dynamic         )
   );
 
   // for RVFI only
@@ -1100,7 +1102,7 @@ module brq_core #(
     .clk_i          ( clk                       ),
     .rst_ni         ( rst_ni                    ),
     .operands_i     ( fp_operands               ),
-    .rnd_mode_i     ( ),
+    .rnd_mode_i     ( (fp_rm_dynamic ? fp_rounding_mode ),
     .op_i           ( fp_alu_operator           ),
     .op_mod_i       ( fp_alu_op_mod             ),
     .src_fmt_i      ( fp_src_fmt        ),

@@ -193,7 +193,8 @@ module brq_idu #(
     output fpnew_pkg::operation_e fp_alu_operator_o,
     output logic                  fp_alu_op_mod_o,
     output fpnew_pkg::fp_format_e fp_src_fmt_o,
-    output fpnew_pkg::fp_format_e fp_dst_fmt_o
+    output fpnew_pkg::fp_format_e fp_dst_fmt_o,
+    output logic                  fp_rm_dynamic_o
 );
 
   import brq_pkg::*;
@@ -504,7 +505,8 @@ module brq_idu #(
       .fp_alu_operator_o               ( fp_alu_operator_o     ),
       .fp_alu_op_mod_o                 ( fp_alu_op_mod_o       ),
       .fp_src_fmt_o                    ( fp_src_fmt_o          ),
-      .fp_dst_fmt_o                    ( fp_dst_fmt_o          )
+      .fp_dst_fmt_o                    ( fp_dst_fmt_o          ),
+      .fp_rm_dynamic_o                 ( fp_rm_dynamic_o       )
   );
 
   /////////////////////////////////
