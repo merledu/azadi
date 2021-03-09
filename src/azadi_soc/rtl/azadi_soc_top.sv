@@ -98,7 +98,7 @@ brq_core_top #(
     .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
 ) u_top (
     .clock (clock),
-    .reset (dbg_rst | reset_ni),
+    .reset (dbg_rst),
 
   // instruction memory interface 
     .tl_i_i (xbar_to_ifu),

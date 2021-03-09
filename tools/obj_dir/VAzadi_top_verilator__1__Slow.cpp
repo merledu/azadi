@@ -5425,9 +5425,6 @@ void VAzadi_top_verilator::_eval_initial(VAzadi_top_verilator__Syms* __restrict 
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlSymsp->TOP__gpio_reg_pkg._initial__TOP__gpio_reg_pkg__1(vlSymsp);
-    vlTOPp->__Vm_traceActivity[0x19U] = 1U;
-    vlTOPp->__Vm_traceActivity[0x18U] = 1U;
-    vlTOPp->__Vm_traceActivity[0x17U] = 1U;
     vlTOPp->__Vm_traceActivity[0x16U] = 1U;
     vlTOPp->__Vm_traceActivity[0x15U] = 1U;
     vlTOPp->__Vm_traceActivity[0x14U] = 1U;
@@ -5456,8 +5453,6 @@ void VAzadi_top_verilator::_eval_initial(VAzadi_top_verilator__Syms* __restrict 
         = vlTOPp->__VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst;
     vlTOPp->__Vclklast__TOP__clock = vlTOPp->clock;
     vlTOPp->__Vclklast__TOP__reset_ni = vlTOPp->reset_ni;
-    vlTOPp->__Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset 
-        = vlTOPp->__VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__clk 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__clk;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i 
@@ -5473,9 +5468,6 @@ void VAzadi_top_verilator::final() {
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_final_TOP(vlSymsp);
-    vlTOPp->__Vm_traceActivity[0x19U] = 1U;
-    vlTOPp->__Vm_traceActivity[0x18U] = 1U;
-    vlTOPp->__Vm_traceActivity[0x17U] = 1U;
     vlTOPp->__Vm_traceActivity[0x16U] = 1U;
     vlTOPp->__Vm_traceActivity[0x15U] = 1U;
     vlTOPp->__Vm_traceActivity[0x14U] = 1U;
@@ -5506,9 +5498,6 @@ void VAzadi_top_verilator::_eval_settle(VAzadi_top_verilator__Syms* __restrict v
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_settle__TOP__2(vlSymsp);
-    vlTOPp->__Vm_traceActivity[0x19U] = 1U;
-    vlTOPp->__Vm_traceActivity[0x18U] = 1U;
-    vlTOPp->__Vm_traceActivity[0x17U] = 1U;
     vlTOPp->__Vm_traceActivity[0x16U] = 1U;
     vlTOPp->__Vm_traceActivity[0x15U] = 1U;
     vlTOPp->__Vm_traceActivity[0x14U] = 1U;
@@ -5701,7 +5690,6 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     Azadi_top_verilator__DOT__top_verilator__DOT__jtag_req = VL_RAND_RESET_I(4);
     Azadi_top_verilator__DOT__top_verilator__DOT__jtag_rsp = VL_RAND_RESET_I(2);
     Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst = VL_RAND_RESET_I(1);
-    Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__instr_req = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__data_req = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__instr_rdata_id = VL_RAND_RESET_I(32);
@@ -8186,13 +8174,11 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_sramreqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr = VL_RAND_RESET_I(2);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_wptr = VL_RAND_RESET_I(2);
     __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst = VL_RAND_RESET_I(1);
-    __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset = VL_RAND_RESET_I(1);
     __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni = VL_RAND_RESET_I(1);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst = VL_RAND_RESET_I(1);
-    __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset = VL_RAND_RESET_I(1);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni = VL_RAND_RESET_I(1);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__tl_t_i = VL_RAND_RESET_Q(52);
-    for (int __Vi0=0; __Vi0<26; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<23; ++__Vi0) {
         __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }
 }

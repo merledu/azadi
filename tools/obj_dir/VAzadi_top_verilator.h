@@ -1066,7 +1066,6 @@ VL_MODULE(VAzadi_top_verilator) {
     // Internals; generally not touched by application code
     // Anonymous structures to workaround compiler member-count bugs
     struct {
-        CData/*0:0*/ Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset;
         CData/*0:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni;
         CData/*0:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i;
         CData/*0:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__gen_regfile_ff__DOT__register_file_i__DOT____Vlvbound1;
@@ -1117,25 +1116,22 @@ VL_MODULE(VAzadi_top_verilator) {
         CData/*1:0*/ __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_sramreqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
         CData/*1:0*/ __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_wptr;
         CData/*0:0*/ __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst;
-        CData/*0:0*/ __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset;
         CData/*0:0*/ __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni;
         CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst;
         CData/*0:0*/ __Vclklast__TOP__clock;
         CData/*0:0*/ __Vclklast__TOP__reset_ni;
-        CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset;
         CData/*0:0*/ __Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__clk;
         CData/*0:0*/ __Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i;
         CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni;
         CData/*0:0*/ __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__dbg_rst;
-        CData/*0:0*/ __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT____Vcellinp__u_top__reset;
         CData/*0:0*/ __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni;
         SData/*12:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_reqfifo__rdata_o;
-    };
-    struct {
         SData/*12:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_reqfifo__rdata_o;
         SData/*12:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__u_reqfifo__DOT____Vlvbound1;
         SData/*12:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_reqfifo__rdata_o;
         SData/*12:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_reqfifo__DOT____Vlvbound1;
+    };
+    struct {
         SData/*11:0*/ __Vfunc_csrw__23__csr;
         SData/*11:0*/ __Vfunc_csrr__34__csr;
         QData/*63:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellout__i_dm_mem__data_o;
@@ -1196,12 +1192,12 @@ VL_MODULE(VAzadi_top_verilator) {
         QData/*51:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellout__TIMER_1__tl_h_o[2];
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellinp__TIMER_1__tl_h_i[2][3];
         QData/*51:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellout__TIMER_2__tl_h_o[2];
-    };
-    struct {
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellinp__TIMER_2__tl_h_i[2][3];
         QData/*51:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellout__TIMER_3__tl_h_o[2];
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellinp__TIMER_3__tl_h_i[2][3];
         QData/*51:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellout__TIMER_4__tl_h_o[2];
+    };
+    struct {
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellinp__TIMER_4__tl_h_i[2][3];
         QData/*51:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellout__PLIC__tl_h_o[2];
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellinp__PLIC__tl_h_i[2][3];
@@ -1209,7 +1205,7 @@ VL_MODULE(VAzadi_top_verilator) {
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT____Vcellinp__XBAR_PERI__tl_h_i[2][3];
         QData/*51:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[13];
         WData/*85:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellout__u_s1n_14__tl_d_o[13][3];
-        CData/*0:0*/ __Vm_traceActivity[26];
+        CData/*0:0*/ __Vm_traceActivity[23];
     };
     static CData/*0:0*/ __Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__instr_fetch_err_prio[64];
     static CData/*0:0*/ __Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__illegal_insn_prio[64];
@@ -1273,11 +1269,11 @@ VL_MODULE(VAzadi_top_verilator) {
     static QData _change_request(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static QData _change_request_1(VAzadi_top_verilator__Syms* __restrict vlSymsp);
   public:
-    static void _combo__TOP__17(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _combo__TOP__28(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _combo__TOP__29(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _combo__TOP__16(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _combo__TOP__26(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _combo__TOP__27(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _combo__TOP__38(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _combo__TOP__41(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _combo__TOP__44(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _combo__TOP__7(VAzadi_top_verilator__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
@@ -1292,35 +1288,32 @@ VL_MODULE(VAzadi_top_verilator) {
     static void _eval_settle(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _final_TOP(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _initial__TOP__1(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _multiclk__TOP__22(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__23(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__24(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__25(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__27(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _multiclk__TOP__30(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _multiclk__TOP__31(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__32(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__33(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__34(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__35(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__36(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _multiclk__TOP__37(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__39(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__40(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _multiclk__TOP__45(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _multiclk__TOP__42(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__10(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__11(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__12(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__13(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__14(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__15(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__16(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__17(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__18(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__19(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__20(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__21(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__22(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__26(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__30(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__31(VAzadi_top_verilator__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__38(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__25(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__28(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__29(VAzadi_top_verilator__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__35(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__8(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _sequent__TOP__9(VAzadi_top_verilator__Syms* __restrict vlSymsp);
     static void _settle__TOP__2(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;

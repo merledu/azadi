@@ -33,8 +33,5 @@ void VAzadi_top_verilator::traceCleanup(void* userp, VerilatedVcd* /*unused*/) {
         vlTOPp->__Vm_traceActivity[0x14U] = 0U;
         vlTOPp->__Vm_traceActivity[0x15U] = 0U;
         vlTOPp->__Vm_traceActivity[0x16U] = 0U;
-        vlTOPp->__Vm_traceActivity[0x17U] = 0U;
-        vlTOPp->__Vm_traceActivity[0x18U] = 0U;
-        vlTOPp->__Vm_traceActivity[0x19U] = 0U;
     }
 }
