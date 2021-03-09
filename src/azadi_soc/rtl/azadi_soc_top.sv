@@ -24,6 +24,7 @@ module azadi_soc_top #(
 logic RESET;
 assign RESET = ~reset_ni;
 
+logic system_rst_ni;
 
 wire [19:0] gpio_in;
 wire [19:0] gpio_out;
@@ -86,7 +87,7 @@ logic iccm_cntrl_we;
   assign jtag_tdo_o      = jtag_rsp.tdo;
   assign unused_jtag_tdo_oe_o = jtag_rsp.tdo_oe;
 
-  logic brg_req;
+  logic dbg_req;
   logic dbg_rst;
 //wire 
 
@@ -121,13 +122,13 @@ brq_core_top #(
     .irq_nm_i       (1'b0),       // non-maskeable interrupt
 
     // Debug Interface
-    .debug_req_i    (brg_req),
+    .debug_req_i    (dbg_req),
 
         // CPU Control Signals
     .fetch_enable_i (1'b1),
     .alert_minor_o  (),
     .alert_major_o  (),
-    .core_sleep_o   ()
+    .core_sleep_o   ()dbg_rst
 );
 
 // Debug module
@@ -139,10 +140,10 @@ brq_core_top #(
   .clk_i(clock),       // clock
   .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
-  .testmode_i(1'b0),
+  .testmode_i(),
   .ndmreset_o(dbg_rst),  // non-debug module reset
   .dmactive_o(),  // debug module is active
-  .debug_req_o(brg_req), // async debug request
+  .debug_req_o(dbg_req), // async debug request
   .unavailable_i(1'b0), // communicate whether the hart is unavailable
                                             // (e.g.: power down)
 
@@ -163,7 +164,7 @@ brq_core_top #(
 // main xbar module
   xbar_main_t main_swith (
   .clk_main_i         (clock),
-  .rst_main_ni        (dbg_rst),
+  .rst_main_ni        (system_rst_ni),
 
   // Host interfaces
   .tl_brqif_i         (ifu_to_xbar),
@@ -204,7 +205,7 @@ brq_core_top #(
 
 data_mem dccm(
   .clock    (clock),
-  .reset    (dbg_rst),
+  .reset    (system_rst_ni),
 
 // tl-ul insterface
   .tl_d_i   (xbar_to_dccm),
@@ -216,7 +217,7 @@ data_mem dccm(
 
 xbar_periph periph_switch (
   .clk_peri_i         (clock),
-  .rst_peri_ni        (dbg_rst),
+  .rst_peri_ni        (system_rst_ni),
 
   // Host interfaces
   .tl_xbar_main_i     (xbarm_to_xbarp),
@@ -256,7 +257,7 @@ xbar_periph periph_switch (
 //GPIO module
  gpio GPIO (
   .clk_i          (clock),
-  .rst_ni         (dbg_rst),
+  .rst_ni         (system_rst_ni),
 
   // Below Regster interface can be changed
   .tl_i           (xbarp_to_gpio),
@@ -294,7 +295,7 @@ xbar_periph periph_switch (
 
 instr_mem_top iccm (
   .clock      (clock),
-  .reset      (dbg_rst),
+  .reset      (system_rst_ni),
 
   .req        (req_i),
   .addr       (tlul_addr),
@@ -314,7 +315,7 @@ instr_mem_top iccm (
 
 ) inst_mem (
     .clk_i     (clock),
-    .rst_ni    (dbg_rst),
+    .rst_ni    (system_rst_ni),
     .tl_i      (xbar_to_iccm),
     .tl_o      (iccm_to_xbar), 
     .req_o     (req_i),
@@ -327,5 +328,12 @@ instr_mem_top iccm (
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
     );
+
+rstmgr reset_manager(
+  .clk_i(clock),
+  .rst_ni(reset_ni),
+  .ndmreset (dbg_rst),
+  .sys_rst_ni(system_rst_ni)
+);
 
 endmodule
