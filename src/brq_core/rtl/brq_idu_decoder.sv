@@ -100,8 +100,8 @@ module brq_idu_decoder #(
     output logic                 branch_in_dec_o,
 
     // Floating point extensions IO
-    output logic [2:0]           fp_rounding_mode_o,       // defines the rounding mode 
-    output buraq_pkg::op_b_sel_e fp_alu_op_b_mux_sel_o,    // operand b selection: reg value or
+    output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
+    output buraq_pkg::op_b_sel_e  fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
                                                            // immediate 
     output buraq_pkg::fp_type_e  fp_floating_type_o,       // Single precision or double 
     output logic [4:0]           fp_rf_raddr_a_o,
@@ -186,7 +186,7 @@ module brq_idu_decoder #(
   assign fp_rf_raddr_b_o = instr_rs2;
   assign fp_rf_raddr_c_o = instr_rs3;
 
-  assign fp_rounding_mode_o = instr[14:12];
+  assign fp_rounding_mode_o = roundmode_e'(instr[14:12]);
   assign fp_invalid_rm      = (instr[14:12] == 3'b101) ? 1'b1 :
                               (instr[14:12] == 3'b110) ? 1'b1 : 1'b0;
   assign fp_rm_dynamic_o    = (instr[14:12] == 3'b111) ? 1'b1 : 1'b0;
