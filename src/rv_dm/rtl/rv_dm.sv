@@ -2,7 +2,8 @@
 
 module rv_dm #(
   parameter int              NrHarts = 1,
-  parameter logic [31:0]     IdcodeValue = 32'h 0000_0001
+  parameter logic [31:0]     IdcodeValue = 32'h 0000_0001,
+  parameter  logic DirectDmiTap = 1'b1
 ) (
   input  logic               clk_i,       // clock
   input  logic               rst_ni,      // asynchronous reset active low, connect PoR
@@ -256,7 +257,7 @@ module rv_dm #(
   );
 
   // Bound-in DPI module replaces the TAP
-// `ifndef DMIDirectTAP
+if (DirectDmiTap) begin
   // JTAG TAP
   dmi_jtag #(
     .IdcodeValue    (IdcodeValue)
@@ -282,7 +283,7 @@ module rv_dm #(
     .td_o             (jtag_rsp_o.tdo),
     .tdo_oe_o         (jtag_rsp_o.tdo_oe)
   );
-// `endif
+end
 
   tlul_sram_adapter #(
     .SramAw(AddressWidthWords),

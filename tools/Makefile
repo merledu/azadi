@@ -12,8 +12,8 @@ TEST = add
 # Constants
 RISCV_PREFIX = riscv32-unknown-elf-
 GCC_PREFIX = $(RISCV_PREFIX)gcc
-GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99 -g
-LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -T $(TEST_DIR)/link.ld
+GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99
+LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -T $(TEST_DIR)/common/link.ld
 OBJDUMP_PREFIX = $(RISCV_PREFIX)objdump
 OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes 
 #--section=.text --section=.text.startup --section=.text.init --section=.data
@@ -52,7 +52,7 @@ verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
 	  -CFLAGS -DVL_DEBUG -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
-	  -exe sim_main.cpp jtagdpi.c tcp_server.c --autoflush --trace
+	  -exe sim_main.cpp jtagdpi.c dmidpi.c tcp_server.c --autoflush --trace
 #	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f VAzadi_top_verilator.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
@@ -64,7 +64,9 @@ build:
 	@rm -rf $(TEST_DIR)/output 
 	@mkdir $(TEST_DIR)/output
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/$(TEST).c -o $(TEST_DIR)/output/$(TEST) -lm -lgcc
-	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/start.S $(TEST_DIR)/output/$(TEST) -o $(TEST_DIR)/output/$(TEST).merl -lgcc
+	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/plic_driver.c -o $(TEST_DIR)/output/plic -lm -lgcc
+	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/init.c -o $(TEST_DIR)/output/init -lm -lgcc
+	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/common/start.S $(TEST_DIR)/common/trap.S $(TEST_DIR)/output/$(TEST) $(TEST_DIR)/output/plic $(TEST_DIR)/output/init -o $(TEST_DIR)/output/$(TEST).merl -lgcc
 	$(OBJDUMP_PREFIX) $(OBJDUMP_FLAGS) $(TEST_DIR)/output/$(TEST).merl > $(TEST_DIR)/output/$(TEST).dump
 	$(RISCV_PREFIX)elf2hex --bit-width 32 --input $(TEST_DIR)/output/$(TEST).merl --output $(TEST_DIR)/output/program.hex
 

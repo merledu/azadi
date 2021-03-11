@@ -1,6 +1,7 @@
  
 module azadi_soc_top #(
-  parameter logic [31:0] JTAG_ID = 32'h 0000_0001
+  parameter logic [31:0] JTAG_ID = 32'h 0000_0001,
+  parameter logic DirectDmiTap = 1'b1
 )(
   input clock,
   input reset_ni,
@@ -99,7 +100,7 @@ brq_core_top #(
     .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
 ) u_top (
     .clock (clock),
-    .reset (dbg_rst),
+    .reset (system_rst_ni),
 
   // instruction memory interface 
     .tl_i_i (xbar_to_ifu),
@@ -128,14 +129,15 @@ brq_core_top #(
     .fetch_enable_i (1'b1),
     .alert_minor_o  (),
     .alert_major_o  (),
-    .core_sleep_o   ()dbg_rst
+    .core_sleep_o   ()
 );
 
 // Debug module
 
   rv_dm #(
   .NrHarts(1),
-  .IdcodeValue(JTAG_ID)
+  .IdcodeValue(JTAG_ID),
+  .DirectDmiTap (DirectDmiTap)
   ) debug_module (
   .clk_i(clock),       // clock
   .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR

@@ -1,0 +1,959 @@
+Open On-Chip Debugger 0.11.0-rc2+dev-01538-gd57ab0b63 (2021-03-04-12:24)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+User : 13 4 options.c:63 configuration_output_handler(): debug_level: 3
+User : 14 4 options.c:63 configuration_output_handler(): 
+Debug: 15 4 options.c:244 add_default_dirs(): bindir=/usr/local/bin
+Debug: 16 4 options.c:245 add_default_dirs(): pkgdatadir=/usr/local/share/openocd
+Debug: 17 4 options.c:246 add_default_dirs(): exepath=/usr/local/bin
+Debug: 18 4 options.c:247 add_default_dirs(): bin2data=../share/openocd
+Debug: 19 4 configuration.c:42 add_script_search_dir(): adding /home/usman/.config/openocd
+Debug: 20 4 configuration.c:42 add_script_search_dir(): adding /home/usman/.openocd
+Debug: 21 4 configuration.c:42 add_script_search_dir(): adding /usr/local/bin/../share/openocd/site
+Debug: 22 4 configuration.c:42 add_script_search_dir(): adding /usr/local/bin/../share/openocd/scripts
+Debug: 23 4 configuration.c:97 find_file(): found Documents/azadi/tools/azadi.cfg
+Debug: 24 4 command.c:146 script_debug(): command - echo DEPRECATED! use 'adapter driver' not 'interface'
+User : 26 4 command.c:769 jim_echo(): DEPRECATED! use 'adapter driver' not 'interface'
+Debug: 27 4 command.c:146 script_debug(): command - adapter driver remote_bitbang
+Info : 29 4 transport.c:117 allow_transports(): only one transport option; autoselect 'jtag'
+Debug: 30 4 command.c:146 script_debug(): command - remote_bitbang_host localhost
+Debug: 32 4 command.c:146 script_debug(): command - remote_bitbang_port 44853
+Debug: 34 4 command.c:146 script_debug(): command - jtag newtap riscv tap -irlen 5 -expected-id 0x04f5484d
+Debug: 35 4 tcl.c:571 jim_newtap_cmd(): Creating New Tap, Chip: riscv, Tap: tap, Dotted: riscv.tap, 4 params
+Debug: 36 4 tcl.c:596 jim_newtap_cmd(): Processing option: -irlen
+Debug: 37 4 tcl.c:596 jim_newtap_cmd(): Processing option: -expected-id
+Debug: 38 4 core.c:1484 jtag_tap_init(): Created Tap: riscv.tap @ abs position 0, irlen 5, capture: 0x1 mask: 0x3
+Debug: 39 4 command.c:146 script_debug(): command - target create riscv.tap.0 riscv -chain-position riscv.tap
+Debug: 40 4 target.c:2174 target_free_all_working_areas_restore(): freeing all working areas
+Debug: 41 5 riscv.c:428 riscv_create_target(): riscv_create_target()
+Debug: 42 5 command.c:146 script_debug(): command - riscv set_prefer_sba on
+Warn : 44 5 riscv.c:2302 riscv_set_prefer_sba(): `riscv set_prefer_sba` is deprecated. Please use `riscv set_mem_access` instead.
+Debug: 45 5 command.c:146 script_debug(): command - gdb_report_data_abort enable
+Debug: 47 5 command.c:146 script_debug(): command - gdb_report_register_access_error enable
+Debug: 49 5 command.c:146 script_debug(): command - gdb_breakpoint_override hard
+User : 51 5 gdb_server.c:3785 handle_gdb_breakpoint_override_command(): force hard breakpoints
+Info : 52 5 server.c:312 add_service(): Listening on port 6666 for tcl connections
+Info : 53 5 server.c:312 add_service(): Listening on port 4444 for telnet connections
+Debug: 54 5 command.c:146 script_debug(): command - init
+Debug: 56 5 command.c:146 script_debug(): command - target init
+Debug: 58 5 command.c:146 script_debug(): command - target names
+Debug: 59 5 command.c:146 script_debug(): command - riscv.tap.0 cget -event gdb-flash-erase-start
+Debug: 60 5 command.c:146 script_debug(): command - riscv.tap.0 configure -event gdb-flash-erase-start reset init
+Debug: 61 5 command.c:146 script_debug(): command - riscv.tap.0 cget -event gdb-flash-write-end
+Debug: 62 5 command.c:146 script_debug(): command - riscv.tap.0 configure -event gdb-flash-write-end reset halt
+Debug: 63 5 command.c:146 script_debug(): command - riscv.tap.0 cget -event gdb-attach
+Debug: 64 5 command.c:146 script_debug(): command - riscv.tap.0 configure -event gdb-attach halt 1000
+Debug: 65 5 target.c:1635 handle_target_init_command(): Initializing targets...
+Debug: 66 5 riscv.c:439 riscv_init_target(): riscv_init_target()
+Debug: 67 5 semihosting_common.c:99 semihosting_common_init():  
+Info : 68 5 remote_bitbang.c:282 remote_bitbang_init(): Initializing remote_bitbang driver
+Info : 69 5 remote_bitbang.c:211 remote_bitbang_init_tcp(): Connecting to localhost:44853
+Info : 70 6 remote_bitbang.c:298 remote_bitbang_init(): remote_bitbang driver initialized
+Info : 71 6 core.c:1536 adapter_init(): This adapter doesn't support configurable speed
+Debug: 72 6 openocd.c:143 handle_init_command(): Debug Adapter init complete
+Debug: 73 6 command.c:146 script_debug(): command - transport init
+Debug: 75 6 transport.c:229 handle_transport_init(): handle_transport_init
+Debug: 76 6 core.c:830 jtag_add_reset(): SRST line released
+Debug: 77 6 core.c:855 jtag_add_reset(): TRST line released
+Debug: 78 6 core.c:327 jtag_call_event_callbacks(): jtag event: TAP reset
+Debug: 79 6 command.c:146 script_debug(): command - jtag arp_init
+Debug: 80 6 core.c:1578 jtag_init_inner(): Init JTAG chain
+Debug: 81 6 core.c:327 jtag_call_event_callbacks(): jtag event: TAP reset
+Debug: 82 6 core.c:1243 jtag_examine_chain(): DR scan interrogation for IDCODE/BYPASS
+Debug: 83 6 core.c:327 jtag_call_event_callbacks(): jtag event: TAP reset
+Info : 84 91 core.c:1142 jtag_examine_chain_display(): JTAG tap: riscv.tap tap/device found: 0x04f5484d (mfg: 0x426 (Google Inc), part: 0x4f54, ver: 0x0)
+Debug: 85 91 core.c:1374 jtag_validate_ircapture(): IR capture validation scan
+Debug: 86 93 core.c:1431 jtag_validate_ircapture(): riscv.tap: IR capture 0x05
+Debug: 87 93 command.c:146 script_debug(): command - dap init
+Debug: 89 93 arm_dap.c:106 dap_init_all(): Initializing all DAPs ...
+Debug: 90 93 openocd.c:160 handle_init_command(): Examining targets...
+Debug: 91 93 target.c:1820 target_call_event_callbacks(): target event 19 (examine-start) for core riscv.tap.0
+Debug: 92 93 riscv.c:1061 riscv_examine(): riscv_examine()
+Debug: 93 98 riscv.c:401 dtmcontrol_scan(): DTMCONTROL: 0x0 -> 0x1071
+Debug: 94 98 riscv.c:1071 riscv_examine(): dtmcontrol=0x1071
+Debug: 95 98 riscv.c:1073 riscv_examine():   version=0x1
+Debug: 96 99 riscv-013.c:2282 init_target(): init
+Debug: 97 104 riscv-013.c:456 dtmcontrol_scan(): DTMCS: 0x0 -> 0x1071
+Debug: 98 104 riscv-013.c:1574 examine(): dtmcontrol=0x1071
+Debug: 99 104 riscv-013.c:1575 examine():   dmireset=0
+Debug: 100 104 riscv-013.c:1576 examine():   idle=1
+Debug: 101 104 riscv-013.c:1577 examine():   dmistat=0
+Debug: 102 104 riscv-013.c:1578 examine():   abits=7
+Debug: 103 104 riscv-013.c:1579 examine():   version=1
+Debug: 104 104 riscv-013.c:262 get_dm(): [0] Allocating new DM
+Debug: 105 111 riscv-013.c:402 scan(): 41b w 00000000 @10 -> + 00000000 @10; 0i
+Debug: 106 116 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00000000 @10; 0i
+Debug: 107 122 riscv-013.c:402 scan(): 41b w 00000001 @10 -> + 00000000 @10; 0i
+Debug: 108 122 riscv-013.c:412 scan():  dmactive -> 
+Debug: 109 127 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00000001 @10; 0i
+Debug: 110 127 riscv-013.c:412 scan():  ->  dmactive
+Debug: 111 133 riscv-013.c:402 scan(): 41b w 07ffffc1 @10 -> + 00000000 @10; 0i
+Debug: 112 133 riscv-013.c:412 scan():  hasel hartselhi=1023 hartsello=1023 dmactive -> 
+Debug: 113 139 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 07ffffc1 @10; 0i
+Debug: 114 139 riscv-013.c:412 scan():  ->  hasel hartselhi=1023 hartsello=1023 dmactive
+Debug: 115 145 riscv-013.c:402 scan(): 41b r 00000000 @10 -> + 00000000 @10; 0i
+Debug: 116 150 riscv-013.c:402 scan(): 41b - 00000000 @10 -> b 00000000 @10; 0i
+Debug: 117 150 riscv-013.c:465 increase_dmi_busy_delay(): dtmcs_idle=1, dmi_busy_delay=1, ac_busy_delay=0
+Debug: 118 155 riscv-013.c:456 dtmcontrol_scan(): DTMCS: 0x10000 -> 0x1c71
+Debug: 119 160 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 03ffffc1 @10; 1i
+Debug: 120 160 riscv-013.c:412 scan():  ->  hartselhi=1023 hartsello=1023 dmactive
+Debug: 121 166 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @10; 1i
+Debug: 122 171 riscv-013.c:402 scan(): 41b - 00000000 @11 -> b 00000000 @11; 1i
+Debug: 123 171 riscv-013.c:465 increase_dmi_busy_delay(): dtmcs_idle=1, dmi_busy_delay=2, ac_busy_delay=0
+Debug: 124 176 riscv-013.c:456 dtmcontrol_scan(): DTMCS: 0x10000 -> 0x1071
+Debug: 125 182 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 0000cc82 @11; 2i
+Debug: 126 182 riscv-013.c:412 scan():  ->  allnonexistent anynonexistent allrunning anyrunning authenticated version=2
+Debug: 127 182 riscv-013.c:1624 examine(): dmstatus:  0x0000cc82
+Debug: 128 182 riscv-013.c:1640 examine(): hartsellen=20
+Debug: 129 188 riscv-013.c:402 scan(): 41b r 00000000 @12 -> + 00000000 @11; 2i
+Debug: 130 194 riscv-013.c:402 scan(): 41b - 00000000 @12 -> b 00000000 @12; 2i
+Debug: 131 194 riscv-013.c:465 increase_dmi_busy_delay(): dtmcs_idle=1, dmi_busy_delay=3, ac_busy_delay=0
+Debug: 132 198 riscv-013.c:456 dtmcontrol_scan(): DTMCS: 0x10000 -> 0x1071
+Debug: 133 204 riscv-013.c:402 scan(): 41b - 00000000 @12 -> + 00000000 @12; 3i
+Debug: 134 210 riscv-013.c:402 scan(): 41b r 00000000 @38 -> + 00000000 @12; 3i
+Debug: 135 216 riscv-013.c:402 scan(): 41b - 00000000 @38 -> b 00000000 @38; 3i
+Debug: 136 216 riscv-013.c:465 increase_dmi_busy_delay(): dtmcs_idle=1, dmi_busy_delay=4, ac_busy_delay=0
+Debug: 137 221 riscv-013.c:456 dtmcontrol_scan(): DTMCS: 0x10000 -> 0x1071
+Debug: 138 226 riscv-013.c:402 scan(): 41b - 00000000 @38 -> + 20040404 @38; 4i
+Debug: 139 227 riscv-013.c:412 scan():  ->  sbversion=1 sbaccess=2 sbasize=32 sbaccess32
+Debug: 140 233 riscv-013.c:402 scan(): 41b r 00000000 @16 -> + 00000000 @38; 4i
+Debug: 141 238 riscv-013.c:402 scan(): 41b - 00000000 @16 -> + 08000002 @16; 4i
+Debug: 142 238 riscv-013.c:412 scan():  ->  progbufsize=8 datacount=2
+Info : 143 238 riscv-013.c:1671 examine(): datacount=2 progbufsize=8
+Debug: 144 244 riscv-013.c:402 scan(): 41b r 00000000 @10 -> + 00000000 @16; 4i
+Debug: 145 250 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 03ffffc1 @10; 4i
+Debug: 146 250 riscv-013.c:412 scan():  ->  hartselhi=1023 hartsello=1023 dmactive
+Debug: 147 256 riscv-013.c:402 scan(): 41b w 00000001 @10 -> + 00000000 @10; 4i
+Debug: 148 256 riscv-013.c:412 scan():  dmactive -> 
+Debug: 149 261 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00000001 @10; 4i
+Debug: 150 261 riscv-013.c:412 scan():  ->  dmactive
+Debug: 151 267 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @10; 4i
+Debug: 152 272 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 153 272 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 154 278 riscv-013.c:402 scan(): 41b r 00000000 @10 -> + 00000000 @11; 4i
+Debug: 155 284 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00000001 @10; 4i
+Debug: 156 284 riscv-013.c:412 scan():  ->  dmactive
+Debug: 157 290 riscv-013.c:402 scan(): 41b w 00010001 @10 -> + 00000000 @10; 4i
+Debug: 158 290 riscv-013.c:412 scan():  hartsello=1 dmactive -> 
+Debug: 159 296 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00010001 @10; 4i
+Debug: 160 296 riscv-013.c:412 scan():  ->  hartsello=1 dmactive
+Debug: 161 302 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @10; 4i
+Debug: 162 310 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 0000cc82 @11; 4i
+Debug: 163 310 riscv-013.c:412 scan():  ->  allnonexistent anynonexistent allrunning anyrunning authenticated version=2
+Debug: 164 310 riscv-013.c:1709 examine(): Detected 1 harts.
+Debug: 165 316 riscv-013.c:402 scan(): 41b r 00000000 @10 -> + 00000000 @11; 4i
+Debug: 166 321 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00010001 @10; 4i
+Debug: 167 321 riscv-013.c:412 scan():  ->  hartsello=1 dmactive
+Debug: 168 328 riscv-013.c:402 scan(): 41b w 00000001 @10 -> + 00000000 @10; 4i
+Debug: 169 328 riscv-013.c:412 scan():  dmactive -> 
+Debug: 170 333 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 00000001 @10; 4i
+Debug: 171 333 riscv-013.c:412 scan():  ->  dmactive
+Debug: 172 339 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @10; 4i
+Debug: 173 344 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 174 344 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 175 344 riscv-013.c:4218 riscv013_halt_go(): halting hart 0
+Debug: 176 350 riscv-013.c:402 scan(): 41b w 80000001 @10 -> + 00000000 @11; 4i
+Debug: 177 350 riscv-013.c:412 scan(): haltreq dmactive -> 
+Debug: 178 362 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 80000001 @10; 4i
+Debug: 179 362 riscv-013.c:412 scan():  -> haltreq dmactive
+Debug: 180 368 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @10; 4i
+Debug: 181 374 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 182 374 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 183 380 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 184 385 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 185 385 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 186 391 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 187 397 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 188 397 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 189 403 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 190 408 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 191 408 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 192 414 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 193 420 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 194 420 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 195 426 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 196 431 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 197 431 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 198 438 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 199 443 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 200 443 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 201 449 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 202 454 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 203 454 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 204 461 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 205 466 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 206 466 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 207 472 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 208 478 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 209 478 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 210 484 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 211 490 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 212 490 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 213 496 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 214 501 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 215 501 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 216 507 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 217 513 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 218 513 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 219 519 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 220 524 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 221 524 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 222 530 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 223 535 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 224 535 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 225 542 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 226 547 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 227 547 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 228 553 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 229 558 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 230 558 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 231 564 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 232 569 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 233 569 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 234 576 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 235 581 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 236 581 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 237 587 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 238 592 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 239 592 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 240 598 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 241 604 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 242 604 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 243 610 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 244 615 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 245 615 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 246 621 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 247 627 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 248 627 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 249 633 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 250 638 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 251 638 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 252 644 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 253 649 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 254 649 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 255 655 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 256 661 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 257 661 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 258 667 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 259 672 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 260 672 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 261 678 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 262 683 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 263 683 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 264 689 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 265 695 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 266 695 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 267 701 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 268 706 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 269 706 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 270 712 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 271 718 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 272 718 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 273 724 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 274 729 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 275 729 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 276 735 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 277 740 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 278 740 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 279 747 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 280 752 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 281 752 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 282 758 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 283 763 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 284 763 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 285 770 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 286 775 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 287 775 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 288 782 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 289 787 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 290 787 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 291 793 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 292 798 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 293 798 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 294 805 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 295 810 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 296 810 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 297 816 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 298 821 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 299 821 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 300 827 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 301 833 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 302 833 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 303 839 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 304 844 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 305 844 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 306 850 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 307 856 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 308 856 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 309 862 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 310 873 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 311 873 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 312 880 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 313 885 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 314 885 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 315 891 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 316 897 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 317 897 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 318 903 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 319 908 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 320 908 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 321 915 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 322 927 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 323 935 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 324 941 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 325 947 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 326 947 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 327 953 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 328 958 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 329 958 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 330 964 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 331 969 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 332 969 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 333 976 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 334 981 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 335 981 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 336 987 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 337 993 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 338 993 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 339 999 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 340 1004 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 341 1004 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 342 1010 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 343 1016 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 344 1016 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 345 1022 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 346 1027 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 347 1027 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 348 1033 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 349 1039 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 350 1039 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 351 1045 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 352 1051 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 353 1051 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 354 1057 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 355 1062 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 356 1062 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 357 1068 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 358 1074 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 359 1074 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 360 1080 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 361 1085 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 362 1085 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 363 1091 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 364 1096 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 365 1096 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 366 1102 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 367 1108 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 368 1108 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 369 1114 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 370 1119 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 371 1119 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 372 1125 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 373 1130 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 374 1130 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 375 1136 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 376 1141 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 377 1141 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 378 1148 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 379 1153 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 380 1153 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 381 1159 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 382 1164 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 383 1164 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 384 1170 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 385 1175 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 386 1175 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 387 1182 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 388 1187 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 389 1187 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 390 1193 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 391 1198 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 392 1198 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 393 1204 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 394 1209 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 395 1209 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 396 1215 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 397 1221 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 398 1221 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 399 1227 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 400 1232 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 401 1232 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 402 1238 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 403 1244 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 404 1244 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 405 1250 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 406 1255 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 407 1255 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 408 1261 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 409 1266 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 410 1266 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 411 1272 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 412 1278 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 413 1278 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 414 1284 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 415 1289 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 416 1289 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 417 1295 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 418 1300 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 419 1300 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 420 1306 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 421 1313 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 422 1313 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 423 1319 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 424 1324 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 425 1324 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 426 1330 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 427 1335 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 428 1335 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 429 1341 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 430 1347 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 431 1347 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 432 1353 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 433 1358 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 434 1358 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 435 1381 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 436 1387 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 437 1387 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 438 1393 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 439 1398 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 440 1398 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 441 1404 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 442 1410 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 443 1410 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 444 1416 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 445 1421 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 446 1421 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 447 1427 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 448 1432 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 449 1432 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 450 1439 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 451 1445 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 452 1445 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 453 1451 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 454 1456 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 455 1456 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 456 1463 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 457 1468 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 458 1468 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 459 1474 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 460 1479 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 461 1479 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 462 1485 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 463 1491 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 464 1491 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 465 1497 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 466 1502 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 467 1502 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 468 1508 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 469 1514 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 470 1514 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 471 1520 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 472 1525 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 473 1525 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 474 1531 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 475 1536 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 476 1536 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 477 1542 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 478 1548 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 479 1548 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 480 1554 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 481 1559 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 482 1559 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 483 1565 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 484 1570 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 485 1570 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 486 1577 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 487 1582 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 488 1582 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 489 1588 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 490 1593 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 491 1593 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 492 1599 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 493 1604 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 494 1605 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 495 1611 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 496 1616 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 497 1616 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 498 1622 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 499 1628 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 500 1628 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 501 1634 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 502 1640 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 503 1640 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 504 1646 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 505 1651 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 506 1651 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 507 1657 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 508 1662 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 509 1662 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 510 1669 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 511 1674 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 512 1674 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 513 1680 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 514 1685 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 515 1685 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 516 1691 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 517 1697 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 518 1697 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 519 1703 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 520 1708 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 521 1708 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 522 1714 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 523 1719 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 524 1719 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 525 1725 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 526 1731 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 527 1731 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 528 1737 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 529 1742 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 530 1742 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 531 1748 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 532 1753 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 533 1753 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 534 1759 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 535 1765 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 536 1765 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 537 1771 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 538 1776 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 539 1776 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 540 1782 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 541 1787 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 542 1787 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 543 1794 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 544 1799 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 545 1799 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 546 1805 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 547 1810 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 548 1810 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 549 1816 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 550 1822 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 551 1822 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 552 1828 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 553 1833 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 554 1833 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 555 1839 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 556 1844 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 557 1844 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 558 1851 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 559 1856 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 560 1856 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 561 1862 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 562 1867 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 563 1867 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 564 1874 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 565 1879 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 566 1879 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 567 1885 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 568 1911 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 569 1911 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 570 1917 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 571 1922 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 572 1922 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 573 1929 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 574 1935 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 575 1935 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 576 1941 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 577 1946 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 578 1946 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 579 1953 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 580 1958 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 581 1958 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 582 1964 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 583 1970 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 584 1970 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 585 1976 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 586 1981 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 587 1981 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 588 1987 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 589 1993 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 590 1993 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 591 1999 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 592 2004 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 593 2004 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 594 2010 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 595 2016 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 596 2016 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 597 2022 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 598 2027 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 599 2027 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 600 2033 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 601 2039 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 602 2039 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 603 2045 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 604 2050 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 605 2050 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 606 2056 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 607 2062 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 608 2062 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 609 2068 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 610 2073 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 611 2073 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 612 2079 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 613 2084 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 614 2084 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 615 2091 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 616 2096 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 617 2096 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 618 2102 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 619 2107 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 620 2107 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 621 2113 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 622 2119 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 623 2119 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 624 2125 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 625 2130 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 626 2130 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 627 2136 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 628 2141 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 629 2141 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 630 2147 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 631 2153 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 632 2153 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 633 2159 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 634 2164 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 635 2164 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 636 2170 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 637 2175 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 638 2175 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 639 2181 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 640 2187 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 641 2187 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 642 2193 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 643 2198 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 644 2198 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 645 2204 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 646 2209 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 647 2209 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 648 2216 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 649 2223 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 650 2223 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 651 2229 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 652 2234 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 653 2234 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 654 2241 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 655 2246 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 656 2246 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 657 2252 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 658 2257 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 659 2257 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 660 2264 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 661 2269 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 662 2269 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 663 2275 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 664 2280 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 665 2281 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 666 2287 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 667 2292 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 668 2292 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 669 2298 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 670 2303 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 671 2303 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 672 2309 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 673 2314 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 674 2314 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 675 2320 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 676 2326 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 677 2326 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 678 2332 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 679 2337 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 680 2337 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 681 2343 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 682 2349 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 683 2349 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 684 2355 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 685 2360 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 686 2360 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 687 2366 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 688 2371 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 689 2372 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 690 2378 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 691 2383 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 692 2383 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 693 2389 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 694 2394 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 695 2394 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 696 2401 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 697 2406 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 698 2406 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 699 2428 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 700 2433 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 701 2433 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 702 2439 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 703 2445 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 704 2445 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 705 2451 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 706 2456 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 707 2456 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 708 2462 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 709 2468 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 710 2468 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 711 2474 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 712 2479 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 713 2479 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 714 2485 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 715 2490 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 716 2491 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 717 2497 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 718 2502 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 719 2502 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 720 2508 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 721 2514 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 722 2514 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 723 2520 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 724 2525 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 725 2525 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 726 2531 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 727 2537 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 728 2537 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 729 2544 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 730 2550 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 731 2550 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 732 2556 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 733 2561 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 734 2561 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 735 2567 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 736 2573 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 737 2573 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 738 2579 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 739 2584 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 740 2584 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 741 2590 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 742 2595 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 743 2595 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 744 2602 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 745 2607 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 746 2607 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 747 2613 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 748 2618 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 749 2618 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 750 2625 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 751 2632 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 752 2632 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 753 2638 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 754 2643 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 755 2643 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 756 2649 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 757 2655 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 758 2655 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 759 2661 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 760 2666 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 761 2666 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 762 2672 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 763 2691 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 764 2691 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 765 2697 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 766 2703 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 767 2703 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 768 2709 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 769 2714 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 770 2714 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 771 2721 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 772 2726 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 773 2726 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 774 2733 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 775 2738 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 776 2738 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 777 2744 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 778 2749 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 779 2749 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 780 2756 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 781 2761 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 782 2761 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 783 2767 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 784 2773 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 785 2773 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 786 2779 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 787 2784 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 788 2784 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 789 2791 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 790 2796 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 791 2796 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 792 2802 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 793 2807 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 794 2807 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 795 2814 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 796 2819 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 797 2819 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 798 2825 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 799 2830 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 800 2830 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 801 2836 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 802 2842 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 803 2842 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 804 2848 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 805 2853 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 806 2853 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 807 2859 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 808 2865 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 809 2865 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 810 2871 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 811 2876 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 812 2876 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 813 2882 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 814 2888 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 815 2888 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 816 2894 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 817 2900 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 818 2900 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 819 2906 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 820 2911 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 821 2911 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 822 2917 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 823 2923 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 824 2923 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 825 2929 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 826 2934 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 827 2934 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 828 2940 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 829 2945 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 830 2945 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 831 2952 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 832 2957 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 833 2957 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 834 2963 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 835 2968 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 836 2968 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 837 2974 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 838 2980 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 839 2980 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 840 2986 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 841 2991 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 842 2991 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 843 2998 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 844 3003 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 845 3003 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 846 3009 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 847 3015 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 848 3015 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 849 3021 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 850 3026 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 851 3026 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 852 3032 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 853 3038 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 854 3038 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 855 3044 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 856 3049 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 857 3049 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 858 3055 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 859 3061 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 860 3061 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 861 3067 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 862 3075 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 863 3075 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 864 3081 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 865 3086 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 866 3086 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 867 3093 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 868 3098 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 869 3098 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 870 3104 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 871 3109 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 872 3109 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 873 3115 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 874 3121 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 875 3121 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 876 3127 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 877 3132 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 878 3132 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 879 3139 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 880 3144 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 881 3144 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 882 3150 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 883 3156 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 884 3156 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 885 3162 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 886 3167 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 887 3167 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 888 3173 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 889 3179 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 890 3179 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 891 3185 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 892 3190 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 893 3190 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 894 3196 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 895 3210 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 896 3210 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 897 3216 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 898 3222 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 899 3222 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 900 3228 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 901 3233 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 902 3233 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 903 3240 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 904 3245 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 905 3245 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 906 3251 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 907 3257 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 908 3257 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 909 3263 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 910 3268 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 911 3268 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 912 3275 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 913 3280 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 914 3280 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 915 3286 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 916 3292 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 917 3292 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 918 3298 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 919 3303 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 920 3303 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 921 3310 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 922 3315 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 923 3315 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 924 3321 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 925 3326 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 926 3326 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 927 3332 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 928 3338 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 929 3338 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 930 3345 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 931 3350 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 932 3350 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 933 3356 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 934 3362 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 935 3362 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 936 3368 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 937 3373 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 938 3374 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 939 3380 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 940 3385 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 941 3385 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 942 3391 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 943 3397 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 944 3397 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 945 3403 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 946 3408 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 947 3408 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 948 3414 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 949 3420 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 950 3420 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 951 3426 riscv-013.c:402 scan(): 41b r 00000000 @11 -> + 00000000 @11; 4i
+Debug: 952 3431 riscv-013.c:402 scan(): 41b - 00000000 @11 -> + 00000c82 @11; 4i
+Debug: 953 3431 riscv-013.c:412 scan():  ->  allrunning anyrunning authenticated version=2
+Debug: 954 3437 riscv-013.c:402 scan(): 41b r 00000000 @10 -> + 00000000 @11; 4i
+Debug: 955 3442 riscv-013.c:402 scan(): 41b - 00000000 @10 -> + 80000001 @10; 4i
+Debug: 956 3442 riscv-013.c:412 scan():  -> haltreq dmactive
+Error: 957 3442 riscv-013.c:4237 riscv013_halt_go(): unable to halt hart 0
+Error: 958 3442 riscv-013.c:4238 riscv013_halt_go():   dmcontrol=0x80000001
+Error: 959 3442 riscv-013.c:4239 riscv013_halt_go():   dmstatus =0x00000c82
+Error: 960 3442 riscv-013.c:1728 examine(): Fatal: Hart 0 failed to halt during examine()
+Debug: 961 3442 target.c:1820 target_call_event_callbacks(): target event 20 (examine-fail) for core riscv.tap.0
+Warn : 962 3442 target.c:771 target_examine(): target riscv.tap.0 examination failed
+Debug: 963 3442 openocd.c:162 handle_init_command(): target examination failed
+Debug: 964 3442 command.c:146 script_debug(): command - flash init
+Debug: 965 3442 log.c:424 gdb_timeout_warning(): keep_alive() was not invoked in the 1000 ms timelimit (3442 ms). This may cause trouble with GDB connections.
+Debug: 968 3442 tcl.c:1386 handle_flash_init_command(): Initializing flash devices...
+Debug: 969 3442 command.c:146 script_debug(): command - nand init
+Debug: 971 3442 tcl.c:498 handle_nand_init_command(): Initializing NAND devices...
+Debug: 972 3442 command.c:146 script_debug(): command - pld init
+Debug: 974 3442 pld.c:206 handle_pld_init_command(): Initializing PLDs...
+Info : 975 3442 gdb_server.c:3609 gdb_target_start(): starting gdb server for riscv.tap.0 on 3333
+Info : 976 3442 server.c:312 add_service(): Listening on port 3333 for gdb connections
+Debug: 977 64463 server.c:617 sig_handler(): Terminating on Signal 2
+Debug: 978 64463 command.c:146 script_debug(): command - shutdown
+User : 980 64463 server.c:763 handle_shutdown_command(): shutdown command invoked
+Debug: 981 64463 riscv.c:486 riscv_deinit_target(): riscv_deinit_target()
+Debug: 982 64463 riscv-013.c:1532 deinit_target(): riscv_deinit_target()
+Debug: 983 64463 target.c:2174 target_free_all_working_areas_restore(): freeing all working areas
+Info : 984 64463 remote_bitbang.c:120 remote_bitbang_quit(): remote_bitbang interface quit

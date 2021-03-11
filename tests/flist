@@ -76,3 +76,4 @@ $AZADI_ROOT/src/pulp_riscv_dbg/src/dm_csrs.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_inv.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_mux2.sv
 $AZADI_ROOT/src/azadi_soc/rtl/rstmgr.sv
+$AZADI_ROOT/src/rv_dm/dmidpi/dmidpi.sv

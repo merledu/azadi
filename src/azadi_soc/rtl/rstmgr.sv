@@ -13,24 +13,22 @@ module rstmgr(
   logic rst_d, rst_q;
   logic rst_fd, rst_fq; // follower flip flop
   
-  
-  if(!rst_ni) begin
-    rst_d = 1'b0;
-  end else begin
-    if(ndmreset) begin
+  always_comb begin
+    if(!rst_ni) begin
       rst_d = 1'b0;
-    end else begin
-      rst_d = 1'b1;
-    end
-  end else begin
-    rst_d = 1'b1;
+    end else 
+      if(ndmreset) begin
+        rst_d = 1'b0;
+      end else begin
+        rst_d = 1'b1;
+      end
   end
   
   always_ff @(posedge clk_i ) begin
     rst_q <= rst_d;
   end
 
-  rst_fd = rst_q;
+  assign rst_fd = rst_q;
   always_ff @(posedge clk_i ) begin
     rst_fq <= rst_fd;
   end
