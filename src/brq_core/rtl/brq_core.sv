@@ -107,9 +107,13 @@ module brq_core #(
   
   // floating point 
   localparam int unsigned W = 32;
-  fpnew_pkg::operation_e  fp_alu_operator;
-  fpnew_pkg::fp_format_e  fp_src_fmt;
-  fpnew_pkg::fp_format_e  fp_dst_fmt;
+  logic                   fp_flush;
+  logic                   in_ready_c2fpu;   // ready - from core to FPU
+  logic                   in_valid_fpu2c;   // valid - from FPU to core
+  logic                   out_ready_fpu2c;  // ready - from FPU to core
+  logic                   out_valid_c2fpu;  // valid - from core to FPU
+  logic                   ready_id_fpu;     // select which ready signal will go to dec
+  logic                   valid_id_fpu;     // select which valid signal will go to dec
   logic                   wb_int_reg;
   logic                   fp_rm_dynamic;
   logic                   fp_alu_op_mod;  
@@ -126,8 +130,12 @@ module brq_core #(
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
   fpnew_pkg::roundmode_e  fp_frm_csr;
-  fpnew_pkg::roundmode_e  fp_frm_fpnew; 
-                  
+  fpnew_pkg::roundmode_e  fp_frm_fpnew;
+  fpnew_pkg::operation_e  fp_alu_operator;
+  fpnew_pkg::fp_format_e  fp_src_fmt;
+  fpnew_pkg::fp_format_e  fp_dst_fmt;
+
+  // brq                 
   localparam int unsigned PMP_NUM_CHAN      = 2;
   localparam bit          DataIndTiming     = Securebrq;
   localparam bit          DummyInstructions = Securebrq;
@@ -480,8 +488,8 @@ module brq_core #(
       .csr_mtvec_init_o         ( csr_mtvec_init         ),
 
       // pipeline stalls
-      .id_in_ready_i            ( id_in_ready            ),
-
+      .id_in_ready_i            ( ready_id_fpu           ), // changed by zeeshan from id_in_ready
+                                                            // to ready_id_fpu for ready selection
       .pc_mismatch_alert_o      ( pc_mismatch_alert      ),
       .if_busy_o                ( if_busy                )
   );
@@ -545,7 +553,9 @@ module brq_core #(
       .pc_id_i                      ( pc_id                    ),
 
       // Stalls
-      .ex_valid_i                   ( ex_valid                 ),
+      .ex_valid_i                   ( valid_id_fpu             ), // changed by zeeshan from 
+                                                                  // id_in_ready to ready_id_fpu 
+                                                                  // for ready selection
       .lsu_resp_valid_i             ( lsu_resp_valid           ),
 
       .alu_operator_ex_o            ( alu_operator_ex          ),
@@ -668,7 +678,8 @@ module brq_core #(
       .fp_alu_operator_o               ( fp_alu_operator       ),
       .fp_alu_op_mod_o                 ( fp_alu_op_mod         ),
       .fp_rm_dynamic_o                 ( fp_rm_dynamic         ),
-      .wb_int_reg_o                    ( wb_int_reg            )
+      .wb_int_reg_o                    ( wb_int_reg            ),
+      .fp_flush_o                      ( fp_flush              )
   );
 
   // for RVFI only
@@ -1124,7 +1135,11 @@ module brq_core #(
       .fp_frm_o                ( fp_frm_csr                   )
   );
 
-  assign fp_frm_fpnew = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
+  assign fp_frm_fpnew       = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
+  assign in_ready_c2fpu     = multdiv_ready_id;
+  assign in_valid_c2fpu     = instr_valid_id;
+  assign ready_id_fpu = (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
+  assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;
 
 // FPU instance
   fpnew_top #(
@@ -1143,14 +1158,14 @@ module brq_core #(
     .int_fmt_i      ( fpnew_pkg::INT32 ),
     .vectorial_op_i ( 1'b0             ),
     .tag_i          ( logic            ),
-    .in_valid_i     ( instr_valid_id   ),
-    .in_ready_o     (  ),
-    .flush_i        (  ),
+    .in_valid_i     ( in_valid_c2fpu   ),
+    .in_ready_o     ( out_ready_fpu2c  ),
+    .flush_i        ( fp_flush         ),
     .result_o       ( fp_result        ),
     .status_o       ( fp_status        ),
-    .tag_o          ( ),
-    .out_valid_o    ( ),
-    .out_ready_i    ( ),
+    .tag_o          ( logic            ),
+    .out_valid_o    ( out_valid_fpu2c  ),
+    .out_ready_i    ( in_ready_c2fpu   ),
     .busy_o         ( fp_busy          )
   );
 

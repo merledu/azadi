@@ -196,7 +196,8 @@ module brq_idu #(
     output fpnew_pkg::fp_format_e fp_src_fmt_o,
     output fpnew_pkg::fp_format_e fp_dst_fmt_o,
     output logic                  fp_rm_dynamic_o,
-    output logic                  wb_int_reg_o
+    output logic                  wb_int_reg_o,
+    output logic                  fp_flush_o
 );
 
   import brq_pkg::*;
@@ -637,7 +638,8 @@ module brq_idu #(
       .perf_tbranch_o                 ( perf_tbranch_o          )
   );
 
-  assign multdiv_en_dec   = mult_en_dec | div_en_dec;
+  assign fp_flush_o     = flush_id;
+  assign multdiv_en_dec = mult_en_dec | div_en_dec;
 
   assign lsu_req         = instr_executing ? data_req_allowed & lsu_req_dec  : 1'b0;
   assign mult_en_id      = instr_executing ? mult_en_dec                     : 1'b0;
