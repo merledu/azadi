@@ -31,22 +31,13 @@ typedef enum integer {
   RV32BFull     = 2
 } rv32b_e;
 
+// floatig point
 typedef enum integer { 
   RV32FNone     = 0,
   RV32FSingle   = 1,
-  RV32FDouble   = 2
+  RV64FDouble   = 2
   // RV32FQuad     = 3
-} rv32f_e;
-
-// typedef enum integer { 
-//   RV32DNone     = 0,
-//   RV32DDouble   = 1
-// } rv32d_e;
-
-// typedef enum integer { 
-//   RV32QNone     = 0,
-//   RV32QQuad     = 1
-// } rv32q_e;
+} rvfloat_e;
 
 /////////////
 // Opcodes //

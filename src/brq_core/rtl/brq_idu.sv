@@ -12,14 +12,15 @@
  */
 
 module brq_idu #(
-    parameter bit              RV32E           = 0,
-    parameter brq_pkg::rv32m_e RV32M           = brq_pkg::RV32MFast,
-    parameter brq_pkg::rv32b_e RV32B           = brq_pkg::RV32BNone,
-    parameter bit              DataIndTiming   = 1'b0,
-    parameter bit              BranchTargetALU = 0,
-    parameter bit              SpecBranch      = 0,
-    parameter bit              WritebackStage  = 0,
-    parameter bit              BranchPredictor = 0
+    parameter bit                RV32E           = 0,
+    parameter brq_pkg::rv32m_e   RV32M           = brq_pkg::RV32MFast,
+    parameter brq_pkg::rv32b_e   RV32B           = brq_pkg::RV32BNone,
+    parameter brq_pkg::rvfloat_e RVF             = brq_pkg::RV64FDouble,
+    parameter bit                DataIndTiming   = 1'b0,
+    parameter bit                BranchTargetALU = 0,
+    parameter bit                SpecBranch      = 0,
+    parameter bit                WritebackStage  = 0,
+    parameter bit                BranchPredictor = 0
 ) (
     input  logic                      clk_i,
     input  logic                      rst_ni,
@@ -194,7 +195,8 @@ module brq_idu #(
     output logic                  fp_alu_op_mod_o,
     output fpnew_pkg::fp_format_e fp_src_fmt_o,
     output fpnew_pkg::fp_format_e fp_dst_fmt_o,
-    output logic                  fp_rm_dynamic_o
+    output logic                  fp_rm_dynamic_o,
+    output logic                  wb_int_reg_o
 );
 
   import brq_pkg::*;
@@ -501,12 +503,14 @@ module brq_idu #(
       .fp_rf_ren_a_o                   ( fp_rf_ren_a_o         ),     
       .fp_rf_ren_b_o                   ( fp_rf_ren_b_o         ),     
       .fp_rf_ren_c_o                   ( fp_rf_ren_c_o         ),
+      .fp_rf_waddr_o                   ( fp_rf_waddr_o         ),
       .fp_rf_we_o                      ( fp_rf_we_o            ),
       .fp_alu_operator_o               ( fp_alu_operator_o     ),
       .fp_alu_op_mod_o                 ( fp_alu_op_mod_o       ),
       .fp_src_fmt_o                    ( fp_src_fmt_o          ),
       .fp_dst_fmt_o                    ( fp_dst_fmt_o          ),
-      .fp_rm_dynamic_o                 ( fp_rm_dynamic_o       )
+      .fp_rm_dynamic_o                 ( fp_rm_dynamic_o       ),
+      .wb_int_reg_o                    ( wb_int_reg_o          )
   );
 
   /////////////////////////////////
