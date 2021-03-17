@@ -111,10 +111,13 @@ module brq_cs_registers #(
     input  logic                dside_wait_i,           // core waiting for the dside
     input  logic                mul_wait_i,             // core waiting for multiply
     input  logic                div_wait_i              // core waiting for divide
+
+    // floating point
+    input logic                   fp_rm_dynamic_i,
+    output fpnew_pkg::roundmode_e fp_frm_o
 );
   import brq_pkg::*;
   import fpnew_pkg::roundmode_e;
-  import fpnew_pkg::status_t;
 
   localparam int unsigned RV32MEnabled = (RV32M == RV32MNone) ? 0 : 1;
   localparam int unsigned PMPAddrWidth = (PMPGranularity > 0) ? 33 - PMPGranularity : 32;
@@ -183,12 +186,13 @@ module brq_cs_registers #(
   logic [31:0] exception_pc;
 
   // CSRs
+  fpnew_pkg::status_t fflags_q, fflags_d;
+
   logic        fcsr_en,
   logic [7:0]  fcsr_q, fcsr_d;
   logic        fflags_en;
-  status_t     fflags_q, fflags_d;
-  logic        rounding_mode_en;
-  roundmode_e  rounding_mode_q, rounding_mode_d;
+  logic        frm_en;
+  roundmode_e  frm_q, frm_d;
   priv_lvl_e   priv_lvl_q, priv_lvl_d;
   status_t     mstatus_q, mstatus_d;
   logic        mstatus_err;
@@ -276,26 +280,29 @@ module brq_cs_registers #(
   // CSR reg //
   /////////////
 
+  logic illegal_dyn_mod;
+  logic illegal_csr_dyn_mod;
   logic [$bits(csr_num_e)-1:0] csr_addr;
   assign csr_addr           = {csr_addr_i};
   assign unused_csr_addr    = csr_addr[7:5];
   assign mhpmcounter_idx    = csr_addr[4:0];
 
+  assign illegal_csr_dyn_mod = illegal_dyn_mod & fp_rm_dynamic_i;
+
   // See RISC-V Privileged Specification, version 1.11, Section 2.1
-  assign illegal_csr_priv   = (csr_addr[9:8] > {priv_lvl_q});
-  assign illegal_csr_write  = (csr_addr[11:10] == 2'b11) && csr_wreq;
-  assign illegal_csr_insn_o = csr_access_i & (illegal_csr | illegal_csr_write | illegal_csr_priv);
+  assign illegal_csr_priv    = (csr_addr[9:8] > {priv_lvl_q});
+  assign illegal_csr_write   = (csr_addr[11:10] == 2'b11) && csr_wreq;
+  assign illegal_csr_insn_o  = csr_access_i & (illegal_csr | illegal_csr_write | illegal_csr_priv
+                               | illegal_csr_dyn_mod);
 
   // mip CSR is purely combinational - must be able to re-enable the clock upon WFI
   assign mip.irq_software = irq_software_i;
   assign mip.irq_timer    = irq_timer_i;
   assign mip.irq_external = irq_external_i;
   assign mip.irq_fast     = irq_fast_i;
-
+  
   // Floating point
-  assign fcsr_d = '{rounding_mode_q, fflags_q}
-  // status_t     fflags_q, fflags_d;
-  // roundmode_e  rounding_mode_q, rounding_mode_d;
+  assign fp_frm_o = frm_q;
 
   // read logic
   always_comb begin
@@ -303,8 +310,25 @@ module brq_cs_registers #(
     illegal_csr   = 1'b0;
 
     unique case (csr_addr_i)
+      // fcsr: floating-point control and status register (frm+fflags)
+      CSR_FCSR: csr_rdata_int = {24'b0 , fcsr_q};
+      
+      // fflags: floating-point accrued exception
+      CSR_FFLAG: csr_rdata_int = {27'b0 , fflags_q};
+      
+      // frm: floating-point dynamic rounding mode
+      CSR_FRM: begin
+        csr_rdata_int = {29'b0 , frm_q};
+        unique case (frm_q[7:5])
+          000,
+          001,
+          010,
+          011,
+          100: illegal_dyn_mod =  1'b0;
+          default: illegal_dyn_mod =  1'b1;
+        endcase 
+      end
 
-      CSR_FCSR: csr_rdata_int = fcsr_d;
       // mhartid: unique hardware thread id
       CSR_MHARTID: csr_rdata_int = hart_id_i;
 
@@ -482,8 +506,14 @@ module brq_cs_registers #(
     exception_pc = pc_id_i;
 
     // Floating point
-    fcsr_d       = fcsr_q;
-    fcsr_en      = 1'b0;
+    fcsr_d      = fcsr_q;
+    fcsr_en     = 1'b0;
+
+    fflags_d    = fflags_q;
+    fflags_en   = 1'b0;
+
+    frm_d  = frm_q;
+    frm_en = 1'b0;
 
     priv_lvl_d   = priv_lvl_q;
     mstatus_en   = 1'b0;
@@ -523,6 +553,24 @@ module brq_cs_registers #(
     if (csr_we_int) begin
       unique case (csr_addr_i)
         // mstatus: IE bit
+
+        CSR_FCSR: begin 
+          fcsr_en = 1'b1;
+          fcsr_d  = csr_wdata_int[7:0];
+        end
+
+        CSR_FFLAG : begin
+          fflags_en = 1'b1;
+          fflags_d  = csr_wdata_int;
+          fcsr_d    = '{frm_q, fflags_q};
+        end
+
+        CSR_FRM: begin
+          frm_en = 1'b1;
+          frm_d  = csr_wdata_int; 
+          fcsr_d = '{frm_q, fflags_q};
+        end
+
         CSR_MSTATUS: begin
           mstatus_en = 1'b1;
           mstatus_d    = '{
@@ -786,33 +834,33 @@ module brq_cs_registers #(
     .rd_error_o ()
   );
 
-  // // FFLAGS
-  // brq_csr #(
-  //   .Width      (32),
-  //   .ShadowCopy (1'b0),
-  //   .ResetValue ('0)
-  // ) u_mepc_csr (
-  //   .clk_i      (clk_i),
-  //   .rst_ni     (rst_ni),
-  //   .wr_data_i  (fcsr_d),
-  //   .wr_en_i    (fcsr_en),
-  //   .rd_data_o  (fcsr_q),
-  //   .rd_error_o ()
-  // );
+  // FFLAGS
+  brq_csr #(
+    .Width      (32),
+    .ShadowCopy (1'b0),
+    .ResetValue ('0)
+  ) u_mepc_csr (
+    .clk_i      (clk_i),
+    .rst_ni     (rst_ni),
+    .wr_data_i  (fflags_d),
+    .wr_en_i    (fflags_en),
+    .rd_data_o  (fflags_q),
+    .rd_error_o ()
+  );
 
-  // // FRM
-  // brq_csr #(
-  //   .Width      (32),
-  //   .ShadowCopy (1'b0),
-  //   .ResetValue ('0)
-  // ) u_mepc_csr (
-  //   .clk_i      (clk_i),
-  //   .rst_ni     (rst_ni),
-  //   .wr_data_i  (fcsr_d),
-  //   .wr_en_i    (fcsr_en),
-  //   .rd_data_o  (fcsr_q),
-  //   .rd_error_o ()
-  // );
+  // FRM
+  brq_csr #(
+    .Width      (32),
+    .ShadowCopy (1'b0),
+    .ResetValue ('0)
+  ) u_mepc_csr (
+    .clk_i      (clk_i),
+    .rst_ni     (rst_ni),
+    .wr_data_i  (frm_d),
+    .wr_en_i    (frm_en),
+    .rd_data_o  (frm_q),
+    .rd_error_o ()
+  );
   
   // MEPC
   brq_csr #(

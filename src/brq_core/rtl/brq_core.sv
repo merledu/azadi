@@ -1,5 +1,3 @@
-
-
 `ifdef RISCV_FORMAL
   `define RVFI
 `endif
@@ -988,7 +986,7 @@ module brq_core #(
       .RV32E             ( RV32E             ),
       .RV32M             ( RV32M             )
   ) cs_registers_i (
-      .clk_i                   ( clk                         ),
+      .clk_i                   ( clk                          ),
       .rst_ni                  ( rst_ni                       ),
 
       // Hart ID from outside
@@ -1069,7 +1067,11 @@ module brq_core #(
       .mem_store_i             ( perf_store                   ),
       .dside_wait_i            ( perf_dside_wait              ),
       .mul_wait_i              ( perf_mul_wait                ),
-      .div_wait_i              ( perf_div_wait                )
+      .div_wait_i              ( perf_div_wait                ),
+
+      // floating point
+      .fp_rm_dynamic_i         ( fp_rm_dynamic                )
+      .fp_frm_o                ( fp_frm_csr                   )
   );
       //  // Floating point extensions IO
       // .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
@@ -1093,6 +1095,10 @@ module brq_core #(
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
+  fpnew_pkg::roundmode_e  fp_frm_csr;
+  fpnew_pkg::roundmode_e  fp_frm_fpnew;
+
+  assign fp_frm_fpnew = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
 
 // FPU instance
   fpnew_top #(
@@ -1100,26 +1106,26 @@ module brq_core #(
     .Implementation ( fpnew_pkg::DEFAULT_NOREGS ),
     .TagType        ( logic                     )
   ) i_fpnew_top (
-    .clk_i          ( clk                       ),
-    .rst_ni         ( rst_ni                    ),
-    .operands_i     ( fp_operands               ),
-    .rnd_mode_i     ( (fp_rm_dynamic ? fp_rounding_mode ),
-    .op_i           ( fp_alu_operator           ),
-    .op_mod_i       ( fp_alu_op_mod             ),
-    .src_fmt_i      ( fp_src_fmt        ),
-    .dst_fmt_i      ( fp_dst_fmt         ),
-    .int_fmt_i      ( fpnew_pkg::INT32   ),
-    .vectorial_op_i ( 1'b0    ),
-    .tag_i          ( logic     ),
-    .in_valid_i     ( instr_valid_id  ),
+    .clk_i          ( clk              ),
+    .rst_ni         ( rst_ni           ),
+    .operands_i     ( fp_operands      ),
+    .rnd_mode_i     ( fp_frm_fpnew     ),
+    .op_i           ( fp_alu_operator  ),
+    .op_mod_i       ( fp_alu_op_mod    ),
+    .src_fmt_i      ( fp_src_fmt       ),
+    .dst_fmt_i      ( fp_dst_fmt       ),
+    .int_fmt_i      ( fpnew_pkg::INT32 ),
+    .vectorial_op_i ( 1'b0             ),
+    .tag_i          ( logic            ),
+    .in_valid_i     ( instr_valid_id   ),
     .in_ready_o     (  ),
     .flush_i        (  ),
-    .result_o       ( fp_result ),
-    .status_o       ( fp_status ),
+    .result_o       ( fp_result        ),
+    .status_o       ( fp_status        ),
     .tag_o          ( ),
     .out_valid_o    ( ),
     .out_ready_i    ( ),
-    .busy_o         ( fp_busy )
+    .busy_o         ( fp_busy          )
   );
 
   assign data_wb = (is_fp_instr) ? fp_result : result_ex;
