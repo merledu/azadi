@@ -17,7 +17,7 @@ module brq_core #(
     parameter brq_pkg::rv32b_e    RV32B            = brq_pkg::RV32BNone,
     parameter brq_pkg::regfile_e  RegFile          = brq_pkg::RegFileFF,
     parameter brq_pkg::rvfloat_e  RVF              = brq_pkg::RV64FDouble, // for floating point
-    parameter int unsigned        FloatingPoint    = 1'b1;
+    parameter int unsigned        FloatingPoint    = 1'b1,
     parameter bit                 BranchTargetALU  = 1'b0,
     parameter bit                 WritebackStage   = 1'b0,
     parameter bit                 ICache           = 1'b0,
@@ -108,10 +108,10 @@ module brq_core #(
   // floating point 
   localparam int unsigned W = 32;
   logic                   fp_flush;
-  logic                   in_ready_c2fpu;   // ready - from core to FPU
-  logic                   in_valid_fpu2c;   // valid - from FPU to core
+  logic                   in_ready_c2fpu;   // ready - from core to FPU 
+  logic                   in_valid_c2fpu;   // valid - from FPU to core 
   logic                   out_ready_fpu2c;  // ready - from FPU to core
-  logic                   out_valid_c2fpu;  // valid - from core to FPU
+  logic                   out_valid_fpu2c;  // valid - from core to FPU
   logic                   ready_id_fpu;     // select which ready signal will go to dec
   logic                   valid_id_fpu;     // select which valid signal will go to dec
   logic                   wb_int_reg;
@@ -123,9 +123,13 @@ module brq_core #(
   logic                   fp_rf_rdata_a;
   logic                   fp_rf_rdata_b;
   logic                   fp_rf_rdata_c;
+  logic                   is_fp_instr;
   logic [2:0][W-1:0]      fp_operands;   // three operands in fpu   
   logic                   fp_busy;
   logic [W-1:0]           fp_result;
+  logic [ 31:0]           data_wb;
+  logic [ 4:0]            fp_rf_waddr;
+  logic                   fp_rf_we;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
@@ -433,7 +437,7 @@ module brq_core #(
       .PCIncrCheck       ( PCIncrCheck       ),
       .BranchPredictor   ( BranchPredictor   )
   ) if_stage_i (
-      .clk_i                    ( clk                   ),
+      .clk_i                    ( clk                    ),
       .rst_ni                   ( rst_ni                 ),
 
       .boot_addr_i              ( boot_addr_i            ),
@@ -665,21 +669,22 @@ module brq_core #(
 
       // Floating point extensions IO
       .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
-      .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
-      .fp_floating_type                ( fp_floating_type      ),   // Single precision or double 
+      .fp_alu_op_b_mux_sel_o           ( ), //fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
-      .fp_rf_ren_a_o                   ( fp_rf_ren_a           ),     
-      .fp_rf_ren_b_o                   ( fp_rf_ren_b           ),     
-      .fp_rf_ren_c_o                   ( fp_rf_ren_c           ),
+      .fp_rf_ren_a_o                   ( ), //fp_rf_ren_a           ),     
+      .fp_rf_ren_b_o                   ( ), //fp_rf_ren_b           ),     
+      .fp_rf_ren_c_o                   ( ), //fp_rf_ren_c           ),
       .fp_rf_waddr_o                   ( fp_rf_waddr           ),
       .fp_rf_we_o                      ( fp_rf_we              ),
       .fp_alu_operator_o               ( fp_alu_operator       ),
       .fp_alu_op_mod_o                 ( fp_alu_op_mod         ),
       .fp_rm_dynamic_o                 ( fp_rm_dynamic         ),
       .wb_int_reg_o                    ( wb_int_reg            ),
-      .fp_flush_o                      ( fp_flush              )
+      .fp_flush_o                      ( fp_flush              ),
+      .is_fp_instr_o                   ( is_fp_instr           )
+
   );
 
   // for RVFI only
@@ -944,7 +949,7 @@ module brq_core #(
 
   if (FloatingPoint) begin : gen_fp_regfile
     brq_fp_register_file_ff #(
-      .RV32F     ( RVF ),
+      .RVF       ( RVF ),
       .DataWidth ( W   )
     ) fp_register_file (
       .clk_i     ( clk_i         ),
@@ -960,7 +965,7 @@ module brq_core #(
       .rdata_c_o ( fp_rf_rdata_c ),
 
       .waddr_a_i ( fp_rf_waddr   ),
-      .wdata_a_i ( fp_result     ),
+      .wdata_a_i ( rf_wdata_wb   ),
       .we_a_i    ( fp_rf_we      )
 );
   end
@@ -1131,7 +1136,7 @@ module brq_core #(
       .div_wait_i              ( perf_div_wait                ),
 
       // floating point
-      .fp_rm_dynamic_i         ( fp_rm_dynamic                )
+      .fp_rm_dynamic_i         ( fp_rm_dynamic                ),
       .fp_frm_o                ( fp_frm_csr                   )
   );
 
@@ -1157,13 +1162,13 @@ module brq_core #(
     .dst_fmt_i      ( fp_dst_fmt       ),
     .int_fmt_i      ( fpnew_pkg::INT32 ),
     .vectorial_op_i ( 1'b0             ),
-    .tag_i          ( logic            ),
+    .tag_i          ( 1                ),
     .in_valid_i     ( in_valid_c2fpu   ),
     .in_ready_o     ( out_ready_fpu2c  ),
     .flush_i        ( fp_flush         ),
     .result_o       ( fp_result        ),
     .status_o       ( fp_status        ),
-    .tag_o          ( logic            ),
+    .tag_o          (                  ),
     .out_valid_o    ( out_valid_fpu2c  ),
     .out_ready_i    ( in_ready_c2fpu   ),
     .busy_o         ( fp_busy          )

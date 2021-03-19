@@ -6,22 +6,21 @@
  * Specification, draft version 1.11
  */
 
-
-
 module brq_cs_registers #(
-    parameter bit               DbgTriggerEn      = 0,
-    parameter int unsigned      DbgHwBreakNum     = 1,
-    parameter bit               DataIndTiming     = 1'b0,
-    parameter bit               DummyInstructions = 1'b0,
-    parameter bit               ShadowCSR         = 1'b0,
-    parameter bit               ICache            = 1'b0,
-    parameter int unsigned      MHPMCounterNum    = 10,
-    parameter int unsigned      MHPMCounterWidth  = 40,
-    parameter bit               PMPEnable         = 0,
-    parameter int unsigned      PMPGranularity    = 0,
-    parameter int unsigned      PMPNumRegions     = 4,
-    parameter bit               RV32E             = 0,
-    parameter brq_pkg::rv32m_e RV32M             = brq_pkg::RV32MFast
+    parameter bit                DbgTriggerEn      = 0,
+    parameter int unsigned       DbgHwBreakNum     = 1,
+    parameter bit                DataIndTiming     = 1'b0,
+    parameter bit                DummyInstructions = 1'b0,
+    parameter bit                ShadowCSR         = 1'b0,
+    parameter bit                ICache            = 1'b0,
+    parameter int unsigned       MHPMCounterNum    = 10,
+    parameter int unsigned       MHPMCounterWidth  = 40,
+    parameter bit                PMPEnable         = 0,
+    parameter int unsigned       PMPGranularity    = 0,
+    parameter int unsigned       PMPNumRegions     = 4,
+    parameter bit                RV32E             = 0,
+    parameter brq_pkg::rv32m_e   RV32M             = brq_pkg::RV32MFast,
+    parameter brq_pkg::rvfloat_e RVF               = brq_pkg::RV64FDouble // for floating point
 ) (
     // Clock and Reset
     input  logic                 clk_i,
@@ -110,7 +109,7 @@ module brq_cs_registers #(
     input  logic                mem_store_i,            // store to memory in this cycle
     input  logic                dside_wait_i,           // core waiting for the dside
     input  logic                mul_wait_i,             // core waiting for multiply
-    input  logic                div_wait_i              // core waiting for divide
+    input  logic                div_wait_i,              // core waiting for divide
 
     // floating point
     input logic                   fp_rm_dynamic_i,
@@ -122,13 +121,16 @@ module brq_cs_registers #(
   localparam int unsigned RV32MEnabled = (RV32M == RV32MNone) ? 0 : 1;
   localparam int unsigned PMPAddrWidth = (PMPGranularity > 0) ? 33 - PMPGranularity : 32;
 
+  localparam int unsigned SinglePrecision = (RVF == RV32FSingle) ? 1 : 0;
+  localparam int unsigned DoublePrecision = (RVF == RV64FDouble) ? 1 : 0;
+
   // misa
   localparam logic [31:0] MISA_VALUE =
       (0                 <<  0)  // A - Atomic Instructions extension
     | (1                 <<  2)  // C - Compressed extension
-    | (0                 <<  3)  // D - Double precision floating-point extension
+    | (DoublePrecision   <<  3)  // D - Double precision floating-point extension
     | (32'(RV32E)        <<  4)  // E - RV32E base ISA
-    | (0                 <<  5)  // F - Single precision floating-point extension
+    | (SinglePrecision   <<  5)  // F - Single precision floating-point extension
     | (32'(!RV32E)       <<  8)  // I - RV32I/64I/128I base ISA
     | (RV32MEnabled      << 12)  // M - Integer Multiply/Divide extension
     | (0                 << 13)  // N - User level interrupts supported
@@ -176,11 +178,11 @@ module brq_cs_registers #(
     logic        icache_enable;
   } cpu_ctrl_t;
 
-  // Floating Point
-  typedef struct packed { 
-    frm_e     frm;
-    fflags_e  fflags;            
-  } fcsr_t;
+  // // Floating Point
+  // typedef struct packed { 
+  //   frm_e     frm;
+  //   fflags_e  fflags;            
+  // } fcsr_t;
 
   // Interrupt and exception control signals
   logic [31:0] exception_pc;
@@ -188,7 +190,7 @@ module brq_cs_registers #(
   // CSRs
   fpnew_pkg::status_t fflags_q, fflags_d;
 
-  logic        fcsr_en,
+  logic        fcsr_en;
   logic [7:0]  fcsr_q, fcsr_d;
   logic        fflags_en;
   logic        frm_en;
@@ -319,7 +321,7 @@ module brq_cs_registers #(
       // frm: floating-point dynamic rounding mode
       CSR_FRM: begin
         csr_rdata_int = {29'b0 , frm_q};
-        unique case (frm_q[7:5])
+        unique case (frm_q)
           000,
           001,
           010,
@@ -562,13 +564,13 @@ module brq_cs_registers #(
         CSR_FFLAG : begin
           fflags_en = 1'b1;
           fflags_d  = csr_wdata_int;
-          fcsr_d    = '{frm_q, fflags_q};
+          fcsr_d    = {frm_q, fflags_q};
         end
 
         CSR_FRM: begin
           frm_en = 1'b1;
           frm_d  = csr_wdata_int; 
-          fcsr_d = '{frm_q, fflags_q};
+          fcsr_d = {frm_q, fflags_q};
         end
 
         CSR_MSTATUS: begin
@@ -825,7 +827,7 @@ module brq_cs_registers #(
     .Width      (32),
     .ShadowCopy (1'b0),
     .ResetValue ('0)
-  ) u_mepc_csr (
+  ) fcsr_csr (
     .clk_i      (clk_i),
     .rst_ni     (rst_ni),
     .wr_data_i  (fcsr_d),
@@ -839,7 +841,7 @@ module brq_cs_registers #(
     .Width      (32),
     .ShadowCopy (1'b0),
     .ResetValue ('0)
-  ) u_mepc_csr (
+  ) fflags_csr (
     .clk_i      (clk_i),
     .rst_ni     (rst_ni),
     .wr_data_i  (fflags_d),
@@ -853,7 +855,7 @@ module brq_cs_registers #(
     .Width      (32),
     .ShadowCopy (1'b0),
     .ResetValue ('0)
-  ) u_mepc_csr (
+  ) frm_csr (
     .clk_i      (clk_i),
     .rst_ni     (rst_ni),
     .wr_data_i  (frm_d),

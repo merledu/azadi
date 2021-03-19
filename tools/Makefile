@@ -22,6 +22,12 @@ defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_periph_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_main_pkg.sv
 defines += $(AZADI_ROOT)/src/GPIO/rtl/gpio_reg_pkg.sv
 
+defines += $(AZADI_ROOT)/src/fpnew/src/fpnew_pkg.sv
+defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cb_filter_pkg.sv
+defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/ecc_pkg.sv
+defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cf_math_pkg.sv
+defines += $(AZADI_ROOT)/src/fpnew/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv
+
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
 # complains for `auto` variables
 CFLAGS += "-std=c++11"
@@ -42,7 +48,7 @@ clean:
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
-	  -Wno-PINMISSING -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} --top-module azadi_soc_top \
+	  -Wno-PINMISSING -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER -Wno-LITENDIAN -Wno-UNSIGNED ${TBFILES} --top-module azadi_soc_top \
 	  -exe sim_main.cpp --autoflush --trace
 	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f Vazadi_soc_top.mk $(VERILATOR_MAKE_FLAGS)

@@ -13,8 +13,8 @@
  */
 
 module brq_fp_register_file_ff #(
-    parameter brq_pkg::rv32f_e RVF       = brq_pkg::RV32FSingle,
-    parameter int unsigned     DataWidth = 32
+    parameter brq_pkg::rvfloat_e RVF       = brq_pkg::RV32FSingle,
+    parameter int unsigned       DataWidth = 32
     ) (
     // Clock and Reset
     input  logic                 clk_i,
@@ -39,9 +39,9 @@ module brq_fp_register_file_ff #(
     input  logic                 we_a_i
 
 );
-import buraq_pkg::rv32f_e;
+import brq_pkg::rvfloat_e;
 
-  localparam int unsigned ADDR_WIDTH = (RVF==buraq_pkg::RV32FDouble) ? 6 : 5;
+  localparam int unsigned ADDR_WIDTH = (RVF==brq_pkg::RV64FDouble) ? 6 : 5;
   localparam int unsigned NUM_WORDS  = 2**ADDR_WIDTH;
 
   logic [NUM_WORDS-1:0][DataWidth-1:0] rf_reg;

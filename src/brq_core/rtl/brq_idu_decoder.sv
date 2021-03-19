@@ -3,16 +3,12 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 
-
 /**
  * Instruction decoder
  *
  * This module is fully combinatorial, clock and reset are used for
  * assertions only.
  */
-
-//`include "brq_pkg.sv"
-//`include "fpnew_pkg.sv"
 
 module brq_idu_decoder #(
     parameter bit RV32E                = 0,
@@ -102,7 +98,7 @@ module brq_idu_decoder #(
     output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
     output brq_pkg::op_b_sel_e    fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
                                                            // immediate 
-    output brq_pkg::fp_type_e  fp_floating_type_o,       // Single precision or double 
+    output brq_pkg::fp_type_e  fp_floating_type_o,         // Single precision or double 
     output logic [4:0]         fp_rf_raddr_a_o,
     output logic [4:0]         fp_rf_raddr_b_o,
     output logic [4:0]         fp_rf_raddr_c_o,
@@ -118,7 +114,8 @@ module brq_idu_decoder #(
     output logic                  fp_rm_dynamic_o,
     output fpnew_pkg::fp_format_e fp_src_fmt_o,
     output fpnew_pkg::fp_format_e fp_dst_fmt_o,
-    output logic                  wb_int_reg_o
+    output logic                  wb_int_reg_o,
+    output logic                  is_fp_instr_o
 );
 
   import brq_pkg::*;
@@ -267,7 +264,7 @@ module brq_idu_decoder #(
     fp_rf_ren_c_o         = 1'b0;
     fp_rf_we_o            = 1'b0;
     wb_int_reg_o          = 1'b0;
-
+    is_fp_instr_o         = 1'b0;
 
     opcode                = opcode_e'(instr[6:0]);
 
@@ -671,7 +668,7 @@ module brq_idu_decoder #(
         data_req_o         = 1'b1;
         data_we_o          = 1'b1;
         data_type_o        = 2'b00;
-        fp_src_fmt_o       = FP32;          
+        is_fp_instr_o      = 1'b1;        
 
         unique case(instr[14:12])
           3'b011: begin // FSD
@@ -682,6 +679,7 @@ module brq_idu_decoder #(
             illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32; 
           end
+          default: illegal_insn = 1'b1;
         endcase
         end
 
@@ -690,16 +688,18 @@ module brq_idu_decoder #(
         fp_rf_we_o         = 1'b1;
         data_req_o         = 1'b1;
         data_type_o        = 2'b00;
+        is_fp_instr_o      = 1'b1;
 
         unique case(instr[14:12])
           3'b011: begin // FLD
-            illegal_insn = ((RVF == RV64FDouble|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           3'b010: begin // FLW
             illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32; 
           end
+          default: illegal_insn = 1'b1;
         endcase
       end
 
@@ -712,6 +712,7 @@ module brq_idu_decoder #(
         fp_rf_ren_c_o      = 1'b1;
         fp_rf_we_o         = 1'b1;
         fp_src_fmt_o       = FP32;
+        is_fp_instr_o      = 1'b1;
         
         unique case (instr[26:25])
           01: begin
@@ -722,12 +723,14 @@ module brq_idu_decoder #(
             illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
+          default: illegal_insn = 1'b1;
         endcase
       end
       OPCODE_OP_FP: begin
         fp_rf_ren_a_o      = 1'b1;
         fp_rf_we_o         = 1'b1;
         fp_src_fmt_o       = FP32;
+        is_fp_instr_o      = 1'b1;
 
         unique case (instr[31:25]) 
           7'b0000001, // FADD.D
@@ -1403,6 +1406,7 @@ module brq_idu_decoder #(
             alu_operator_o        = ALU_ADD;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B; 
           end
+          default: ;
         endcase
       end
 
@@ -1416,6 +1420,7 @@ module brq_idu_decoder #(
             alu_operator_o        = ALU_ADD;
             fp_alu_op_b_mux_sel_o = OP_B_IMM; 
           end
+          default: ;
         endcase
       end
 
@@ -1431,6 +1436,7 @@ module brq_idu_decoder #(
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b0;
           end
+          default: ;
         endcase
       end
 
@@ -1446,6 +1452,7 @@ module brq_idu_decoder #(
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
+          default: ;
         endcase
       end
 
@@ -1461,6 +1468,7 @@ module brq_idu_decoder #(
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b0;
           end
+          default: ;
         endcase
       end
 
@@ -1476,6 +1484,7 @@ module brq_idu_decoder #(
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b0;
           end
+          default: ;
         endcase
       end
 
@@ -1584,6 +1593,7 @@ module brq_idu_decoder #(
                 fp_alu_operator_o     = CLASSIFY;
                 fp_alu_op_b_mux_sel_o = OP_B_REG_B;
               end
+              default: ;
             endcase
           end
           7'b1010001: begin // FEQ.D, FLT.D, FLE.D
@@ -1604,6 +1614,7 @@ module brq_idu_decoder #(
                 fp_alu_operator_o     = CLASSIFY;
                 fp_alu_op_b_mux_sel_o = OP_B_REG_B;
               end
+              default: ;
             endcase
           end 
           7'b1100001: begin // // FCVT.W.D, FCVT.WU.D
@@ -1645,6 +1656,7 @@ module brq_idu_decoder #(
               fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
+          default: ;
         endcase
       end
       default: ;

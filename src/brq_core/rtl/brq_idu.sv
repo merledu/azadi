@@ -49,7 +49,7 @@ module brq_idu #(
     output logic                      pc_set_spec_o,
     output brq_pkg::pc_sel_e          pc_mux_o,
     output logic                      nt_branch_mispredict_o,
-    output brq_pkg::exc_pc_sel_e      xc_pc_mux_o,
+    output brq_pkg::exc_pc_sel_e      exc_pc_mux_o,
     output brq_pkg::exc_cause_e       exc_cause_o,
 
     input  logic                      illegal_c_insn_i,
@@ -180,15 +180,16 @@ module brq_idu #(
 
     // Floating point extensions IO
     output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
-    output buraq_pkg::op_b_sel_e  fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
+    output brq_pkg::op_b_sel_e    fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
                                                            // immediate 
-    output buraq_pkg::fp_type_e  fp_floating_type,         // Single precision or double 
+    output brq_pkg::fp_type_e    fp_floating_type_o,       // Single precision or double 
     output logic [4:0]           fp_rf_raddr_a_o,
     output logic [4:0]           fp_rf_raddr_b_o,
     output logic [4:0]           fp_rf_raddr_c_o,
     output logic                 fp_rf_ren_a_o,     
     output logic                 fp_rf_ren_b_o,     
     output logic                 fp_rf_ren_c_o,
+    output logic [4:0]           fp_rf_waddr_o,
     output logic                 fp_rf_we_o,
 
     output fpnew_pkg::operation_e fp_alu_operator_o,
@@ -197,7 +198,8 @@ module brq_idu #(
     output fpnew_pkg::fp_format_e fp_dst_fmt_o,
     output logic                  fp_rm_dynamic_o,
     output logic                  wb_int_reg_o,
-    output logic                  fp_flush_o
+    output logic                  fp_flush_o,
+    output logic                  is_fp_instr_o
 );
 
   import brq_pkg::*;
@@ -497,7 +499,7 @@ module brq_idu #(
       // Floating point extensions IO
       .fp_rounding_mode_o              ( fp_rounding_mode_o    ),   // defines the rounding mode 
       .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel_o ),   // operand b selection: reg value or immediate                       
-      .fp_floating_type                ( fp_floating_type      ),   // Single precision or double 
+      .fp_floating_type_o              ( fp_floating_type_o    ),   // Single precision or double 
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a_o       ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b_o       ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c_o       ),
