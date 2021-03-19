@@ -12,7 +12,7 @@ TEST = add
 # Constants
 RISCV_PREFIX = riscv32-unknown-elf-
 GCC_PREFIX = $(RISCV_PREFIX)gcc
-GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99 -g
+GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99 -ggdb
 LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -T $(TEST_DIR)/common/link.ld
 OBJDUMP_PREFIX = $(RISCV_PREFIX)objdump
 OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes 
