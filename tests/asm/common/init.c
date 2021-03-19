@@ -1,4 +1,4 @@
-#include "trap.h"
+#include "traps.h"
 #include "plic_driver.h"
 static void trap_init(void)
 {

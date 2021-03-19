@@ -60,6 +60,22 @@ assign gpio_o = gpio_out;
   tlul_pkg::tl_h2d_t dbgrom_to_xbar;
   tlul_pkg::tl_d2h_t xbar_to_dbgrom;
 
+  tlul_pkg::tl_h2d_t plic_req;
+  tlul_pkg::tl_d2h_t plic_resp;
+
+
+  //logic [31:0] intr_gpio;
+
+  // interrupt vector
+  logic [31:0] intr_gpio;
+  logic [31:0] intr_vector;
+  logic intr_req;
+
+  assign intr_vector = { 
+          intr_gpio // ID 33
+    
+    };
+
   logic [31:0] gpio_intr;
   logic       rx_dv_i;
   logic [7:0] rx_byte_i;
@@ -96,7 +112,7 @@ logic iccm_cntrl_we;
   //tlul_pkg::tl_d2h_t gpio_to_core;
 
 brq_core_top #(
-    .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::HaltAddress),
+    .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800),
     .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
 ) u_top (
     .clock (clock),
@@ -118,7 +134,7 @@ brq_core_top #(
         // Interrupt inputs
     .irq_software_i (1'b0),
     .irq_timer_i    (1'b0),
-    .irq_external_i (|gpio_intr),
+    .irq_external_i (intr_req),
     .irq_fast_i     (1'b0),
     .irq_nm_i       (1'b0),       // non-maskeable interrupt
 
@@ -164,7 +180,7 @@ brq_core_top #(
 
 
 // main xbar module
-  xbar_main_t main_swith (
+  tl_xbar_main main_swith (
   .clk_main_i         (clock),
   .rst_main_ni        (system_rst_ni),
 
@@ -195,8 +211,8 @@ brq_core_top #(
   .tl_timer3_i        (),
   .tl_timer4_o        (),
   .tl_timer4_i        (),
-  .tl_plic_o          (),
-  .tl_plic_i          (),
+  .tl_plic_o          (plic_req),
+  .tl_plic_i          (plic_resp),
   .tl_xbar_peri_o     (xbarm_to_xbarp),
   .tl_xbar_peri_i     (xbarp_to_xbarm),
 
@@ -269,7 +285,7 @@ xbar_periph periph_switch (
   .cio_gpio_o     (gpio_out),
   .cio_gpio_en_o  (),
 
-  .intr_gpio_o    (gpio_intr)  
+  .intr_gpio_o    (intr_gpio )  
 );
 
 
@@ -337,5 +353,25 @@ rstmgr reset_manager(
   .ndmreset (dbg_rst),
   .sys_rst_ni(system_rst_ni)
 );
+
+
+rv_plic intr_controller (
+  .clk_i(clock),
+  .rst_ni(system_rst_ni),
+
+  // Bus Interface (device)
+  .tl_i (plic_req),
+  .tl_o (plic_resp),
+
+  // Interrupt Sources
+  .intr_src_i (intr_vector),
+
+  // Interrupt notification to targets
+  .irq_o (intr_req),
+  .irq_id_o(),
+
+  .msip_o()
+);
+
 
 endmodule

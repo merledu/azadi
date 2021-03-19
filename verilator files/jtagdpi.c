@@ -5,8 +5,6 @@
 #include "jtagdpi.h"
 #include "tcp_server.h"
 
-#include "VAzadi_top_verilator__Dpi.h"
-
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>

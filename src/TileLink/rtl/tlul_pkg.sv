@@ -114,4 +114,7 @@ function automatic integer _clog2(integer value);
         d_opcode: tl_d_m_op'('0),
         default:  '0
     };
+
+
+
 endpackage

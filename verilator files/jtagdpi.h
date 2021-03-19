@@ -6,7 +6,6 @@
 #define JTAGDPI_H_
 
 #include <svdpi.h>
-#include "VAzadi_top_verilator__Dpi.h"
 
 #ifdef __cplusplus
 extern "C" {

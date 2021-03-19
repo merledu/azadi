@@ -7,6 +7,21 @@
 plic_fptr_t isr_table[PLIC_MAX_INTERRUPT_SRC];
 interrupt_data_t hart0_interrupt_matrix[PLIC_MAX_INTERRUPT_SRC];
 
+unsigned long read_word(uint32_t *addr)
+{
+	return *addr;
+}
+
+/** @fn void write_word(int *addr, unsigned long val)
+ * @brief  writes a value to an address
+ * @param int*
+ * @param unsigned long
+ */
+void write_word(uint32_t *addr, unsigned long val)
+{
+	*addr = val;
+}
+
 void interrupt_complete(uint32_t interrupt_id)
 {
 
@@ -16,6 +31,23 @@ void interrupt_complete(uint32_t interrupt_id)
 	*claim_addr = interrupt_id;
 	hart0_interrupt_matrix[interrupt_id].state = SERVICED;
 	hart0_interrupt_matrix[interrupt_id].count++;
+}
+
+void configure_interrupt_pin( __attribute__((unused)) uint32_t id)
+{
+
+	// uint32_t read_data;
+
+	// /*
+	//    GPIO0 -> Int id 7
+	//    GPIO15 -> Int id 21
+	//    Refer platform.h for full memory map.
+	//  */
+
+	// read_data = read_word(GPIO_DIRECTION_CNTRL_REG);
+
+	// write_word(GPIO_DIRECTION_CNTRL_REG, (read_data) & \
+	// 	   (0xFFFFFFFF & ~(1 << (id-7))));
 }
 
 uint32_t interrupt_claim_request()
@@ -106,6 +138,26 @@ void set_interrupt_priority(uint32_t priority_value, uint32_t int_id)
 
 }
 
+void isr_default(uint32_t interrupt_id)
+{
+	// log_trace("\nisr_default entered\n");
+
+	// if( interrupt_id > 0 && interrupt_id < 7 )  //PWM Interrupts
+	// {
+	// 	/*
+	// 	   Assuming 6 pwm's are there
+	// 	 */
+
+	// 	if(pwm_check_continuous_mode((6-interrupt_id)) == 0)
+	// 	{
+	// 		set_pwm_control_register((6-interrupt_id),0x80);
+	// 	}
+	// }
+
+	// log_info("interrupt [%d] serviced\n",interrupt_id);
+
+	// log_trace("\nisr_default exited\n");
+}
 
 
 void plic_init()

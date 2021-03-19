@@ -257,7 +257,7 @@ module rv_dm #(
   );
 
   // Bound-in DPI module replaces the TAP
-if (DirectDmiTap) begin
+//if (DirectDmiTap) begin
   // JTAG TAP
   dmi_jtag #(
     .IdcodeValue    (IdcodeValue)
@@ -283,7 +283,7 @@ if (DirectDmiTap) begin
     .td_o             (jtag_rsp_o.tdo),
     .tdo_oe_o         (jtag_rsp_o.tdo_oe)
   );
-end
+//end
 
   tlul_sram_adapter #(
     .SramAw(AddressWidthWords),

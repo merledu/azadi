@@ -11,7 +11,7 @@
 `ifndef PRIM_DEFAULT_IMPL
   `define PRIM_DEFAULT_IMPL prim_pkg::ImplGeneric
 `endif
-`include "/home/usman/Documents/ibex/rtl/prim_pkg.sv"
+`include "/home/merl/github_repos/azadi/src/brq_core/rtl/prim_pkg.sv"
 module prim_clock_gating (
   input        clk_i,
   input        en_i,

@@ -1,4 +1,4 @@
-#include "trap.h"
+#include "traps.h"
 mtrap_fptr_t mcause_trap_table[MAX_TRAP_VALUE];
 mtrap_fptr_t mcause_interrupt_table[MAX_INTERRUPT_VALUE];
 

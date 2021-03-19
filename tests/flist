@@ -77,3 +77,12 @@ $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_inv.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_mux2.sv
 $AZADI_ROOT/src/azadi_soc/rtl/rstmgr.sv
 $AZADI_ROOT/src/rv_dm/dmidpi/dmidpi.sv
+$AZADI_ROOT/src/TileLink/rtl/tl_xbar_main.sv
+$AZADI_ROOT/src/rv_plic/rtl/rv_plic_gateway.sv
+$AZADI_ROOT/src/rv_plic/rtl/rv_plic_reg_top.sv
+$AZADI_ROOT/src/rv_plic/rtl/rv_plic_target.sv
+$AZADI_ROOT/src/rv_plic/rtl/rv_plic.sv
+//$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_chk.sv
+//$AZADI_ROOT/src/TileLink/rtl/prim_secded_64_57_dec.sv
+//$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_gen.sv
+
