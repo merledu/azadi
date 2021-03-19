@@ -12,7 +12,7 @@ TEST = add
 # Constants
 RISCV_PREFIX = riscv32-unknown-elf-
 GCC_PREFIX = $(RISCV_PREFIX)gcc
-GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99
+GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99 -g
 LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -T $(TEST_DIR)/common/link.ld
 OBJDUMP_PREFIX = $(RISCV_PREFIX)objdump
 OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes 
@@ -30,6 +30,7 @@ defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_main_pkg.sv
 defines += $(AZADI_ROOT)/src/GPIO/rtl/gpio_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_dm/rtl/jtag_pkg.sv
 defines += $(AZADI_ROOT)/src/pulp_riscv_dbg/src/dm_pkg.sv
+defines += $(AZADI_ROOT)/src/rv_plic/rtl/rv_plic_reg_pkg.sv
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
 # complains for `auto` variables
@@ -51,8 +52,8 @@ clean:
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
-	  -CFLAGS -DVL_DEBUG -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
-	  -exe sim_main.cpp jtagdpi.c dmidpi.c tcp_server.c --autoflush --trace
+	  --trace --trace-fst --trace-structs --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
+	  -exe sim_main.cpp jtagdpi.c tcp_server.c --autoflush --trace
 #	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f VAzadi_top_verilator.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
@@ -66,12 +67,13 @@ build:
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/$(TEST).c -o $(TEST_DIR)/output/$(TEST) -lm -lgcc
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/plic_driver.c -o $(TEST_DIR)/output/plic -lm -lgcc
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/init.c -o $(TEST_DIR)/output/init -lm -lgcc
-	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/common/start.S $(TEST_DIR)/common/trap.S $(TEST_DIR)/output/$(TEST) $(TEST_DIR)/output/plic $(TEST_DIR)/output/init -o $(TEST_DIR)/output/$(TEST).merl -lgcc
+	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/traps.c -o $(TEST_DIR)/output/traps -lm -lgcc
+	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/common/start.S $(TEST_DIR)/common/trap.S $(TEST_DIR)/output/$(TEST) $(TEST_DIR)/output/plic $(TEST_DIR)/output/traps $(TEST_DIR)/output/init -o $(TEST_DIR)/output/$(TEST).merl -lgcc
 	$(OBJDUMP_PREFIX) $(OBJDUMP_FLAGS) $(TEST_DIR)/output/$(TEST).merl > $(TEST_DIR)/output/$(TEST).dump
 	$(RISCV_PREFIX)elf2hex --bit-width 32 --input $(TEST_DIR)/output/$(TEST).merl --output $(TEST_DIR)/output/program.hex
 
 help:
-	@echo Make sure the environment variable SHAHEEN_ROOT is set.
+	@echo Make sure the environment variable AZADI_ROOT is set.
 	@echo Possible targets: verilator vcs irun vlog help clean all verilator-build irun-build vcs-build program.hex
 
 .PHONY: help build clean verilator
