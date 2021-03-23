@@ -1,9 +1,6 @@
-
-
 /**
  * Main controller of the processor
  */
-
 
 module brq_idu_controller #(
     parameter bit WritebackStage  = 0,
@@ -43,7 +40,7 @@ module brq_idu_controller #(
     output logic                  instr_req_o,             // start fetching instructions
     output logic                  pc_set_o,                // jump to address set by pc_mux
     output logic                  pc_set_spec_o,           // speculative branch
-    output brq_pkg::pc_sel_e     pc_mux_o,                // IF stage fetch address selector
+    output brq_pkg::pc_sel_e      pc_mux_o,                // IF stage fetch address selector
                                                            // (boot, normal, exception...)
     output logic                  nt_branch_mispredict_o,  // Not-taken branch in ID/EX was
                                                            // mispredicted (predicted taken)
@@ -67,14 +64,14 @@ module brq_idu_controller #(
     // interrupt signals
     input  logic                  csr_mstatus_mie_i,       // M-mode interrupt enable bit
     input  logic                  irq_pending_i,           // interrupt request pending
-    input  brq_pkg::irqs_t       irqs_i,                  // interrupt requests qualified with
+    input  brq_pkg::irqs_t        irqs_i,                  // interrupt requests qualified with
                                                            // mie CSR
     input  logic                  irq_nm_i,                // non-maskeable interrupt
     output logic                  nmi_mode_o,              // core executing NMI handler
 
     // debug signals
     input  logic                  debug_req_i,
-    output brq_pkg::dbg_cause_e  debug_cause_o,
+    output brq_pkg::dbg_cause_e   debug_cause_o,
     output logic                  debug_csr_save_o,
     output logic                  debug_mode_o,
     input  logic                  debug_single_step_i,
@@ -89,7 +86,7 @@ module brq_idu_controller #(
     output logic                  csr_restore_dret_id_o,
     output logic                  csr_save_cause_o,
     output logic [31:0]           csr_mtval_o,
-    input  brq_pkg::priv_lvl_e   priv_mode_i,
+    input  brq_pkg::priv_lvl_e    priv_mode_i,
     input  logic                  csr_mstatus_tw_i,
 
     // stall & flush signals
@@ -101,10 +98,14 @@ module brq_idu_controller #(
     // performance monitors
     output logic                  perf_jump_o,             // we are executing a jump
                                                            // instruction (j, jr, jal, jalr)
-    output logic                  perf_tbranch_o           // we are executing a taken branch
+    output logic                  perf_tbranch_o,          // we are executing a taken branch
                                                            // instruction
+    input  logic                  fpu_busy_i
 );
   import brq_pkg::*;
+
+  logic fpu_busy;
+  assign fpu_busy = fpu_busy_i;
 
   // FSM state encoding
   typedef enum logic [3:0] {
@@ -782,7 +783,7 @@ module brq_idu_controller #(
   assign stall = stall_id_i | stall_wb_i;
 
   // signal to IF stage that ID stage is ready for next instr
-  assign id_in_ready_o = ~stall & ~halt_if & ~retain_id;
+  assign id_in_ready_o = ~stall & ~halt_if & ~retain_id & ~fpu_busy;
 
   // kill instr in IF-ID pipeline reg that are done, or if a
   // multicycle instr causes an exception for example

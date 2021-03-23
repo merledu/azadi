@@ -69,20 +69,19 @@ VL_MODULE(Vazadi_soc_top_tlul_socket_m1__pi4) {
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
-    void _sequent__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__37(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__18(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__27(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__8(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    void _sequent__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__44(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__17(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__26(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__35(Vazadi_soc_top__Syms* __restrict vlSymsp);
     void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__DCCM__9(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__FLASH_CTRL__1(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__PLIC__7(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_0__2(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_1__3(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_2__4(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_3__5(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_4__6(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__XBAR_PERI__26(Vazadi_soc_top__Syms* __restrict vlSymsp);
-    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__XBAR_PERI__28(Vazadi_soc_top__Syms* __restrict vlSymsp);
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__FLASH_CTRL__7(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__PLIC__6(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_0__1(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_1__2(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_2__3(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_3__4(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__TIMER_4__5(Vazadi_soc_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__azadi_soc_top__DOT__main_swith__DOT__XBAR_PERI__8(Vazadi_soc_top__Syms* __restrict vlSymsp);
   private:
     static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);

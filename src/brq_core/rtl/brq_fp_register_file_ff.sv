@@ -61,6 +61,10 @@ import brq_pkg::rvfloat_e;
       end else if(we_a_dec[i]) begin
         rf_reg_q[i] <= wdata_a_i;
       end
+      else begin
+        rf_reg_q[5] <= 32'h41200000;
+        rf_reg_q[6] <= 32'h41700000;
+      end
     end
   end
 

@@ -29,18 +29,22 @@ module brq_wbu #(
   output logic                     perf_instr_ret_wb_o,
   output logic                     perf_instr_ret_compressed_wb_o,
 
+  input  logic [4:0]               fp_rf_waddr_id_i,
   input  logic [4:0]               rf_waddr_id_i,
   input  logic [31:0]              rf_wdata_id_i,
   input  logic                     rf_we_id_i,
+  input  logic                     fp_rf_wen_id_i,
 
   input  logic [31:0]              rf_wdata_lsu_i,
   input  logic                     rf_we_lsu_i,
 
   output logic [31:0]              rf_wdata_fwd_wb_o,
 
+  output logic [4:0]               fp_rf_waddr_wb_o,
   output logic [4:0]               rf_waddr_wb_o,
   output logic [31:0]              rf_wdata_wb_o,
   output logic                     rf_we_wb_o,
+  output logic                     fp_rf_wen_wb_o,
 
   input logic                      lsu_resp_valid_i,
   input logic                      lsu_resp_err_i,
@@ -89,13 +93,14 @@ module brq_wbu #(
 
     always_ff @(posedge clk_i) begin
       if(en_wb_i) begin
-        rf_we_wb_q      <= rf_we_id_i;
-        rf_waddr_wb_q   <= rf_waddr_id_i;
-        rf_wdata_wb_q   <= rf_wdata_id_i;
-        wb_instr_type_q <= instr_type_wb_i;
-        wb_pc_q         <= pc_id_i;
-        wb_compressed_q <= instr_is_compressed_id_i;
-        wb_count_q      <= instr_perf_count_id_i;
+        rf_we_wb_q       <= rf_we_id_i;
+        fp_rf_waddr_wb_o <= fp_rf_waddr_id_i; // added for floating point instructions
+        rf_waddr_wb_q    <= rf_waddr_id_i;
+        rf_wdata_wb_q    <= rf_wdata_id_i;
+        wb_instr_type_q  <= instr_type_wb_i;
+        wb_pc_q          <= pc_id_i;
+        wb_compressed_q  <= instr_is_compressed_id_i;
+        wb_count_q       <= instr_perf_count_id_i;
       end
     end
 
@@ -127,6 +132,7 @@ module brq_wbu #(
     assign rf_wdata_fwd_wb_o = rf_wdata_wb_q;
   end else begin : g_bypass_wb
     // without writeback stage just pass through register write signals
+    assign fp_rf_waddr_wb_o      = fp_rf_waddr_id_i;
     assign rf_waddr_wb_o         = rf_waddr_id_i;
     assign rf_wdata_wb_mux[0]    = rf_wdata_id_i;
     assign rf_wdata_wb_mux_we[0] = rf_we_id_i;
@@ -165,7 +171,8 @@ module brq_wbu #(
 
   // RF write data can come from ID results (all RF writes that aren't because of loads will come
   // from here) or the LSU (RF writes for load data)
-  assign rf_wdata_wb_o = rf_wdata_wb_mux_we[0] ? rf_wdata_wb_mux[0] : rf_wdata_wb_mux[1];
-  assign rf_we_wb_o    = |rf_wdata_wb_mux_we;
+  assign rf_wdata_wb_o  = rf_wdata_wb_mux_we[0] ? rf_wdata_wb_mux[0] : rf_wdata_wb_mux[1];
+  assign rf_we_wb_o     = |rf_wdata_wb_mux_we;
+  assign fp_rf_wen_wb_o = fp_rf_wen_id_i;
 
 endmodule

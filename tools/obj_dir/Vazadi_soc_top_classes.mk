@@ -35,8 +35,6 @@ VM_CLASSES_FAST += \
 	Vazadi_soc_top_tlul_socket_m1__pi4 \
 	Vazadi_soc_top_gpio_reg_pkg \
 	Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1 \
-	Vazadi_soc_top_div_sqrt_top_mvp \
-	Vazadi_soc_top_div_sqrt_top_mvp__1 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
@@ -45,14 +43,10 @@ VM_CLASSES_SLOW += \
 	Vazadi_soc_top__2__Slow \
 	Vazadi_soc_top__3__Slow \
 	Vazadi_soc_top__4__Slow \
-	Vazadi_soc_top__5__Slow \
 	Vazadi_soc_top___024unit__Slow \
 	Vazadi_soc_top_tlul_socket_m1__pi4__Slow \
 	Vazadi_soc_top_gpio_reg_pkg__Slow \
 	Vazadi_soc_top_tlul_fifo_sync__RCz1_RDz1__Slow \
-	Vazadi_soc_top_div_sqrt_top_mvp__Slow \
-	Vazadi_soc_top_div_sqrt_top_mvp__1__Slow \
-	Vazadi_soc_top_div_sqrt_top_mvp__2__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
@@ -63,7 +57,6 @@ VM_SUPPORT_FAST += \
 VM_SUPPORT_SLOW += \
 	Vazadi_soc_top__Syms \
 	Vazadi_soc_top__Trace__Slow \
-	Vazadi_soc_top__Trace__1__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

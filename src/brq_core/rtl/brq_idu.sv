@@ -197,9 +197,12 @@ module brq_idu #(
     output fpnew_pkg::fp_format_e fp_src_fmt_o,
     output fpnew_pkg::fp_format_e fp_dst_fmt_o,
     output logic                  fp_rm_dynamic_o,
-    output logic                  wb_int_reg_o,
     output logic                  fp_flush_o,
-    output logic                  is_fp_instr_o
+    output logic                  is_fp_instr_o,
+    output logic                  use_fp_rs1_o,
+    output logic                  use_fp_rs2_o,
+    output logic                  use_fp_rd_o,
+    input  logic                  fpu_busy_i
 );
 
   import brq_pkg::*;
@@ -513,7 +516,10 @@ module brq_idu #(
       .fp_src_fmt_o                    ( fp_src_fmt_o          ),
       .fp_dst_fmt_o                    ( fp_dst_fmt_o          ),
       .fp_rm_dynamic_o                 ( fp_rm_dynamic_o       ),
-      .wb_int_reg_o                    ( wb_int_reg_o          )
+      .is_fp_instr_o                   ( is_fp_instr_o         ), 
+      .use_fp_rs1_o                    ( use_fp_rs1_o          ),
+      .use_fp_rs2_o                    ( use_fp_rs2_o          ),
+      .use_fp_rd_o                     ( use_fp_rd_o           )
   );
 
   /////////////////////////////////
@@ -637,7 +643,8 @@ module brq_idu #(
 
       // Performance Counters
       .perf_jump_o                    ( perf_jump_o             ),
-      .perf_tbranch_o                 ( perf_tbranch_o          )
+      .perf_tbranch_o                 ( perf_tbranch_o          ),
+      .fpu_busy_i                     ( fpu_busy_i              )
   );
 
   assign fp_flush_o     = flush_id;
