@@ -49,22 +49,22 @@ module Azadi_top_verilator #(
   );
 
 
-  // if(DirectDmiTap) begin
-    //  bind rv_dm dmidpi u_dmidpi (
-    //  .clk_i,
-    //  .rst_ni,
-    //  .dmi_req_valid,
-    //  .dmi_req_ready,
-    //  .dmi_req_addr   (dmi_req.addr),
-    //  .dmi_req_op     (dmi_req.op),
-    //  .dmi_req_data   (dmi_req.data),
-    //  .dmi_rsp_valid,
-    //  .dmi_rsp_ready,
-    //  .dmi_rsp_data   (dmi_rsp.data),
-    //  .dmi_rsp_resp   (dmi_rsp.resp),
-    //  .dmi_rst_n      (dmi_rst_n)
-    //);
-  // end else begin
+   //if(DirectDmiTap) begin
+   //   bind rv_dm dmidpi u_dmidpi (
+   //   .clk_i(clock),
+   //   .rst_ni(reset_ni),
+   //   .dmi_req_valid,
+   //   .dmi_req_ready,
+   //   .dmi_req_addr   (dmi_req.addr),
+   //   .dmi_req_op     (dmi_req.op),
+   //   .dmi_req_data   (dmi_req.data),
+   //   .dmi_rsp_valid,
+   //   .dmi_rsp_ready,
+   //   .dmi_rsp_data   (dmi_rsp.data),
+   //   .dmi_rsp_resp   (dmi_rsp.resp),
+   //   .dmi_rst_n      (dmi_rst_n)
+   // );
+   //end else begin
      // jtag dpi for openocd
     jtagdpi u_jtagdpi (
       .clk_i(clock),

@@ -14,7 +14,7 @@ void VAzadi_top_verilator::traceCleanup(void* userp, VerilatedFst* /*unused*/) {
     {
         vlSymsp->__Vm_activity = false;
         __Vilp = 0U;
-        while ((__Vilp <= 0x84U)) {
+        while ((__Vilp <= 0x8cU)) {
             vlTOPp->__Vm_traceActivity[__Vilp] = 0U;
             __Vilp = ((IData)(1U) + __Vilp);
         }

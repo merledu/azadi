@@ -1,5 +1,6 @@
  
 module azadi_soc_top #(
+  
   parameter logic [31:0] JTAG_ID = 32'h 0000_0001,
   parameter logic DirectDmiTap = 1'b1
 )(
@@ -112,8 +113,25 @@ logic iccm_cntrl_we;
   //tlul_pkg::tl_d2h_t gpio_to_core;
 
 brq_core_top #(
-    .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800),
-    .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress)
+    .PMPEnable        (1'b0),
+    .PMPGranularity   (0), 
+    .PMPNumRegions    (0), 
+    .MHPMCounterNum   (0), 
+    .MHPMCounterWidth (40), 
+    .RV32E            (1'b0), 
+    .RV32M            (brq_pkg::RV32MFast), 
+    .RV32B            (brq_pkg::RV32BNone), 
+    .RegFile          (brq_pkg::RegFileFF), 
+    .BranchTargetALU  (1'b0), 
+    .WritebackStage   (1'b1), 
+    .ICache           (1'b0), 
+    .ICacheECC        (1'b0), 
+    .BranchPredictor  (1'b0), 
+    .DbgTriggerEn     (1'b1), 
+    .DbgHwBreakNum    (2), 
+    .Securebrq        (1'b0),
+    .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800), 
+    .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress) 
 ) u_top (
     .clock (clock),
     .reset (system_rst_ni),
@@ -126,10 +144,10 @@ brq_core_top #(
     .tl_d_i (xbar_to_lsu),
     .tl_d_o (lsu_to_xbar),
 
-    .test_en_i (1'b1),     // enable all clock gates for testing
+    .test_en_i   (1'b0),     // enable all clock gates for testing
 
-    .hart_id_i (32'b0), 
-    .boot_addr_i (32'h00000000),
+    .hart_id_i   (32'b0), 
+    .boot_addr_i (32'h20000000),
 
         // Interrupt inputs
     .irq_software_i (1'b0),

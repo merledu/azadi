@@ -71,14 +71,14 @@ module tl_xbar_main (
 
   tlul_pkg::tl_h2d_t  h1_dv_i[3];
   tlul_pkg::tl_d2h_t  h1_dv_o[3];
-  tlul_pkg::tl_h2d_t  h2_dv_i[10];
-  tlul_pkg::tl_d2h_t  h2_dv_o[10];
+  tlul_pkg::tl_h2d_t  h2_dv_i[11];
+  tlul_pkg::tl_d2h_t  h2_dv_o[11];
   tlul_pkg::tl_h2d_t  h3_dv_i[10];
   tlul_pkg::tl_d2h_t  h3_dv_o[10];
 
 // ICCM
-  tlul_pkg::tl_h2d_t s1n_sm1_1[2];
-  tlul_pkg::tl_d2h_t sm1_s1n_1[2];
+  tlul_pkg::tl_h2d_t s1n_sm1_1[3];
+  tlul_pkg::tl_d2h_t sm1_s1n_1[3];
 
 // DCCM
   tlul_pkg::tl_h2d_t s1n_sm1_2[2];
@@ -122,10 +122,12 @@ module tl_xbar_main (
 
 
 // Device 1 host connections (ICCM)
-  assign h1_dv_o[0] = sm1_s1n_1[0];
-  assign h3_dv_o[2] = sm1_s1n_1[1];
+  assign h1_dv_o[0]   = sm1_s1n_1[0];
+  assign h3_dv_o[2]   = sm1_s1n_1[1];
+  assign h2_dv_o[10]  = sm1_s1n_1[2];
   assign s1n_sm1_1[0] = h1_dv_i[0];
   assign s1n_sm1_1[1] = h3_dv_i[2];
+  assign s1n_sm1_1[2] = h2_dv_i[10];
 
 // Device 2 host connections (DCCM)
   assign h2_dv_o[0] = sm1_s1n_2[0];
@@ -253,6 +255,8 @@ module tl_xbar_main (
       device_sel_2 = 4'd8;
     end else if ((brqlsu_to_s1n.a_address & ~(ADDR_MASK_XBAR_PERI)) >= ADDR_SPACE_XBAR_PERI) begin
       device_sel_2 = 4'd9;
+    end else if ((brqlsu_to_s1n.a_address & ~(ADDR_MASK_ICCM)) == ADDR_SPACE_ICCM) begin
+      device_sel_2 = 4'd10;
     end
   end
 
@@ -263,7 +267,7 @@ module tl_xbar_main (
     .HRspDepth (4'h0),
     .DReqDepth (36'h0),
     .DRspDepth (36'h0),
-    .N         (10)
+    .N         (11)
   ) host_2 (
     .clk_i        (clk_main_i),
     .rst_ni       (rst_main_ni),
@@ -326,7 +330,7 @@ module tl_xbar_main (
     .HRspDepth (8'h0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
-    .M         (2)
+    .M         (3)
   ) ICCM (
     .clk_i        (clk_main_i),
     .rst_ni       (rst_main_ni),

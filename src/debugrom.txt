@@ -1,36 +1,36 @@
-0x0	    0x7B202473	csrrs x8 1970 x0	0x7b202473
-0x4	    0x7B302573	csrrs x10 1971 x0	0x7b302573
-0x8	    0x02108423	sb x1 40(x1)	sb x1,0x28(x1)#0x10852423
-0xc	    0xF1402473	csrrs x8 3860 x0	0xf1402473
-0x10	0xA85FF06F	jal x0 -1404	0xa85ff06f
-0x14	0x7B202473	csrrs x8 1970 x0	0x7b202473
-0x18	0x7B302573	csrrs x10 1971 x0	0x7b302573
-0x1c	0x10050223	sb x0 260(x10)	sb x0,0x104(x10)#0x10052223
-0x20	0x00100073	ebreak	0x00100073
-0x24	0x7B202473	csrrs x8 1970 x0	0x7b202473
-0x28	0x7B302573	csrrs x10 1971 x0	0x7b302573
-0x2c	0x10050623	sb x0 268(x10)	sb x0,0x10c(x10) #0x10052623
-0x30	0x00C51513	slli x10 x10 12	0x00c51513
-0x34	0x00C55513	srli x10 x10 12	0x00c55513
-0x38	0x00000517	auipc x10 0	0x00000517
-0x3c	0xFD5FF06F	jal x0 -44	0xfd5ff06f
-0x40	0xFA041CE3	bne x8 x0 -72	0xfa041ce3
-0x44	0x00247413	andi x8 x8 2	0x00247413
-0x48	0x40044403	lbu x8 1024(x8)	lbu x8,0x400(x8) #0x40044403
-0x4c	0x00A40433	add x8 x8 x10	0x00a40433
-0x50	0xF1402473	csrrs x8 3860 x0	0xf1402473
-0x54	0x02041C63	bne x8 x0 56	0x02041c63
-0x58	0x00147413	andi x8 x8 1	0x00147413
-0x5c	0x40044403	lbu x8 1024(x8)	lbu x8,0x400(x8) #0x40044403
-0x60	0x00A40433	add x8 x8 x10	0x00a40433
-0x64	0x08429023	sh x4 128(x5)	sh x4,0x80(x5) #0x10852023
-0x68	0xF1402473	csrrs x8 3860 x0	CSRRS x8,0xf14,x0 #0xf1402473
-0x6c	0x00C51513	slli x10 x10 12	0x00c51513
-0x70	0x00C55513	srli x10 x10 12	0x00c55513
-0x74	0x00000517	auipc x10 0	0x00000517
-0x78	0x7B351073	csrrw x0 1971 x10	0x7b351073
-0x7c	0x7B241073	csrrw x0 1970 x8	0x7b241073
-0x80	0x0000000F	fence	FENCE #0x0ff0000f
-0x84	0x04C0006F	jal x0 76	0x04c0006f
-0x88	0x07C0006F	jal x0 124	0x07c0006f
-0x8c	0x00C0006F	jal x0 12	0x00c0006f
+jal x0 12	        
+jal x0 124	      
+jal x0 76	        
+fence	    
+csrrw x0 1970 x8	
+csrrw x0 1971 x10	
+auipc x10 0	      
+srli x10 x10 12	  
+slli x10 x10 12	  
+csrrs x8 3860 x0	 
+sh x4 128(x5)	     
+add x8 x8 x10	    
+lbu x8 1024(x8)	   
+andi x8 x8 1	    
+bne x8 x0 56	    
+csrrs x8 3860 x0	
+add x8 x8 x10	    
+lbu x8 1024(x8)	  
+andi x8 x8 2	    
+bne x8 x0 -72	    
+jal x0 -44	      
+auipc x10 0	      
+srli x10 x10 12	  
+slli x10 x10 12	  
+sw x0 268(x10)	   
+csrrs x10 1971 x0	
+csrrs x8 1970 x0	
+ebreak	          
+sb x0 260(x10)	   
+csrrs x10 1971 x0	
+csrrs x8 1970 x0	
+jal x0 -1404	    
+csrrs x8 3860 x0	
+sw x8 0x108(x10)	 
+csrrs x10 1971 x0	
+csrrs x8 1970 x0	

@@ -1,6 +1,6 @@
-VAzadi_top_verilator_tlul_socket_m1__pi4.o: \
- VAzadi_top_verilator_tlul_socket_m1__pi4.cpp \
- VAzadi_top_verilator_tlul_socket_m1__pi4.h \
+VAzadi_top_verilator_tlul_socket_m1__pi7__Slow.o: \
+ VAzadi_top_verilator_tlul_socket_m1__pi7__Slow.cpp \
+ VAzadi_top_verilator_tlul_socket_m1__pi7.h \
  /usr/local/share/verilator/include/verilated_heavy.h \
  /usr/local/share/verilator/include/verilated.h \
  /usr/local/share/verilator/include/verilatedos.h \
@@ -10,6 +10,6 @@ VAzadi_top_verilator_tlul_socket_m1__pi4.o: \
  VAzadi_top_verilator__Syms.h VAzadi_top_verilator.h \
  VAzadi_top_verilator_gpio_reg_pkg.h \
  VAzadi_top_verilator_rv_plic_reg_pkg.h \
- VAzadi_top_verilator_tlul_fifo_sync__RCz5_RDz5.h \
+ VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15.h \
  /usr/local/share/verilator/include/verilated_dpi.h \
  /usr/local/share/verilator/include/verilated_sym_props.h

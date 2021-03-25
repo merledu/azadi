@@ -12,11 +12,10 @@ TEST = add
 # Constants
 RISCV_PREFIX = riscv32-unknown-elf-
 GCC_PREFIX = $(RISCV_PREFIX)gcc
-GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99 -ggdb
+GCC_FLAGS = -march=rv32i -mabi=ilp32 -mcmodel=medany -std=gnu99 -g
 LINK_FLAGS = -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles -T $(TEST_DIR)/common/link.ld
 OBJDUMP_PREFIX = $(RISCV_PREFIX)objdump
-OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes 
-#--section=.text --section=.text.startup --section=.text.init --section=.data
+OBJDUMP_FLAGS = --disassemble-all --disassemble-zeroes --section=.text --section=.text.startup --section=.text.init --section=.data
 VERILATOR = verilator
 
 
@@ -52,8 +51,8 @@ clean:
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
-	  --trace --trace-fst --trace-structs --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
-	  -exe sim_main.cpp jtagdpi.c tcp_server.c --autoflush --trace
+	  --trace --trace-fst --trace-structs --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-IMPLICIT -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
+	  -exe sim_main.cpp dmidpi.c jtagdpi.c tcp_server.c --autoflush --trace
 #	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f VAzadi_top_verilator.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build

@@ -7,8 +7,9 @@ module DFFRAM (
     output logic [31:0] Do, // data output
     input  logic [11:0] A // address
 );
-  
-
+  ///home/merl/github_repos/azadi/tests/prog.hex
+//home/merl/github_repos/azadi/tests/asm/output/program.hex
+///home/merl/github_repos/azadi/progm.hex
 reg [31:0] mem [0:4096-1];
 
 initial begin
