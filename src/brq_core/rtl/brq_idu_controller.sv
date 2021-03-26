@@ -104,9 +104,6 @@ module brq_idu_controller #(
 );
   import brq_pkg::*;
 
-  logic fpu_busy;
-  assign fpu_busy = fpu_busy_i;
-
   // FSM state encoding
   typedef enum logic [3:0] {
     RESET, BOOT_SET, WAIT_SLEEP, SLEEP, FIRST_FETCH, DECODE, FLUSH,
@@ -780,10 +777,10 @@ module brq_idu_controller #(
   // If high current instruction cannot complete this cycle. Either because it needs more cycles to
   // finish (stall_id_i) or because the writeback stage cannot accept it yet (stall_wb_i). If there
   // is no writeback stage stall_wb_i is a constant 0.
-  assign stall = stall_id_i | stall_wb_i;
+  assign stall = stall_id_i | stall_wb_i | fpu_busy_i;
 
   // signal to IF stage that ID stage is ready for next instr
-  assign id_in_ready_o = ~stall & ~halt_if & ~retain_id & ~fpu_busy;
+  assign id_in_ready_o = ~stall & ~halt_if & ~retain_id;
 
   // kill instr in IF-ID pipeline reg that are done, or if a
   // multicycle instr causes an exception for example

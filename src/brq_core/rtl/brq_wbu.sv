@@ -16,7 +16,7 @@ module brq_wbu #(
   input  logic                     rst_ni,
 
   input  logic                     en_wb_i,
-  input  brq_pkg::wb_instr_type_e instr_type_wb_i,
+  input  brq_pkg::wb_instr_type_e  instr_type_wb_i,
   input  logic [31:0]              pc_id_i,
   input  logic                     instr_is_compressed_id_i,
   input  logic                     instr_perf_count_id_i,
@@ -29,35 +29,42 @@ module brq_wbu #(
   output logic                     perf_instr_ret_wb_o,
   output logic                     perf_instr_ret_compressed_wb_o,
 
-  input  logic [4:0]               fp_rf_waddr_id_i,
   input  logic [4:0]               rf_waddr_id_i,
   input  logic [31:0]              rf_wdata_id_i,
   input  logic                     rf_we_id_i,
-  input  logic                     fp_rf_wen_id_i,
 
   input  logic [31:0]              rf_wdata_lsu_i,
   input  logic                     rf_we_lsu_i,
 
   output logic [31:0]              rf_wdata_fwd_wb_o,
 
-  output logic [4:0]               fp_rf_waddr_wb_o,
   output logic [4:0]               rf_waddr_wb_o,
   output logic [31:0]              rf_wdata_wb_o,
   output logic                     rf_we_wb_o,
-  output logic                     fp_rf_wen_wb_o,
 
   input logic                      lsu_resp_valid_i,
   input logic                      lsu_resp_err_i,
 
-  output logic                     instr_done_wb_o
+  output logic                     instr_done_wb_o,
+
+  // floating point 
+  output logic                     fp_rf_write_wb_o,
+  output logic                     fp_rf_wen_wb_o,
+  output logic [4:0]               fp_rf_waddr_wb_o,
+  input  logic [4:0]               fp_rf_waddr_id_i,
+  input  logic                     fp_rf_wen_id_i,
+  output logic [31:0]              fp_rf_wdata_wb_o
 );
 
   import brq_pkg::*;
 
   // 0 == RF write from ID
   // 1 == RF write from LSU
-  logic [31:0] rf_wdata_wb_mux    [2];
-  logic [1:0]  rf_wdata_wb_mux_we;
+  logic [31:0] rf_wdata_wb_mux[2];
+  logic [1:0]  rf_wdata_wb_mux_we; 
+  
+  logic [31:0] fp_rf_wdata_wb_mux[2];
+  logic [1:0]  fp_rf_wdata_wb_mux_we;
 
   if(WritebackStage) begin : g_writeback_stage
     logic [31:0]    rf_wdata_wb_q;
@@ -73,6 +80,11 @@ module brq_wbu #(
     wb_instr_type_e wb_instr_type_q;
 
     logic           wb_valid_d;
+
+    // floating point
+    logic [31:0]    fp_rf_wdata_wb_q;
+    logic           fp_rf_we_wb_q;
+    logic [4:0]     fp_rf_waddr_wb_q;
 
     // Stage becomes valid if an instruction enters for ID/EX and valid is cleared when instruction
     // is done
@@ -94,25 +106,34 @@ module brq_wbu #(
     always_ff @(posedge clk_i) begin
       if(en_wb_i) begin
         rf_we_wb_q       <= rf_we_id_i;
-        fp_rf_waddr_wb_o <= fp_rf_waddr_id_i; // added for floating point instructions
         rf_waddr_wb_q    <= rf_waddr_id_i;
         rf_wdata_wb_q    <= rf_wdata_id_i;
         wb_instr_type_q  <= instr_type_wb_i;
         wb_pc_q          <= pc_id_i;
         wb_compressed_q  <= instr_is_compressed_id_i;
         wb_count_q       <= instr_perf_count_id_i;
+
+        // added for floating point registers for wb stage
+        fp_rf_we_wb_q    <= fp_rf_wen_id_i;
+        fp_rf_waddr_wb_q <= rf_waddr_id_i;
+        fp_rf_wdata_wb_q <= rf_wdata_id_i;
       end
     end
 
     assign rf_waddr_wb_o         = rf_waddr_wb_q;
     assign rf_wdata_wb_mux[0]    = rf_wdata_wb_q;
     assign rf_wdata_wb_mux_we[0] = rf_we_wb_q & wb_valid_q;
+        
+    assign fp_rf_waddr_wb_o         = rf_waddr_wb_q; // no seperate datapath for rd address
+    assign fp_rf_wdata_wb_mux[0]    = rf_wdata_wb_q; // no seperate datapath for data bus
+    assign fp_rf_wdata_wb_mux_we[0] = fp_rf_we_wb_q & wb_valid_q;
 
     assign ready_wb_o = ~wb_valid_q | wb_done;
 
     // Instruction in writeback will be writing to register file if either rf_we is set or writeback
     // is awaiting load data. This is used for determining RF read hazards in ID/EX
     assign rf_write_wb_o = wb_valid_q & (rf_we_wb_q | (wb_instr_type_q == WB_INSTR_LOAD));
+    assign fp_rf_write_wb_o = wb_valid_q & (fp_rf_we_wb_q | (wb_instr_type_q == WB_INSTR_LOAD));
 
     assign outstanding_load_wb_o  = wb_valid_q & (wb_instr_type_q == WB_INSTR_LOAD);
     assign outstanding_store_wb_o = wb_valid_q & (wb_instr_type_q == WB_INSTR_STORE);
@@ -132,10 +153,14 @@ module brq_wbu #(
     assign rf_wdata_fwd_wb_o = rf_wdata_wb_q;
   end else begin : g_bypass_wb
     // without writeback stage just pass through register write signals
-    assign fp_rf_waddr_wb_o      = fp_rf_waddr_id_i;
     assign rf_waddr_wb_o         = rf_waddr_id_i;
     assign rf_wdata_wb_mux[0]    = rf_wdata_id_i;
     assign rf_wdata_wb_mux_we[0] = rf_we_id_i;
+
+    // for floating point unit
+    assign fp_rf_waddr_wb_o          = rf_waddr_id_i;  // no seperate datapath for rd address
+    assign fp_rf_wdata_wb_mux[0]     = rf_wdata_id_i;  // no seperate datapath for data bus
+    assign fp_rf_wdata_wb_mux_we[0]  = fp_rf_wen_id_i;
 
     // Increment instruction retire counters for valid instructions which are not lsu errors
     assign perf_instr_ret_wb_o            = instr_perf_count_id_i & en_wb_i &
@@ -169,10 +194,19 @@ module brq_wbu #(
   assign rf_wdata_wb_mux[1]    = rf_wdata_lsu_i;
   assign rf_wdata_wb_mux_we[1] = rf_we_lsu_i;
 
+  assign fp_rf_wdata_wb_mux[1]    = rf_wdata_lsu_i;
+  assign fp_rf_wdata_wb_mux_we[1] = rf_we_lsu_i;
+
   // RF write data can come from ID results (all RF writes that aren't because of loads will come
   // from here) or the LSU (RF writes for load data)
-  assign rf_wdata_wb_o  = rf_wdata_wb_mux_we[0] ? rf_wdata_wb_mux[0] : rf_wdata_wb_mux[1];
+  logic  we_temp;
+  assign we_temp = fp_rf_wdata_wb_mux_we[0];
+  assign rf_wdata_wb_o  = (rf_wdata_wb_mux_we[0] | we_temp) ? rf_wdata_wb_mux[0] : 
+                          rf_wdata_wb_mux[1];
   assign rf_we_wb_o     = |rf_wdata_wb_mux_we;
-  assign fp_rf_wen_wb_o = fp_rf_wen_id_i;
+  
+  assign fp_rf_wdata_wb_o = fp_rf_wdata_wb_mux_we[0] ? fp_rf_wdata_wb_mux[0] : 
+                            fp_rf_wdata_wb_mux[1];
+  assign fp_rf_wen_wb_o   = |fp_rf_wdata_wb_mux_we;
 
 endmodule

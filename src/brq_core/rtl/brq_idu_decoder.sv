@@ -269,6 +269,8 @@ module brq_idu_decoder #(
     use_fp_rs1_o          = 1'b0;
     use_fp_rs2_o          = 1'b0;
     use_fp_rd_o           = 1'b0;
+    fp_src_fmt_o          = FP32; 
+    fp_dst_fmt_o          = FP32;
 
     opcode                = opcode_e'(instr[6:0]);
 
@@ -875,7 +877,7 @@ module brq_idu_decoder #(
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
             use_fp_rs2_o     = 1'b1;
-            if ((instr[14]) | (&instr[13:12])) begin
+            if (~(instr[14]) | (&instr[13:12])) begin
               fp_rf_ren_b_o      = 1'b1;
               illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
@@ -885,7 +887,7 @@ module brq_idu_decoder #(
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
             use_fp_rs2_o     = 1'b1;
-            if ((instr[14]) | (&instr[13:12])) begin
+            if (~(instr[14]) | (&instr[13:12])) begin
               fp_rf_ren_b_o      = 1'b1;
               illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
@@ -1526,12 +1528,10 @@ module brq_idu_decoder #(
           01: begin
             fp_alu_operator_o     = FNMSUB;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            fp_alu_op_mod_o       = 1'b0;
           end
           00: begin
             fp_alu_operator_o     = FNMSUB;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            fp_alu_op_mod_o       = 1'b0;
           end
           default: ;
         endcase
@@ -1542,12 +1542,12 @@ module brq_idu_decoder #(
           01: begin
             fp_alu_operator_o     = FNMSUB;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            fp_alu_op_mod_o       = 1'b0;
+            fp_alu_op_mod_o       = 1'b1;
           end
           00: begin
             fp_alu_operator_o     = FNMSUB;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            fp_alu_op_mod_o       = 1'b0;
+            fp_alu_op_mod_o       = 1'b1;
           end
           default: ;
         endcase
@@ -1558,7 +1558,6 @@ module brq_idu_decoder #(
           7'b0000001: begin // FADD.D
             fp_alu_operator_o     = ADD;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            fp_alu_op_mod_o       = 1'b0;
           end
           7'b0000101: begin // FSUB.D
             fp_alu_operator_o     = ADD;
@@ -1580,6 +1579,7 @@ module brq_idu_decoder #(
           7'b0000100: begin // FSUB.S
             fp_alu_operator_o     = ADD;
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
+            fp_alu_op_mod_o       = 1'b1;
           end
           7'b0001000: begin // FMUL.S
             fp_alu_operator_o     = MUL;
@@ -1590,7 +1590,7 @@ module brq_idu_decoder #(
             fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0101101: begin
-            if (|instr[24:20]) begin //FSQRT.D
+            if (|instr[24:20]) begin // FSQRT.D
               fp_alu_operator_o     = SQRT;
               fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
@@ -1639,8 +1639,6 @@ module brq_idu_decoder #(
 
             if (instr[20])
               fp_alu_op_mod_o       = 1'b1;
-            else 
-              fp_alu_op_mod_o       = 1'b0;
           end
           7'b0100001: begin // FCVT.D.S
             if (|instr[24:20]) begin 
@@ -1662,13 +1660,13 @@ module brq_idu_decoder #(
             endcase
           end
           7'b1010001: begin // FEQ.D, FLT.D, FLE.D
-            if ((instr[14]) | (&instr[13:12])) begin
+            if (~(instr[14]) | (&instr[13:12])) begin
               fp_alu_operator_o     = CMP;
               fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b1010000: begin // FEQ.S, FLT.S, FLE.S
-            if ((instr[14]) | (&instr[13:12])) begin
+            if (~(instr[14]) | (&instr[13:12])) begin
               fp_alu_operator_o     = CMP;
               fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
@@ -1690,8 +1688,6 @@ module brq_idu_decoder #(
 
             if (instr[20])
               fp_alu_op_mod_o       = 1'b1;
-            else 
-              fp_alu_op_mod_o       = 1'b0;
           end
           7'b1101000: begin // FCVT.S.W, FCVT.S.WU
             if (~(|instr[24:21])) begin
@@ -1701,8 +1697,6 @@ module brq_idu_decoder #(
 
             if (instr[20])
               fp_alu_op_mod_o       = 1'b1;
-            else 
-              fp_alu_op_mod_o       = 1'b0;
           end
           7'b1111001: begin // FCVT.D.W, FCVT.D.WU
             if (|instr[24:21]) begin
@@ -1712,8 +1706,6 @@ module brq_idu_decoder #(
 
             if (instr[20])
               fp_alu_op_mod_o       = 1'b1;
-            else 
-              fp_alu_op_mod_o       = 1'b0;
           end
           7'b1111000: begin // FMV.W.X
             if ((|instr[24:20]) | (|instr[14:12])) begin

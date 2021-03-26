@@ -43,6 +43,7 @@ VM_CLASSES_SLOW += \
 	Vazadi_soc_top__2__Slow \
 	Vazadi_soc_top__3__Slow \
 	Vazadi_soc_top__4__Slow \
+	Vazadi_soc_top__5__Slow \
 	Vazadi_soc_top___024unit__Slow \
 	Vazadi_soc_top_tlul_socket_m1__pi4__Slow \
 	Vazadi_soc_top_gpio_reg_pkg__Slow \

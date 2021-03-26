@@ -202,7 +202,8 @@ module brq_idu #(
     output logic                  use_fp_rs1_o,
     output logic                  use_fp_rs2_o,
     output logic                  use_fp_rd_o,
-    input  logic                  fpu_busy_i
+    input  logic                  fpu_busy_i,
+    input  logic                  fp_rf_write_wb_i
 );
 
   import brq_pkg::*;
@@ -939,6 +940,9 @@ module brq_idu #(
     // resolved via a stall (see above).
     assign rf_rdata_a_fwd = rf_rd_a_wb_match & rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_a_i;
     assign rf_rdata_b_fwd = rf_rd_b_wb_match & rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_b_i;
+
+    // assign fp_rf_rdata_a_fwd = rf_rd_a_wb_match & fp_rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_a_i;
+    // assign fp_rf_rdata_b_fwd = rf_rd_a_wb_match & fp_rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_a_i;
 
     assign stall_ld_hz = outstanding_load_wb_i & (rf_rd_a_hz | rf_rd_b_hz);
 

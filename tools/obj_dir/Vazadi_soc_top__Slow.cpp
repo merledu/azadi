@@ -114,51 +114,26 @@ void Vazadi_soc_top::_initial__TOP__1(Vazadi_soc_top__Syms* __restrict vlSymsp) 
     VL_READMEM_N(true, 32, 4096, 0, VL_CVT_PACK_STR_NW(13, __Vtemp1)
                  , vlTOPp->azadi_soc_top__DOT__iccm__DOT__iccm__DOT__mem
                  , 0, ~0ULL);
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt = 0U;
 }
 
 void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vazadi_soc_top::_settle__TOP__2\n"); );
     Vazadi_soc_top* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Variables
-    CData/*2:0*/ __Vfunc_fp_width__5__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__6__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__7__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__8__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__9__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__10__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__11__fmt;
-    CData/*2:0*/ __Vfunc_fp_width__12__fmt;
-    CData/*2:0*/ __Vfunc_bias__13__fmt;
-    IData/*31:0*/ __Vfunc_fp_width__5__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__6__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__7__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__8__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__9__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__10__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__11__Vfuncout;
-    IData/*31:0*/ __Vfunc_fp_width__12__Vfuncout;
-    IData/*31:0*/ __Vfunc_bias__13__Vfuncout;
-    WData/*127:0*/ __Vtemp24[4];
-    WData/*127:0*/ __Vtemp25[4];
-    WData/*127:0*/ __Vtemp28[4];
-    WData/*127:0*/ __Vtemp29[4];
-    WData/*319:0*/ __Vtemp2[10];
-    WData/*319:0*/ __Vtemp3[10];
-    WData/*319:0*/ __Vtemp4[10];
-    WData/*319:0*/ __Vtemp5[10];
-    WData/*319:0*/ __Vtemp6[10];
-    WData/*319:0*/ __Vtemp7[10];
-    WData/*319:0*/ __Vtemp8[10];
-    WData/*319:0*/ __Vtemp9[10];
-    WData/*319:0*/ __Vtemp10[10];
-    WData/*319:0*/ __Vtemp11[10];
-    WData/*319:0*/ __Vtemp12[10];
-    WData/*319:0*/ __Vtemp13[10];
-    WData/*319:0*/ __Vtemp14[10];
-    WData/*319:0*/ __Vtemp15[10];
-    WData/*319:0*/ __Vtemp16[10];
-    WData/*319:0*/ __Vtemp17[10];
-    WData/*319:0*/ __Vtemp18[10];
+    WData/*127:0*/ __Vtemp7[4];
+    WData/*127:0*/ __Vtemp8[4];
+    WData/*127:0*/ __Vtemp11[4];
+    WData/*127:0*/ __Vtemp12[4];
+    WData/*319:0*/ __Vtemp23[10];
+    WData/*319:0*/ __Vtemp24[10];
+    WData/*319:0*/ __Vtemp25[10];
+    WData/*319:0*/ __Vtemp26[10];
+    WData/*319:0*/ __Vtemp27[10];
+    WData/*319:0*/ __Vtemp28[10];
+    WData/*319:0*/ __Vtemp29[10];
+    WData/*319:0*/ __Vtemp30[10];
+    WData/*319:0*/ __Vtemp31[10];
     // Body
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__slice_vec_class_result 
         = (0x81U | (0xffffff00U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__slice_vec_class_result));
@@ -166,774 +141,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0xffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__slice_vec_class_result);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__slice_vec_class_result 
         = (0xffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__slice_vec_class_result);
-    __Vfunc_fp_width__6__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
-    __Vtemp2[0U] = 0x17U;
-    __Vtemp2[1U] = 8U;
-    __Vtemp2[2U] = 0x34U;
-    __Vtemp2[3U] = 0xbU;
-    __Vtemp2[4U] = 0xaU;
-    __Vtemp2[5U] = 5U;
-    __Vtemp2[6U] = 2U;
-    __Vtemp2[7U] = 5U;
-    __Vtemp2[8U] = 7U;
-    __Vtemp2[9U] = 8U;
-    __Vtemp3[0U] = 0x17U;
-    __Vtemp3[1U] = 8U;
-    __Vtemp3[2U] = 0x34U;
-    __Vtemp3[3U] = 0xbU;
-    __Vtemp3[4U] = 0xaU;
-    __Vtemp3[5U] = 5U;
-    __Vtemp3[6U] = 2U;
-    __Vtemp3[7U] = 5U;
-    __Vtemp3[8U] = 7U;
-    __Vtemp3[9U] = 8U;
-    __Vfunc_fp_width__6__Vfuncout = ((IData)(1U) + 
-                                     (((0x13fU >= (0x1ffU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                       << 6U))))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & ((IData)(0x20U) 
-                                                 + 
-                                                 ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                  << 6U))))
-                                             ? 0U : 
-                                            (__Vtemp2[
-                                             ((IData)(1U) 
-                                              + (0xfU 
-                                                 & (((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                      << 6U)) 
-                                                    >> 5U)))] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                      << 6U)))))) 
-                                           | (__Vtemp2[
-                                              (0xfU 
-                                               & (((IData)(0x20U) 
-                                                   + 
-                                                   ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                    << 6U)) 
-                                                  >> 5U))] 
-                                              >> (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                      << 6U)))))
-                                        : 0U) + ((0x13fU 
-                                                  >= 
-                                                  (0x1ffU 
-                                                   & ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                      << 6U)))
-                                                  ? 
-                                                 (((0U 
-                                                    == 
-                                                    (0x1fU 
-                                                     & ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                        << 6U)))
-                                                    ? 0U
-                                                    : 
-                                                   (__Vtemp3[
-                                                    ((IData)(1U) 
-                                                     + 
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                         << 1U)))] 
-                                                    << 
-                                                    ((IData)(0x20U) 
-                                                     - 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                         << 6U))))) 
-                                                  | (__Vtemp3[
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                         << 1U))] 
-                                                     >> 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__6__fmt) 
-                                                         << 6U))))
-                                                  : 0U)));
-    __Vfunc_fp_width__5__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt;
-    __Vtemp4[0U] = 0x17U;
-    __Vtemp4[1U] = 8U;
-    __Vtemp4[2U] = 0x34U;
-    __Vtemp4[3U] = 0xbU;
-    __Vtemp4[4U] = 0xaU;
-    __Vtemp4[5U] = 5U;
-    __Vtemp4[6U] = 2U;
-    __Vtemp4[7U] = 5U;
-    __Vtemp4[8U] = 7U;
-    __Vtemp4[9U] = 8U;
-    __Vtemp5[0U] = 0x17U;
-    __Vtemp5[1U] = 8U;
-    __Vtemp5[2U] = 0x34U;
-    __Vtemp5[3U] = 0xbU;
-    __Vtemp5[4U] = 0xaU;
-    __Vtemp5[5U] = 5U;
-    __Vtemp5[6U] = 2U;
-    __Vtemp5[7U] = 5U;
-    __Vtemp5[8U] = 7U;
-    __Vtemp5[9U] = 8U;
-    __Vfunc_fp_width__5__Vfuncout = ((IData)(1U) + 
-                                     (((0x13fU >= (0x1ffU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                       << 6U))))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & ((IData)(0x20U) 
-                                                 + 
-                                                 ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                  << 6U))))
-                                             ? 0U : 
-                                            (__Vtemp4[
-                                             ((IData)(1U) 
-                                              + (0xfU 
-                                                 & (((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                      << 6U)) 
-                                                    >> 5U)))] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                      << 6U)))))) 
-                                           | (__Vtemp4[
-                                              (0xfU 
-                                               & (((IData)(0x20U) 
-                                                   + 
-                                                   ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                    << 6U)) 
-                                                  >> 5U))] 
-                                              >> (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                      << 6U)))))
-                                        : 0U) + ((0x13fU 
-                                                  >= 
-                                                  (0x1ffU 
-                                                   & ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                      << 6U)))
-                                                  ? 
-                                                 (((0U 
-                                                    == 
-                                                    (0x1fU 
-                                                     & ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                        << 6U)))
-                                                    ? 0U
-                                                    : 
-                                                   (__Vtemp5[
-                                                    ((IData)(1U) 
-                                                     + 
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                         << 1U)))] 
-                                                    << 
-                                                    ((IData)(0x20U) 
-                                                     - 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                         << 6U))))) 
-                                                  | (__Vtemp5[
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                         << 1U))] 
-                                                     >> 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__5__fmt) 
-                                                         << 6U))))
-                                                  : 0U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_up_cast 
-        = (__Vfunc_fp_width__5__Vfuncout > __Vfunc_fp_width__6__Vfuncout);
-    __Vfunc_fp_width__8__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
-    __Vtemp6[0U] = 0x17U;
-    __Vtemp6[1U] = 8U;
-    __Vtemp6[2U] = 0x34U;
-    __Vtemp6[3U] = 0xbU;
-    __Vtemp6[4U] = 0xaU;
-    __Vtemp6[5U] = 5U;
-    __Vtemp6[6U] = 2U;
-    __Vtemp6[7U] = 5U;
-    __Vtemp6[8U] = 7U;
-    __Vtemp6[9U] = 8U;
-    __Vtemp7[0U] = 0x17U;
-    __Vtemp7[1U] = 8U;
-    __Vtemp7[2U] = 0x34U;
-    __Vtemp7[3U] = 0xbU;
-    __Vtemp7[4U] = 0xaU;
-    __Vtemp7[5U] = 5U;
-    __Vtemp7[6U] = 2U;
-    __Vtemp7[7U] = 5U;
-    __Vtemp7[8U] = 7U;
-    __Vtemp7[9U] = 8U;
-    __Vfunc_fp_width__8__Vfuncout = ((IData)(1U) + 
-                                     (((0x13fU >= (0x1ffU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                       << 6U))))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & ((IData)(0x20U) 
-                                                 + 
-                                                 ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                  << 6U))))
-                                             ? 0U : 
-                                            (__Vtemp6[
-                                             ((IData)(1U) 
-                                              + (0xfU 
-                                                 & (((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                      << 6U)) 
-                                                    >> 5U)))] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                      << 6U)))))) 
-                                           | (__Vtemp6[
-                                              (0xfU 
-                                               & (((IData)(0x20U) 
-                                                   + 
-                                                   ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                    << 6U)) 
-                                                  >> 5U))] 
-                                              >> (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                      << 6U)))))
-                                        : 0U) + ((0x13fU 
-                                                  >= 
-                                                  (0x1ffU 
-                                                   & ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                      << 6U)))
-                                                  ? 
-                                                 (((0U 
-                                                    == 
-                                                    (0x1fU 
-                                                     & ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                        << 6U)))
-                                                    ? 0U
-                                                    : 
-                                                   (__Vtemp7[
-                                                    ((IData)(1U) 
-                                                     + 
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                         << 1U)))] 
-                                                    << 
-                                                    ((IData)(0x20U) 
-                                                     - 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                         << 6U))))) 
-                                                  | (__Vtemp7[
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                         << 1U))] 
-                                                     >> 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__8__fmt) 
-                                                         << 6U))))
-                                                  : 0U)));
-    __Vfunc_fp_width__7__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt;
-    __Vtemp8[0U] = 0x17U;
-    __Vtemp8[1U] = 8U;
-    __Vtemp8[2U] = 0x34U;
-    __Vtemp8[3U] = 0xbU;
-    __Vtemp8[4U] = 0xaU;
-    __Vtemp8[5U] = 5U;
-    __Vtemp8[6U] = 2U;
-    __Vtemp8[7U] = 5U;
-    __Vtemp8[8U] = 7U;
-    __Vtemp8[9U] = 8U;
-    __Vtemp9[0U] = 0x17U;
-    __Vtemp9[1U] = 8U;
-    __Vtemp9[2U] = 0x34U;
-    __Vtemp9[3U] = 0xbU;
-    __Vtemp9[4U] = 0xaU;
-    __Vtemp9[5U] = 5U;
-    __Vtemp9[6U] = 2U;
-    __Vtemp9[7U] = 5U;
-    __Vtemp9[8U] = 7U;
-    __Vtemp9[9U] = 8U;
-    __Vfunc_fp_width__7__Vfuncout = ((IData)(1U) + 
-                                     (((0x13fU >= (0x1ffU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                       << 6U))))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & ((IData)(0x20U) 
-                                                 + 
-                                                 ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                  << 6U))))
-                                             ? 0U : 
-                                            (__Vtemp8[
-                                             ((IData)(1U) 
-                                              + (0xfU 
-                                                 & (((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                      << 6U)) 
-                                                    >> 5U)))] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                      << 6U)))))) 
-                                           | (__Vtemp8[
-                                              (0xfU 
-                                               & (((IData)(0x20U) 
-                                                   + 
-                                                   ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                    << 6U)) 
-                                                  >> 5U))] 
-                                              >> (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                      << 6U)))))
-                                        : 0U) + ((0x13fU 
-                                                  >= 
-                                                  (0x1ffU 
-                                                   & ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                      << 6U)))
-                                                  ? 
-                                                 (((0U 
-                                                    == 
-                                                    (0x1fU 
-                                                     & ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                        << 6U)))
-                                                    ? 0U
-                                                    : 
-                                                   (__Vtemp9[
-                                                    ((IData)(1U) 
-                                                     + 
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                         << 1U)))] 
-                                                    << 
-                                                    ((IData)(0x20U) 
-                                                     - 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                         << 6U))))) 
-                                                  | (__Vtemp9[
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                         << 1U))] 
-                                                     >> 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__7__fmt) 
-                                                         << 6U))))
-                                                  : 0U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_down_cast 
-        = (__Vfunc_fp_width__7__Vfuncout < __Vfunc_fp_width__8__Vfuncout);
-    __Vfunc_fp_width__10__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
-    __Vtemp10[0U] = 0x17U;
-    __Vtemp10[1U] = 8U;
-    __Vtemp10[2U] = 0x34U;
-    __Vtemp10[3U] = 0xbU;
-    __Vtemp10[4U] = 0xaU;
-    __Vtemp10[5U] = 5U;
-    __Vtemp10[6U] = 2U;
-    __Vtemp10[7U] = 5U;
-    __Vtemp10[8U] = 7U;
-    __Vtemp10[9U] = 8U;
-    __Vtemp11[0U] = 0x17U;
-    __Vtemp11[1U] = 8U;
-    __Vtemp11[2U] = 0x34U;
-    __Vtemp11[3U] = 0xbU;
-    __Vtemp11[4U] = 0xaU;
-    __Vtemp11[5U] = 5U;
-    __Vtemp11[6U] = 2U;
-    __Vtemp11[7U] = 5U;
-    __Vtemp11[8U] = 7U;
-    __Vtemp11[9U] = 8U;
-    __Vfunc_fp_width__10__Vfuncout = ((IData)(1U) + 
-                                      (((0x13fU >= 
-                                         (0x1ffU & 
-                                          ((IData)(0x20U) 
-                                           + ((IData)(__Vfunc_fp_width__10__fmt) 
-                                              << 6U))))
-                                         ? (((0U == 
-                                              (0x1fU 
-                                               & ((IData)(0x20U) 
-                                                  + 
-                                                  ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                   << 6U))))
-                                              ? 0U : 
-                                             (__Vtemp10[
-                                              ((IData)(1U) 
-                                               + (0xfU 
-                                                  & (((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                       << 6U)) 
-                                                     >> 5U)))] 
-                                              << ((IData)(0x20U) 
-                                                  - 
-                                                  (0x1fU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                       << 6U)))))) 
-                                            | (__Vtemp10[
-                                               (0xfU 
-                                                & (((IData)(0x20U) 
-                                                    + 
-                                                    ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                     << 6U)) 
-                                                   >> 5U))] 
-                                               >> (0x1fU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                       << 6U)))))
-                                         : 0U) + ((0x13fU 
-                                                   >= 
-                                                   (0x1ffU 
-                                                    & ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                       << 6U)))
-                                                   ? 
-                                                  (((0U 
-                                                     == 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                         << 6U)))
-                                                     ? 0U
-                                                     : 
-                                                    (__Vtemp11[
-                                                     ((IData)(1U) 
-                                                      + 
-                                                      (0xeU 
-                                                       & ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                          << 1U)))] 
-                                                     << 
-                                                     ((IData)(0x20U) 
-                                                      - 
-                                                      (0x1fU 
-                                                       & ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                          << 6U))))) 
-                                                   | (__Vtemp11[
-                                                      (0xeU 
-                                                       & ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                          << 1U))] 
-                                                      >> 
-                                                      (0x1fU 
-                                                       & ((IData)(__Vfunc_fp_width__10__fmt) 
-                                                          << 6U))))
-                                                   : 0U)));
-    __Vfunc_fp_width__9__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt;
-    __Vtemp12[0U] = 0x17U;
-    __Vtemp12[1U] = 8U;
-    __Vtemp12[2U] = 0x34U;
-    __Vtemp12[3U] = 0xbU;
-    __Vtemp12[4U] = 0xaU;
-    __Vtemp12[5U] = 5U;
-    __Vtemp12[6U] = 2U;
-    __Vtemp12[7U] = 5U;
-    __Vtemp12[8U] = 7U;
-    __Vtemp12[9U] = 8U;
-    __Vtemp13[0U] = 0x17U;
-    __Vtemp13[1U] = 8U;
-    __Vtemp13[2U] = 0x34U;
-    __Vtemp13[3U] = 0xbU;
-    __Vtemp13[4U] = 0xaU;
-    __Vtemp13[5U] = 5U;
-    __Vtemp13[6U] = 2U;
-    __Vtemp13[7U] = 5U;
-    __Vtemp13[8U] = 7U;
-    __Vtemp13[9U] = 8U;
-    __Vfunc_fp_width__9__Vfuncout = ((IData)(1U) + 
-                                     (((0x13fU >= (0x1ffU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                       << 6U))))
-                                        ? (((0U == 
-                                             (0x1fU 
-                                              & ((IData)(0x20U) 
-                                                 + 
-                                                 ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                  << 6U))))
-                                             ? 0U : 
-                                            (__Vtemp12[
-                                             ((IData)(1U) 
-                                              + (0xfU 
-                                                 & (((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                      << 6U)) 
-                                                    >> 5U)))] 
-                                             << ((IData)(0x20U) 
-                                                 - 
-                                                 (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                      << 6U)))))) 
-                                           | (__Vtemp12[
-                                              (0xfU 
-                                               & (((IData)(0x20U) 
-                                                   + 
-                                                   ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                    << 6U)) 
-                                                  >> 5U))] 
-                                              >> (0x1fU 
-                                                  & ((IData)(0x20U) 
-                                                     + 
-                                                     ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                      << 6U)))))
-                                        : 0U) + ((0x13fU 
-                                                  >= 
-                                                  (0x1ffU 
-                                                   & ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                      << 6U)))
-                                                  ? 
-                                                 (((0U 
-                                                    == 
-                                                    (0x1fU 
-                                                     & ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                        << 6U)))
-                                                    ? 0U
-                                                    : 
-                                                   (__Vtemp13[
-                                                    ((IData)(1U) 
-                                                     + 
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                         << 1U)))] 
-                                                    << 
-                                                    ((IData)(0x20U) 
-                                                     - 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                         << 6U))))) 
-                                                  | (__Vtemp13[
-                                                     (0xeU 
-                                                      & ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                         << 1U))] 
-                                                     >> 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__9__fmt) 
-                                                         << 6U))))
-                                                  : 0U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_up_cast 
-        = (__Vfunc_fp_width__9__Vfuncout > __Vfunc_fp_width__10__Vfuncout);
-    __Vfunc_fp_width__12__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
-    __Vtemp14[0U] = 0x17U;
-    __Vtemp14[1U] = 8U;
-    __Vtemp14[2U] = 0x34U;
-    __Vtemp14[3U] = 0xbU;
-    __Vtemp14[4U] = 0xaU;
-    __Vtemp14[5U] = 5U;
-    __Vtemp14[6U] = 2U;
-    __Vtemp14[7U] = 5U;
-    __Vtemp14[8U] = 7U;
-    __Vtemp14[9U] = 8U;
-    __Vtemp15[0U] = 0x17U;
-    __Vtemp15[1U] = 8U;
-    __Vtemp15[2U] = 0x34U;
-    __Vtemp15[3U] = 0xbU;
-    __Vtemp15[4U] = 0xaU;
-    __Vtemp15[5U] = 5U;
-    __Vtemp15[6U] = 2U;
-    __Vtemp15[7U] = 5U;
-    __Vtemp15[8U] = 7U;
-    __Vtemp15[9U] = 8U;
-    __Vfunc_fp_width__12__Vfuncout = ((IData)(1U) + 
-                                      (((0x13fU >= 
-                                         (0x1ffU & 
-                                          ((IData)(0x20U) 
-                                           + ((IData)(__Vfunc_fp_width__12__fmt) 
-                                              << 6U))))
-                                         ? (((0U == 
-                                              (0x1fU 
-                                               & ((IData)(0x20U) 
-                                                  + 
-                                                  ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                   << 6U))))
-                                              ? 0U : 
-                                             (__Vtemp14[
-                                              ((IData)(1U) 
-                                               + (0xfU 
-                                                  & (((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                       << 6U)) 
-                                                     >> 5U)))] 
-                                              << ((IData)(0x20U) 
-                                                  - 
-                                                  (0x1fU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                       << 6U)))))) 
-                                            | (__Vtemp14[
-                                               (0xfU 
-                                                & (((IData)(0x20U) 
-                                                    + 
-                                                    ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                     << 6U)) 
-                                                   >> 5U))] 
-                                               >> (0x1fU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                       << 6U)))))
-                                         : 0U) + ((0x13fU 
-                                                   >= 
-                                                   (0x1ffU 
-                                                    & ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                       << 6U)))
-                                                   ? 
-                                                  (((0U 
-                                                     == 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                         << 6U)))
-                                                     ? 0U
-                                                     : 
-                                                    (__Vtemp15[
-                                                     ((IData)(1U) 
-                                                      + 
-                                                      (0xeU 
-                                                       & ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                          << 1U)))] 
-                                                     << 
-                                                     ((IData)(0x20U) 
-                                                      - 
-                                                      (0x1fU 
-                                                       & ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                          << 6U))))) 
-                                                   | (__Vtemp15[
-                                                      (0xeU 
-                                                       & ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                          << 1U))] 
-                                                      >> 
-                                                      (0x1fU 
-                                                       & ((IData)(__Vfunc_fp_width__12__fmt) 
-                                                          << 6U))))
-                                                   : 0U)));
-    __Vfunc_fp_width__11__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt;
-    __Vtemp16[0U] = 0x17U;
-    __Vtemp16[1U] = 8U;
-    __Vtemp16[2U] = 0x34U;
-    __Vtemp16[3U] = 0xbU;
-    __Vtemp16[4U] = 0xaU;
-    __Vtemp16[5U] = 5U;
-    __Vtemp16[6U] = 2U;
-    __Vtemp16[7U] = 5U;
-    __Vtemp16[8U] = 7U;
-    __Vtemp16[9U] = 8U;
-    __Vtemp17[0U] = 0x17U;
-    __Vtemp17[1U] = 8U;
-    __Vtemp17[2U] = 0x34U;
-    __Vtemp17[3U] = 0xbU;
-    __Vtemp17[4U] = 0xaU;
-    __Vtemp17[5U] = 5U;
-    __Vtemp17[6U] = 2U;
-    __Vtemp17[7U] = 5U;
-    __Vtemp17[8U] = 7U;
-    __Vtemp17[9U] = 8U;
-    __Vfunc_fp_width__11__Vfuncout = ((IData)(1U) + 
-                                      (((0x13fU >= 
-                                         (0x1ffU & 
-                                          ((IData)(0x20U) 
-                                           + ((IData)(__Vfunc_fp_width__11__fmt) 
-                                              << 6U))))
-                                         ? (((0U == 
-                                              (0x1fU 
-                                               & ((IData)(0x20U) 
-                                                  + 
-                                                  ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                   << 6U))))
-                                              ? 0U : 
-                                             (__Vtemp16[
-                                              ((IData)(1U) 
-                                               + (0xfU 
-                                                  & (((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                       << 6U)) 
-                                                     >> 5U)))] 
-                                              << ((IData)(0x20U) 
-                                                  - 
-                                                  (0x1fU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                       << 6U)))))) 
-                                            | (__Vtemp16[
-                                               (0xfU 
-                                                & (((IData)(0x20U) 
-                                                    + 
-                                                    ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                     << 6U)) 
-                                                   >> 5U))] 
-                                               >> (0x1fU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                       << 6U)))))
-                                         : 0U) + ((0x13fU 
-                                                   >= 
-                                                   (0x1ffU 
-                                                    & ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                       << 6U)))
-                                                   ? 
-                                                  (((0U 
-                                                     == 
-                                                     (0x1fU 
-                                                      & ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                         << 6U)))
-                                                     ? 0U
-                                                     : 
-                                                    (__Vtemp17[
-                                                     ((IData)(1U) 
-                                                      + 
-                                                      (0xeU 
-                                                       & ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                          << 1U)))] 
-                                                     << 
-                                                     ((IData)(0x20U) 
-                                                      - 
-                                                      (0x1fU 
-                                                       & ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                          << 6U))))) 
-                                                   | (__Vtemp17[
-                                                      (0xeU 
-                                                       & ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                          << 1U))] 
-                                                      >> 
-                                                      (0x1fU 
-                                                       & ((IData)(__Vfunc_fp_width__11__fmt) 
-                                                          << 6U))))
-                                                   : 0U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_down_cast 
-        = (__Vfunc_fp_width__11__Vfuncout < __Vfunc_fp_width__12__Vfuncout);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
         = (0x1c7fffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
@@ -1126,6 +333,38 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0xbfffffffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__bfp_mask_rev);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__bfp_mask_rev 
         = (0x7fffffffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__bfp_mask_rev);
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut 
         = (0xfcU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut 
@@ -1266,10 +505,10 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0xdfffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__LOD_Ub__DOT__gen_lzc__DOT__sel_nodes);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__LOD_Ub__DOT__gen_lzc__DOT__sel_nodes 
         = (0xbfffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__LOD_Ub__DOT__gen_lzc__DOT__sel_nodes);
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_amt 
-        = (0x1fU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_amt));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__upper_mask 
         = (0xeU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__upper_mask));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_amt 
+        = (0x1fU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_amt));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__upper_mask 
         = (0x1eU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__upper_mask));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__upper_mask 
@@ -1292,70 +531,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__data_nodes[7U] 
         = (0x3ffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__data_nodes[7U]);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__data_nodes[8U] = 0U;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_in_ready));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
-        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__LOD_Ua__DOT__gen_lzc__DOT__index_lut[0U] 
         = (0xffffffc0U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__LOD_Ua__DOT__gen_lzc__DOT__index_lut[0U]);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__LOD_Ua__DOT__gen_lzc__DOT__index_lut[0U] 
@@ -1670,6 +845,38 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (7U | vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_outputs[6U]);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_outputs[0U] 
         = (1U | vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_outputs[0U]);
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1dU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x1bU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy 
+        = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__fmt_busy));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__ifmt_slice_result[0U] = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__ifmt_slice_result[1U] = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__ifmt_slice_result[2U] = 0U;
@@ -1880,14 +1087,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0xffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__8__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__9__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter 
         = (0xffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__9__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter);
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[1U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[2U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[3U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[4U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[1U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[2U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[3U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[4U] = 0xffffffffU;
     vlTOPp->azadi_soc_top__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[0U] 
         = vlTOPp->azadi_soc_top__DOT__periph_switch__DOT__tl_uart0_i;
     vlTOPp->azadi_soc_top__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[1U] 
@@ -1912,10 +1111,18 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = vlTOPp->azadi_soc_top__DOT__periph_switch__DOT__tl_adc_i;
     vlTOPp->azadi_soc_top__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[0xcU] 
         = vlTOPp->azadi_soc_top__DOT__periph_switch__DOT__tl_qspi_i;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[1U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[2U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[3U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_result[4U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[1U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[2U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[3U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_special_result[4U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__stall_alu = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_special_result[0U] = 0xffffffffU;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_special_result[1U] = 0xffffffffU;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_special_result[3U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__stall_alu = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_nodes[0xaU] 
         = (0xf03fffffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_nodes[0xaU]);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_nodes[0xaU] 
@@ -1942,15 +1149,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0xdfffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__sel_nodes);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__sel_nodes 
         = (0xbfffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__sel_nodes);
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_pre_round_abs[0U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_pre_round_abs[1U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_pre_round_abs[3U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[1U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[2U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[3U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[4U] = 0xffffffffU;
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gnt_nodes 
-        = (1U | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gnt_nodes));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Iteration_cell_sum_AMASK_D[0U] 
         = ((0x3fffffffffffffeULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Iteration_cell_sum_AMASK_D
             [0U]) | (IData)((IData)((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Iteration_cell_sum_D
@@ -3160,6 +2358,15 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                     [2U] 
                                                     >> 0x39U))))) 
                      << 0x39U));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_pre_round_abs[0U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_pre_round_abs[1U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__ifmt_pre_round_abs[3U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[1U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[2U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[3U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_pre_round_abs[4U] = 0xffffffffU;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gnt_nodes 
+        = (1U | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__gnt_nodes));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_sign 
         = (2U | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_sign));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_sign 
@@ -3168,6 +2375,10 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (8U | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_sign));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_sign 
         = (0x10U | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_sign));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__dv_to_s1n[1U] 
+        = vlTOPp->azadi_soc_top__DOT__main_swith__DOT__tl_debug_rom_i;
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__dv_to_s1n[2U] 
+        = vlTOPp->azadi_soc_top__DOT__main_swith__DOT__tl_flash_ctrl_i;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[0U] 
         = (0xffffffc0U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[0U]);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[0U] 
@@ -3282,10 +2493,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0xc40U | (0x3f03fU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[9U]));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[9U] 
         = (0x32000U | (0xfffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[9U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__dv_to_s1n[1U] 
-        = vlTOPp->azadi_soc_top__DOT__main_swith__DOT__tl_debug_rom_i;
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__dv_to_s1n[2U] 
-        = vlTOPp->azadi_soc_top__DOT__main_swith__DOT__tl_flash_ctrl_i;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__req_nodes 
         = (0x3fU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__req_nodes));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__req_nodes 
@@ -3326,70 +2533,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = (0x17U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_out_valid));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_out_valid 
         = (0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__fmt_out_valid));
-    __Vfunc_bias__13__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
-    __Vtemp18[0U] = 0x17U;
-    __Vtemp18[1U] = 8U;
-    __Vtemp18[2U] = 0x34U;
-    __Vtemp18[3U] = 0xbU;
-    __Vtemp18[4U] = 0xaU;
-    __Vtemp18[5U] = 5U;
-    __Vtemp18[6U] = 2U;
-    __Vtemp18[7U] = 5U;
-    __Vtemp18[8U] = 7U;
-    __Vtemp18[9U] = 8U;
-    __Vfunc_bias__13__Vfuncout = (VL_POWSS_III(32,32,32, (IData)(2U), 
-                                               (((0x13fU 
-                                                  >= 
-                                                  (0x1ffU 
-                                                   & ((IData)(0x20U) 
-                                                      + 
-                                                      ((IData)(__Vfunc_bias__13__fmt) 
-                                                       << 6U))))
-                                                  ? 
-                                                 (((0U 
-                                                    == 
-                                                    (0x1fU 
-                                                     & ((IData)(0x20U) 
-                                                        + 
-                                                        ((IData)(__Vfunc_bias__13__fmt) 
-                                                         << 6U))))
-                                                    ? 0U
-                                                    : 
-                                                   (__Vtemp18[
-                                                    ((IData)(1U) 
-                                                     + 
-                                                     (0xfU 
-                                                      & (((IData)(0x20U) 
-                                                          + 
-                                                          ((IData)(__Vfunc_bias__13__fmt) 
-                                                           << 6U)) 
-                                                         >> 5U)))] 
-                                                    << 
-                                                    ((IData)(0x20U) 
-                                                     - 
-                                                     (0x1fU 
-                                                      & ((IData)(0x20U) 
-                                                         + 
-                                                         ((IData)(__Vfunc_bias__13__fmt) 
-                                                          << 6U)))))) 
-                                                  | (__Vtemp18[
-                                                     (0xfU 
-                                                      & (((IData)(0x20U) 
-                                                          + 
-                                                          ((IData)(__Vfunc_bias__13__fmt) 
-                                                           << 6U)) 
-                                                         >> 5U))] 
-                                                     >> 
-                                                     (0x1fU 
-                                                      & ((IData)(0x20U) 
-                                                         + 
-                                                         ((IData)(__Vfunc_bias__13__fmt) 
-                                                          << 6U)))))
-                                                  : 0U) 
-                                                - (IData)(1U)), 1,0) 
-                                  - (IData)(1U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__src_bias 
-        = (0x1ffU & __Vfunc_bias__13__Vfuncout);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_shift_compensation 
         = (8ULL | (0x1ffffffffe00ULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_shift_compensation));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__fmt_exponent 
@@ -3949,15 +3092,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = ((0x8ffffffffffffULL & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o) 
            | ((QData)((IData)(((4U == (IData)(vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_opcode))
                                 ? 1U : 0U))) << 0x30U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__divsqrt_fmt 
-        = ((4U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt))
-            ? ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt))
-                ? 2U : ((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt))
-                         ? 2U : 3U)) : ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt))
-                                         ? 2U : ((1U 
-                                                  & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt))
-                                                  ? 1U
-                                                  : 0U)));
     vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o 
         = (0x3fffffffcULL | vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o);
     vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o 
@@ -3990,6 +3124,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         = ((0x8ffffffffffffULL & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o) 
            | ((QData)((IData)(((4U == (IData)(vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_opcode))
                                 ? 1U : 0U))) << 0x30U));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mstack_d 
         = ((3U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mstack_d)) 
            | (4U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mstatus_csr__DOT__rdata_q) 
@@ -4092,28 +3227,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__9__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter 
         = ((0xffffffff00000000ULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__9__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter) 
            | (IData)((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__gen_cntrs__BRA__9__KET____DOT__gen_imp__DOT__mcounters_variable_i__DOT__counter_q)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__fpu_norm_U0__DOT__Sign_res_D 
-        = ((~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_a_SP)) 
-           & ((~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_b_SP)) 
-              & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Inf_a_SP)
-                  ? ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
-                         & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Inf_b_SP))) 
-                     & ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Sqrt_enable_S) 
-                            & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP))) 
-                        & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP)))
-                  : (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
-                      & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Inf_b_SP))
-                      ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP)
-                      : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Zero_a_SP)
-                          ? ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
-                                 & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Zero_b_SP))) 
-                             & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP))
-                          : (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
-                              & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Zero_b_SP))
-                              ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP)
-                              : ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP) 
-                                     & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Sqrt_enable_S))) 
-                                 & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP))))))));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__First_iteration_cell_div_a_D 
         = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Div_start_dly_S)
             ? (((QData)((IData)((0x1ffU & (IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Mant_a_norm_DP 
@@ -4262,6 +3375,28 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                           (0x1fffffffU 
                                                            & (~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Q_sqrt0)))))));
     }
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__fpu_norm_U0__DOT__Sign_res_D 
+        = ((~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_a_SP)) 
+           & ((~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_b_SP)) 
+              & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Inf_a_SP)
+                  ? ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
+                         & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Inf_b_SP))) 
+                     & ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Sqrt_enable_S) 
+                            & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP))) 
+                        & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP)))
+                  : (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
+                      & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Inf_b_SP))
+                      ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP)
+                      : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Zero_a_SP)
+                          ? ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
+                                 & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Zero_b_SP))) 
+                             & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP))
+                          : (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Div_enable_S) 
+                              & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Zero_b_SP))
+                              ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP)
+                              : ((~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP) 
+                                     & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Sqrt_enable_S))) 
+                                 & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__Sign_z_DP))))))));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Denominator_se_DB 
         = (0x3fffffffffffffULL & ((0U == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Format_sel_S))
                                    ? ((QData)((IData)(
@@ -5178,6 +4313,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__irqs 
         = (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mip 
            & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mie_csr__DOT__rdata_q);
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__divsqrt_fmt = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Final_state_S 
         = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Crtl_cnt_S) 
            == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__State_ctl_S));
@@ -5670,20 +4806,23 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                : 
                                                               (VL_EXTENDS_II(11,13, (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP)) 
                                                                - (IData)(1U))))))))))))))));
-    __Vtemp24[0U] = 0U;
-    __Vtemp24[1U] = (0xffe00000U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
-                                    << 0x15U));
-    __Vtemp24[2U] = ((0x1fffffU & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
-                                   >> 0xbU)) | (0xffe00000U 
-                                                & ((IData)(
-                                                           (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
-                                                            >> 0x20U)) 
-                                                   << 0x15U)));
-    __Vtemp24[3U] = (0x1fffffU & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
-                                           >> 0x20U)) 
-                                  >> 0xbU));
-    VL_SHIFTR_WWI(110,110,13, __Vtemp25, __Vtemp24, 
-                  (0x1fffU & ((IData)(2U) + (~ VL_EXTENDS_II(13,13, (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP))))));
+    __Vtemp7[0U] = 0U;
+    __Vtemp7[1U] = (0xffe00000U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
+                                   << 0x15U));
+    __Vtemp7[2U] = ((0x1fffffU & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
+                                  >> 0xbU)) | (0xffe00000U 
+                                               & ((IData)(
+                                                          (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
+                                                           >> 0x20U)) 
+                                                  << 0x15U)));
+    __Vtemp7[3U] = (0x1fffffU & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
+                                          >> 0x20U)) 
+                                 >> 0xbU));
+    VL_SHIFTR_WWI(110,110,13, __Vtemp8, __Vtemp7, (0x1fffU 
+                                                   & ((IData)(2U) 
+                                                      + 
+                                                      (~ 
+                                                       VL_EXTENDS_II(13,13, (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP))))));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__fpu_norm_U0__DOT__Mant_forround_D 
         = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_a_SP)
             ? 0ULL : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_b_SP)
@@ -5734,10 +4873,10 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                          & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP))
                                                          ? 
                                                         (((QData)((IData)(
-                                                                          __Vtemp25[1U])) 
+                                                                          __Vtemp8[1U])) 
                                                           << 0x20U) 
                                                          | (QData)((IData)(
-                                                                           __Vtemp25[0U])))
+                                                                           __Vtemp8[0U])))
                                                          : 
                                                         (((((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP) 
                                                               >> 8U) 
@@ -5807,19 +4946,19 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                             (7U 
                                                                              & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D)))) 
                                                             << 0x36U)))))))))))))));
-    __Vtemp28[0U] = 0U;
-    __Vtemp28[1U] = (0xffe00000U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
+    __Vtemp11[0U] = 0U;
+    __Vtemp11[1U] = (0xffe00000U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
                                     << 0x15U));
-    __Vtemp28[2U] = ((0x1fffffU & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
+    __Vtemp11[2U] = ((0x1fffffU & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D) 
                                    >> 0xbU)) | (0xffe00000U 
                                                 & ((IData)(
                                                            (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
                                                             >> 0x20U)) 
                                                    << 0x15U)));
-    __Vtemp28[3U] = (0x1fffffU & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
+    __Vtemp11[3U] = (0x1fffffU & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__Mant_z_D 
                                            >> 0x20U)) 
                                   >> 0xbU));
-    VL_SHIFTR_WWI(110,110,13, __Vtemp29, __Vtemp28, 
+    VL_SHIFTR_WWI(110,110,13, __Vtemp12, __Vtemp11, 
                   (0x1fffU & ((IData)(2U) + (~ VL_EXTENDS_II(13,13, (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP))))));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__fpu_norm_U0__DOT__Mant_res_norm_D 
         = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__preprocess_U0__DOT__NaN_a_SP)
@@ -5882,13 +5021,13 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                          ? 
                                                         (((QData)((IData)(
                                                                           (0x3fffU 
-                                                                           & __Vtemp29[3U]))) 
+                                                                           & __Vtemp12[3U]))) 
                                                           << 0x27U) 
                                                          | (((QData)((IData)(
-                                                                             __Vtemp29[2U])) 
+                                                                             __Vtemp12[2U])) 
                                                              << 7U) 
                                                             | ((QData)((IData)(
-                                                                               __Vtemp29[1U])) 
+                                                                               __Vtemp12[1U])) 
                                                                >> 0x19U)))
                                                          : 
                                                         (((((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__Exp_result_prenorm_DP) 
@@ -6289,11 +5428,11 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 0xcU;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
                                                             }
-                                                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod 
-                                                                = 
-                                                                (1U 
-                                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                    >> 0x14U));
+                                                            if (
+                                                                (0x100000U 
+                                                                 & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
+                                                            }
                                                         } else {
                                                             if (
                                                                 ((0U 
@@ -6397,11 +5536,11 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 0xcU;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
                                                             }
-                                                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod 
-                                                                = 
-                                                                (1U 
-                                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                    >> 0x14U));
+                                                            if (
+                                                                (0x100000U 
+                                                                 & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -6428,11 +5567,11 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 0xbU;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
                                                             }
-                                                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod 
-                                                                = 
-                                                                (1U 
-                                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                    >> 0x14U));
+                                                            if (
+                                                                (0x100000U 
+                                                                 & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
+                                                            }
                                                         } else {
                                                             if (
                                                                 (1U 
@@ -6445,11 +5584,11 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 0xcU;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
                                                             }
-                                                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod 
-                                                                = 
-                                                                (1U 
-                                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                    >> 0x14U));
+                                                            if (
+                                                                (0x100000U 
+                                                                 & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -6477,8 +5616,9 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                              & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
                                                             if (
                                                                 (1U 
-                                                                 & ((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                     >> 0xeU) 
+                                                                 & ((~ 
+                                                                     (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
+                                                                      >> 0xeU)) 
                                                                     | (3U 
                                                                        == 
                                                                        (3U 
@@ -6490,8 +5630,9 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                         } else {
                                                             if (
                                                                 (1U 
-                                                                 & ((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                     >> 0xeU) 
+                                                                 & ((~ 
+                                                                     (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
+                                                                      >> 0xeU)) 
                                                                     | (3U 
                                                                        == 
                                                                        (3U 
@@ -6722,6 +5863,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 2U;
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
+                                                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
                                                         }
                                                     }
                                                 } else {
@@ -6735,7 +5877,6 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                              & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 2U;
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
-                                                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 0U;
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 2U;
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
@@ -6759,14 +5900,14 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                   >> 0x19U)))) {
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 1U;
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
-                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 0U;
+                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
                                 } else {
                                     if ((0U == (3U 
                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                    >> 0x19U)))) {
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 1U;
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
-                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 0U;
+                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 1U;
                                     }
                                 }
                             }
@@ -6778,14 +5919,12 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                   >> 0x19U)))) {
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 1U;
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
-                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 0U;
                                 } else {
                                     if ((0U == (3U 
                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                    >> 0x19U)))) {
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator = 1U;
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 0U;
-                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_op_mod = 0U;
                                     }
                                 }
                             }
@@ -7221,6 +6360,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 0U;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__opcode 
         = (0x7fU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id);
     if ((0x40U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__opcode))) {
@@ -7399,7 +6539,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                         if ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__opcode))) {
                             if ((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__opcode))) {
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_a_o = 1U;
-                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__is_fp_instr = 1U;
                                 if ((0x80000000U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
                                     if ((0x40000000U 
@@ -7430,7 +6570,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                   & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                                      >> 0x15U)))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
@@ -7448,7 +6588,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                         >> 0xcU))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7479,7 +6619,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                      & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                                         >> 0xcU))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             } else {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
                                                             }
@@ -7505,7 +6645,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             } else {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
                                                             }
@@ -7543,7 +6683,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                                 >> 0x15U))))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7571,7 +6711,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                   & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                                      >> 0x15U)))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__rf_we = 1U;
@@ -7586,7 +6726,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                                 >> 0x15U))))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7618,8 +6758,9 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
                                                             if (
                                                                 (1U 
-                                                                 & ((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                     >> 0xeU) 
+                                                                 & ((~ 
+                                                                     (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
+                                                                      >> 0xeU)) 
                                                                     | (3U 
                                                                        == 
                                                                        (3U 
@@ -7627,7 +6768,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                            >> 0xcU)))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__rf_we = 1U;
@@ -7635,8 +6776,9 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
                                                             if (
                                                                 (1U 
-                                                                 & ((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                                     >> 0xeU) 
+                                                                 & ((~ 
+                                                                     (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
+                                                                      >> 0xeU)) 
                                                                     | (3U 
                                                                        == 
                                                                        (3U 
@@ -7645,7 +6787,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7685,7 +6827,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                   & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                                      >> 0x14U)))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
@@ -7699,7 +6841,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                      >> 0x14U)))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7730,7 +6872,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                   & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                                      >> 0x14U)))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
@@ -7747,7 +6889,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                        (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                                         >> 0x14U))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         }
                                                     }
@@ -7784,7 +6926,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                      >> 0xdU)))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
@@ -7800,7 +6942,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7828,7 +6970,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                            >> 0xcU)))))) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                             }
                                                         } else {
                                                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
@@ -7847,7 +6989,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                             }
                                                         }
                                                     }
@@ -7867,7 +7009,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                                 } else {
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
@@ -7876,7 +7018,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                                         = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                                 }
                                             }
                                         }
@@ -7897,7 +7039,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_c_o = 1U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
-                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__is_fp_instr = 1U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
@@ -7905,13 +7047,13 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                         if ((1U == (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                           >> 0x19U)))) {
                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                            vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                         } else {
                             if ((0U == (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                               >> 0x19U)))) {
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                     = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                             } else {
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
                             }
@@ -8101,14 +7243,14 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                 if ((3U == (7U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                   >> 0xcU)))) {
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                 } else {
                                     if ((2U == (7U 
                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                    >> 0xcU)))) {
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                             = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                     } else {
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
                                     }
@@ -8329,14 +7471,14 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                 if ((3U == (7U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                   >> 0xcU)))) {
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 1U;
+                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
                                 } else {
                                     if ((2U == (7U 
                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                    >> 0xcU)))) {
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
                                             = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_src_fmt_o = 0U;
+                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
                                     } else {
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
                                     }
@@ -9044,7 +8186,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__aux_data 
         = (((0xbU == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator)) 
             << 4U) | ((0xbU == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_alu_operator))
-                       ? 2U : (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_dst_fmt)));
+                       ? 2U : 0U));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__g_branch_target_alu__DOT__bt_alu_result 
         = (0x1ffffffffULL & ((QData)((IData)(((0U == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__bt_a_mux_sel))
                                                ? vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_a_ecc
@@ -9141,389 +8283,9 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__multdiv_sel 
         = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__mult_sel_ex) 
            | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__div_sel_ex));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffffeULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | (IData)((IData)(((0U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                               >> 7U))) 
-                              & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffffdULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((1U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 1U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffffbULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((2U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 2U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffff7ULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((3U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 3U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffffefULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((4U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 4U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffffdfULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((5U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 5U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffffbfULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((6U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 6U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffff7fULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((7U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 7U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffeffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((8U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 8U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffdffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((9U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 9U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffffbffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xaU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0xaU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffff7ffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xbU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0xbU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffefffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xcU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0xcU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffdfffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xdU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0xdU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffffbfffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xeU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0xeU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffff7fffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xfU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0xfU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffeffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x10U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x10U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffdffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x11U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x11U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffffbffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x12U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x12U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffff7ffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x13U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x13U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffefffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x14U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x14U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffdfffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x15U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x15U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffffbfffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x16U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x16U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffff7fffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x17U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x17U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffeffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x18U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x18U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffdffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x19U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x19U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffffbffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1aU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x1aU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffff7ffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1bU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x1bU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffefffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1cU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x1cU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffdfffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1dU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x1dU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffffbfffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1eU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x1eU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffff7fffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1fU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x1fU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffeffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x20U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffdffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((1U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x21U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffffbffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((2U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x22U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffff7ffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((3U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x23U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffefffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((4U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x24U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffdfffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((5U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x25U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffffbfffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((6U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x26U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffff7fffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((7U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x27U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffeffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((8U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x28U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffdffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((9U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x29U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffffbffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xaU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x2aU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffff7ffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xbU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x2bU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffefffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xcU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x2cU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffdfffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xdU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x2dU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffffbfffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xeU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x2eU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffff7fffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0xfU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                  >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x2fU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffeffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x10U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x30U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffdffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x11U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x31U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfffbffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x12U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x32U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfff7ffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x13U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x33U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffefffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x14U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x34U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffdfffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x15U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x35U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xffbfffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x16U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x36U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xff7fffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x17U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x37U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfeffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x18U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x38U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfdffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x19U == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x39U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xfbffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1aU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x3aU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xf7ffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1bU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x3bU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xefffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1cU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x3cU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xdfffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1dU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x3dU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0xbfffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1eU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x3eU));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec 
-        = ((0x7fffffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__we_a_dec) 
-           | ((QData)((IData)(((0x1fU == (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                   >> 7U))) 
-                               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id)))) 
-              << 0x3fU));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__wb_stage_i__DOT__fp_rf_wdata_wb_mux_we 
+        = ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__wb_stage_i__DOT__fp_rf_wdata_wb_mux_we)) 
+           | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__gen_multdiv_slow__DOT__multdiv_i__DOT__sign_b 
         = (1U & ((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
                   >> 0x1fU) & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__multdiv_signed_mode) 
@@ -9543,18 +8305,518 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__csr_op = 0U;
     }
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__in_valid_c2fpu 
-        = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__instr_valid_id_q) 
-           & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__is_fp_instr));
+        = (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__instr_valid_id_q) 
+            & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__is_fp_instr)) 
+           & (~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__busy_test)));
+    vlTOPp->__Vfunc_fp_width__6__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
+    __Vtemp23[0U] = 0x17U;
+    __Vtemp23[1U] = 8U;
+    __Vtemp23[2U] = 0x34U;
+    __Vtemp23[3U] = 0xbU;
+    __Vtemp23[4U] = 0xaU;
+    __Vtemp23[5U] = 5U;
+    __Vtemp23[6U] = 2U;
+    __Vtemp23[7U] = 5U;
+    __Vtemp23[8U] = 7U;
+    __Vtemp23[9U] = 8U;
+    __Vtemp24[0U] = 0x17U;
+    __Vtemp24[1U] = 8U;
+    __Vtemp24[2U] = 0x34U;
+    __Vtemp24[3U] = 0xbU;
+    __Vtemp24[4U] = 0xaU;
+    __Vtemp24[5U] = 5U;
+    __Vtemp24[6U] = 2U;
+    __Vtemp24[7U] = 5U;
+    __Vtemp24[8U] = 7U;
+    __Vtemp24[9U] = 8U;
+    vlTOPp->__Vfunc_fp_width__6__Vfuncout = ((IData)(1U) 
+                                             + (((0x13fU 
+                                                  >= 
+                                                  (0x1ffU 
+                                                   & ((IData)(0x20U) 
+                                                      + 
+                                                      ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                       << 6U))))
+                                                  ? 
+                                                 (((0U 
+                                                    == 
+                                                    (0x1fU 
+                                                     & ((IData)(0x20U) 
+                                                        + 
+                                                        ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                         << 6U))))
+                                                    ? 0U
+                                                    : 
+                                                   (__Vtemp23[
+                                                    ((IData)(1U) 
+                                                     + 
+                                                     (0xfU 
+                                                      & (((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                           << 6U)) 
+                                                         >> 5U)))] 
+                                                    << 
+                                                    ((IData)(0x20U) 
+                                                     - 
+                                                     (0x1fU 
+                                                      & ((IData)(0x20U) 
+                                                         + 
+                                                         ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                          << 6U)))))) 
+                                                  | (__Vtemp23[
+                                                     (0xfU 
+                                                      & (((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                           << 6U)) 
+                                                         >> 5U))] 
+                                                     >> 
+                                                     (0x1fU 
+                                                      & ((IData)(0x20U) 
+                                                         + 
+                                                         ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                          << 6U)))))
+                                                  : 0U) 
+                                                + (
+                                                   (0x13fU 
+                                                    >= 
+                                                    (0x1ffU 
+                                                     & ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                        << 6U)))
+                                                    ? 
+                                                   (((0U 
+                                                      == 
+                                                      (0x1fU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                          << 6U)))
+                                                      ? 0U
+                                                      : 
+                                                     (__Vtemp24[
+                                                      ((IData)(1U) 
+                                                       + 
+                                                       (0xeU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                           << 1U)))] 
+                                                      << 
+                                                      ((IData)(0x20U) 
+                                                       - 
+                                                       (0x1fU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                           << 6U))))) 
+                                                    | (__Vtemp24[
+                                                       (0xeU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                           << 1U))] 
+                                                       >> 
+                                                       (0x1fU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__6__fmt) 
+                                                           << 6U))))
+                                                    : 0U)));
+    vlTOPp->__Vfunc_fp_width__5__fmt = 0U;
+    vlTOPp->__Vfunc_fp_width__5__Vfuncout = 0x20U;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_up_cast 
+        = (0x20U > vlTOPp->__Vfunc_fp_width__6__Vfuncout);
+    vlTOPp->__Vfunc_fp_width__8__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
+    __Vtemp25[0U] = 0x17U;
+    __Vtemp25[1U] = 8U;
+    __Vtemp25[2U] = 0x34U;
+    __Vtemp25[3U] = 0xbU;
+    __Vtemp25[4U] = 0xaU;
+    __Vtemp25[5U] = 5U;
+    __Vtemp25[6U] = 2U;
+    __Vtemp25[7U] = 5U;
+    __Vtemp25[8U] = 7U;
+    __Vtemp25[9U] = 8U;
+    __Vtemp26[0U] = 0x17U;
+    __Vtemp26[1U] = 8U;
+    __Vtemp26[2U] = 0x34U;
+    __Vtemp26[3U] = 0xbU;
+    __Vtemp26[4U] = 0xaU;
+    __Vtemp26[5U] = 5U;
+    __Vtemp26[6U] = 2U;
+    __Vtemp26[7U] = 5U;
+    __Vtemp26[8U] = 7U;
+    __Vtemp26[9U] = 8U;
+    vlTOPp->__Vfunc_fp_width__8__Vfuncout = ((IData)(1U) 
+                                             + (((0x13fU 
+                                                  >= 
+                                                  (0x1ffU 
+                                                   & ((IData)(0x20U) 
+                                                      + 
+                                                      ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                       << 6U))))
+                                                  ? 
+                                                 (((0U 
+                                                    == 
+                                                    (0x1fU 
+                                                     & ((IData)(0x20U) 
+                                                        + 
+                                                        ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                         << 6U))))
+                                                    ? 0U
+                                                    : 
+                                                   (__Vtemp25[
+                                                    ((IData)(1U) 
+                                                     + 
+                                                     (0xfU 
+                                                      & (((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                           << 6U)) 
+                                                         >> 5U)))] 
+                                                    << 
+                                                    ((IData)(0x20U) 
+                                                     - 
+                                                     (0x1fU 
+                                                      & ((IData)(0x20U) 
+                                                         + 
+                                                         ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                          << 6U)))))) 
+                                                  | (__Vtemp25[
+                                                     (0xfU 
+                                                      & (((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                           << 6U)) 
+                                                         >> 5U))] 
+                                                     >> 
+                                                     (0x1fU 
+                                                      & ((IData)(0x20U) 
+                                                         + 
+                                                         ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                          << 6U)))))
+                                                  : 0U) 
+                                                + (
+                                                   (0x13fU 
+                                                    >= 
+                                                    (0x1ffU 
+                                                     & ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                        << 6U)))
+                                                    ? 
+                                                   (((0U 
+                                                      == 
+                                                      (0x1fU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                          << 6U)))
+                                                      ? 0U
+                                                      : 
+                                                     (__Vtemp26[
+                                                      ((IData)(1U) 
+                                                       + 
+                                                       (0xeU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                           << 1U)))] 
+                                                      << 
+                                                      ((IData)(0x20U) 
+                                                       - 
+                                                       (0x1fU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                           << 6U))))) 
+                                                    | (__Vtemp26[
+                                                       (0xeU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                           << 1U))] 
+                                                       >> 
+                                                       (0x1fU 
+                                                        & ((IData)(vlTOPp->__Vfunc_fp_width__8__fmt) 
+                                                           << 6U))))
+                                                    : 0U)));
+    vlTOPp->__Vfunc_fp_width__7__fmt = 0U;
+    vlTOPp->__Vfunc_fp_width__7__Vfuncout = 0x20U;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_down_cast 
+        = (0x20U < vlTOPp->__Vfunc_fp_width__8__Vfuncout);
+    vlTOPp->__Vfunc_fp_width__10__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
+    __Vtemp27[0U] = 0x17U;
+    __Vtemp27[1U] = 8U;
+    __Vtemp27[2U] = 0x34U;
+    __Vtemp27[3U] = 0xbU;
+    __Vtemp27[4U] = 0xaU;
+    __Vtemp27[5U] = 5U;
+    __Vtemp27[6U] = 2U;
+    __Vtemp27[7U] = 5U;
+    __Vtemp27[8U] = 7U;
+    __Vtemp27[9U] = 8U;
+    __Vtemp28[0U] = 0x17U;
+    __Vtemp28[1U] = 8U;
+    __Vtemp28[2U] = 0x34U;
+    __Vtemp28[3U] = 0xbU;
+    __Vtemp28[4U] = 0xaU;
+    __Vtemp28[5U] = 5U;
+    __Vtemp28[6U] = 2U;
+    __Vtemp28[7U] = 5U;
+    __Vtemp28[8U] = 7U;
+    __Vtemp28[9U] = 8U;
+    vlTOPp->__Vfunc_fp_width__10__Vfuncout = ((IData)(1U) 
+                                              + (((0x13fU 
+                                                   >= 
+                                                   (0x1ffU 
+                                                    & ((IData)(0x20U) 
+                                                       + 
+                                                       ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                        << 6U))))
+                                                   ? 
+                                                  (((0U 
+                                                     == 
+                                                     (0x1fU 
+                                                      & ((IData)(0x20U) 
+                                                         + 
+                                                         ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                          << 6U))))
+                                                     ? 0U
+                                                     : 
+                                                    (__Vtemp27[
+                                                     ((IData)(1U) 
+                                                      + 
+                                                      (0xfU 
+                                                       & (((IData)(0x20U) 
+                                                           + 
+                                                           ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                            << 6U)) 
+                                                          >> 5U)))] 
+                                                     << 
+                                                     ((IData)(0x20U) 
+                                                      - 
+                                                      (0x1fU 
+                                                       & ((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                           << 6U)))))) 
+                                                   | (__Vtemp27[
+                                                      (0xfU 
+                                                       & (((IData)(0x20U) 
+                                                           + 
+                                                           ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                            << 6U)) 
+                                                          >> 5U))] 
+                                                      >> 
+                                                      (0x1fU 
+                                                       & ((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                           << 6U)))))
+                                                   : 0U) 
+                                                 + 
+                                                 ((0x13fU 
+                                                   >= 
+                                                   (0x1ffU 
+                                                    & ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                       << 6U)))
+                                                   ? 
+                                                  (((0U 
+                                                     == 
+                                                     (0x1fU 
+                                                      & ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                         << 6U)))
+                                                     ? 0U
+                                                     : 
+                                                    (__Vtemp28[
+                                                     ((IData)(1U) 
+                                                      + 
+                                                      (0xeU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                          << 1U)))] 
+                                                     << 
+                                                     ((IData)(0x20U) 
+                                                      - 
+                                                      (0x1fU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                          << 6U))))) 
+                                                   | (__Vtemp28[
+                                                      (0xeU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                          << 1U))] 
+                                                      >> 
+                                                      (0x1fU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__10__fmt) 
+                                                          << 6U))))
+                                                   : 0U)));
+    vlTOPp->__Vfunc_fp_width__9__fmt = 0U;
+    vlTOPp->__Vfunc_fp_width__9__Vfuncout = 0x20U;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_up_cast 
+        = (0x20U > vlTOPp->__Vfunc_fp_width__10__Vfuncout);
+    vlTOPp->__Vfunc_fp_width__12__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
+    __Vtemp29[0U] = 0x17U;
+    __Vtemp29[1U] = 8U;
+    __Vtemp29[2U] = 0x34U;
+    __Vtemp29[3U] = 0xbU;
+    __Vtemp29[4U] = 0xaU;
+    __Vtemp29[5U] = 5U;
+    __Vtemp29[6U] = 2U;
+    __Vtemp29[7U] = 5U;
+    __Vtemp29[8U] = 7U;
+    __Vtemp29[9U] = 8U;
+    __Vtemp30[0U] = 0x17U;
+    __Vtemp30[1U] = 8U;
+    __Vtemp30[2U] = 0x34U;
+    __Vtemp30[3U] = 0xbU;
+    __Vtemp30[4U] = 0xaU;
+    __Vtemp30[5U] = 5U;
+    __Vtemp30[6U] = 2U;
+    __Vtemp30[7U] = 5U;
+    __Vtemp30[8U] = 7U;
+    __Vtemp30[9U] = 8U;
+    vlTOPp->__Vfunc_fp_width__12__Vfuncout = ((IData)(1U) 
+                                              + (((0x13fU 
+                                                   >= 
+                                                   (0x1ffU 
+                                                    & ((IData)(0x20U) 
+                                                       + 
+                                                       ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                        << 6U))))
+                                                   ? 
+                                                  (((0U 
+                                                     == 
+                                                     (0x1fU 
+                                                      & ((IData)(0x20U) 
+                                                         + 
+                                                         ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                          << 6U))))
+                                                     ? 0U
+                                                     : 
+                                                    (__Vtemp29[
+                                                     ((IData)(1U) 
+                                                      + 
+                                                      (0xfU 
+                                                       & (((IData)(0x20U) 
+                                                           + 
+                                                           ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                            << 6U)) 
+                                                          >> 5U)))] 
+                                                     << 
+                                                     ((IData)(0x20U) 
+                                                      - 
+                                                      (0x1fU 
+                                                       & ((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                           << 6U)))))) 
+                                                   | (__Vtemp29[
+                                                      (0xfU 
+                                                       & (((IData)(0x20U) 
+                                                           + 
+                                                           ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                            << 6U)) 
+                                                          >> 5U))] 
+                                                      >> 
+                                                      (0x1fU 
+                                                       & ((IData)(0x20U) 
+                                                          + 
+                                                          ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                           << 6U)))))
+                                                   : 0U) 
+                                                 + 
+                                                 ((0x13fU 
+                                                   >= 
+                                                   (0x1ffU 
+                                                    & ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                       << 6U)))
+                                                   ? 
+                                                  (((0U 
+                                                     == 
+                                                     (0x1fU 
+                                                      & ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                         << 6U)))
+                                                     ? 0U
+                                                     : 
+                                                    (__Vtemp30[
+                                                     ((IData)(1U) 
+                                                      + 
+                                                      (0xeU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                          << 1U)))] 
+                                                     << 
+                                                     ((IData)(0x20U) 
+                                                      - 
+                                                      (0x1fU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                          << 6U))))) 
+                                                   | (__Vtemp30[
+                                                      (0xeU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                          << 1U))] 
+                                                      >> 
+                                                      (0x1fU 
+                                                       & ((IData)(vlTOPp->__Vfunc_fp_width__12__fmt) 
+                                                          << 6U))))
+                                                   : 0U)));
+    vlTOPp->__Vfunc_fp_width__11__fmt = 0U;
+    vlTOPp->__Vfunc_fp_width__11__Vfuncout = 0x20U;
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__is_down_cast 
+        = (0x20U < vlTOPp->__Vfunc_fp_width__12__Vfuncout);
+    vlTOPp->__Vfunc_bias__13__fmt = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt;
+    __Vtemp31[0U] = 0x17U;
+    __Vtemp31[1U] = 8U;
+    __Vtemp31[2U] = 0x34U;
+    __Vtemp31[3U] = 0xbU;
+    __Vtemp31[4U] = 0xaU;
+    __Vtemp31[5U] = 5U;
+    __Vtemp31[6U] = 2U;
+    __Vtemp31[7U] = 5U;
+    __Vtemp31[8U] = 7U;
+    __Vtemp31[9U] = 8U;
+    vlTOPp->__Vfunc_bias__13__Vfuncout = (VL_POWSS_III(32,32,32, (IData)(2U), 
+                                                       (((0x13fU 
+                                                          >= 
+                                                          (0x1ffU 
+                                                           & ((IData)(0x20U) 
+                                                              + 
+                                                              ((IData)(vlTOPp->__Vfunc_bias__13__fmt) 
+                                                               << 6U))))
+                                                          ? 
+                                                         (((0U 
+                                                            == 
+                                                            (0x1fU 
+                                                             & ((IData)(0x20U) 
+                                                                + 
+                                                                ((IData)(vlTOPp->__Vfunc_bias__13__fmt) 
+                                                                 << 6U))))
+                                                            ? 0U
+                                                            : 
+                                                           (__Vtemp31[
+                                                            ((IData)(1U) 
+                                                             + 
+                                                             (0xfU 
+                                                              & (((IData)(0x20U) 
+                                                                  + 
+                                                                  ((IData)(vlTOPp->__Vfunc_bias__13__fmt) 
+                                                                   << 6U)) 
+                                                                 >> 5U)))] 
+                                                            << 
+                                                            ((IData)(0x20U) 
+                                                             - 
+                                                             (0x1fU 
+                                                              & ((IData)(0x20U) 
+                                                                 + 
+                                                                 ((IData)(vlTOPp->__Vfunc_bias__13__fmt) 
+                                                                  << 6U)))))) 
+                                                          | (__Vtemp31[
+                                                             (0xfU 
+                                                              & (((IData)(0x20U) 
+                                                                  + 
+                                                                  ((IData)(vlTOPp->__Vfunc_bias__13__fmt) 
+                                                                   << 6U)) 
+                                                                 >> 5U))] 
+                                                             >> 
+                                                             (0x1fU 
+                                                              & ((IData)(0x20U) 
+                                                                 + 
+                                                                 ((IData)(vlTOPp->__Vfunc_bias__13__fmt) 
+                                                                  << 6U)))))
+                                                          : 0U) 
+                                                        - (IData)(1U)), 1,0) 
+                                          - (IData)(1U));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__src_bias 
+        = (0x1ffU & vlTOPp->__Vfunc_bias__13__Vfuncout);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_operands[0U] 
-        = (1U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
+        = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1)
+            ? vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
            (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                     >> 0x1bU))]);
+                     >> 0xfU))] : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_a_ecc);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_operands[1U] 
-        = (IData)((((QData)((IData)(((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1)
-                                      ? vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
+        = (IData)((((QData)((IData)((1U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
                                      (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                               >> 0xfU))]
-                                      : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_a_ecc))) 
+                                               >> 0x1bU))]))) 
                     << 0x20U) | (QData)((IData)(((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2)
                                                   ? 
                                                  vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
@@ -9563,11 +8825,9 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                      >> 0x14U))]
                                                   : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc)))));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_operands[2U] 
-        = (IData)(((((QData)((IData)(((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1)
-                                       ? vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
+        = (IData)(((((QData)((IData)((1U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
                                       (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
-                                                >> 0xfU))]
-                                       : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_a_ecc))) 
+                                                >> 0x1bU))]))) 
                      << 0x20U) | (QData)((IData)(((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2)
                                                    ? 
                                                   vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
@@ -10307,4 +9567,167 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
             }
         }
     }
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__sel_nodes 
+        = ((0xf7U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__sel_nodes)) 
+           | (8U & (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp) 
+                     << 3U) | (0xfffffff8U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp) 
+                                              << 2U)))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__sel_nodes 
+        = ((0xefU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__sel_nodes)) 
+           | (0x10U & (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp) 
+                        << 2U) | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp) 
+                                  << 1U))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__sel_nodes 
+        = ((0xdfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__sel_nodes)) 
+           | (0x20U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp) 
+                       << 1U)));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_nodes 
+        = ((0xfff1ffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_nodes) 
+           | (0xe00U & (((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp))
+                          ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_lut)
+                          : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_lut) 
+                             >> 3U)) << 9U)));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_nodes 
+        = ((0xff8fffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_nodes) 
+           | (0x7000U & (((4U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__in_tmp))
+                           ? ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_lut) 
+                              >> 6U) : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_lower__DOT__gen_lzc__DOT__index_lut) 
+                                        >> 9U)) << 0xcU)));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_nodes 
+        = ((0xfff1ffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_nodes) 
+           | (0xe00U & (((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp))
+                          ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut)
+                          : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut) 
+                             >> 3U)) << 9U)));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_nodes 
+        = ((0xff8fffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_nodes) 
+           | (0x7000U & (((4U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp))
+                           ? ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut) 
+                              >> 6U) : ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__index_lut) 
+                                        >> 9U)) << 0xcU)));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__sel_nodes 
+        = ((0xf7U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__sel_nodes)) 
+           | (8U & (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp) 
+                     << 3U) | (0xfffffff8U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp) 
+                                              << 2U)))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__sel_nodes 
+        = ((0xefU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__sel_nodes)) 
+           | (0x10U & (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp) 
+                        << 2U) | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp) 
+                                  << 1U))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__sel_nodes 
+        = ((0xdfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__sel_nodes)) 
+           | (0x20U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_int_rr__DOT__gen_fair_arb__DOT__i_lzc_upper__DOT__gen_lzc__DOT__in_tmp) 
+                       << 1U)));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+        = ((0x1ffff8U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes) 
+           | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_levels__BRA__0__KET____DOT__gen_level__BRA__0__KET____DOT__sel)
+               ? (4U | (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+                              >> 6U))) : (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+                                                >> 3U))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+        = ((0x1fffc7U & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes) 
+           | (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_levels__BRA__1__KET____DOT__gen_level__BRA__0__KET____DOT__sel)
+                ? (2U | (1U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+                               >> 0xcU))) : (1U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+                                                   >> 9U))) 
+              << 3U));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+        = ((0x1ffe3fU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes) 
+           | (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_levels__BRA__1__KET____DOT__gen_level__BRA__1__KET____DOT__sel)
+                ? (2U | (1U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+                               >> 0x12U))) : (1U & 
+                                              (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes 
+                                               >> 0xfU))) 
+              << 6U));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][2U] 
+        = ((0x23ffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][2U]) | (0x1c0000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][2U] 
+        = ((0x3c7fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][2U]) | (0x38000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][2U] 
+        = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][2U] 
+        = ((0x3fe01fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][2U]) | (0x1fe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][1U] 
+        = ((0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][1U]) | (0xffffffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][2U] 
+        = ((0x3fffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][2U]) | (0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][1U] 
+        = ((0xffffffe1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][1U]) | (0x1eU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][0U] 
+        = ((1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][0U]) | (0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[0U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[0U][1U] 
+        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [0U][1U]) | (1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][2U] 
+        = ((0x23ffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][2U]) | (0x1c0000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][2U] 
+        = ((0x3c7fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][2U]) | (0x38000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][2U] 
+        = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][2U] 
+        = ((0x3fe01fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][2U]) | (0x1fe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][1U] 
+        = ((0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][1U]) | (0xffffffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][2U] 
+        = ((0x3fffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][2U]) | (0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][1U] 
+        = ((0xffffffe1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][1U]) | (0x1eU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][0U] 
+        = ((1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][0U]) | (0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[0U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[1U][1U] 
+        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [1U][1U]) | (1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x23ffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x1c0000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x3c7fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x38000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x3fe01fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x1fe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
+        = ((0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][1U]) | (0xffffffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x3fffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
+        = ((0xffffffe1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][1U]) | (0x1eU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][0U] 
+        = ((1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][0U]) | (0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[0U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
+        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][1U]) | (1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
+        = ((0x23ffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [3U][2U]) | (0x1c0000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
+        = ((0x3c7fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [3U][2U]) | (0x38000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
+        = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [3U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
 }
