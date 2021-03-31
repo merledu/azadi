@@ -5478,6 +5478,10 @@ VL_INLINE_OPT void Vazadi_soc_top::_multiclk__TOP__22(Vazadi_soc_top__Syms* __re
         = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_regfile_ff__DOT__register_file_i__DOT__rf_reg[
         (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                   >> 0x14U))];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_rdata_b 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__gen_fp_regfile__DOT__fp_register_file__DOT__rf_reg_q[
+        (0x1fU & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
+                  >> 0x14U))];
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__irqs 
         = (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mip 
            & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mie_csr__DOT__rdata_q);
@@ -7591,7 +7595,6 @@ VL_INLINE_OPT void Vazadi_soc_top::_sequent__TOP__23(Vazadi_soc_top__Syms* __res
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_req_dec = 1U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we = 1U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_type = 0U;
-                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__is_fp_instr = 1U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
                                 if ((3U == (7U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                   >> 0xcU)))) {
@@ -7819,7 +7822,6 @@ VL_INLINE_OPT void Vazadi_soc_top::_sequent__TOP__23(Vazadi_soc_top__Syms* __res
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_req_dec = 1U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_type = 0U;
-                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__is_fp_instr = 1U;
                                 vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
                                 if ((3U == (7U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                   >> 0xcU)))) {

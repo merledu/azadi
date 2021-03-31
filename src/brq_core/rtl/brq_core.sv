@@ -16,7 +16,7 @@ module brq_core #(
     parameter brq_pkg::rv32m_e    RV32M            = brq_pkg::RV32MFast,
     parameter brq_pkg::rv32b_e    RV32B            = brq_pkg::RV32BNone,
     parameter brq_pkg::regfile_e  RegFile          = brq_pkg::RegFileFF,
-    parameter brq_pkg::rvfloat_e  RVF              = brq_pkg::RV64FDouble, // for floating point
+    parameter brq_pkg::rvfloat_e  RVF              = brq_pkg::RV32FSingle, // for floating point
     parameter int unsigned        FloatingPoint    = 1'b1,
     parameter bit                 BranchTargetALU  = 1'b0,
     parameter bit                 WritebackStage   = 1'b0,
@@ -139,6 +139,7 @@ module brq_core #(
   logic [W-1:0]           fpu_op_b;
   logic [W-1:0]           fpu_op_c;
   logic                   fp_rf_write_wb;
+  logic [31:0]            rf_int_fp_lsu;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
@@ -501,8 +502,7 @@ module brq_core #(
       .csr_mtvec_init_o         ( csr_mtvec_init         ),
 
       // pipeline stalls
-      .id_in_ready_i            ( ready_id_fpu           ), // changed by zeeshan from id_in_ready
-                                                            // to ready_id_fpu for ready selection
+      .id_in_ready_i            ( id_in_ready            ),
       .pc_mismatch_alert_o      ( pc_mismatch_alert      ),
       .if_busy_o                ( if_busy                )
   );
@@ -528,7 +528,7 @@ module brq_core #(
       .WritebackStage  ( WritebackStage  ),
       .BranchPredictor ( BranchPredictor )
   ) id_stage_i (
-      .clk_i                        ( clk                     ),
+      .clk_i                        ( clk                      ),
       .rst_ni                       ( rst_ni                   ),
 
       // Processor Enable
@@ -567,7 +567,7 @@ module brq_core #(
 
       // Stalls
       .ex_valid_i                   ( valid_id_fpu             ), // changed by zeeshan from 
-                                                                  // id_in_ready to valid_id_fpu 
+                                                                  // ex_valid to valid_id_fpu 
                                                                   // for ready selection
       .lsu_resp_valid_i             ( lsu_resp_valid           ),
 
@@ -647,7 +647,7 @@ module brq_core #(
       .rf_raddr_a_o                 ( rf_raddr_a               ),
       .rf_rdata_a_i                 ( rf_rdata_a               ),
       .rf_raddr_b_o                 ( rf_raddr_b               ),
-      .rf_rdata_b_i                 ( rf_rdata_b               ),
+      .rf_rdata_b_i                 ( rf_int_fp_lsu            ),
       .rf_ren_a_o                   ( rf_ren_a                 ),
       .rf_ren_b_o                   ( rf_ren_b                 ),
       .rf_waddr_id_o                ( rf_waddr_id              ),
@@ -710,7 +710,7 @@ module brq_core #(
       .RV32B                    ( RV32B                    ),
       .BranchTargetALU          ( BranchTargetALU          )
   ) ex_block_i (
-      .clk_i                    ( clk                     ),
+      .clk_i                    ( clk                      ),
       .rst_ni                   ( rst_ni                   ),
 
       // ALU signal from ID stage
@@ -908,6 +908,8 @@ module brq_core #(
     assign rf_ecc_err_comb         = 1'b0;
   end
 
+  assign rf_int_fp_lsu = (is_fp_instr & use_fp_rs2) ? fp_rf_rdata_b : rf_rdata_b;
+
   if (RegFile == RegFileFF) begin : gen_regfile_ff
     brq_register_file_ff #(
         .RV32E             ( RV32E             ),
@@ -989,10 +991,11 @@ module brq_core #(
 
       .waddr_a_i ( fp_rf_waddr_wb ),
       .wdata_a_i ( rf_wdata_wb    ),
-      .we_a_i    ( fp_rf_wen_wb   )
+      .we_a_i    ( fp_wen         )
 );
   end
-
+  logic  fp_wen;
+  assign fp_wen   = fp_rf_wen_wb & out_valid_fpu2c;
   assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
   assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
   assign fpu_op_c = fp_rf_rdata_c;
@@ -1169,13 +1172,13 @@ module brq_core #(
 
   assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
   assign in_ready_c2fpu = multdiv_ready_id;
-  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr) & ~busy_test;
-  assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
+  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr) & ~busy;
+  // assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
   assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;
   
-  logic busy_test;
-  always_ff @(posedge clk_i) begin : valid_signal
-    busy_test <= fp_busy;
+  logic busy;
+  always_ff @(posedge clk_i) begin : busy_signal // for valid signal
+    busy <= fp_busy;
   end
     
 // FPU instance

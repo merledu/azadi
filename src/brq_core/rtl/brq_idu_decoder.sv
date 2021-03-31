@@ -674,7 +674,6 @@ module brq_idu_decoder #(
         data_req_o         = 1'b1;
         data_we_o          = 1'b1;
         data_type_o        = 2'b00;
-        is_fp_instr_o      = 1'b1;
 
         use_fp_rs2_o         = 1'b1;
 
@@ -696,7 +695,6 @@ module brq_idu_decoder #(
         fp_rf_we_o         = 1'b1;
         data_req_o         = 1'b1;
         data_type_o        = 2'b00;
-        is_fp_instr_o      = 1'b1;
 
         use_fp_rd_o          = 1'b1; 
 

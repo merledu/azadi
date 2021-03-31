@@ -53,10 +53,6 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     QData/*63:0*/ __Vtemp329;
     // Body
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_out_ready 
-        = ((0xfU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_out_ready)) 
-           | (0x10U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gnt_nodes) 
-                       >> 1U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_out_ready 
         = ((0x1eU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__fmt_out_ready)) 
            | (1U & (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gnt_nodes) 
                      >> 3U) & (~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__2__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__gen_levels__BRA__2__KET____DOT__gen_level__BRA__0__KET____DOT__sel)))));
@@ -621,6 +617,21 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                  >> 0x16U) : (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[4U] 
                                               >> 0x1bU)) 
                             << 0x16U)));
+    if (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__multdiv_sel) {
+        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o[0U] 
+            = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__multdiv_imd_val_d
+            [0U];
+        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o[1U] 
+            = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__multdiv_imd_val_d
+            [1U];
+    } else {
+        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o[0U] 
+            = (QData)((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_imd_val_d
+                              [0U]));
+        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o[1U] 
+            = (QData)((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_imd_val_d
+                              [1U]));
+    }
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__access_fault 
         = ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__access_fault)) 
            | (3U != vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__priv_mode_i
@@ -978,12 +989,6 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                           : (~ (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_perm_check 
                                 >> 0x10U))) << 1U)));
     }
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex[0U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o
-        [0U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex[1U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o
-        [1U];
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready 
         = ((0x1eU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_in_ready)) 
            | (1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__fmt_out_ready)));
@@ -1328,17 +1333,17 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                             ((IData)(9U) 
                                              * (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt)))))
                              : 0U))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex[0U] 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o
+        [0U];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex[1U] 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o
+        [1U];
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__g_pmp__DOT__pmp_i__pmp_req_err_o[0U] 
         = (1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__access_fault));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__g_pmp__DOT__pmp_i__pmp_req_err_o[1U] 
         = (1U & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__access_fault) 
                  >> 1U));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[0U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
-        [0U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[1U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
-        [1U];
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__opgrp_in_ready 
         = ((0xeU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__opgrp_in_ready)) 
            | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__in_valid) 
@@ -1746,6 +1751,12 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->__Vfunc_bias__14__Vfuncout = 0x7fU;
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__destination_exp 
         = (0x1ffU & ((IData)(0x7fU) + VL_EXTENDS_II(9,9, (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__input_exp))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[0U] 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
+        [0U];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[1U] 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
+        [1U];
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err[0U] 
         = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__g_pmp__DOT__pmp_i__pmp_req_err_o
         [0U];
@@ -3488,17 +3499,17 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                      >> 1U)))
                                                           ? 
                                                          ((0xff000000U 
-                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                               << 0x18U)) 
                                                           | (0xffffffU 
-                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                 >> 8U)))
                                                           : 
                                                          ((0xffff0000U 
-                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                               << 0x10U)) 
                                                           | (0xffffU 
-                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                 >> 0x10U))))
                                                          : 
                                                         ((1U 
@@ -3507,12 +3518,12 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                      >> 1U)))
                                                           ? 
                                                          ((0xffffff00U 
-                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                               << 8U)) 
                                                           | (0xffU 
-                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                 >> 0x18U)))
-                                                          : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc)))) 
+                                                          : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu)))) 
                                        << 1U))));
     __Vtemp294[1U] = ((0xffffff80U & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
                                                >> 3U)) 
@@ -3535,17 +3546,17 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                                 >> 1U)))
                                                                                  ? 
                                                                                 ((0xff000000U 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                                 << 0x18U)) 
                                                                                 | (0xffffffU 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                                 >> 8U)))
                                                                                  : 
                                                                                 ((0xffff0000U 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                                 << 0x10U)) 
                                                                                 | (0xffffU 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                                 >> 0x10U))))
                                                                                  : 
                                                                                 ((1U 
@@ -3554,12 +3565,12 @@ void Vazadi_soc_top::_settle__TOP__5(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                                                 >> 1U)))
                                                                                  ? 
                                                                                 ((0xffffff00U 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                                 << 8U)) 
                                                                                 | (0xffU 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
                                                                                 >> 0x18U)))
-                                                                                 : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc)))) 
+                                                                                 : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu)))) 
                                                                 << 1U))) 
                                                          >> 0x20U)));
     vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] = __Vtemp294[0U];
