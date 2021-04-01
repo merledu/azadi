@@ -140,6 +140,7 @@ module brq_core #(
   logic [W-1:0]           fpu_op_c;
   logic                   fp_rf_write_wb;
   logic [31:0]            rf_int_fp_lsu;
+  logic                   fp_swap_oprnds;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
@@ -698,7 +699,8 @@ module brq_core #(
       .use_fp_rs2_o                    ( use_fp_rs2            ),
       .use_fp_rd_o                     ( use_fp_rd             ),
       .fpu_busy_i                      ( fp_busy               ),
-      .fp_rf_write_wb_i                ( fp_rf_write_wb        )
+      .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
+      .fp_swap_oprnds_o                ( fp_swap_oprnds        )
 
   );
 

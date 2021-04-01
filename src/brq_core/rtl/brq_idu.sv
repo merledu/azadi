@@ -203,7 +203,8 @@ module brq_idu #(
     output logic                  use_fp_rs2_o,
     output logic                  use_fp_rd_o,
     input  logic                  fpu_busy_i,
-    input  logic                  fp_rf_write_wb_i
+    input  logic                  fp_rf_write_wb_i,
+    output logic                  fp_swap_oprnds_o
 );
 
   import brq_pkg::*;

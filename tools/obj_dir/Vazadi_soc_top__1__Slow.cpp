@@ -9,6 +9,33 @@ void Vazadi_soc_top::_settle__TOP__3(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vazadi_soc_top::_settle__TOP__3\n"); );
     Vazadi_soc_top* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x3fe01fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x1fe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
+        = ((0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][1U]) | (0xffffffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
+        = ((0x3fffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][2U]) | (0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
+        = ((0xffffffe1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][1U]) | (0x1eU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][0U] 
+        = ((1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][0U]) | (0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[0U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
+        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [2U][1U]) | (1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
+        = ((0x23ffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [3U][2U]) | (0x1c0000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
+        = ((0x3c7fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [3U][2U]) | (0x38000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
+        = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
+            [3U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
     vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
         = ((0x3fe01fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
             [3U][2U]) | (0x1fe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
@@ -9800,40 +9827,4 @@ void Vazadi_soc_top::_settle__TOP__3(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                               [0xaU] 
                                                               >> 1U))))))) 
                                 << 4U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask[0xaU] 
-        = ((0xffffffdfU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask
-            [0xaU]) | (0x20U & (((3U != (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__csr_pmp_cfg_i
-                                               [0xaU] 
-                                               >> 3U))) 
-                                 | (~ (IData)((0x3fU 
-                                               == (0x3fU 
-                                                   & (IData)(
-                                                             (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__csr_pmp_addr_i
-                                                              [0xaU] 
-                                                              >> 1U))))))) 
-                                << 5U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask[0xaU] 
-        = ((0xffffffbfU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask
-            [0xaU]) | (0x40U & (((3U != (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__csr_pmp_cfg_i
-                                               [0xaU] 
-                                               >> 3U))) 
-                                 | (~ (IData)((0x7fU 
-                                               == (0x7fU 
-                                                   & (IData)(
-                                                             (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__csr_pmp_addr_i
-                                                              [0xaU] 
-                                                              >> 1U))))))) 
-                                << 6U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask[0xaU] 
-        = ((0xffffff7fU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__g_pmp__DOT__pmp_i__DOT__region_addr_mask
-            [0xaU]) | (0x80U & (((3U != (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__csr_pmp_cfg_i
-                                               [0xaU] 
-                                               >> 3U))) 
-                                 | (~ (IData)((0xffU 
-                                               == (0xffU 
-                                                   & (IData)(
-                                                             (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__g_pmp__DOT__pmp_i__csr_pmp_addr_i
-                                                              [0xaU] 
-                                                              >> 1U))))))) 
-                                << 7U)));
 }

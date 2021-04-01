@@ -6307,14 +6307,18 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                             if ((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__opcode_alu))) {
                                 if ((3U == (7U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                   >> 0xcU)))) {
+                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__alu_op_a_mux_sel_dec = 0U;
                                     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__alu_operator = 0U;
-                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 1U;
+                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__alu_op_b_mux_sel_dec = 1U;
+                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__imm_b_mux_sel_dec = 0U;
                                 } else {
                                     if ((2U == (7U 
                                                 & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                                    >> 0xcU)))) {
+                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__alu_op_a_mux_sel_dec = 0U;
                                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__alu_operator = 0U;
-                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_alu_op_b_mux_sel_o = 1U;
+                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__alu_op_b_mux_sel_dec = 1U;
+                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__imm_b_mux_sel_dec = 0U;
                                     }
                                 }
                             }
@@ -7000,29 +7004,62 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                                                 }
                                             }
                                         } else {
-                                            if ((0x4000000U 
+                                            if ((0x10000000U 
                                                  & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
-                                                vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
+                                                if (
+                                                    (0x4000000U 
+                                                     & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
+                                                } else {
+                                                    if (
+                                                        (0x2000000U 
+                                                         & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
+                                                    } else {
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
+                                                            = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
+                                                    }
+                                                }
                                             } else {
                                                 if (
-                                                    (0x2000000U 
+                                                    (0x4000000U 
                                                      & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
+                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 1U;
                                                 } else {
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
-                                                        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
-                                                    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
+                                                    if (
+                                                        (0x2000000U 
+                                                         & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id)) {
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_swap_oprnds_o = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 1U;
+                                                    } else {
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_wen_id = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__fp_rf_ren_b_o = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_swap_oprnds_o = 1U;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn 
+                                                            = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_invalid_rm;
+                                                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_src_fmt = 0U;
+                                                    }
                                                 }
                                             }
                                         }
@@ -7048,6 +7085,7 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = 1U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = 1U;
                         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = 1U;
+                        vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__fp_swap_oprnds_o = 0U;
                         if ((1U == (3U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__instr_rdata_id 
                                           >> 0x19U)))) {
                             vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn = 0U;
@@ -9698,31 +9736,4 @@ void Vazadi_soc_top::_settle__TOP__2(Vazadi_soc_top__Syms* __restrict vlSymsp) {
     vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
         = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
             [2U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
-        = ((0x3fe01fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [2U][2U]) | (0x1fe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
-        = ((0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [2U][1U]) | (0xffffffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][2U] 
-        = ((0x3fffe0U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [2U][2U]) | (0x1fU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
-        = ((0xffffffe1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [2U][1U]) | (0x1eU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][0U] 
-        = ((1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [2U][0U]) | (0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[0U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[2U][1U] 
-        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [2U][1U]) | (1U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[1U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
-        = ((0x23ffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [3U][2U]) | (0x1c0000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
-        = ((0x3c7fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [3U][2U]) | (0x38000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o[3U][2U] 
-        = ((0x3f9fffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_u_o
-            [3U][2U]) | (0x6000U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_3__DOT__tl_t_o[2U]));
 }
