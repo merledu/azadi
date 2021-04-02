@@ -1,6 +1,6 @@
 # Allow tool override
 VERILATOR = verilator
-TBDIR = ${AZADI_ROOT}/tests
+TBDIR = ${AZADI_ROOT2}/tests
 
 # Try later (see usage in /home/zain/Documents/Code/tf)
 #RTLSRC=../src
@@ -13,14 +13,15 @@ TEST_DIR = ${TBDIR}/asm
 HEX_DIR = ${TBDIR}/hex
 
 
-TBFILES = $(AZADI_ROOT)/src/azadi_soc/rtl/azadi_soc_top.sv
+TBFILES = $(AZADI_ROOT2)/src/azadi_soc/rtl/azadi_soc_top.sv
 # Package imports
 
-defines =  $(AZADI_ROOT)/src/brq_core/rtl/brq_pkg.sv
-defines += $(AZADI_ROOT)/src/TileLink/rtl/tlul_pkg.sv
-defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_periph_pkg.sv
-defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_main_pkg.sv
-defines += $(AZADI_ROOT)/src/GPIO/rtl/gpio_reg_pkg.sv
+defines =  $(AZADI_ROOT2)/src/brq_core/rtl/brq_pkg.sv
+defines += $(AZADI_ROOT2)/src/TileLink/rtl/tlul_pkg.sv
+defines += $(AZADI_ROOT2)/src/TileLink/rtl/tl_periph_pkg.sv
+defines += $(AZADI_ROOT2)/src/TileLink/rtl/tl_main_pkg.sv
+defines += $(AZADI_ROOT2)/src/GPIO/rtl/gpio_reg_pkg.sv
+defines += $(AZADI_ROOT2)/src/primitives/rtl/prim_pkg.sv
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
 # complains for `auto` variables
@@ -41,10 +42,10 @@ clean:
 
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
-	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
+	  -I${AZADI_ROOT2}/tests -f ${AZADI_ROOT2}/tests/flist \
 	  -Wno-PINMISSING -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-ALWCOMBORDER ${TBFILES} --top-module azadi_soc_top \
 	  -exe sim_main.cpp --autoflush --trace
-	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
+	cp ${AZADI_ROOT2}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f Vazadi_soc_top.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
 

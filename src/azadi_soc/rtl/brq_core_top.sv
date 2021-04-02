@@ -71,7 +71,7 @@ brq_core #(
     .RV32B            (brq_pkg::RV32BNone),
     .RegFile          (brq_pkg::RegFileFF),
     .BranchTargetALU  (1),
-    .WritebackStage   (1),
+    .WritebackStage   (0),
     .ICache           (0),
     .ICacheECC        (0),
     .BranchPredictor  (0),
