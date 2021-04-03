@@ -226,6 +226,8 @@ void Vazadi_soc_top::_ctor_var_reset() {
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs1 = VL_RAND_RESET_I(1);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rs2 = VL_RAND_RESET_I(1);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__use_fp_rd = VL_RAND_RESET_I(1);
+    azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fpu_op_a = VL_RAND_RESET_I(32);
+    azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fpu_op_b = VL_RAND_RESET_I(32);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_rf_write_wb = VL_RAND_RESET_I(1);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu = VL_RAND_RESET_I(32);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_swap_oprnds = VL_RAND_RESET_I(1);
@@ -316,6 +318,7 @@ void Vazadi_soc_top::_ctor_var_reset() {
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_a_ecc = VL_RAND_RESET_I(32);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_rdata_b_ecc = VL_RAND_RESET_I(32);
     azadi_soc_top__DOT__u_top__DOT__u_core__DOT__fp_wen = VL_RAND_RESET_I(1);
+    azadi_soc_top__DOT__u_top__DOT__u_core__DOT__b = VL_RAND_RESET_I(32);
     for (int __Vi0=0; __Vi0<16; ++__Vi0) {
         azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__cs_registers_i__csr_pmp_addr_o[__Vi0] = VL_RAND_RESET_Q(34);
     }

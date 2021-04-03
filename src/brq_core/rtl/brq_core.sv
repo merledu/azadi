@@ -1001,8 +1001,20 @@ module brq_core #(
   assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
   assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
   assign fpu_op_c = fp_rf_rdata_c;
-
-  assign fp_operands = {fpu_op_c , fpu_op_b , fpu_op_a};
+  
+  /* Swap operands */
+  logic [31:0] b,c;
+  always_comb begin : swapping
+    if (fp_swap_oprnds) begin
+      b = fpu_op_a;
+      c = fpu_op_b;
+    end else begin
+      b = fpu_op_b;
+      c = fpu_op_c;
+    end
+  end
+  
+  assign fp_operands = {c , b , fpu_op_a};
 
   ///////////////////
   // Alert outputs //

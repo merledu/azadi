@@ -9,9 +9,84 @@ VL_INLINE_OPT void Vazadi_soc_top::_multiclk__TOP__27(Vazadi_soc_top__Syms* __re
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vazadi_soc_top::_multiclk__TOP__27\n"); );
     Vazadi_soc_top* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Variables
+    WData/*95:0*/ __Vtemp846[3];
+    WData/*95:0*/ __Vtemp847[3];
+    WData/*95:0*/ __Vtemp848[3];
+    WData/*95:0*/ __Vtemp849[3];
+    WData/*95:0*/ __Vtemp853[3];
+    WData/*95:0*/ __Vtemp854[3];
+    WData/*95:0*/ __Vtemp855[3];
+    WData/*95:0*/ __Vtemp856[3];
+    WData/*95:0*/ __Vtemp857[3];
     WData/*95:0*/ __Vtemp861[3];
-    WData/*95:0*/ __Vtemp869[3];
+    WData/*95:0*/ __Vtemp865[3];
     // Body
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[0U] 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
+        [0U];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[1U] 
+        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
+        [1U];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n 
+        = ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n)) 
+           | (1U & ((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__valid_req) 
+                      & (~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q))) 
+                     & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
+                     [0U]) | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_q))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n 
+        = ((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n)) 
+           | (2U & ((((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__valid_req) 
+                        & (~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q) 
+                              >> 1U))) & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
+                       [0U]) & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q)) 
+                     << 1U) | (0xfffffffeU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_q)))));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__instr_req 
+        = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__valid_req) 
+           & (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
+              [0U]));
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__data_req 
+        = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__data_req_out) 
+           & (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
+              [1U]));
+    VL_EXTEND_WQ(76,48, __Vtemp846, (0xffffffffffffULL 
+                                     & ((QData)((IData)(
+                                                        ((0x800000U 
+                                                          & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__info_a) 
+                                                             << 0x10U)) 
+                                                         | (0x7fffffU 
+                                                            & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__operand_a)))) 
+                                        * (QData)((IData)(
+                                                          ((0x800000U 
+                                                            & ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__info_b) 
+                                                               << 0x10U)) 
+                                                           | (0x7fffffU 
+                                                              & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__operand_b)))))));
+    VL_SHIFTL_WWI(76,76,32, __Vtemp847, __Vtemp846, 2U);
+    __Vtemp848[0U] = __Vtemp847[0U];
+    __Vtemp848[1U] = __Vtemp847[1U];
+    __Vtemp848[2U] = (0xfffU & __Vtemp847[2U]);
+    VL_EXTEND_WW(77,76, __Vtemp849, __Vtemp848);
+    if (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__effective_subtraction) {
+        __Vtemp853[0U] = (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_after_shift[0U]);
+        __Vtemp853[1U] = (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_after_shift[1U]);
+        __Vtemp853[2U] = (0xfffU & (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_after_shift[2U]));
+    } else {
+        __Vtemp853[0U] = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_after_shift[0U];
+        __Vtemp853[1U] = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_after_shift[1U];
+        __Vtemp853[2U] = (0xfffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_after_shift[2U]);
+    }
+    VL_EXTEND_WW(77,76, __Vtemp854, __Vtemp853);
+    VL_ADD_W(3, __Vtemp855, __Vtemp849, __Vtemp854);
+    VL_EXTEND_WI(77,1, __Vtemp856, ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__effective_subtraction) 
+                                    & (~ (IData)((0U 
+                                                  != vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__addend_sticky_bits)))));
+    VL_ADD_W(3, __Vtemp857, __Vtemp855, __Vtemp856);
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[0U] 
+        = __Vtemp857[0U];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[1U] 
+        = __Vtemp857[1U];
+    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[2U] 
+        = (0x1fffU & __Vtemp857[2U]);
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__i_lzc__DOT__gen_lzc__DOT__sel_nodes 
         = ((0xffff7fffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__i_lzc__DOT__gen_lzc__DOT__sel_nodes) 
            | (0x8000U & ((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__i_lzc__DOT__gen_lzc__DOT__in_tmp 
@@ -259,34 +334,150 @@ VL_INLINE_OPT void Vazadi_soc_top::_multiclk__TOP__27(Vazadi_soc_top__Syms* __re
                                  >> 0x16U) : (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__3__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_cast_multi__DOT__i_lzc__DOT__gen_lzc__DOT__index_lut[4U] 
                                               >> 0x1bU)) 
                             << 0x16U)));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex[0U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o
-        [0U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex[1U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__ex_block_i__imd_val_d_o
-        [1U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err[0U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__g_pmp__DOT__pmp_i__pmp_req_err_o
-        [0U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err[1U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellout__g_pmp__DOT__pmp_i__pmp_req_err_o
-        [1U];
+    vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U] = 1U;
+    vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] = (0x1eU 
+                                                   | (0xffffff80U 
+                                                      & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__instr_addr 
+                                                         << 5U)));
+    vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] = (
+                                                   (0xffffffe0U 
+                                                    & (0x104000U 
+                                                       | (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__instr_req) 
+                                                           << 0x15U) 
+                                                          | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__intr_interface__DOT__genblk2__DOT__source_q) 
+                                                             << 5U)))) 
+                                                   | (0x1fU 
+                                                      & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__instr_addr 
+                                                         >> 0x1bU)));
+    __Vtemp861[0U] = (IData)((1ULL | (((QData)((IData)(
+                                                       ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we)
+                                                         ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be)
+                                                         : 0xfU))) 
+                                       << 0x21U) | 
+                                      ((QData)((IData)(
+                                                       ((1U 
+                                                         & (IData)(
+                                                                   (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                    >> 2U)))
+                                                         ? 
+                                                        ((1U 
+                                                          & (IData)(
+                                                                    (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                     >> 1U)))
+                                                          ? 
+                                                         ((0xff000000U 
+                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                              << 0x18U)) 
+                                                          | (0xffffffU 
+                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                >> 8U)))
+                                                          : 
+                                                         ((0xffff0000U 
+                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                              << 0x10U)) 
+                                                          | (0xffffU 
+                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                >> 0x10U))))
+                                                         : 
+                                                        ((1U 
+                                                          & (IData)(
+                                                                    (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                     >> 1U)))
+                                                          ? 
+                                                         ((0xffffff00U 
+                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                              << 8U)) 
+                                                          | (0xffU 
+                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                >> 0x18U)))
+                                                          : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu)))) 
+                                       << 1U))));
+    __Vtemp861[1U] = ((0xffffff80U & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                               >> 3U)) 
+                                      << 7U)) | (IData)(
+                                                        ((1ULL 
+                                                          | (((QData)((IData)(
+                                                                              ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we)
+                                                                                ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be)
+                                                                                : 0xfU))) 
+                                                              << 0x21U) 
+                                                             | ((QData)((IData)(
+                                                                                ((1U 
+                                                                                & (IData)(
+                                                                                (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                                >> 2U)))
+                                                                                 ? 
+                                                                                ((1U 
+                                                                                & (IData)(
+                                                                                (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                                >> 1U)))
+                                                                                 ? 
+                                                                                ((0xff000000U 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                                << 0x18U)) 
+                                                                                | (0xffffffU 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                                >> 8U)))
+                                                                                 : 
+                                                                                ((0xffff0000U 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                                << 0x10U)) 
+                                                                                | (0xffffU 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                                >> 0x10U))))
+                                                                                 : 
+                                                                                ((1U 
+                                                                                & (IData)(
+                                                                                (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                                >> 1U)))
+                                                                                 ? 
+                                                                                ((0xffffff00U 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                                << 8U)) 
+                                                                                | (0xffU 
+                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
+                                                                                >> 0x18U)))
+                                                                                 : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu)))) 
+                                                                << 1U))) 
+                                                         >> 0x20U)));
+    vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] = __Vtemp861[0U];
+    vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] = __Vtemp861[1U];
+    vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] = (
+                                                   (0xffffffe0U 
+                                                    & (0x4000U 
+                                                       | (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__data_req) 
+                                                           << 0x15U) 
+                                                          | ((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we)
+                                                                ? 
+                                                               ((0xfU 
+                                                                 == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be))
+                                                                 ? 0U
+                                                                 : 1U)
+                                                                : 4U) 
+                                                              << 0x12U) 
+                                                             | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__data_interface__DOT__genblk2__DOT__source_q) 
+                                                                << 5U))))) 
+                                                   | (0x1fU 
+                                                      & ((IData)(
+                                                                 (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
+                                                                  >> 3U)) 
+                                                         >> 0x19U)));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__final_sign 
         = (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__effective_subtraction) 
             & ((1U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[2U] 
                       >> 0xcU)) == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__tentative_sign))) 
            | ((~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__effective_subtraction)) 
               & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__tentative_sign)));
-    VL_NEGATE_W(3, __Vtemp861, vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw);
+    VL_NEGATE_W(3, __Vtemp865, vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw);
     if (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__effective_subtraction) 
          & (~ (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[2U] 
                >> 0xcU)))) {
         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum[0U] 
-            = __Vtemp861[0U];
+            = __Vtemp865[0U];
         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum[1U] 
-            = __Vtemp861[1U];
+            = __Vtemp865[1U];
         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum[2U] 
-            = (0xfffU & __Vtemp861[2U]);
+            = (0xfffU & __Vtemp865[2U]);
     } else {
         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum[0U] 
             = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[0U];
@@ -295,33 +486,109 @@ VL_INLINE_OPT void Vazadi_soc_top::_multiclk__TOP__27(Vazadi_soc_top__Syms* __re
         vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum[2U] 
             = (0xfffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum_raw[2U]);
     }
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[0U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
-        [0U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT____Vcellinp__id_stage_i__imd_val_d_ex_i[1U] 
-        = vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__imd_val_d_ex
-        [1U];
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n 
-        = ((2U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n)) 
-           | (1U & ((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__valid_req) 
-                      & (~ (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q))) 
-                     & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
-                     [0U]) | (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_q))));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n 
-        = ((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_n)) 
-           | (2U & ((((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__valid_req) 
-                        & (~ ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q) 
-                              >> 1U))) & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
-                       [0U]) & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_outstanding_q)) 
-                     << 1U) | (0xfffffffeU & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__rdata_pmp_err_q)))));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__instr_req 
-        = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__valid_req) 
-           & (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
-              [0U]));
-    vlTOPp->azadi_soc_top__DOT__u_top__DOT__data_req 
-        = ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__data_req_out) 
-           & (~ vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__pmp_req_err
-              [1U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[2U] 
+        = ((0x1fffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[2U]) 
+           | (0x200000U & vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[0U] 
+        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[0U]) 
+           | (1U & vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 3U;
+    if ((0U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
+                                << 0x1bU) | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
+                                             >> 5U))))) {
+        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 0U;
+    } else {
+        if ((0x10040000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
+                                             << 0x1bU) 
+                                            | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
+                                               >> 5U))))) {
+            vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 1U;
+        } else {
+            if ((0x10080000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
+                                                 << 0x1bU) 
+                                                | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
+                                                   >> 5U))))) {
+                vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 2U;
+            }
+        }
+    }
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[2U] 
+        = ((0x1fffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[2U]) 
+           | (0x200000U & vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[0U] 
+        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[0U]) 
+           | (1U & vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U]));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 9U;
+    if ((0x10000000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                         << 0x1bU) 
+                                        | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                           >> 5U))))) {
+        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 0U;
+    } else {
+        if ((0x10080000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                             << 0x1bU) 
+                                            | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                               >> 5U))))) {
+            vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 1U;
+        } else {
+            if ((0x40000000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                                 << 0x1bU) 
+                                                | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                                   >> 5U))))) {
+                vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 2U;
+            } else {
+                if ((0x40010000U == (0xffff0000U & 
+                                     ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                       << 0x1bU) | 
+                                      (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                       >> 5U))))) {
+                    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 3U;
+                } else {
+                    if ((0x40020000U == (0xffff0000U 
+                                         & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                             << 0x1bU) 
+                                            | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                               >> 5U))))) {
+                        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 4U;
+                    } else {
+                        if ((0x40030000U == (0xffff0000U 
+                                             & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                                 << 0x1bU) 
+                                                | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                                   >> 5U))))) {
+                            vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 5U;
+                        } else {
+                            if ((0x40040000U == (0xffff0000U 
+                                                 & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                                     << 0x1bU) 
+                                                    | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                                       >> 5U))))) {
+                                vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 6U;
+                            } else {
+                                if ((0x40050000U == 
+                                     (0xffff0000U & 
+                                      ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                        << 0x1bU) | 
+                                       (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                        >> 5U))))) {
+                                    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 7U;
+                                } else {
+                                    if ((0x40060000U 
+                                         <= (0xffff0000U 
+                                             & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                                                 << 0x1bU) 
+                                                | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                                   >> 5U))))) {
+                                        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 8U;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT____Vlvbound1 
         = (1U & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__sum[1U] 
                  >> 0x12U));
@@ -676,134 +943,36 @@ VL_INLINE_OPT void Vazadi_soc_top::_multiclk__TOP__27(Vazadi_soc_top__Syms* __re
         = ((0x3ffffffffffffULL & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__in_tmp) 
            | ((QData)((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT____Vlvbound1)) 
               << 0x32U));
-    vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U] = 1U;
-    vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] = (0x1eU 
-                                                   | (0xffffff80U 
-                                                      & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__instr_addr 
-                                                         << 5U)));
-    vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] = (
-                                                   (0xffffffe0U 
-                                                    & (0x104000U 
-                                                       | (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__instr_req) 
-                                                           << 0x15U) 
-                                                          | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__intr_interface__DOT__genblk2__DOT__source_q) 
-                                                             << 5U)))) 
-                                                   | (0x1fU 
-                                                      & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__if_stage_i__DOT__gen_ifu_prefetch_buffer__DOT__ifu_prefetch_buffer_i__DOT__instr_addr 
-                                                         >> 0x1bU)));
-    __Vtemp869[0U] = (IData)((1ULL | (((QData)((IData)(
-                                                       ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we)
-                                                         ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be)
-                                                         : 0xfU))) 
-                                       << 0x21U) | 
-                                      ((QData)((IData)(
-                                                       ((1U 
-                                                         & (IData)(
-                                                                   (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                    >> 2U)))
-                                                         ? 
-                                                        ((1U 
-                                                          & (IData)(
-                                                                    (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                     >> 1U)))
-                                                          ? 
-                                                         ((0xff000000U 
-                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                              << 0x18U)) 
-                                                          | (0xffffffU 
-                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                >> 8U)))
-                                                          : 
-                                                         ((0xffff0000U 
-                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                              << 0x10U)) 
-                                                          | (0xffffU 
-                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                >> 0x10U))))
-                                                         : 
-                                                        ((1U 
-                                                          & (IData)(
-                                                                    (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                     >> 1U)))
-                                                          ? 
-                                                         ((0xffffff00U 
-                                                           & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                              << 8U)) 
-                                                          | (0xffU 
-                                                             & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                >> 0x18U)))
-                                                          : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu)))) 
-                                       << 1U))));
-    __Vtemp869[1U] = ((0xffffff80U & ((IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                               >> 3U)) 
-                                      << 7U)) | (IData)(
-                                                        ((1ULL 
-                                                          | (((QData)((IData)(
-                                                                              ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we)
-                                                                                ? (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be)
-                                                                                : 0xfU))) 
-                                                              << 0x21U) 
-                                                             | ((QData)((IData)(
-                                                                                ((1U 
-                                                                                & (IData)(
-                                                                                (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                                >> 2U)))
-                                                                                 ? 
-                                                                                ((1U 
-                                                                                & (IData)(
-                                                                                (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                                >> 1U)))
-                                                                                 ? 
-                                                                                ((0xff000000U 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                                << 0x18U)) 
-                                                                                | (0xffffffU 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                                >> 8U)))
-                                                                                 : 
-                                                                                ((0xffff0000U 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                                << 0x10U)) 
-                                                                                | (0xffffU 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                                >> 0x10U))))
-                                                                                 : 
-                                                                                ((1U 
-                                                                                & (IData)(
-                                                                                (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                                >> 1U)))
-                                                                                 ? 
-                                                                                ((0xffffff00U 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                                << 8U)) 
-                                                                                | (0xffU 
-                                                                                & (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu 
-                                                                                >> 0x18U)))
-                                                                                 : vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__rf_int_fp_lsu)))) 
-                                                                << 1U))) 
-                                                         >> 0x20U)));
-    vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] = __Vtemp869[0U];
-    vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] = __Vtemp869[1U];
-    vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] = (
-                                                   (0xffffffe0U 
-                                                    & (0x4000U 
-                                                       | (((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__data_req) 
-                                                           << 0x15U) 
-                                                          | ((((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_we)
-                                                                ? 
-                                                               ((0xfU 
-                                                                 == (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be))
-                                                                 ? 0U
-                                                                 : 1U)
-                                                                : 4U) 
-                                                              << 0x12U) 
-                                                             | ((IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__data_interface__DOT__genblk2__DOT__source_q) 
-                                                                << 5U))))) 
-                                                   | (0x1fU 
-                                                      & ((IData)(
-                                                                 (vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_adder_result_ext 
-                                                                  >> 3U)) 
-                                                         >> 0x19U)));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[0U] 
+        = ((0xfffffffcU & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U] 
+                           << 1U)) | (IData)(vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[1U] 
+        = ((3U & ((2U & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
+                         << 1U)) | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U] 
+                                    >> 0x1fU))) | (0xfffffffcU 
+                                                   & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
+                                                      << 1U)));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[2U] 
+        = ((3U & ((2U & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
+                         << 1U)) | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
+                                    >> 0x1fU))) | (0x3ffffcU 
+                                                   & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
+                                                      << 1U)));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[0U] 
+        = ((0xfffffff0U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] 
+                           << 3U)) | (IData)(vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[1U] 
+        = ((0xfU & ((8U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                           << 3U)) | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] 
+                                      >> 0x1dU))) | 
+           (0xfffffff0U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                           << 3U)));
+    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[2U] 
+        = ((0xfU & ((8U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                           << 3U)) | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
+                                      >> 0x1dU))) | 
+           (0xfffff0U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
+                         << 3U)));
     vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_nodes[5U] 
         = ((0x3ffffffU & vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__index_nodes[5U]) 
            | (0xfc000000U & (((1U & (IData)(vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__in_tmp))
@@ -1278,139 +1447,6 @@ VL_INLINE_OPT void Vazadi_soc_top::_multiclk__TOP__27(Vazadi_soc_top__Syms* __re
            | ((QData)((IData)((1U & (IData)((vlTOPp->azadi_soc_top__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__0__KET____DOT__i_opgroup_block__DOT__gen_parallel_slices__BRA__0__KET____DOT__active_format__DOT__i_fmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fma__DOT__i_lzc__DOT__gen_lzc__DOT__in_tmp 
                                              >> 0x32U))))) 
               << 0x38U));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[2U] 
-        = ((0x1fffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[2U]) 
-           | (0x200000U & vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[0U] 
-        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__tl_t_o[0U]) 
-           | (1U & vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 3U;
-    if ((0U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
-                                << 0x1bU) | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
-                                             >> 5U))))) {
-        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 0U;
-    } else {
-        if ((0x10040000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
-                                             << 0x1bU) 
-                                            | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
-                                               >> 5U))))) {
-            vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 1U;
-        } else {
-            if ((0x10080000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
-                                                 << 0x1bU) 
-                                                | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
-                                                   >> 5U))))) {
-                vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1 = 2U;
-            }
-        }
-    }
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[2U] 
-        = ((0x1fffffU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[2U]) 
-           | (0x200000U & vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[0U] 
-        = ((0xfffffffeU & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__tl_t_o[0U]) 
-           | (1U & vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U]));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 9U;
-    if ((0x10000000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                         << 0x1bU) 
-                                        | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                           >> 5U))))) {
-        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 0U;
-    } else {
-        if ((0x10080000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                             << 0x1bU) 
-                                            | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                               >> 5U))))) {
-            vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 1U;
-        } else {
-            if ((0x40000000U == (0xffff0000U & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                                 << 0x1bU) 
-                                                | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                                   >> 5U))))) {
-                vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 2U;
-            } else {
-                if ((0x40010000U == (0xffff0000U & 
-                                     ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                       << 0x1bU) | 
-                                      (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                       >> 5U))))) {
-                    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 3U;
-                } else {
-                    if ((0x40020000U == (0xffff0000U 
-                                         & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                             << 0x1bU) 
-                                            | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                               >> 5U))))) {
-                        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 4U;
-                    } else {
-                        if ((0x40030000U == (0xffff0000U 
-                                             & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                                 << 0x1bU) 
-                                                | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                                   >> 5U))))) {
-                            vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 5U;
-                        } else {
-                            if ((0x40040000U == (0xffff0000U 
-                                                 & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                                     << 0x1bU) 
-                                                    | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                                       >> 5U))))) {
-                                vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 6U;
-                            } else {
-                                if ((0x40050000U == 
-                                     (0xffff0000U & 
-                                      ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                        << 0x1bU) | 
-                                       (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                        >> 5U))))) {
-                                    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 7U;
-                                } else {
-                                    if ((0x40060000U 
-                                         <= (0xffff0000U 
-                                             & ((vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                                                 << 0x1bU) 
-                                                | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                                   >> 5U))))) {
-                                        vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2 = 8U;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[0U] 
-        = ((0xfffffffcU & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U] 
-                           << 1U)) | (IData)(vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h1));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[1U] 
-        = ((3U & ((2U & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
-                         << 1U)) | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[0U] 
-                                    >> 0x1fU))) | (0xfffffffcU 
-                                                   & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
-                                                      << 1U)));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[2U] 
-        = ((3U & ((2U & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
-                         << 1U)) | (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[1U] 
-                                    >> 0x1fU))) | (0x3ffffcU 
-                                                   & (vlTOPp->azadi_soc_top__DOT__ifu_to_xbar[2U] 
-                                                      << 1U)));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[0U] 
-        = ((0xfffffff0U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] 
-                           << 3U)) | (IData)(vlTOPp->azadi_soc_top__DOT__main_swith__DOT__device_sel_h2));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[1U] 
-        = ((0xfU & ((8U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                           << 3U)) | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[0U] 
-                                      >> 0x1dU))) | 
-           (0xfffffff0U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                           << 3U)));
-    vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_2__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[2U] 
-        = ((0xfU & ((8U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                           << 3U)) | (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[1U] 
-                                      >> 0x1dU))) | 
-           (0xfffff0U & (vlTOPp->azadi_soc_top__DOT__lsu_to_xbar[2U] 
-                         << 3U)));
     vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__hold_all_requests 
         = ((0U != vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__num_req_outstanding) 
            & ((3U & vlTOPp->azadi_soc_top__DOT__main_swith__DOT__host_1__DOT__fifo_h__DOT____Vcellinp__reqfifo__wdata_i[0U]) 
