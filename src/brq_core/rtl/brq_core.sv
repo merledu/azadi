@@ -9,7 +9,7 @@
 module brq_core #(
     parameter bit                 PMPEnable        = 1'b0,
     parameter int unsigned        PMPGranularity   = 0,
-    parameter int unsigned        PMPNumRegions    = 4,
+    parameter int unsigned        PMPNumRegions    = 0,
     parameter int unsigned        MHPMCounterNum   = 0,
     parameter int unsigned        MHPMCounterWidth = 40,
     parameter bit                 RV32E            = 1'b0,
@@ -19,7 +19,7 @@ module brq_core #(
     parameter brq_pkg::rvfloat_e  RVF              = brq_pkg::RV32FSingle, // for floating point
     parameter int unsigned        FloatingPoint    = 1'b1,
     parameter bit                 BranchTargetALU  = 1'b0,
-    parameter bit                 WritebackStage   = 1'b0,
+    parameter bit                 WritebackStage   = 1'b1,
     parameter bit                 ICache           = 1'b0,
     parameter bit                 ICacheECC        = 1'b0,
     parameter bit                 BranchPredictor  = 1'b0,
