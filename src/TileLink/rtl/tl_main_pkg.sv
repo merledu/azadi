@@ -18,17 +18,17 @@ package tl_main_pkg;
   localparam logic [31:0] ADDR_SPACE_PLIC       = 32'h 40050000;
   localparam logic [31:0] ADDR_SPACE_XBAR_PERI  = 32'h 40060000;
 
-  localparam logic [31:0] ADDR_MASK_ICCM       = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_DEBUG_ROM  = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_DCCM       = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_FLASH_CTRL = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_TIMER0     = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_TIMER1     = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_TIMER2     = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_TIMER3     = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_TIMER4     = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_PLIC       = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_XBAR_PERI  = 32'h 00000fff;
+  localparam logic [31:0] ADDR_MASK_ICCM       = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_DEBUG_ROM  = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_DCCM       = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_FLASH_CTRL = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_TIMER0     = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_TIMER1     = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_TIMER2     = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_TIMER3     = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_TIMER4     = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_PLIC       = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_XBAR_PERI  = 32'h 0000ffff;
 
   localparam int N_HOST   = 3;
   localparam int N_DEVICE = 11;

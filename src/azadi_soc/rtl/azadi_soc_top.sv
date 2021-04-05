@@ -17,7 +17,17 @@ module azadi_soc_top #(
   input               jtag_tms_i,
   input               jtag_trst_ni,
   input               jtag_tdi_i,
-  output              jtag_tdo_o
+  output              jtag_tdo_o,
+
+// SPI interface
+  output logic                               sck_o,
+  output logic                               sck_en_o,
+  output logic [spi_host_reg_pkg::MaxCS-1:0] csb_o,
+  output logic [spi_host_reg_pkg::MaxCS-1:0] csb_en_o,
+  output logic [3:0]                         sd_o,
+  output logic [3:0]                         sd_en_o,
+  input        [3:0]                         sd_i
+
 
 );
 
@@ -64,16 +74,28 @@ assign gpio_o = gpio_out;
   tlul_pkg::tl_h2d_t plic_req;
   tlul_pkg::tl_d2h_t plic_resp;
 
+  tlul_pkg::tl_h2d_t xbar_to_spi;
+  tlul_pkg::tl_d2h_t spi_to_xbar;
+
+  tlul_pkg::tl_h2d_t xbar_to_timer;
+  tlul_pkg::tl_d2h_t timer_to_xbar;
+
 
   //logic [31:0] intr_gpio;
 
   // interrupt vector
   logic [31:0] intr_gpio;
-  logic [31:0] intr_vector;
+  logic        intr_spi_event;
+  logic        intr_spi_err;
+  logic [35:0] intr_vector;
+  logic        intr_timer;
   logic intr_req;
 
   assign intr_vector = { 
-          intr_gpio // ID 33
+          intr_spi_event,
+          intr_spi_err,
+          intr_gpio,
+          1'b 0
     
     };
 
@@ -151,14 +173,13 @@ brq_core_top #(
 
         // Interrupt inputs
     .irq_software_i (1'b0),
-    .irq_timer_i    (1'b0),
+    .irq_timer_i    (intr_timer),
     .irq_external_i (intr_req),
     .irq_fast_i     (1'b0),
     .irq_nm_i       (1'b0),       // non-maskeable interrupt
 
     // Debug Interface
     .debug_req_i    (dbg_req),
-
         // CPU Control Signals
     .fetch_enable_i (1'b1),
     .alert_minor_o  (),
@@ -219,8 +240,8 @@ brq_core_top #(
   .tl_dccm_i          (dccm_to_xbar),
   .tl_flash_ctrl_o    (),
   .tl_flash_ctrl_i    (),
-  .tl_timer0_o        (),
-  .tl_timer0_i        (),
+  .tl_timer0_o        (xbar_to_timer),
+  .tl_timer0_i        (timer_to_xbar),
   .tl_timer1_o        (),
   .tl_timer1_i        (),
   .tl_timer2_o        (),
@@ -248,6 +269,16 @@ data_mem dccm(
   .tl_d_o   (dccm_to_xbar)
 );
 
+rv_timer timer0(
+  .clk_i  (clock),
+  .rst_ni (system_rst_ni),
+
+  .tl_i   (xbar_to_timer),
+  .tl_o   (timer_to_xbar),
+
+  .intr_timer_expired_0_0_o (intr_timer)
+);
+
 
 //peripheral xbar
 
@@ -264,8 +295,8 @@ xbar_periph periph_switch (
   .tl_uart0_i         (),
   .tl_uart1_o         (),
   .tl_uart1_i         (),
-  .tl_spi0_o          (),
-  .tl_spi0_i          (),
+  .tl_spi0_o          (xbar_to_spi),
+  .tl_spi0_i          (spi_to_xbar),
   .tl_spi1_o          (),
   .tl_spi1_i          (),
   .tl_spi2_o          (),
@@ -306,6 +337,31 @@ xbar_periph periph_switch (
   .intr_gpio_o    (intr_gpio )  
 );
 
+
+spi_host u_spi(
+  .clk_i            (clock),
+  .rst_ni           (system_rst_ni),
+  .clk_core_i       ('0),
+  .rst_core_ni      ('0),
+
+  //.scanmode_i       ('0),
+
+  // Register interface
+  .tl_i             (xbar_to_spi),
+  .tl_o             (spi_to_xbar),
+
+  // SPI Interface
+  .cio_sck_o        (sck_o),
+  .cio_sck_en_o     (sck_en_o),
+  .cio_csb_o        (csb_o),
+  .cio_csb_en_o     (csb_en_o),
+  .cio_sd_o         (sd_o),
+  .cio_sd_en_o      (sd_en_o),
+  .cio_sd_i         (sd_i),
+
+  .intr_error_o     (intr_spi_err),
+  .intr_spi_event_o (intr_spi_event)
+);
 
 
  iccm_controller u_dut(

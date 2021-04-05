@@ -82,6 +82,11 @@ $AZADI_ROOT/src/rv_plic/rtl/rv_plic_gateway.sv
 $AZADI_ROOT/src/rv_plic/rtl/rv_plic_reg_top.sv
 $AZADI_ROOT/src/rv_plic/rtl/rv_plic_target.sv
 $AZADI_ROOT/src/rv_plic/rtl/rv_plic.sv
+$AZADI_ROOT/src/spi_host/rtl/spi_host_reg_top.sv
+$AZADI_ROOT/src/spi_host/rtl/spi_host.sv
+$AZADI_ROOT/src/rv_timer/rtl/timer_core.sv
+$AZADI_ROOT/src/rv_timer/rtl/rv_timer.sv
+$AZADI_ROOT/src/rv_timer/rtl/rv_timer_reg_top.sv
 //$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_chk.sv
 //$AZADI_ROOT/src/TileLink/rtl/prim_secded_64_57_dec.sv
 //$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_gen.sv

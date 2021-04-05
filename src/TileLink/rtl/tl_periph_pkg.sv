@@ -21,7 +21,7 @@ package tl_periph_pkg;
   localparam logic [31:0] ADDR_SPACE_QSPI  = 32'h 40300000;
 
   localparam logic [31:0] ADDR_MASK_UART0 = 32'h 0000ffff;
-  localparam logic [31:0] ADDR_MASK_UART1 = 32'h 00000fff;
+  localparam logic [31:0] ADDR_MASK_UART1 = 32'h 0000ffff;
   localparam logic [31:0] ADDR_MASK_SPI0  = 32'h 0000ffff;
   localparam logic [31:0] ADDR_MASK_SPI1  = 32'h 0000ffff;
   localparam logic [31:0] ADDR_MASK_SPI2  = 32'h 0000ffff;
