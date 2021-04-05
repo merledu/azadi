@@ -58,7 +58,7 @@ module brq_ifu #(
     input  logic                  instr_valid_clear_i,      // clear instr valid bit in IF-ID
     input  logic                  pc_set_i,                 // set the PC to a new value
     input  logic                  pc_set_spec_i,
-    input  brq_pkg::pc_sel_e     pc_mux_i,                 // selector for PC multiplexer
+    input  brq_pkg::pc_sel_e      pc_mux_i,                 // selector for PC multiplexer
     input  logic                  nt_branch_mispredict_i,   // Not-taken branch in ID/EX was
                                                             // mispredicted (predicted taken)
     input  brq_pkg::exc_pc_sel_e exc_pc_mux_i,             // selects ISR address
