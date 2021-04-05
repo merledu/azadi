@@ -10,6 +10,7 @@ module Azadi_top_verilator #(
 //  output logic [19:0] gpio_oe
 
 
+
 );
     //localparam logic [31:0] JTAG_IDCODE = 32'h04F5484D;
     localparam logic [31:0] JTAG_IDCODE = {
@@ -45,7 +46,6 @@ module Azadi_top_verilator #(
     .jtag_trst_ni(cio_jtag_trst_n),
     .jtag_tdi_i(cio_jtag_tdi),
     .jtag_tdo_o(cio_jtag_tdo)
-  
   );
 
 

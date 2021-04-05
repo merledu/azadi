@@ -173,14 +173,13 @@ brq_core_top #(
 
         // Interrupt inputs
     .irq_software_i (1'b0),
-    .irq_timer_i    (1'b0),
+    .irq_timer_i    (intr_timer),
     .irq_external_i (intr_req),
     .irq_fast_i     (1'b0),
     .irq_nm_i       (1'b0),       // non-maskeable interrupt
 
     // Debug Interface
     .debug_req_i    (dbg_req),
-
         // CPU Control Signals
     .fetch_enable_i (1'b1),
     .alert_minor_o  (),
@@ -241,8 +240,8 @@ brq_core_top #(
   .tl_dccm_i          (dccm_to_xbar),
   .tl_flash_ctrl_o    (),
   .tl_flash_ctrl_i    (),
-  .tl_timer0_o        (),
-  .tl_timer0_i        (),
+  .tl_timer0_o        (xbar_to_timer),
+  .tl_timer0_i        (timer_to_xbar),
   .tl_timer1_o        (),
   .tl_timer1_i        (),
   .tl_timer2_o        (),
@@ -268,6 +267,16 @@ data_mem dccm(
 // tl-ul insterface
   .tl_d_i   (xbar_to_dccm),
   .tl_d_o   (dccm_to_xbar)
+);
+
+rv_timer timer0(
+  .clk_i  (clock),
+  .rst_ni (system_rst_ni),
+
+  .tl_i   (xbar_to_timer),
+  .tl_o   (timer_to_xbar),
+
+  .intr_timer_expired_0_0_o (intr_timer)
 );
 
 
@@ -327,6 +336,7 @@ xbar_periph periph_switch (
 
   .intr_gpio_o    (intr_gpio )  
 );
+
 
 
 
