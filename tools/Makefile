@@ -30,7 +30,6 @@ defines += $(AZADI_ROOT)/src/GPIO/rtl/gpio_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_dm/rtl/jtag_pkg.sv
 defines += $(AZADI_ROOT)/src/pulp_riscv_dbg/src/dm_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_plic/rtl/rv_plic_reg_pkg.sv
-defines += $(AZADI_ROOT)/src/spi_host/rtl/spi_host_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_timer/rtl/rv_timer_reg_pkg.sv
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it

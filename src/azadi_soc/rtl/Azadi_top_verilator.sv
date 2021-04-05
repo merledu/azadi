@@ -6,17 +6,9 @@ module Azadi_top_verilator #(
   input reset_ni,
 
   input  logic [19:0] gpio_i,
-  output logic [19:0] gpio_o,
+  output logic [19:0] gpio_o
 //  output logic [19:0] gpio_oe
 
-// SPI interface
-  output logic                               sck_o,
-  output logic                               sck_en_o,
-  output logic [spi_host_reg_pkg::MaxCS-1:0] csb_o,
-  output logic [spi_host_reg_pkg::MaxCS-1:0] csb_en_o,
-  output logic [3:0]                         sd_o,
-  output logic [3:0]                         sd_en_o,
-  input        [3:0]                         sd_i
 
 
 );
@@ -53,16 +45,7 @@ module Azadi_top_verilator #(
     .jtag_tms_i(cio_jtag_tms),
     .jtag_trst_ni(cio_jtag_trst_n),
     .jtag_tdi_i(cio_jtag_tdi),
-    .jtag_tdo_o(cio_jtag_tdo),
-  // SPI  
-    .sck_o        (sck_o),
-    .sck_en_o     (sck_en_o),
-    .csb_o        (csb_o),
-    .csb_en_o     (csb_en_o),
-    .sd_o         (sd_o),
-    .sd_en_o      (sd_en_o),
-    .sd_i         (sd_i)
-  
+    .jtag_tdo_o(cio_jtag_tdo)
   );
 
 
