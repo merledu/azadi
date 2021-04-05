@@ -2,9 +2,9 @@
 
 debug_rom = debug_rom.sv debug_rom_one_scratch.sv
 
-GCC?=riscv32-unknown-elf-gcc
-OBJCOPY?=riscv32-unknown-elf-objcopy
-OBJDUMP?=riscv32-unknown-elf-objdump
+GCC?=riscv64-unknown-elf-gcc
+OBJCOPY?=riscv64-unknown-elf-objcopy
+OBJDUMP?=riscv64-unknown-elf-objdump
 PYTHON?=python
 
 all: $(debug_rom)

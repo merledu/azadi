@@ -12,12 +12,16 @@ module azadi_soc_top #(
   output logic [19:0] gpio_o,
 //  output logic [19:0] gpio_oe
 
-// jtag interface 
+  // jtag interface 
   input               jtag_tck_i,
   input               jtag_tms_i,
   input               jtag_trst_ni,
   input               jtag_tdi_i,
-  output              jtag_tdo_o
+  output              jtag_tdo_o,
+
+  // uart-periph interface
+  output               uart_tx,
+  input                uart_rx
 
 );
 
@@ -64,18 +68,36 @@ assign gpio_o = gpio_out;
   tlul_pkg::tl_h2d_t plic_req;
   tlul_pkg::tl_d2h_t plic_resp;
 
-
-  //logic [31:0] intr_gpio;
+  tlul_pkg::tl_h2d_t xbar_to_uart;
+  tlul_pkg::tl_d2h_t uart_to_xbar;
 
   // interrupt vector
-  logic [31:0] intr_gpio;
-  logic [31:0] intr_vector;
-  logic intr_req;
+  logic [40:0] intr_vector;
 
-  assign intr_vector = { 
-          intr_gpio // ID 33
-    
-    };
+  // Interrupt source list 
+  logic [31:0] intr_gpio;
+  logic        intr_uart0_tx_watermark;
+  logic        intr_uart0_rx_watermark;
+  logic        intr_uart0_tx_empty;
+  logic        intr_uart0_rx_overflow;
+  logic        intr_uart0_rx_frame_err;
+  logic        intr_uart0_rx_break_err;
+  logic        intr_uart0_rx_timeout;
+  logic        intr_uart0_rx_parity_err;
+  logic        intr_req;
+
+  assign intr_vector = {  
+      intr_gpio,
+      intr_uart0_rx_parity_err,
+      intr_uart0_rx_timeout,
+      intr_uart0_rx_break_err,
+      intr_uart0_rx_frame_err,
+      intr_uart0_rx_overflow,
+      intr_uart0_tx_empty,
+      intr_uart0_rx_watermark,
+      intr_uart0_tx_watermark,
+      1'b0
+  };
 
   logic [31:0] gpio_intr;
   logic       rx_dv_i;
@@ -391,5 +413,28 @@ rv_plic intr_controller (
   .msip_o()
 );
 
+uart u_uart0(
+  .clk_i                   (clock             ),
+  .rst_ni                  (system_rst_ni     ),
+
+  // Bus Interface
+  .tl_i                    (xbar_to_uart      ),
+  .tl_o                    (uart_to_xbar      ),
+
+  // Generic IO
+  .cio_rx_i                (uart_rx           ),
+  .cio_tx_o                (uart_tx           ),
+  .cio_tx_en_o             (                  ),
+
+  // Interrupts
+  .intr_tx_watermark_o     (intr_uart0_tx_watermark ),
+  .intr_rx_watermark_o     (intr_uart0_rx_watermark ),
+  .intr_tx_empty_o         (intr_uart0_tx_empty     ),
+  .intr_rx_overflow_o      (intr_uart0_rx_overflow  ),
+  .intr_rx_frame_err_o     (intr_uart0_rx_frame_err ),
+  .intr_rx_break_err_o     (intr_uart0_rx_break_err ),
+  .intr_rx_timeout_o       (intr_uart0_rx_timeout   ),
+  .intr_rx_parity_err_o    (intr_uart0_rx_parity_err) 
+);
 
 endmodule
