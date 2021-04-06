@@ -71,6 +71,9 @@ assign gpio_o = gpio_out;
   tlul_pkg::tl_h2d_t xbar_to_uart;
   tlul_pkg::tl_d2h_t uart_to_xbar;
 
+  tlul_pkg::tl_h2d_t xbar_to_timer;
+  tlul_pkg::tl_d2h_t timer_to_xbar;
+
   // interrupt vector
   logic [40:0] intr_vector;
 
@@ -351,7 +354,7 @@ xbar_periph periph_switch (
 	.reset_o     (iccm_cntrl_reset)
 );
 
- uart_rx programmer (
+ uart_receiver programmer (
  .i_Clock       (clock),
  .rst_ni        (RESET),
  .i_Rx_Serial   (uart_rx_i),
