@@ -11,7 +11,7 @@
 //
 // Florian Zaruba <zarubaf@iis.ee.ethz.ch>
 
-`include "/home/merl-lab/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
+//`include "/home/merl-lab/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
 
 /// A register with handshakes that completely cuts any combinatorial paths
 /// between the input and output in isochronous clock domains.

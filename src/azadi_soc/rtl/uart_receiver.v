@@ -30,7 +30,7 @@
 // Example: 10 MHz Clock, 115200 baud UART
 // (10000000)/(115200) = 87
    
-module uart_rx (
+module uart_receiver (
  input         i_Clock,
  input         rst_ni,
  input         i_Rx_Serial,

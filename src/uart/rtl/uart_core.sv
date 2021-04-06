@@ -169,7 +169,7 @@ module uart_core (
 
   assign tx_fifo_rready = tx_uart_idle & tx_fifo_rvalid & tx_enable;
 
-  prim_fifo_sync #(
+  fifo_sync #(
     .Width   (8),
     .Pass    (1'b0),
     .Depth   (32)
@@ -181,7 +181,6 @@ module uart_core (
     .wready_o(tx_fifo_wready),
     .wdata_i (reg2hw.wdata.q),
     .depth_o (tx_fifo_depth),
-    .full_o (),
     .rvalid_o(tx_fifo_rvalid),
     .rready_i(tx_fifo_rready),
     .rdata_o (tx_fifo_data)
@@ -218,7 +217,7 @@ module uart_core (
   //////////////
 
   //      sync the incoming data
-  prim_flop_2sync #(
+  prim_generic_flop_2sync #(
     .Width(1),
     .ResetValue(1'b1)
   ) sync_rx (
@@ -269,7 +268,7 @@ module uart_core (
 
   assign rx_fifo_wvalid = rx_valid & ~event_rx_frame_err & ~event_rx_parity_err;
 
-  prim_fifo_sync #(
+  fifo_sync #(
     .Width   (8),
     .Pass    (1'b0),
     .Depth   (32)
@@ -281,7 +280,6 @@ module uart_core (
     .wready_o(rx_fifo_wready),
     .wdata_i (rx_fifo_data),
     .depth_o (rx_fifo_depth),
-    .full_o (),
     .rvalid_o(rx_fifo_rvalid),
     .rready_i(reg2hw.rdata.re),
     .rdata_o (uart_rdata)

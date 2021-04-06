@@ -71,7 +71,7 @@
 ///     -through [get_pins -hierarchical -filter async]
 /// ```
 
-`include "/home/merl-lab/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
+//`include "/home/merl-lab/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
 
 (* no_ungroup *)
 (* no_boundary_optimization *)

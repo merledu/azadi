@@ -61,7 +61,7 @@ $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_gating.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_flop.sv
 $AZADI_ROOT/src/TileLink/rtl/xbar_mai_t.sv
 $AZADI_ROOT/src/azadi_soc/rtl/iccm_controller.v
-$AZADI_ROOT/src/azadi_soc/rtl/uart_rx.v
+$AZADI_ROOT/src/azadi_soc/rtl/uart_receiver.v
 $AZADI_ROOT/src/rv_dm/rtl/rv_dm.sv
 $AZADI_ROOT/src/azadi_soc/rtl/Azadi_top_verilator.sv
 $AZADI_ROOT/src/pulp_riscv_dbg/debug_rom/debug_rom_one_scratch.sv
