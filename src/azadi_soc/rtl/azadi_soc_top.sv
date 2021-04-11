@@ -294,8 +294,8 @@ xbar_periph periph_switch (
   .tl_xbar_main_o     (xbarp_to_xbarm),
 
   // Device interfaces
-  .tl_uart0_o         (),
-  .tl_uart0_i         (),
+  .tl_uart0_o         (xbar_to_uart),
+  .tl_uart0_i         (uart_to_xbar),
   .tl_uart1_o         (),
   .tl_uart1_i         (),
   .tl_spi0_o          (),

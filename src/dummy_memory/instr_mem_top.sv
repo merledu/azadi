@@ -32,6 +32,4 @@ DFFRAM iccm (
     .A      (addr) // address
 );
 
-
-
 endmodule
