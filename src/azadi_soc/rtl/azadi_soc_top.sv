@@ -20,8 +20,20 @@ module azadi_soc_top #(
   output              jtag_tdo_o,
 
   // uart-periph interface
-  output               uart_tx,
-  input                uart_rx
+  output              uart_tx,
+  input               uart_rx,
+
+  // PWM interface 
+
+  output              pwm_o,
+  output              pwm_o_2,
+
+  // SPI interface
+
+  output          [`SPI_SS_NB-1:0] ss_o,        
+  output                           sclk_o,      
+  output                           sd_o,       
+  input                            sd_i 
 
 );
 
@@ -43,7 +55,6 @@ assign gpio_o = gpio_out;
         
   tlul_pkg::tl_h2d_t ifu_to_xbar;
   tlul_pkg::tl_d2h_t xbar_to_ifu;
-
   tlul_pkg::tl_h2d_t xbar_to_iccm;
   tlul_pkg::tl_d2h_t iccm_to_xbar;
 
@@ -74,6 +85,12 @@ assign gpio_o = gpio_out;
   tlul_pkg::tl_h2d_t xbar_to_timer;
   tlul_pkg::tl_d2h_t timer_to_xbar;
 
+  tlul_pkg::tl_h2d_t xbar_to_pwm;
+  tlul_pkg::tl_d2h_t pwm_to_xbar;
+
+  tlul_pkg::tl_h2d_t xbar_to_spi;
+  tlul_pkg::tl_d2h_t spi_to_xbar;
+
   // interrupt vector
   logic [40:0] intr_vector;
 
@@ -88,6 +105,7 @@ assign gpio_o = gpio_out;
   logic        intr_uart0_rx_timeout;
   logic        intr_uart0_rx_parity_err;
   logic        intr_req;
+  logic        intr_spi;
 
   assign intr_vector = {  
       intr_gpio,
@@ -99,6 +117,7 @@ assign gpio_o = gpio_out;
       intr_uart0_tx_empty,
       intr_uart0_rx_watermark,
       intr_uart0_tx_watermark,
+      intr_spi,
       1'b0
   };
 
@@ -298,14 +317,14 @@ xbar_periph periph_switch (
   .tl_uart0_i         (uart_to_xbar),
   .tl_uart1_o         (),
   .tl_uart1_i         (),
-  .tl_spi0_o          (),
-  .tl_spi0_i          (),
+  .tl_spi0_o          (xbar_to_spi),
+  .tl_spi0_i          (spi_to_xbar),
   .tl_spi1_o          (),
   .tl_spi1_i          (),
   .tl_spi2_o          (),
   .tl_spi2_i          (),
-  .tl_pwm_o           (),
-  .tl_pwm_i           (),
+  .tl_pwm_o           (xbar_to_pwm),
+  .tl_pwm_i           (pwm_to_xbar),
   .tl_gpio_o          (xbarp_to_gpio),
   .tl_gpio_i          (gpio_to_xbarp),
   .tl_i2c0_o          (),
@@ -323,6 +342,42 @@ xbar_periph periph_switch (
 
   .scanmode_i         ()
 );
+
+
+// PWM module
+
+pwm_top u_pwm(
+
+  .clk_i   (clock),
+  .rst_ni  (system_rst_ni),
+
+  .tl_i    (xbar_to_pwm),
+  .tl_o    (pwm_to_xbar),
+
+
+  .pwm_o   (pwm_o),
+  .pwm_o_2 (pwm_o_2)
+);
+
+
+// spi module 
+
+spi_top u_spi_host(
+
+  .clk_i       (clock),
+  .rst_ni      (system_rst_ni),
+
+  .tl_i        (xbar_to_spi),
+  .tl_o        (spi_to_xbar),
+
+  // SPI signals                  
+  .intr_o      (intr_spi),                   
+  .ss_o        (ss_o),         
+  .sclk_o      (sclk_o),       
+  .sd_o        (sd_o),       
+  .sd_i        (sd_i)
+);
+
 
 //GPIO module
  gpio GPIO (
