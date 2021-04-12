@@ -2,9 +2,10 @@
 #include <iostream>
 #include <utility>
 #include <string>
-#include "Vazadi_soc_top.h"
+#include "VAzadi_top_verilator.h"
 #include "verilated.h"
-#include "verilated_vcd_c.h"
+#include "verilated_fst_c.h"
+#include "VAzadi_top_verilator__Dpi.h"
 
 
 unsigned int main_time = 0;
@@ -21,13 +22,13 @@ int main (int argc, char **argv) {
 
     Verilated::commandArgs(argc, argv);
 
-    Vazadi_soc_top* top = new Vazadi_soc_top;
+    VAzadi_top_verilator* top = new VAzadi_top_verilator;
 
     // init trace dump
     //VerilatedVcdC* tfp = NULL;
 
     Verilated::traceEverOn(true);
-    VerilatedVcdC* tfp = new VerilatedVcdC;
+    VerilatedFstC* tfp = new VerilatedFstC;
     // if initialized above
     //tfp = new VerilatedVcdC;
 
@@ -36,24 +37,27 @@ int main (int argc, char **argv) {
     Verilated::mkdir("logs");
     tfp->open("logs/sim.vcd");
 
-    top -> clock = 0;
+    top -> clock_i = 0;
     
+
    top -> gpio_i = 8;
-    while (main_time < 1000 && !Verilated::gotFinish()) 
+    while (!Verilated::gotFinish()) 
     { 
-        top->clock = top->clock ? 0 : 1;  
-        if(main_time < 10)
+        top->clock_i = top->clock_i ? 0 : 1; 
+              // Toggle clock
+        if(main_time == 200)
         {
             top -> reset_ni = 0;
         }
         else
         {
             top -> reset_ni = 1;
-        }     // Toggle clock
+        }
         top->eval(); 
 
         // redundant
-        //30200073
+        //top -> eval();
+
         if (tfp) tfp -> dump(main_time);
         // or dump always
         //tfp -> dump(main_time);

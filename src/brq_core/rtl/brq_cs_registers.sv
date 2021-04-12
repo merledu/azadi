@@ -6,22 +6,21 @@
  * Specification, draft version 1.11
  */
 
-
-
 module brq_cs_registers #(
-    parameter bit               DbgTriggerEn      = 0,
-    parameter int unsigned      DbgHwBreakNum     = 1,
-    parameter bit               DataIndTiming     = 1'b0,
-    parameter bit               DummyInstructions = 1'b0,
-    parameter bit               ShadowCSR         = 1'b0,
-    parameter bit               ICache            = 1'b0,
-    parameter int unsigned      MHPMCounterNum    = 10,
-    parameter int unsigned      MHPMCounterWidth  = 40,
-    parameter bit               PMPEnable         = 0,
-    parameter int unsigned      PMPGranularity    = 0,
-    parameter int unsigned      PMPNumRegions     = 4,
-    parameter bit               RV32E             = 0,
-    parameter brq_pkg::rv32m_e RV32M             = brq_pkg::RV32MFast
+    parameter bit                DbgTriggerEn      = 0,
+    parameter int unsigned       DbgHwBreakNum     = 1,
+    parameter bit                DataIndTiming     = 1'b0,
+    parameter bit                DummyInstructions = 1'b0,
+    parameter bit                ShadowCSR         = 1'b0,
+    parameter bit                ICache            = 1'b0,
+    parameter int unsigned       MHPMCounterNum    = 10,
+    parameter int unsigned       MHPMCounterWidth  = 40,
+    parameter bit                PMPEnable         = 0,
+    parameter int unsigned       PMPGranularity    = 0,
+    parameter int unsigned       PMPNumRegions     = 4,
+    parameter bit                RV32E             = 0,
+    parameter brq_pkg::rv32m_e   RV32M             = brq_pkg::RV32MFast,
+    parameter brq_pkg::rvfloat_e RVF               = brq_pkg::RV64FDouble // for floating point
 ) (
     // Clock and Reset
     input  logic                 clk_i,
@@ -34,7 +33,7 @@ module brq_cs_registers #(
     output brq_pkg::priv_lvl_e  priv_mode_id_o,
     output brq_pkg::priv_lvl_e  priv_mode_if_o,
     output brq_pkg::priv_lvl_e  priv_mode_lsu_o,
-    output logic                 csr_mstatus_tw_o,
+    output logic                csr_mstatus_tw_o,
 
     // mtvec
     output logic [31:0]          csr_mtvec_o,
@@ -42,12 +41,12 @@ module brq_cs_registers #(
     input  logic [31:0]          boot_addr_i,
 
     // Interface to registers (SRAM like)
-    input  logic                 csr_access_i,
+    input  logic                csr_access_i,
     input  brq_pkg::csr_num_e   csr_addr_i,
-    input  logic [31:0]          csr_wdata_i,
+    input  logic [31:0]         csr_wdata_i,
     input  brq_pkg::csr_op_e    csr_op_i,
-    input                        csr_op_en_i,
-    output logic [31:0]          csr_rdata_o,
+    input                       csr_op_en_i,
+    output logic [31:0]         csr_rdata_o,
 
     // interrupts
     input  logic                 irq_software_i,
@@ -56,75 +55,82 @@ module brq_cs_registers #(
     input  logic [14:0]          irq_fast_i,
     input  logic                 nmi_mode_i,
     output logic                 irq_pending_o,          // interrupt request pending
-    output brq_pkg::irqs_t      irqs_o,                 // interrupt requests qualified with mie
+    output brq_pkg::irqs_t       irqs_o,                 // interrupt requests qualified with mie
     output logic                 csr_mstatus_mie_o,
     output logic [31:0]          csr_mepc_o,
 
     // PMP
-    output brq_pkg::pmp_cfg_t   csr_pmp_cfg_o  [PMPNumRegions],
+    output brq_pkg::pmp_cfg_t    csr_pmp_cfg_o  [PMPNumRegions],
     output logic [33:0]          csr_pmp_addr_o [PMPNumRegions],
 
     // debug
-    input  logic                 debug_mode_i,
+    input  logic                debug_mode_i,
     input  brq_pkg::dbg_cause_e debug_cause_i,
-    input  logic                 debug_csr_save_i,
-    output logic [31:0]          csr_depc_o,
-    output logic                 debug_single_step_o,
-    output logic                 debug_ebreakm_o,
-    output logic                 debug_ebreaku_o,
-    output logic                 trigger_match_o,
+    input  logic                debug_csr_save_i,
+    output logic [31:0]         csr_depc_o,
+    output logic                debug_single_step_o,
+    output logic                debug_ebreakm_o,
+    output logic                debug_ebreaku_o,
+    output logic                trigger_match_o,
 
-    input  logic [31:0]          pc_if_i,
-    input  logic [31:0]          pc_id_i,
-    input  logic [31:0]          pc_wb_i,
+    input  logic [31:0]         pc_if_i,
+    input  logic [31:0]         pc_id_i,
+    input  logic [31:0]         pc_wb_i,
 
     // CPU control bits
-    output logic                 data_ind_timing_o,
-    output logic                 dummy_instr_en_o,
-    output logic [2:0]           dummy_instr_mask_o,
-    output logic                 dummy_instr_seed_en_o,
-    output logic [31:0]          dummy_instr_seed_o,
-    output logic                 icache_enable_o,
-    output logic                 csr_shadow_err_o,
+    output logic                data_ind_timing_o,
+    output logic                dummy_instr_en_o,
+    output logic [2:0]          dummy_instr_mask_o,
+    output logic                dummy_instr_seed_en_o,
+    output logic [31:0]         dummy_instr_seed_o,
+    output logic                icache_enable_o,
+    output logic                csr_shadow_err_o,
 
     // Exception save/restore
-    input  logic                 csr_save_if_i,
-    input  logic                 csr_save_id_i,
-    input  logic                 csr_save_wb_i,
-    input  logic                 csr_restore_mret_i,
-    input  logic                 csr_restore_dret_i,
-    input  logic                 csr_save_cause_i,
+    input  logic                csr_save_if_i,
+    input  logic                csr_save_id_i,
+    input  logic                csr_save_wb_i,
+    input  logic                csr_restore_mret_i,
+    input  logic                csr_restore_dret_i,
+    input  logic                csr_save_cause_i,
     input  brq_pkg::exc_cause_e csr_mcause_i,
-    input  logic [31:0]          csr_mtval_i,
-    output logic                 illegal_csr_insn_o,     // access to non-existent CSR,
+    input  logic [31:0]         csr_mtval_i,
+    output logic                illegal_csr_insn_o,     // access to non-existent CSR,
                                                          // with wrong priviledge level, or
                                                          // missing write permissions
     // Performance Counters
-    input  logic                 instr_ret_i,            // instr retired in ID/EX stage
-    input  logic                 instr_ret_compressed_i, // compressed instr retired
-    input  logic                 iside_wait_i,           // core waiting for the iside
-    input  logic                 jump_i,                 // jump instr seen (j, jr, jal, jalr)
-    input  logic                 branch_i,               // branch instr seen (bf, bnf)
-    input  logic                 branch_taken_i,         // branch was taken
-    input  logic                 mem_load_i,             // load from memory in this cycle
-    input  logic                 mem_store_i,            // store to memory in this cycle
-    input  logic                 dside_wait_i,           // core waiting for the dside
-    input  logic                 mul_wait_i,             // core waiting for multiply
-    input  logic                 div_wait_i              // core waiting for divide
-);
+    input  logic                instr_ret_i,            // instr retired in ID/EX stage
+    input  logic                instr_ret_compressed_i, // compressed instr retired
+    input  logic                iside_wait_i,           // core waiting for the iside
+    input  logic                jump_i,                 // jump instr seen (j, jr, jal, jalr)
+    input  logic                branch_i,               // branch instr seen (bf, bnf)
+    input  logic                branch_taken_i,         // branch was taken
+    input  logic                mem_load_i,             // load from memory in this cycle
+    input  logic                mem_store_i,            // store to memory in this cycle
+    input  logic                dside_wait_i,           // core waiting for the dside
+    input  logic                mul_wait_i,             // core waiting for multiply
+    input  logic                div_wait_i,              // core waiting for divide
 
+    // floating point
+    input logic                   fp_rm_dynamic_i,
+    output fpnew_pkg::roundmode_e fp_frm_o
+);
   import brq_pkg::*;
+  import fpnew_pkg::roundmode_e;
 
   localparam int unsigned RV32MEnabled = (RV32M == RV32MNone) ? 0 : 1;
   localparam int unsigned PMPAddrWidth = (PMPGranularity > 0) ? 33 - PMPGranularity : 32;
+
+  localparam int unsigned SinglePrecision = (RVF == RV32FSingle) ? 1 : 0;
+  localparam int unsigned DoublePrecision = (RVF == RV64FDouble) ? 1 : 0;
 
   // misa
   localparam logic [31:0] MISA_VALUE =
       (0                 <<  0)  // A - Atomic Instructions extension
     | (1                 <<  2)  // C - Compressed extension
-    | (0                 <<  3)  // D - Double precision floating-point extension
+    | (DoublePrecision   <<  3)  // D - Double precision floating-point extension
     | (32'(RV32E)        <<  4)  // E - RV32E base ISA
-    | (0                 <<  5)  // F - Single precision floating-point extension
+    | (SinglePrecision   <<  5)  // F - Single precision floating-point extension
     | (32'(!RV32E)       <<  8)  // I - RV32I/64I/128I base ISA
     | (RV32MEnabled      << 12)  // M - Integer Multiply/Divide extension
     | (0                 << 13)  // N - User level interrupts supported
@@ -172,10 +178,23 @@ module brq_cs_registers #(
     logic        icache_enable;
   } cpu_ctrl_t;
 
+  // // Floating Point
+  // typedef struct packed { 
+  //   frm_e     frm;
+  //   fflags_e  fflags;            
+  // } fcsr_t;
+
   // Interrupt and exception control signals
   logic [31:0] exception_pc;
 
   // CSRs
+  fpnew_pkg::status_t fflags_q, fflags_d;
+
+  logic        fcsr_en;
+  logic [7:0]  fcsr_q, fcsr_d;
+  logic        fflags_en;
+  logic        frm_en;
+  roundmode_e  frm_q, frm_d;
   priv_lvl_e   priv_lvl_q, priv_lvl_d;
   status_t     mstatus_q, mstatus_d;
   logic        mstatus_err;
@@ -263,21 +282,29 @@ module brq_cs_registers #(
   // CSR reg //
   /////////////
 
+  logic illegal_dyn_mod;
+  logic illegal_csr_dyn_mod;
   logic [$bits(csr_num_e)-1:0] csr_addr;
   assign csr_addr           = {csr_addr_i};
   assign unused_csr_addr    = csr_addr[7:5];
   assign mhpmcounter_idx    = csr_addr[4:0];
 
+  assign illegal_csr_dyn_mod = illegal_dyn_mod & fp_rm_dynamic_i;
+
   // See RISC-V Privileged Specification, version 1.11, Section 2.1
-  assign illegal_csr_priv   = (csr_addr[9:8] > {priv_lvl_q});
-  assign illegal_csr_write  = (csr_addr[11:10] == 2'b11) && csr_wreq;
-  assign illegal_csr_insn_o = csr_access_i & (illegal_csr | illegal_csr_write | illegal_csr_priv);
+  assign illegal_csr_priv    = (csr_addr[9:8] > {priv_lvl_q});
+  assign illegal_csr_write   = (csr_addr[11:10] == 2'b11) && csr_wreq;
+  assign illegal_csr_insn_o  = csr_access_i & (illegal_csr | illegal_csr_write | illegal_csr_priv
+                               | illegal_csr_dyn_mod);
 
   // mip CSR is purely combinational - must be able to re-enable the clock upon WFI
   assign mip.irq_software = irq_software_i;
   assign mip.irq_timer    = irq_timer_i;
   assign mip.irq_external = irq_external_i;
   assign mip.irq_fast     = irq_fast_i;
+  
+  // Floating point
+  assign fp_frm_o = frm_q;
 
   // read logic
   always_comb begin
@@ -285,6 +312,25 @@ module brq_cs_registers #(
     illegal_csr   = 1'b0;
 
     unique case (csr_addr_i)
+      // fcsr: floating-point control and status register (frm+fflags)
+      CSR_FCSR: csr_rdata_int = {24'b0 , fcsr_q};
+      
+      // fflags: floating-point accrued exception
+      CSR_FFLAG: csr_rdata_int = {27'b0 , fflags_q};
+      
+      // frm: floating-point dynamic rounding mode
+      CSR_FRM: begin
+        csr_rdata_int = {29'b0 , frm_q};
+        unique case (frm_q)
+          000,
+          001,
+          010,
+          011,
+          100: illegal_dyn_mod =  1'b0;
+          default: illegal_dyn_mod =  1'b1;
+        endcase 
+      end
+
       // mhartid: unique hardware thread id
       CSR_MHARTID: csr_rdata_int = hart_id_i;
 
@@ -461,6 +507,16 @@ module brq_cs_registers #(
   always_comb begin
     exception_pc = pc_id_i;
 
+    // Floating point
+    fcsr_d      = fcsr_q;
+    fcsr_en     = 1'b0;
+
+    fflags_d    = fflags_q;
+    fflags_en   = 1'b0;
+
+    frm_d  = frm_q;
+    frm_en = 1'b0;
+
     priv_lvl_d   = priv_lvl_q;
     mstatus_en   = 1'b0;
     mstatus_d    = mstatus_q;
@@ -475,8 +531,8 @@ module brq_cs_registers #(
     mtvec_en     = csr_mtvec_init_i;
     // mtvec.MODE set to vectored
     // mtvec.BASE must be 256-byte aligned
-    mtvec_d      = csr_mtvec_init_i ? {boot_addr_i[31:8], 6'b0, 2'b01} :
-                                      {csr_wdata_int[31:8], 6'b0, 2'b01};
+    mtvec_d      = csr_mtvec_init_i ? {boot_addr_i[31:8], 6'h3c, 2'b01} :
+                                      {csr_wdata_int[31:8], 6'h3c, 2'b01};
     dcsr_en      = 1'b0;
     dcsr_d       = dcsr_q;
     depc_d       = {csr_wdata_int[31:1], 1'b0};
@@ -499,6 +555,24 @@ module brq_cs_registers #(
     if (csr_we_int) begin
       unique case (csr_addr_i)
         // mstatus: IE bit
+
+        CSR_FCSR: begin 
+          fcsr_en = 1'b1;
+          fcsr_d  = csr_wdata_int[7:0];
+        end
+
+        CSR_FFLAG : begin
+          fflags_en = 1'b1;
+          fflags_d  = csr_wdata_int;
+          fcsr_d    = {frm_q, fflags_q};
+        end
+
+        CSR_FRM: begin
+          frm_en = 1'b1;
+          frm_d  = csr_wdata_int; 
+          fcsr_d = {frm_q, fflags_q};
+        end
+
         CSR_MSTATUS: begin
           mstatus_en = 1'b1;
           mstatus_d    = '{
@@ -748,6 +822,48 @@ module brq_cs_registers #(
     .rd_error_o (mstatus_err)
   );
 
+  // FCSR
+  brq_csr #(
+    .Width      (32),
+    .ShadowCopy (1'b0),
+    .ResetValue ('0)
+  ) fcsr_csr (
+    .clk_i      (clk_i),
+    .rst_ni     (rst_ni),
+    .wr_data_i  (fcsr_d),
+    .wr_en_i    (fcsr_en),
+    .rd_data_o  (fcsr_q),
+    .rd_error_o ()
+  );
+
+  // FFLAGS
+  brq_csr #(
+    .Width      (32),
+    .ShadowCopy (1'b0),
+    .ResetValue ('0)
+  ) fflags_csr (
+    .clk_i      (clk_i),
+    .rst_ni     (rst_ni),
+    .wr_data_i  (fflags_d),
+    .wr_en_i    (fflags_en),
+    .rd_data_o  (fflags_q),
+    .rd_error_o ()
+  );
+
+  // FRM
+  brq_csr #(
+    .Width      (32),
+    .ShadowCopy (1'b0),
+    .ResetValue ('0)
+  ) frm_csr (
+    .clk_i      (clk_i),
+    .rst_ni     (rst_ni),
+    .wr_data_i  (frm_d),
+    .wr_en_i    (frm_en),
+    .rd_data_o  (frm_q),
+    .rd_error_o ()
+  );
+  
   // MEPC
   brq_csr #(
     .Width      (32),

@@ -1,5 +1,3 @@
-
-
 `ifdef RISCV_FORMAL
   `define RVFI
 `endif
@@ -11,21 +9,23 @@
 module brq_core #(
     parameter bit                 PMPEnable        = 1'b0,
     parameter int unsigned        PMPGranularity   = 0,
-    parameter int unsigned        PMPNumRegions    = 4,
+    parameter int unsigned        PMPNumRegions    = 0,
     parameter int unsigned        MHPMCounterNum   = 0,
     parameter int unsigned        MHPMCounterWidth = 40,
     parameter bit                 RV32E            = 1'b0,
-    parameter brq_pkg::rv32m_e   RV32M            = brq_pkg::RV32MFast,
-    parameter brq_pkg::rv32b_e   RV32B            = brq_pkg::RV32BNone,
-    parameter brq_pkg::regfile_e RegFile          = brq_pkg::RegFileFF,
+    parameter brq_pkg::rv32m_e    RV32M            = brq_pkg::RV32MFast,
+    parameter brq_pkg::rv32b_e    RV32B            = brq_pkg::RV32BNone,
+    parameter brq_pkg::regfile_e  RegFile          = brq_pkg::RegFileFF,
+    parameter brq_pkg::rvfloat_e  RVF              = brq_pkg::RV32FSingle, // for floating point
+    parameter int unsigned        FloatingPoint    = 1'b1,
     parameter bit                 BranchTargetALU  = 1'b0,
-    parameter bit                 WritebackStage   = 1'b0,
+    parameter bit                 WritebackStage   = 1'b1,
     parameter bit                 ICache           = 1'b0,
     parameter bit                 ICacheECC        = 1'b0,
     parameter bit                 BranchPredictor  = 1'b0,
     parameter bit                 DbgTriggerEn     = 1'b0,
     parameter int unsigned        DbgHwBreakNum    = 1,
-    parameter bit                 Securebrq       = 1'b0,
+    parameter bit                 Securebrq        = 1'b0,
     parameter int unsigned        DmHaltAddr       = 32'h1A110800,
     parameter int unsigned        DmExceptionAddr  = 32'h1A110808
 ) (
@@ -104,7 +104,53 @@ module brq_core #(
 );
 
   import brq_pkg::*;
+  
+  // floating point 
+  localparam int unsigned W = 32;
+  logic                   fp_flush;
+  logic                   in_ready_c2fpu;   // ready - from core to FPU 
+  logic                   in_valid_c2fpu;   // valid - from FPU to core 
+  logic                   out_ready_fpu2c;  // ready - from FPU to core
+  logic                   out_valid_fpu2c;  // valid - from core to FPU
+  logic                   ready_id_fpu;     // select which ready signal will go to dec
+  logic                   valid_id_fpu;     // select which valid signal will go to dec
+  logic                   fp_rm_dynamic;
+  logic                   fp_alu_op_mod;  
+  logic [4:0]             fp_rf_raddr_a;
+  logic [4:0]             fp_rf_raddr_b;
+  logic [4:0]             fp_rf_raddr_c;
+  logic [W-1:0]           fp_rf_rdata_a;
+  logic [W-1:0]           fp_rf_rdata_b;
+  logic                   fp_rf_rdata_c;
+  logic                   fp_rf_wen_id;
+  logic                   is_fp_instr;
+  logic [2:0][W-1:0]      fp_operands;   // three operands in fpu   
+  logic                   fp_busy;
+  logic [W-1:0]           fp_result;
+  logic [ 31:0]           data_wb;
+  logic [4:0]             fp_rf_waddr_id;
+  logic [4:0]             fp_rf_waddr_wb;
+  logic                   fp_rf_we;
+  logic                   fp_rf_wen_wb;
+  logic                   use_fp_rs1;
+  logic                   use_fp_rs2;
+  logic                   use_fp_rd;
+  logic [W-1:0]           fpu_op_a;
+  logic [W-1:0]           fpu_op_b;
+  logic [W-1:0]           fpu_op_c;
+  logic                   fp_rf_write_wb;
+  logic [31:0]            rf_int_fp_lsu;
+  logic                   fp_swap_oprnds;
+  fpnew_pkg::status_t     fp_status;
+  fpnew_pkg::operation_e  fp_operation;
+  fpnew_pkg::roundmode_e  fp_rounding_mode;
+  fpnew_pkg::roundmode_e  fp_frm_csr;
+  fpnew_pkg::roundmode_e  fp_frm_fpnew;
+  fpnew_pkg::operation_e  fp_alu_operator;
+  fpnew_pkg::fp_format_e  fp_src_fmt;
+  fpnew_pkg::fp_format_e  fp_dst_fmt;
 
+  // brq                 
   localparam int unsigned PMP_NUM_CHAN      = 2;
   localparam bit          DataIndTiming     = Securebrq;
   localparam bit          DummyInstructions = Securebrq;
@@ -357,7 +403,7 @@ module brq_core #(
 
   // Before going to sleep, wait for I- and D-side
   // interfaces to finish ongoing operations.
-  assign core_busy_d = ctrl_busy | if_busy | lsu_busy;
+  assign core_busy_d = ctrl_busy | if_busy | lsu_busy | fp_busy;
 
   always_ff @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni) begin
@@ -402,7 +448,7 @@ module brq_core #(
       .PCIncrCheck       ( PCIncrCheck       ),
       .BranchPredictor   ( BranchPredictor   )
   ) if_stage_i (
-      .clk_i                    ( clk                   ),
+      .clk_i                    ( clk                    ),
       .rst_ni                   ( rst_ni                 ),
 
       .boot_addr_i              ( boot_addr_i            ),
@@ -458,7 +504,6 @@ module brq_core #(
 
       // pipeline stalls
       .id_in_ready_i            ( id_in_ready            ),
-
       .pc_mismatch_alert_o      ( pc_mismatch_alert      ),
       .if_busy_o                ( if_busy                )
   );
@@ -484,7 +529,7 @@ module brq_core #(
       .WritebackStage  ( WritebackStage  ),
       .BranchPredictor ( BranchPredictor )
   ) id_stage_i (
-      .clk_i                        ( clk                     ),
+      .clk_i                        ( clk                      ),
       .rst_ni                       ( rst_ni                   ),
 
       // Processor Enable
@@ -522,7 +567,9 @@ module brq_core #(
       .pc_id_i                      ( pc_id                    ),
 
       // Stalls
-      .ex_valid_i                   ( ex_valid                 ),
+      .ex_valid_i                   ( valid_id_fpu             ), // changed by zeeshan from 
+                                                                  // ex_valid to valid_id_fpu 
+                                                                  // for ready selection
       .lsu_resp_valid_i             ( lsu_resp_valid           ),
 
       .alu_operator_ex_o            ( alu_operator_ex          ),
@@ -594,13 +641,14 @@ module brq_core #(
       .trigger_match_i              ( trigger_match            ),
 
       // write data to commit in the register file
-      .result_ex_i                  ( result_ex                ),
+      .result_ex_i                  ( data_wb                  ), // changed by zeeshan from result_ex
+                                                                  // to data_wb for FVCT, FMV.WX ins
       .csr_rdata_i                  ( csr_rdata                ),
 
       .rf_raddr_a_o                 ( rf_raddr_a               ),
       .rf_rdata_a_i                 ( rf_rdata_a               ),
       .rf_raddr_b_o                 ( rf_raddr_b               ),
-      .rf_rdata_b_i                 ( rf_rdata_b               ),
+      .rf_rdata_b_i                 ( rf_int_fp_lsu            ),
       .rf_ren_a_o                   ( rf_ren_a                 ),
       .rf_ren_b_o                   ( rf_ren_b                 ),
       .rf_waddr_id_o                ( rf_waddr_id              ),
@@ -627,7 +675,33 @@ module brq_core #(
       .perf_dside_wait_o            ( perf_dside_wait          ),
       .perf_mul_wait_o              ( perf_mul_wait            ),
       .perf_div_wait_o              ( perf_div_wait            ),
-      .instr_id_done_o              ( instr_id_done            )
+      .instr_id_done_o              ( instr_id_done            ),
+
+      // Floating point extensions IO
+      .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
+      .fp_alu_op_b_mux_sel_o           ( ), //fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
+      .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
+      .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
+      .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
+      .fp_rf_ren_a_o                   ( ), //fp_rf_ren_a           ),     
+      .fp_rf_ren_b_o                   ( ), //fp_rf_ren_b           ),     
+      .fp_rf_ren_c_o                   ( ), //fp_rf_ren_c           ),
+      .fp_rf_waddr_o                   ( fp_rf_waddr_id        ),
+      .fp_rf_we_o                      ( fp_rf_wen_id          ),
+      .fp_alu_operator_o               ( fp_alu_operator       ),
+      .fp_alu_op_mod_o                 ( fp_alu_op_mod         ),
+      .fp_src_fmt_o                    ( fp_src_fmt            ),
+      .fp_dst_fmt_o                    ( fp_dst_fmt            ),
+      .fp_rm_dynamic_o                 ( fp_rm_dynamic         ),
+      .fp_flush_o                      ( fp_flush              ),
+      .is_fp_instr_o                   ( is_fp_instr           ),
+      .use_fp_rs1_o                    ( use_fp_rs1            ),
+      .use_fp_rs2_o                    ( use_fp_rs2            ),
+      .use_fp_rd_o                     ( use_fp_rd             ),
+      .fpu_busy_i                      ( fp_busy               ),
+      .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
+      .fp_swap_oprnds_o                ( fp_swap_oprnds        )
+
   );
 
   // for RVFI only
@@ -638,7 +712,7 @@ module brq_core #(
       .RV32B                    ( RV32B                    ),
       .BranchTargetALU          ( BranchTargetALU          )
   ) ex_block_i (
-      .clk_i                    ( clk                     ),
+      .clk_i                    ( clk                      ),
       .rst_ni                   ( rst_ni                   ),
 
       // ALU signal from ID stage
@@ -686,7 +760,7 @@ module brq_core #(
   assign lsu_resp_err = lsu_load_err | lsu_store_err;
 
   brq_lsu load_store_unit_i (
-      .clk_i                 ( clk                ),
+      .clk_i                 ( clk                 ),
       .rst_ni                ( rst_ni              ),
 
       // data interface
@@ -766,7 +840,15 @@ module brq_core #(
     .lsu_resp_valid_i               ( lsu_resp_valid               ),
     .lsu_resp_err_i                 ( lsu_resp_err                 ),
 
-    .instr_done_wb_o                ( instr_done_wb                )
+    .instr_done_wb_o                ( instr_done_wb                ),
+
+    // floating point
+    .fp_rf_write_wb_o               ( fp_rf_write_wb               ),
+    .fp_rf_wen_wb_o                 ( fp_rf_wen_wb                 ),
+    .fp_rf_waddr_wb_o               ( fp_rf_waddr_wb               ),
+    .fp_rf_wen_id_i                 ( fp_rf_wen_id                 ),
+    .fp_rf_waddr_id_i               ( fp_rf_waddr_id               ),
+    .fp_rf_wdata_wb_o               ( )
   );
 
   ///////////////////////
@@ -827,6 +909,8 @@ module brq_core #(
     assign rf_rdata_b              = rf_rdata_b_ecc;
     assign rf_ecc_err_comb         = 1'b0;
   end
+
+  assign rf_int_fp_lsu = (is_fp_instr & use_fp_rs2) ? fp_rf_rdata_b : rf_rdata_b;
 
   if (RegFile == RegFileFF) begin : gen_regfile_ff
     brq_register_file_ff #(
@@ -889,6 +973,48 @@ module brq_core #(
         .we_a_i           ( rf_we_wb        )
     );
   end
+
+  if (FloatingPoint) begin : gen_fp_regfile
+    brq_fp_register_file_ff #(
+      .RVF       ( RVF ),
+      .DataWidth ( W   )
+    ) fp_register_file (
+      .clk_i     ( clk_i          ),
+      .rst_ni    ( rst_ni         ),
+
+      .raddr_a_i ( fp_rf_raddr_a  ),
+      .rdata_a_o ( fp_rf_rdata_a  ),
+
+      .raddr_b_i ( fp_rf_raddr_b  ),
+      .rdata_b_o ( fp_rf_rdata_b  ),
+
+      .raddr_c_i ( fp_rf_raddr_c  ),
+      .rdata_c_o ( fp_rf_rdata_c  ),
+
+      .waddr_a_i ( fp_rf_waddr_wb ),
+      .wdata_a_i ( rf_wdata_wb    ),
+      .we_a_i    ( fp_wen         )
+);
+  end
+  logic  fp_wen;
+  assign fp_wen   = fp_rf_wen_wb & out_valid_fpu2c;
+  assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
+  assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
+  assign fpu_op_c = fp_rf_rdata_c;
+  
+  /* Swap operands */
+  logic [31:0] b,c;
+  always_comb begin : swapping
+    if (fp_swap_oprnds) begin
+      b = fpu_op_a;
+      c = fpu_op_b;
+    end else begin
+      b = fpu_op_b;
+      c = fpu_op_c;
+    end
+  end
+  
+  assign fp_operands = {c , b , fpu_op_a};
 
   ///////////////////
   // Alert outputs //
@@ -970,7 +1096,7 @@ module brq_core #(
       .RV32E             ( RV32E             ),
       .RV32M             ( RV32M             )
   ) cs_registers_i (
-      .clk_i                   ( clk                         ),
+      .clk_i                   ( clk                          ),
       .rst_ni                  ( rst_ni                       ),
 
       // Hart ID from outside
@@ -1051,8 +1177,53 @@ module brq_core #(
       .mem_store_i             ( perf_store                   ),
       .dside_wait_i            ( perf_dside_wait              ),
       .mul_wait_i              ( perf_mul_wait                ),
-      .div_wait_i              ( perf_div_wait                )
+      .div_wait_i              ( perf_div_wait                ),
+
+      // floating point
+      .fp_rm_dynamic_i         ( fp_rm_dynamic                ),
+      .fp_frm_o                ( fp_frm_csr                   )
   );
+
+  assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
+  assign in_ready_c2fpu = multdiv_ready_id;
+  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr) & ~busy;
+  // assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
+  assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;
+  
+  logic busy;
+  always_ff @(posedge clk_i) begin : busy_signal // for valid signal
+    busy <= fp_busy;
+  end
+    
+// FPU instance
+  fpnew_top #(
+    .Features       ( fpnew_pkg::RV32F          ),
+    .Implementation ( fpnew_pkg::DEFAULT_NOREGS ),
+    .TagType        ( logic                     )
+  ) i_fpnew_top (
+    .clk_i          ( clk              ),
+    .rst_ni         ( rst_ni           ),
+    .operands_i     ( fp_operands      ),
+    .rnd_mode_i     ( fp_frm_fpnew     ),
+    .op_i           ( fp_alu_operator  ),
+    .op_mod_i       ( fp_alu_op_mod    ),
+    .src_fmt_i      ( fp_src_fmt       ),
+    .dst_fmt_i      ( fp_dst_fmt       ),
+    .int_fmt_i      ( fpnew_pkg::INT32 ),
+    .vectorial_op_i ( 1'b0             ),
+    .tag_i          ( 1                ),
+    .in_valid_i     ( in_valid_c2fpu   ),
+    .in_ready_o     ( out_ready_fpu2c  ),
+    .flush_i        ( fp_flush         ),
+    .result_o       ( fp_result        ),
+    .status_o       ( fp_status        ),
+    .tag_o          (                  ),
+    .out_valid_o    ( out_valid_fpu2c  ),
+    .out_ready_i    ( in_ready_c2fpu   ),
+    .busy_o         ( fp_busy          )
+  );
+
+  assign data_wb = is_fp_instr ? fp_result : result_ex;
 
   // These assertions are in top-level as instr_valid_id required as the enable term
 

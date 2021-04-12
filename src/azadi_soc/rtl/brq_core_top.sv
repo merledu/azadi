@@ -1,7 +1,27 @@
-//`include "/home/merl/github_repos/brq/rtl/ibex_pkg.sv"
-//`include "/home/merl/github_repos/brq/rtl/prim_pkg.sv"
+//`include "/home/usman/Documents/ibex/rtl/ibex_pkg.sv"
+//`include "/home/merl/Documents/ibex/rtl/prim_pkg.sv"
 
-module brq_core_top
+module brq_core_top #(
+    parameter bit                 PMPEnable        = 1'b0,
+    parameter int unsigned        PMPGranularity   = 0,
+    parameter int unsigned        PMPNumRegions    = 0,
+    parameter int unsigned        MHPMCounterNum   = 0,
+    parameter int unsigned        MHPMCounterWidth = 40,
+    parameter bit                 RV32E            = 1'b0,
+    parameter brq_pkg::rv32m_e    RV32M            = brq_pkg::RV32MFast,
+    parameter brq_pkg::rv32b_e    RV32B            = brq_pkg::RV32BNone,
+    parameter brq_pkg::regfile_e  RegFile          = brq_pkg::RegFileFF,
+    parameter bit                 BranchTargetALU  = 1'b0,
+    parameter bit                 WritebackStage   = 1'b1,
+    parameter bit                 ICache           = 1'b0,
+    parameter bit                 ICacheECC        = 1'b0,
+    parameter bit                 BranchPredictor  = 1'b0,
+    parameter bit                 DbgTriggerEn     = 1'b0,
+    parameter int unsigned        DbgHwBreakNum    = 1,
+    parameter bit                 Securebrq        = 1'b0,
+    parameter int unsigned        DmHaltAddr       = 0,
+    parameter int unsigned        DmExceptionAddr  = 0
+)
 (
   input clock,
   input reset,
@@ -61,25 +81,25 @@ import brq_pkg::*;
 
 
 brq_core #(
-    .PMPEnable        (1),
-    .PMPGranularity   (0),
-    .PMPNumRegions    (16),
-    .MHPMCounterNum   (10),
-    .MHPMCounterWidth (32),
-    .RV32E            (0),
-    .RV32M            (brq_pkg::RV32MSlow),
-    .RV32B            (brq_pkg::RV32BNone),
-    .RegFile          (brq_pkg::RegFileFF),
-    .BranchTargetALU  (1),
-    .WritebackStage   (0),
-    .ICache           (0),
-    .ICacheECC        (0),
-    .BranchPredictor  (0),
-    .DbgTriggerEn     (1),
-    .DbgHwBreakNum    (2),
-    .Securebrq        (0),
-    .DmHaltAddr       (0),
-    .DmExceptionAddr  (0)
+    .PMPEnable        (PMPEnable),
+    .PMPGranularity   (PMPGranularity), 
+    .PMPNumRegions    (PMPNumRegions), 
+    .MHPMCounterNum   (MHPMCounterNum), 
+    .MHPMCounterWidth (MHPMCounterWidth), 
+    .RV32E            (RV32E), 
+    .RV32M            (RV32M), 
+    .RV32B            (RV32B), 
+    .RegFile          (RegFile), 
+    .BranchTargetALU  (BranchTargetALU), 
+    .WritebackStage   (WritebackStage), 
+    .ICache           (ICache), 
+    .ICacheECC        (ICacheECC), 
+    .BranchPredictor  (BranchPredictor), 
+    .DbgTriggerEn     (DbgTriggerEn), 
+    .DbgHwBreakNum    (DbgHwBreakNum), 
+    .Securebrq        (Securebrq),
+    .DmHaltAddr       (DmHaltAddr), 
+    .DmExceptionAddr  (DmExceptionAddr) 
 ) u_core (
     // Clock and Reset
     .clk_i (clock),

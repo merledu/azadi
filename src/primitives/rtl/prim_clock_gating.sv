@@ -11,6 +11,7 @@
 `ifndef PRIM_DEFAULT_IMPL
   `define PRIM_DEFAULT_IMPL prim_pkg::ImplGeneric
 `endif
+//`include "AZADI_ROOT/src/brq_core/rtl/prim_pkg.sv"
 // `include "/home/merl-lab/fyp2/azadi/src/primitives/rtl/prim_pkg.sv"
 module prim_clock_gating (
   input        clk_i,

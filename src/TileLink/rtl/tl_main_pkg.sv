@@ -6,7 +6,7 @@
 
 package tl_main_pkg;
 
-  localparam logic [31:0] ADDR_SPACE_ICCM       = 32'h 00000000;
+  localparam logic [31:0] ADDR_SPACE_ICCM       = 32'h 20000000;
   localparam logic [31:0] ADDR_SPACE_DEBUG_ROM  = 32'h 10040000;
   localparam logic [31:0] ADDR_SPACE_DCCM       = 32'h 10000000;
   localparam logic [31:0] ADDR_SPACE_FLASH_CTRL = 32'h 10080000;

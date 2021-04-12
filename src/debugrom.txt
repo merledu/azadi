@@ -1,0 +1,36 @@
+jal x0 12	        
+jal x0 124	      
+jal x0 76	        
+fence	    
+csrrw x0 1970 x8	
+csrrw x0 1971 x10	
+auipc x10 0	      
+srli x10 x10 12	  
+slli x10 x10 12	  
+csrrs x8 3860 x0	 
+sh x4 128(x5)	     
+add x8 x8 x10	    
+lbu x8 1024(x8)	   
+andi x8 x8 1	    
+bne x8 x0 56	    
+csrrs x8 3860 x0	
+add x8 x8 x10	    
+lbu x8 1024(x8)	  
+andi x8 x8 2	    
+bne x8 x0 -72	    
+jal x0 -44	      
+auipc x10 0	      
+srli x10 x10 12	  
+slli x10 x10 12	  
+sw x0 268(x10)	   
+csrrs x10 1971 x0	
+csrrs x8 1970 x0	
+ebreak	          
+sb x0 260(x10)	   
+csrrs x10 1971 x0	
+csrrs x8 1970 x0	
+jal x0 -1404	    
+csrrs x8 3860 x0	
+sw x8 0x108(x10)	 
+csrrs x10 1971 x0	
+csrrs x8 1970 x0	
