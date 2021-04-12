@@ -22,6 +22,7 @@ VERILATOR = verilator
 TBFILES = $(AZADI_ROOT)/src/azadi_soc/rtl/Azadi_top_verilator.sv
 # Package imports
 
+
 defines =  $(AZADI_ROOT)/src/brq_core/rtl/brq_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tlul_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_periph_pkg.sv
@@ -33,6 +34,7 @@ defines += $(AZADI_ROOT)/src/rv_plic/rtl/rv_plic_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/uart/rtl/uart_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_timer/rtl/rv_timer_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/brq_core/rtl/prim_pkg.sv
+defines += $(AZADI_ROOT)/src/spi_host/rtl/spi_defines.v
 
 defines += $(AZADI_ROOT)/src/fpnew/src/fpnew_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cb_filter_pkg.sv

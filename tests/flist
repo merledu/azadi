@@ -94,6 +94,15 @@ $AZADI_ROOT/src/rv_timer/rtl/rv_timer_reg_top.sv
 //$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_chk.sv
 //$AZADI_ROOT/src/TileLink/rtl/prim_secded_64_57_dec.sv
 //$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_gen.sv
+$AZADI_ROOT/src/pwm/src/rtl/PWM.v
+$AZADI_ROOT/src/pwm/src/rtl/pwm_top.sv
+$AZADI_ROOT/src/pwm/src/rtl/minus_one.v
+$AZADI_ROOT/src/pwm/src/rtl/down_clocking_odd.v
+$AZADI_ROOT/src/pwm/src/rtl/down_clocking_even.v
+$AZADI_ROOT/src/spi_host/rtl/spi_core.v
+$AZADI_ROOT/src/spi_host/rtl/spi_shift.v
+$AZADI_ROOT/src/spi_host/rtl/spi_clgen.v
+$AZADI_ROOT/src/spi_host/rtl/spi_top.sv
 
 
 $AZADI_ROOT/src/fpnew/src/fpnew_cast_multi.sv
