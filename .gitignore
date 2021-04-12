@@ -1,5 +1,3 @@
 
-/tools/ojb_dir/
-/tools/logs
-/rtl
-/buraq_core
+tools/ojb_dir/
+tools/logs/
