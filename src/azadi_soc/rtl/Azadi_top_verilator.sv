@@ -23,21 +23,21 @@ module Azadi_top_verilator #(
   input                            sd_i 
 );
 
-logic clock; // output clock after dividing the input clock by divisor
-reg[27:0] counter=28'd0;
-parameter DIVISOR = 28'd6000;
-// The frequency of the output clk_out
-//  = The frequency of the input clk_in divided by DIVISOR
-// For example: Fclk_in = 50Mhz, if you want to get 1Hz signal to blink LEDs
-// You will modify the DIVISOR parameter value to 28'd50.000.000
-// Then the frequency of the output clk_out = 50Mhz/50.000.000 = 1Hz
-always @(posedge clock_i) begin
- counter <= counter + 28'd1;
- if(counter>=(DIVISOR-1))
-  counter <= 28'd0;
-
- clock <= (counter<DIVISOR/2)?1'b1:1'b0;
-end
+//logic clock; // output clock after dividing the input clock by divisor
+//reg[27:0] counter=28'd0;
+//parameter DIVISOR = 28'd6000;
+//// The frequency of the output clk_out
+////  = The frequency of the input clk_in divided by DIVISOR
+//// For example: Fclk_in = 50Mhz, if you want to get 1Hz signal to blink LEDs
+//// You will modify the DIVISOR parameter value to 28'd50.000.000
+//// Then the frequency of the output clk_out = 50Mhz/50.000.000 = 1Hz
+//always @(posedge clock_i) begin
+// counter <= counter + 28'd1;
+// if(counter>=(DIVISOR-1))
+//  counter <= 28'd0;
+//
+// clock <= (counter<DIVISOR/2)?1'b1:1'b0;
+//end
 
 
 
@@ -62,7 +62,7 @@ end
     .JTAG_ID(JTAG_IDCODE),
     .DirectDmiTap (DirectDmiTap)
   ) top_verilator(
-    .clock(clock),
+    .clock(clock_i),
     .reset_ni(reset_ni),
     .uart_rx_i(),
   
@@ -108,7 +108,7 @@ end
    //end else begin
      // jtag dpi for openocd
     jtagdpi u_jtagdpi (
-      .clk_i(clock),
+      .clk_i(clock_i),
       .rst_ni(reset_ni),
       .jtag_tck    (cio_jtag_tck),
       .jtag_tms    (cio_jtag_tms),
