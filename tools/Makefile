@@ -36,6 +36,7 @@ defines += $(AZADI_ROOT)/src/i2c/rtl/i2c_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_timer/rtl/rv_timer_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/brq_core/rtl/prim_pkg.sv
 defines += $(AZADI_ROOT)/src/primitives/rtl/prim_util_pkg.sv
+defines += $(AZADI_ROOT)/src/spi_host/rtl/spi_defines.v
 
 defines += $(AZADI_ROOT)/src/fpnew/src/fpnew_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cb_filter_pkg.sv
