@@ -25,7 +25,7 @@ module Azadi_top_verilator #(
 
 logic clock; // output clock after dividing the input clock by divisor
 reg[27:0] counter=28'd0;
-parameter DIVISOR = 28'd5000;
+parameter DIVISOR = 28'd6000;
 // The frequency of the output clk_out
 //  = The frequency of the input clk_in divided by DIVISOR
 // For example: Fclk_in = 50Mhz, if you want to get 1Hz signal to blink LEDs

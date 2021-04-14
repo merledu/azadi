@@ -165,10 +165,10 @@ VL_INLINE_OPT void VAzadi_top_verilator::_sequent__TOP__68(VAzadi_top_verilator_
     // Body
     vlTOPp->__Vdly__Azadi_top_verilator__DOT__counter 
         = (0xfffffffU & ((IData)(1U) + vlTOPp->Azadi_top_verilator__DOT__counter));
-    if ((0x1387U <= vlTOPp->Azadi_top_verilator__DOT__counter)) {
+    if ((0x176fU <= vlTOPp->Azadi_top_verilator__DOT__counter)) {
         vlTOPp->__Vdly__Azadi_top_verilator__DOT__counter = 0U;
     }
-    vlTOPp->Azadi_top_verilator__DOT__clock = (0x9c4U 
+    vlTOPp->Azadi_top_verilator__DOT__clock = (0xbb8U 
                                                > vlTOPp->Azadi_top_verilator__DOT__counter);
 }
 

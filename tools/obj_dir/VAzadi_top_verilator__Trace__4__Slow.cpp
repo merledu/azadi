@@ -8919,7 +8919,7 @@ void VAzadi_top_verilator::traceFullSub3(void* userp, VerilatedVcd* tracep) {
         tracep->fullCData(oldp+13990,(vlSymsp->TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DEBUG_ROM.__PVT__hfifo_rspvalid),2);
         tracep->fullCData(oldp+13991,(vlSymsp->TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__TIMER_0.__PVT__hfifo_rspvalid),2);
         tracep->fullBit(oldp+13992,(1U));
-        tracep->fullIData(oldp+13993,(0x1388U),28);
+        tracep->fullIData(oldp+13993,(0x1770U),28);
         tracep->fullIData(oldp+13994,(0x4f5484dU),32);
         tracep->fullBit(oldp+13995,(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__uart_rx_i));
         tracep->fullIData(oldp+13996,(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__gpio_intr),32);
