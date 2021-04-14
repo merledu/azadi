@@ -12,7 +12,11 @@
 //==========
 
 class VAzadi_top_verilator__Syms;
+<<<<<<< HEAD
 class VAzadi_top_verilator_VerilatedFst;
+=======
+class VAzadi_top_verilator_VerilatedVcd;
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 
 
 //----------
@@ -43,7 +47,11 @@ VL_MODULE(VAzadi_top_verilator_rv_plic_reg_pkg) {
   public:
     static void _initial__TOP__rv_plic_reg_pkg__1(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
+<<<<<<< HEAD
     static void traceInit(void* userp, VerilatedFst* tracep, uint32_t code) VL_ATTR_COLD;
+=======
+    static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 //----------

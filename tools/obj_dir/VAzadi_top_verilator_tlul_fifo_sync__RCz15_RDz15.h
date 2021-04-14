@@ -12,7 +12,11 @@
 //==========
 
 class VAzadi_top_verilator__Syms;
+<<<<<<< HEAD
 class VAzadi_top_verilator_VerilatedFst;
+=======
+class VAzadi_top_verilator_VerilatedVcd;
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 
 
 //----------
@@ -21,7 +25,11 @@ VL_MODULE(VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15) {
   public:
     
     // PORTS
+<<<<<<< HEAD
     // Begin mtask footprint all: 9 12 23 24 29 31 33 35 36 40 
+=======
+    // Begin mtask footprint all: 4 25 26 29 31 33 35 39 44 45 
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
     VL_OUTW(tl_d_o,85,0,3);
     // Begin mtask footprint all: 
     VL_INW(tl_h_i,85,0,3);
@@ -32,7 +40,11 @@ VL_MODULE(VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15) {
     VL_OUT8(__PVT__spare_req_o,0,0);
     VL_IN8(spare_rsp_i,0,0);
     VL_OUT8(__PVT__spare_rsp_o,0,0);
+<<<<<<< HEAD
     // Begin mtask footprint all: 7 11 12 14 29 33 
+=======
+    // Begin mtask footprint all: 4 9 11 12 31 34 37 
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
     VL_OUT64(tl_h_o,51,0);
     
     // INTERNAL VARIABLES
@@ -176,7 +188,11 @@ VL_MODULE(VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15) {
     void _settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d__13(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     void _settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d__83(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
+<<<<<<< HEAD
     static void traceInit(void* userp, VerilatedFst* tracep, uint32_t code) VL_ATTR_COLD;
+=======
+    static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 //----------

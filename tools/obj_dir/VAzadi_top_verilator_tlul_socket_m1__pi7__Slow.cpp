@@ -189,6 +189,7 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
             : (IData)(this->__PVT__hrequest));
 }
 
+<<<<<<< HEAD
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__71(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__71\n"); );
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
@@ -212,6 +213,8 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
                     << 1U)));
 }
 
+=======
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__95(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__95\n"); );
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
@@ -243,6 +246,7 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
     }
 }
 
+<<<<<<< HEAD
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__98(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__98\n"); );
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
@@ -252,6 +256,8 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
                             : 0U);
 }
 
+=======
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__108(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__108\n"); );
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
@@ -420,6 +426,17 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
                         | (1U & this->__PVT__dreq_fifo_i[0U]));
 }
 
+<<<<<<< HEAD
+=======
+void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__125(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__125\n"); );
+    VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    this->tl_h_o[0U] = __PVT__gen_host_fifo__BRA__0__KET____DOT__u_hostfifo->tl_h_o;
+    this->tl_h_o[1U] = __PVT__gen_host_fifo__BRA__1__KET____DOT__u_hostfifo->tl_h_o;
+}
+
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DEBUG_ROM__21(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DEBUG_ROM__21\n"); );
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;

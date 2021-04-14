@@ -16,6 +16,10 @@
 #include "VAzadi_top_verilator_gpio_reg_pkg.h"
 #include "VAzadi_top_verilator_rv_plic_reg_pkg.h"
 #include "VAzadi_top_verilator_uart_reg_pkg.h"
+<<<<<<< HEAD
+=======
+#include "VAzadi_top_verilator_i2c_reg_pkg.h"
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 #include "VAzadi_top_verilator_rv_timer_reg_pkg.h"
 #include "VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15.h"
 
@@ -104,6 +108,10 @@ class VAzadi_top_verilator__Syms : public VerilatedSyms {
     VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15 TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d;
     VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15 TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d;
     VAzadi_top_verilator_gpio_reg_pkg TOP__gpio_reg_pkg;
+<<<<<<< HEAD
+=======
+    VAzadi_top_verilator_i2c_reg_pkg TOP__i2c_reg_pkg;
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
     VAzadi_top_verilator_rv_plic_reg_pkg TOP__rv_plic_reg_pkg;
     VAzadi_top_verilator_rv_timer_reg_pkg TOP__rv_timer_reg_pkg;
     VAzadi_top_verilator_uart_reg_pkg TOP__uart_reg_pkg;

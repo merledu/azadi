@@ -16,7 +16,11 @@ VM_THREADS = 4
 # Tracing output mode?  0/1 (from --trace/--trace-fst)
 VM_TRACE = 1
 # Tracing output mode in FST format?  0/1 (from --trace-fst)
+<<<<<<< HEAD
 VM_TRACE_FST = 1
+=======
+VM_TRACE_FST = 0
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 # Tracing threaded output mode?  0/1/N threads (from --trace-thread)
 VM_TRACE_THREADS = 0
 # Separate FST writer thread? 0/1 (from --trace-fst with --trace-thread > 0)
@@ -33,11 +37,19 @@ VM_CLASSES_FAST += \
 	VAzadi_top_verilator__5 \
 	VAzadi_top_verilator__6 \
 	VAzadi_top_verilator__7 \
+<<<<<<< HEAD
+=======
+	VAzadi_top_verilator__8 \
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 	VAzadi_top_verilator___024unit \
 	VAzadi_top_verilator_tlul_socket_m1__pi7 \
 	VAzadi_top_verilator_gpio_reg_pkg \
 	VAzadi_top_verilator_rv_plic_reg_pkg \
 	VAzadi_top_verilator_uart_reg_pkg \
+<<<<<<< HEAD
+=======
+	VAzadi_top_verilator_i2c_reg_pkg \
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 	VAzadi_top_verilator_rv_timer_reg_pkg \
 	VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15 \
 
@@ -55,6 +67,10 @@ VM_CLASSES_SLOW += \
 	VAzadi_top_verilator_gpio_reg_pkg__Slow \
 	VAzadi_top_verilator_rv_plic_reg_pkg__Slow \
 	VAzadi_top_verilator_uart_reg_pkg__Slow \
+<<<<<<< HEAD
+=======
+	VAzadi_top_verilator_i2c_reg_pkg__Slow \
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 	VAzadi_top_verilator_rv_timer_reg_pkg__Slow \
 	VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15__Slow \
 
@@ -75,12 +91,20 @@ VM_SUPPORT_SLOW += \
 	VAzadi_top_verilator__Trace__2__Slow \
 	VAzadi_top_verilator__Trace__3__Slow \
 	VAzadi_top_verilator__Trace__4__Slow \
+<<<<<<< HEAD
+=======
+	VAzadi_top_verilator__Trace__5__Slow \
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
 	verilated \
 	verilated_dpi \
+<<<<<<< HEAD
 	verilated_fst_c \
+=======
+	verilated_vcd_c \
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 	verilated_threads \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization

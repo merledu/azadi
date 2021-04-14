@@ -38,7 +38,10 @@ VM_USER_CFLAGS = \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
+<<<<<<< HEAD
 	-lz \
+=======
+>>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 	-lpthread \
 
 # User .cpp files (from .cpp's on Verilator command line)
