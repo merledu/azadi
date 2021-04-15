@@ -209,7 +209,7 @@ always@(posedge clk_2 )
 	if(i_valid_DC)	extDC_2	<=	i_DC;
 	if(ctrl_2[2])begin
 		if(pwm_1) begin
-			if(ctrl_2	>=	period_P2) ct_2	<=	0;
+			if(ct_2	>=	period_P2) ct_2	<=	0;
 			else ct_2	<=	ct_2+1;
 
 			if(ct_2	<	DC_2)	pts_2	<=	1;

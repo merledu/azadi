@@ -8,9 +8,9 @@
 #include "verilated_dpi.h"
 
 //==========
-// Begin mtask footprint all: 32 
-CData/*0:0*/ VAzadi_top_verilator::__Vtable14_Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__rx_watermark_d[512];
 // Begin mtask footprint all: 35 
+CData/*0:0*/ VAzadi_top_verilator::__Vtable14_Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__rx_watermark_d[512];
+// Begin mtask footprint all: 36 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__in_ready[128];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__out_valid[128];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__hold_result[128];
@@ -18,14 +18,17 @@ CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_veril
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__unit_busy[128];
 CData/*1:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__state_d[128];
 // Begin mtask footprint all: 18 
-CData/*5:0*/ VAzadi_top_verilator::__Vtable8_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__State_ctl_S[256];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_BIAS_AONE[4];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_HALF_BIAS[4];
-// Begin mtask footprint all: 19 
+CData/*0:0*/ VAzadi_top_verilator::__Vtable2_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__adder_op_b_negate[64];
+// Begin mtask footprint all: 21 
+CData/*3:0*/ VAzadi_top_verilator::__Vtable6_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be[32];
+// Begin mtask footprint all: 15 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable3_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_signed[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable4_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_result[256];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable5_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left[64];
-// Begin mtask footprint all: 15 
+CData/*5:0*/ VAzadi_top_verilator::__Vtable8_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__State_ctl_S[256];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_BIAS_AONE[4];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_HALF_BIAS[4];
+// Begin mtask footprint all: 17 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable10_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__dmi_access[32];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable10_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__dtmcs_select[32];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable10_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__idcode_select[32];
@@ -38,9 +41,11 @@ CData/*0:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_veri
 CData/*0:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__shift_ir[32];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__update_ir[32];
 CData/*3:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__tap_state_d[32];
-// Begin mtask footprint all: 16 
-CData/*0:0*/ VAzadi_top_verilator::__Vtable2_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__adder_op_b_negate[64];
-CData/*3:0*/ VAzadi_top_verilator::__Vtable6_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be[32];
+// Begin mtask footprint all: 14 
+CData/*1:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
+CData/*1:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
 // Begin mtask footprint all: 13 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__instr_fetch_err_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__illegal_insn_prio[64];
@@ -48,23 +53,17 @@ CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_veril
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__ebrk_insn_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__store_err_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__load_err_prio[64];
-// Begin mtask footprint all: 12 
-CData/*1:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
-CData/*1:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
 
-VL_CTOR_IMP(VAzadi_top_verilator), __Vm_mt_4(1), __Vm_mt_10(2), 
-  __Vm_mt_11(1), __Vm_mt_16(1), __Vm_mt_17(1), __Vm_mt_20(1), 
-  __Vm_mt_21(1), __Vm_mt_22(1), __Vm_mt_23(1), __Vm_mt_25(2), 
-  __Vm_mt_26(2), __Vm_mt_1(2), __Vm_mt_2(2), __Vm_mt_6(4), 
-  __Vm_mt_7(2), __Vm_mt_9(1), __Vm_mt_13(1), __Vm_mt_14(2), 
-  __Vm_mt_19(1), __Vm_mt_27(3), __Vm_mt_28(3), __Vm_mt_30(4), 
-  __Vm_mt_34(3), __Vm_mt_39(1), __Vm_mt_8(1), __Vm_mt_15(3), 
-  __Vm_mt_18(2), __Vm_mt_29(3), __Vm_mt_32(3), __Vm_mt_35(3), 
-  __Vm_mt_36(1), __Vm_mt_37(3), __Vm_mt_38(1), __Vm_mt_40(2), 
-  __Vm_mt_41(2), __Vm_mt_33(2), __Vm_mt_final(4), __Vm_threadPoolp(nullptr), 
-  __Vm_even_cycle(false) {
+VL_CTOR_IMP(VAzadi_top_verilator), __Vm_mt_6(1), __Vm_mt_8(1), 
+  __Vm_mt_16(1), __Vm_mt_18(1), __Vm_mt_21(2), __Vm_mt_1(1), 
+  __Vm_mt_11(1), __Vm_mt_13(1), __Vm_mt_14(1), __Vm_mt_17(1), 
+  __Vm_mt_22(1), __Vm_mt_23(2), __Vm_mt_24(3), __Vm_mt_27(2), 
+  __Vm_mt_31(4), __Vm_mt_5(3), __Vm_mt_9(3), __Vm_mt_10(1), 
+  __Vm_mt_20(3), __Vm_mt_29(1), __Vm_mt_32(1), __Vm_mt_33(4), 
+  __Vm_mt_34(1), __Vm_mt_4(2), __Vm_mt_12(5), __Vm_mt_30(3), 
+  __Vm_mt_35(3), __Vm_mt_36(2), __Vm_mt_37(2), __Vm_mt_38(1), 
+  __Vm_mt_39(1), __Vm_mt_40(1), __Vm_mt_28(1), __Vm_mt_final(4), 
+  __Vm_threadPoolp(nullptr), __Vm_even_cycle(false) {
     VAzadi_top_verilator__Syms* __restrict vlSymsp = __VlSymsp = new VAzadi_top_verilator__Syms(this, name());
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     VL_CELL(__PVT__gpio_reg_pkg, VAzadi_top_verilator_gpio_reg_pkg);
@@ -161,7 +160,6 @@ void VAzadi_top_verilator::_initial__TOP__1(VAzadi_top_verilator__Syms* __restri
     WData/*159:0*/ __Vtemp1[5];
     // Body
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__programmer__DOT__r_Rx_DV = 0U;
-    vlTOPp->Azadi_top_verilator__DOT__counter = 0U;
     vlTOPp->__Vdpiimwrap_Azadi_top_verilator__DOT__u_jtagdpi__DOT__jtagdpi_create_TOP(
                                                                                 std::string("jtag0"), 0xaf35U, __Vfunc_Azadi_top_verilator__DOT__u_jtagdpi__DOT__jtagdpi_create__74__Vfuncout);
     vlTOPp->Azadi_top_verilator__DOT__u_jtagdpi__DOT__ctx 
@@ -2857,15 +2855,15 @@ void VAzadi_top_verilator::_settle__TOP__2(VAzadi_top_verilator__Syms* __restric
                                     >> 3U)) | (0xffffffcU 
                                                & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__req_nodes) 
                                                   >> 4U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__opgrp_out_valid 
-        = ((0xdU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__opgrp_out_valid)) 
-           | (2U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__req_nodes) 
-                    << 1U)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__jtag_req 
         = (((IData)(vlTOPp->Azadi_top_verilator__DOT__cio_jtag_tck) 
             << 3U) | (((IData)(vlTOPp->Azadi_top_verilator__DOT__cio_jtag_tms) 
                        << 2U) | (((IData)(vlTOPp->Azadi_top_verilator__DOT__cio_jtag_trst_n) 
                                   << 1U) | (IData)(vlTOPp->Azadi_top_verilator__DOT__cio_jtag_tdi))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__opgrp_out_valid 
+        = ((0xdU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__opgrp_out_valid)) 
+           | (2U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__i_arbiter__DOT__gen_arbiter__DOT__req_nodes) 
+                    << 1U)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dmi_rsp 
         = (0x3fffffffcULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dmi_rsp);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[5U] 
@@ -5303,11 +5301,11 @@ void VAzadi_top_verilator::_settle__TOP__8(VAzadi_top_verilator__Syms* __restric
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__eclk 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__go)
             ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__clk)
-            : (IData)(vlTOPp->Azadi_top_verilator__DOT__clock));
+            : (IData)(vlTOPp->clock_i));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__eclk_2 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__go)
             ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__clk)
-            : (IData)(vlTOPp->Azadi_top_verilator__DOT__clock));
+            : (IData)(vlTOPp->clock_i));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o 
         = (0x3fffffffcULL | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o 

@@ -1,8 +1,9 @@
 VAzadi_top_verilator__Trace__2.o: VAzadi_top_verilator__Trace__2.cpp \
- /usr/local/share/verilator/include/verilated_vcd_c.h \
+ /usr/local/share/verilator/include/verilated_fst_c.h \
  /usr/local/share/verilator/include/verilated.h \
  /usr/local/share/verilator/include/verilatedos.h \
  /usr/local/share/verilator/include/verilated_trace.h \
+ /usr/local/share/verilator/include/gtkwave/fstapi.h \
  VAzadi_top_verilator__Syms.h \
  /usr/local/share/verilator/include/verilated_heavy.h \
  VAzadi_top_verilator.h \

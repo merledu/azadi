@@ -12,7 +12,7 @@
 //==========
 
 class VAzadi_top_verilator__Syms;
-class VAzadi_top_verilator_VerilatedVcd;
+class VAzadi_top_verilator_VerilatedFst;
 
 
 //----------
@@ -43,7 +43,7 @@ VL_MODULE(VAzadi_top_verilator_gpio_reg_pkg) {
   public:
     static void _initial__TOP__gpio_reg_pkg__1(VAzadi_top_verilator__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
-    static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
+    static void traceInit(void* userp, VerilatedFst* tracep, uint32_t code) VL_ATTR_COLD;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 //----------

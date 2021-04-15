@@ -16,7 +16,7 @@ VM_THREADS = 4
 # Tracing output mode?  0/1 (from --trace/--trace-fst)
 VM_TRACE = 1
 # Tracing output mode in FST format?  0/1 (from --trace-fst)
-VM_TRACE_FST = 0
+VM_TRACE_FST = 1
 # Tracing threaded output mode?  0/1/N threads (from --trace-thread)
 VM_TRACE_THREADS = 0
 # Separate FST writer thread? 0/1 (from --trace-fst with --trace-thread > 0)
@@ -33,7 +33,6 @@ VM_CLASSES_FAST += \
 	VAzadi_top_verilator__5 \
 	VAzadi_top_verilator__6 \
 	VAzadi_top_verilator__7 \
-	VAzadi_top_verilator__8 \
 	VAzadi_top_verilator___024unit \
 	VAzadi_top_verilator_tlul_socket_m1__pi7 \
 	VAzadi_top_verilator_gpio_reg_pkg \
@@ -81,7 +80,7 @@ VM_SUPPORT_SLOW += \
 VM_GLOBAL_FAST += \
 	verilated \
 	verilated_dpi \
-	verilated_vcd_c \
+	verilated_fst_c \
 	verilated_threads \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization

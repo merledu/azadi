@@ -189,17 +189,27 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
             : (IData)(this->__PVT__hrequest));
 }
 
-void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__85(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__85\n"); );
+void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__71(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__71\n"); );
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o = 0U;
-    if ((1U & (IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__winner))) {
-        this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o = 0U;
-    }
-    if ((2U & (IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__winner))) {
-        this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o = 1U;
-    }
+    this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out 
+        = ((2U & (IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out)) 
+           | (1U & (IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__arb_req)));
+    this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out 
+        = ((1U & (IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out)) 
+           | (2U & (((IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
+                     << 1U) | (0xfffffffeU & (IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__arb_req)))));
+}
+
+void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__78(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__78\n"); );
+    VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__winner 
+        = ((IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
+           ^ (2U & ((IData)(this->__PVT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
+                    << 1U)));
 }
 
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__95(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
@@ -408,14 +418,6 @@ void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator
                         | (0x200000U & this->__PVT__dreq_fifo_i[2U]));
     this->tl_d_o[0U] = ((0xfffffffeU & this->tl_d_o[0U]) 
                         | (1U & this->__PVT__dreq_fifo_i[0U]));
-}
-
-void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__125(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM__125\n"); );
-    VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    this->tl_h_o[0U] = __PVT__gen_host_fifo__BRA__0__KET____DOT__u_hostfifo->tl_h_o;
-    this->tl_h_o[1U] = __PVT__gen_host_fifo__BRA__1__KET____DOT__u_hostfifo->tl_h_o;
 }
 
 void VAzadi_top_verilator_tlul_socket_m1__pi7::_settle__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DEBUG_ROM__21(VAzadi_top_verilator__Syms* __restrict vlSymsp) {

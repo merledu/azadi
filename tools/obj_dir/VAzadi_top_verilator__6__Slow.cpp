@@ -1263,7 +1263,7 @@ void VAzadi_top_verilator::_eval_initial(VAzadi_top_verilator__Syms* __restrict 
     // Body
     vlSymsp->TOP__gpio_reg_pkg._initial__TOP__gpio_reg_pkg__1(vlSymsp);
     __Vilp = 0U;
-    while ((__Vilp <= 0xa5U)) {
+    while ((__Vilp <= 0xa1U)) {
         vlTOPp->__Vm_traceActivity[__Vilp] = 1U;
         __Vilp = ((IData)(1U) + __Vilp);
     }
@@ -1271,14 +1271,16 @@ void VAzadi_top_verilator::_eval_initial(VAzadi_top_verilator__Syms* __restrict 
     vlSymsp->TOP__uart_reg_pkg._initial__TOP__uart_reg_pkg__1(vlSymsp);
     vlSymsp->TOP__rv_timer_reg_pkg._initial__TOP__rv_timer_reg_pkg__1(vlSymsp);
     vlTOPp->_initial__TOP__1(vlSymsp);
-    vlTOPp->__Vclklast__TOP__clock_i = vlTOPp->clock_i;
-    vlTOPp->__Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__clock 
-        = vlTOPp->__VinpClk__TOP__Azadi_top_verilator__DOT__clock;
     vlTOPp->__Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__reset_manager__DOT__rst_fq 
         = vlTOPp->__VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__reset_manager__DOT__rst_fq;
+    vlTOPp->__Vclklast__TOP__clock_i = vlTOPp->clock_i;
+    vlTOPp->__Vclklast__TOP__reset_ni = vlTOPp->reset_ni;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__clk 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__clk;
-    vlTOPp->__Vclklast__TOP__reset_ni = vlTOPp->reset_ni;
+    vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i;
+    vlTOPp->__Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni 
+        = vlTOPp->__VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__c 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__c;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__c 
@@ -1287,10 +1289,6 @@ void VAzadi_top_verilator::_eval_initial(VAzadi_top_verilator__Syms* __restrict 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clk;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clk_2 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clk_2;
-    vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i 
-        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i;
-    vlTOPp->__Vclklast__TOP____VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni 
-        = vlTOPp->__VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni;
     vlTOPp->__Vclklast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__tck_n 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__tck_n;
 }
@@ -1305,7 +1303,7 @@ void VAzadi_top_verilator::final() {
     // Body
     vlTOPp->_final_TOP(vlSymsp);
     __Vilp = 0U;
-    while ((__Vilp <= 0xa5U)) {
+    while ((__Vilp <= 0xa1U)) {
         vlTOPp->__Vm_traceActivity[__Vilp] = 1U;
         __Vilp = ((IData)(1U) + __Vilp);
     }
@@ -1320,7 +1318,7 @@ void VAzadi_top_verilator::_eval_settle(VAzadi_top_verilator__Syms* __restrict v
     // Body
     vlTOPp->_settle__TOP__2(vlSymsp);
     __Vilp = 0U;
-    while ((__Vilp <= 0xa5U)) {
+    while ((__Vilp <= 0xa1U)) {
         vlTOPp->__Vm_traceActivity[__Vilp] = 1U;
         __Vilp = ((IData)(1U) + __Vilp);
     }
@@ -1675,8 +1673,6 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     sclk_o = VL_RAND_RESET_I(1);
     sd_o = VL_RAND_RESET_I(1);
     sd_i = VL_RAND_RESET_I(1);
-    Azadi_top_verilator__DOT__clock = VL_RAND_RESET_I(1);
-    Azadi_top_verilator__DOT__counter = VL_RAND_RESET_I(28);
     Azadi_top_verilator__DOT__cio_jtag_tck = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__cio_jtag_tdi = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__cio_jtag_tms = VL_RAND_RESET_I(1);
@@ -7364,7 +7360,6 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vtable14_Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__rx_watermark_d[509] = 0U;
     __Vtable14_Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__rx_watermark_d[510] = 0U;
     __Vtable14_Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__rx_watermark_d[511] = 0U;
-    __Vdly__Azadi_top_verilator__DOT__counter = VL_RAND_RESET_I(28);
     __Vdlyvdim0__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_cdc__DOT__i_cdc_resp__DOT__storage__v0 = 0;
     __Vdlyvval__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_cdc__DOT__i_cdc_resp__DOT__storage__v0 = VL_RAND_RESET_Q(34);
     __Vdlyvset__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_cdc__DOT__i_cdc_resp__DOT__storage__v0 = 0;
@@ -7399,6 +7394,7 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vdlyvdim0__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_cdc__DOT__i_cdc_req__DOT__storage__v0 = 0;
     __Vdlyvval__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_cdc__DOT__i_cdc_req__DOT__storage__v0 = VL_RAND_RESET_Q(41);
     __Vdlyvset__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_cdc__DOT__i_cdc_req__DOT__storage__v0 = 0;
+    __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT__num_req_outstanding = VL_RAND_RESET_I(17);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_rsp_pending = VL_RAND_RESET_I(1);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT__num_req_outstanding = VL_RAND_RESET_I(17);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT__err_resp__DOT__err_rsp_pending = VL_RAND_RESET_I(1);
@@ -7411,6 +7407,7 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__err_resp__DOT__err_rsp_pending = VL_RAND_RESET_I(1);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q = VL_RAND_RESET_I(32);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_en_q = VL_RAND_RESET_I(32);
+    __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr = VL_RAND_RESET_I(2);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_sramreqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr = VL_RAND_RESET_I(2);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_wptr = VL_RAND_RESET_I(2);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__u_gateway__DOT__ia = VL_RAND_RESET_I(32);
@@ -7429,7 +7426,6 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__ct_1 = VL_RAND_RESET_I(16);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__ctrl = VL_RAND_RESET_I(14);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__clgen__DOT__cnt = VL_RAND_RESET_I(16);
-    __Vdly__sclk_o = VL_RAND_RESET_I(1);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__cnt = VL_RAND_RESET_I(8);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__tip = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(128, __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__data);
@@ -7437,10 +7433,8 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__programmer__DOT__r_SM_Main = VL_RAND_RESET_I(3);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__programmer__DOT__r_Clock_Count = VL_RAND_RESET_I(16);
     __Vdly__Azadi_top_verilator__DOT__top_verilator__DOT__programmer__DOT__r_Bit_Index = VL_RAND_RESET_I(3);
-    __VinpClk__TOP__Azadi_top_verilator__DOT__clock = VL_RAND_RESET_I(1);
     __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__reset_manager__DOT__rst_fq = VL_RAND_RESET_I(1);
     __VinpClk__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__trst_ni = VL_RAND_RESET_I(1);
-    __Vchglast__TOP__Azadi_top_verilator__DOT__clock = VL_RAND_RESET_I(1);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__lsu_req = VL_RAND_RESET_I(1);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mie_csr__DOT__rdata_q = VL_RAND_RESET_I(18);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__i_arbiter__DOT__gen_arbiter__DOT__index_nodes = VL_RAND_RESET_I(6);
@@ -7515,7 +7509,7 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DEBUG_ROM__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__arb_req = VL_RAND_RESET_I(2);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__TIMER_3__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__arb_req = VL_RAND_RESET_I(2);
     __Vchglast__TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__XBAR_PERI__dfifo_rspready = VL_RAND_RESET_I(2);
-    for (int __Vi0=0; __Vi0<166; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<162; ++__Vi0) {
         __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }
 }
