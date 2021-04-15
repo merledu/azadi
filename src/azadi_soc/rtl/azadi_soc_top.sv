@@ -22,8 +22,10 @@ module azadi_soc_top #(
   input  logic  uart_rx,
   
   // i2c0-periph interface
-  inout  logic  i2c0_scl_io,
-  output logic  i2c0_sda_io
+  input  logic i2c0_scl_in,
+  output logic i2c0_scl_out,
+  input  logic i2c0_sda_in, 
+  output logic i2c0_sda_out
 );
 
   logic RESET;
@@ -37,11 +39,7 @@ module azadi_soc_top #(
   assign gpio_in = gpio_i;
   assign gpio_o = gpio_out;
 
-  logic i2c0_scl_in; 
-  logic i2c0_scl_out;
   logic i2c0_scl_en; 
-  logic i2c0_sda_in; 
-  logic i2c0_sda_out;
   logic i2c0_sda_en;
         
   tlul_pkg::tl_h2d_t ifu_to_xbar;
@@ -90,18 +88,6 @@ module azadi_soc_top #(
 
   // Interrupt source list 
   logic [31:0] intr_gpio;
-<<<<<<< HEAD
-  logic        intr_uart0_tx_watermark;
-  logic        intr_uart0_rx_watermark;
-  logic        intr_uart0_tx_empty;
-  logic        intr_uart0_rx_overflow;
-  logic        intr_uart0_rx_frame_err;
-  logic        intr_uart0_rx_break_err;
-  logic        intr_uart0_rx_timeout;
-  logic        intr_uart0_rx_parity_err;
-  logic        intr_req;
-  logic        intr_spi;
-=======
 
   //uart interrupts
   logic intr_uart0_tx_watermark;
@@ -132,7 +118,6 @@ module azadi_soc_top #(
   logic intr_host_timeout; 
 
   logic intr_req;
->>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 
   assign intr_vector = {  
       // gpio
@@ -165,7 +150,7 @@ module azadi_soc_top #(
       intr_uart0_tx_empty,
       intr_uart0_rx_watermark,
       intr_uart0_tx_watermark,
-      intr_spi,
+      //intr_spi,
       1'b0
   };
 
@@ -282,270 +267,6 @@ module azadi_soc_top #(
 
   // main xbar module
   tl_xbar_main main_swith (
-<<<<<<< HEAD
-  .clk_main_i         (clock),
-  .rst_main_ni        (system_rst_ni),
-
-  // Host interfaces
-  .tl_brqif_i         (ifu_to_xbar),
-  .tl_brqif_o         (xbar_to_ifu),
-  .tl_brqlsu_i        (lsu_to_xbar),
-  .tl_brqlsu_o        (xbar_to_lsu),
-  .tl_dm_sba_i        (dm_to_xbar),
-  .tl_dm_sba_o        (xbar_to_dm),
-
-  // Device interfaces
-  .tl_iccm_o          (xbar_to_iccm),
-  .tl_iccm_i          (iccm_to_xbar),
-  .tl_debug_rom_o     (dbgrom_to_xbar),
-  .tl_debug_rom_i     (xbar_to_dbgrom),
-  .tl_dccm_o          (xbar_to_dccm),
-  .tl_dccm_i          (dccm_to_xbar),
-  .tl_flash_ctrl_o    (),
-  .tl_flash_ctrl_i    (),
-  .tl_timer0_o        (xbar_to_timer),
-  .tl_timer0_i        (timer_to_xbar),
-  .tl_timer1_o        (),
-  .tl_timer1_i        (),
-  .tl_timer2_o        (),
-  .tl_timer2_i        (),
-  .tl_timer3_o        (),
-  .tl_timer3_i        (),
-  .tl_timer4_o        (),
-  .tl_timer4_i        (),
-  .tl_plic_o          (plic_req),
-  .tl_plic_i          (plic_resp),
-  .tl_xbar_peri_o     (xbarm_to_xbarp),
-  .tl_xbar_peri_i     (xbarp_to_xbarm),
-
-  .scanmode_i         ()
-);
-
-// dummy data memory
-
-data_mem dccm(
-  .clock    (clock),
-  .reset    (system_rst_ni),
-
-// tl-ul insterface
-  .tl_d_i   (xbar_to_dccm),
-  .tl_d_o   (dccm_to_xbar)
-);
-
-rv_timer timer0(
-  .clk_i  (clock),
-  .rst_ni (system_rst_ni),
-
-  .tl_i   (xbar_to_timer),
-  .tl_o   (timer_to_xbar),
-
-  .intr_timer_expired_0_0_o (intr_timer)
-);
-
-
-//peripheral xbar
-
-xbar_periph periph_switch (
-  .clk_peri_i         (clock),
-  .rst_peri_ni        (system_rst_ni),
-
-  // Host interfaces
-  .tl_xbar_main_i     (xbarm_to_xbarp),
-  .tl_xbar_main_o     (xbarp_to_xbarm),
-
-  // Device interfaces
-  .tl_uart0_o         (xbar_to_uart),
-  .tl_uart0_i         (uart_to_xbar),
-  .tl_uart1_o         (),
-  .tl_uart1_i         (),
-  .tl_spi0_o          (xbar_to_spi),
-  .tl_spi0_i          (spi_to_xbar),
-  .tl_spi1_o          (),
-  .tl_spi1_i          (),
-  .tl_spi2_o          (),
-  .tl_spi2_i          (),
-  .tl_pwm_o           (xbar_to_pwm),
-  .tl_pwm_i           (pwm_to_xbar),
-  .tl_gpio_o          (xbarp_to_gpio),
-  .tl_gpio_i          (gpio_to_xbarp),
-  .tl_i2c0_o          (),
-  .tl_i2c0_i          (),
-  .tl_i2c1_o          (),
-  .tl_i2c1_i          (),
-  .tl_can0_o          (),
-  .tl_can0_i          (),
-  .tl_can1_o          (),
-  .tl_can1_i          (),
-  .tl_adc_o           (),
-  .tl_adc_i           (),
-  .tl_qspi_o          (),
-  .tl_qspi_i          (),
-
-  .scanmode_i         ()
-);
-
-
-// PWM module
-
-pwm_top u_pwm(
-
-  .clk_i   (clock),
-  .rst_ni  (system_rst_ni),
-
-  .tl_i    (xbar_to_pwm),
-  .tl_o    (pwm_to_xbar),
-
-
-  .pwm_o   (pwm_o),
-  .pwm_o_2 (pwm_o_2)
-);
-
-
-// spi module 
-
-spi_top u_spi_host(
-
-  .clk_i       (clock),
-  .rst_ni      (system_rst_ni),
-
-  .tl_i        (xbar_to_spi),
-  .tl_o        (spi_to_xbar),
-
-  // SPI signals                  
-  .intr_o      (intr_spi),                   
-  .ss_o        (ss_o),         
-  .sclk_o      (sclk_o),       
-  .sd_o        (sd_o),       
-  .sd_i        (sd_i)
-);
-
-
-//GPIO module
- gpio GPIO (
-  .clk_i          (clock),
-  .rst_ni         (system_rst_ni),
-
-  // Below Regster interface can be changed
-  .tl_i           (xbarp_to_gpio),
-  .tl_o           (gpio_to_xbarp),
-
-  .cio_gpio_i     ({12'b0,gpio_in}),
-  .cio_gpio_o     (gpio_out),
-  .cio_gpio_en_o  (),
-
-  .intr_gpio_o    (intr_gpio )  
-);
-
-
-
-
- iccm_controller u_dut(
-	.clk_i       (clock),
-	.rst_ni      (RESET),
-	.rx_dv_i     (rx_dv_i),
-	.rx_byte_i   (rx_byte_i),
-	.we_o        (iccm_cntrl_we),
-	.addr_o      (iccm_cntrl_addr),
-	.wdata_o     (iccm_cntrl_data),
-	.reset_o     (iccm_cntrl_reset)
-);
-
- uart_receiver programmer (
- .i_Clock       (clock),
- .rst_ni        (RESET),
- .i_Rx_Serial   (uart_rx_i),
- .CLKS_PER_BIT  (15'd87),
- .o_Rx_DV       (rx_dv_i),
- .o_Rx_Byte     (rx_byte_i)
- );
-
-
-instr_mem_top iccm (
-  .clock      (clock),
-  .reset      (system_rst_ni),
-
-  .req        (req_i),
-  .addr       (tlul_addr),
-  .wdata      (),
-  .rdata      (tlul_data),
-  .rvalid     (instr_valid),
-  .we         ('0)
-);
-
- tlul_sram_adapter #(
-  .SramAw       (12),
-  .SramDw       (32), 
-  .Outstanding  (2),  
-  .ByteAccess   (1),
-  .ErrOnWrite   (0),  // 1: Writes not allowed, automatically error
-  .ErrOnRead    (0)   // 1: Reads not allowed, automatically error  
-
-) inst_mem (
-    .clk_i     (clock),
-    .rst_ni    (system_rst_ni),
-    .tl_i      (xbar_to_iccm),
-    .tl_o      (iccm_to_xbar), 
-    .req_o     (req_i),
-    .gnt_i     (1'b1),
-    .we_o      (),
-    .addr_o    (tlul_addr),
-    .wdata_o   (),
-    .wmask_o   (),
-    .rdata_i   ((reset_ni) ? tlul_data: '0),
-    .rvalid_i  (instr_valid),
-    .rerror_i  (2'b0)
-    );
-
-rstmgr reset_manager(
-  .clk_i(clock),
-  .rst_ni(reset_ni),
-  .ndmreset (dbg_rst),
-  .sys_rst_ni(system_rst_ni)
-);
-
-
-rv_plic intr_controller (
-  .clk_i(clock),
-  .rst_ni(system_rst_ni),
-
-  // Bus Interface (device)
-  .tl_i (plic_req),
-  .tl_o (plic_resp),
-
-  // Interrupt Sources
-  .intr_src_i (intr_vector),
-
-  // Interrupt notification to targets
-  .irq_o (intr_req),
-  .irq_id_o(),
-
-  .msip_o()
-);
-
-uart u_uart0(
-  .clk_i                   (clock             ),
-  .rst_ni                  (system_rst_ni     ),
-
-  // Bus Interface
-  .tl_i                    (xbar_to_uart      ),
-  .tl_o                    (uart_to_xbar      ),
-
-  // Generic IO
-  .cio_rx_i                (uart_rx           ),
-  .cio_tx_o                (uart_tx           ),
-  .cio_tx_en_o             (                  ),
-
-  // Interrupts
-  .intr_tx_watermark_o     (intr_uart0_tx_watermark ),
-  .intr_rx_watermark_o     (intr_uart0_rx_watermark ),
-  .intr_tx_empty_o         (intr_uart0_tx_empty     ),
-  .intr_rx_overflow_o      (intr_uart0_rx_overflow  ),
-  .intr_rx_frame_err_o     (intr_uart0_rx_frame_err ),
-  .intr_rx_break_err_o     (intr_uart0_rx_break_err ),
-  .intr_rx_timeout_o       (intr_uart0_rx_timeout   ),
-  .intr_rx_parity_err_o    (intr_uart0_rx_parity_err) 
-);
-=======
     .clk_main_i         (clock),
     .rst_main_ni        (system_rst_ni),
 
@@ -804,9 +525,5 @@ uart u_uart0(
     .intr_ack_stop_o         (intr_ack_stop        ),
     .intr_host_timeout_o     (intr_host_timeout    )
   );
-
-  assign i2c0_scl_io = (i2c0_scl_en) ? i2c0_scl_out : i2c0_scl_in;
-  assign i2c0_sda_io = (i2c0_sda_en) ? i2c0_sda_out : i2c0_sda_in;
->>>>>>> 8883d9b324c489ad01ca11f681acb89fb7eab79d
 
 endmodule

@@ -1,11 +1,14 @@
 # Azadi RISC-V SoC
 Azadi is an SoC with 32-bit RISC-V uni-core "buraq", buraq is in-order core with a 3-stage pipeline that implements the RV32IMFD instruction set architecture.
 
+## Verification Status
+The verifcation is being done by using the Caravel-Tests repo, the status of all the tests can be found [Verification Basic Tests Sheet.](https://docs.google.com/spreadsheets/d/1gIzSU5mb4L3pPdiJr7MkdhvupT7p5VF2qy1PzDwq-5I/edit#gid=1374860298)
+
 ## Quickstart guide
 
 1. Clone the repository
-1. Setup AZADI_ROOT to point to the path in your local filesystem
-1. Run make with tools/Makefile
+2. Setup AZADI_ROOT to point to the path in your local filesystem
+3. Run make with tools/Makefile
 
 While in a work directory:
 

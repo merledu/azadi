@@ -1,0 +1,3 @@
+[submodule "Caravel-Tests"]
+	path = Caravel-Tests
+	url = https://github.com/merledu/Caravel-Tests

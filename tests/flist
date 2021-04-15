@@ -213,3 +213,8 @@ $AZADI_ROOT/src/primitives/rtl/prim_generic_flop_2sync.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_gating.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_flop.sv
 $AZADI_ROOT/src/TileLink/rtl/xbar_mai_t.sv
+
+$AZADI_ROOT/src/spi_host/rtl/spi_clgen.v
+$AZADI_ROOT/src/spi_host/rtl/spi_core.v
+$AZADI_ROOT/src/spi_host/rtl/spi_shift.v
+$AZADI_ROOT/src/spi_host/rtl/spi_top.sv
