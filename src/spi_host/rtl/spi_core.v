@@ -1,4 +1,4 @@
-
+`include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
 module spi_core
 (
   // tlul signals
@@ -11,7 +11,7 @@ module spi_core
   input         we_i,       
   input         re_i,        
   output        error_o,       
-  output        intr_o,         
+  output   reg     intr_o,         
                                                      
   // SPI signals                                     
   output          [`SPI_SS_NB-1:0] ss_o,         // slave select

@@ -42,7 +42,7 @@ module brq_fp_register_file_ff #(
 import brq_pkg::rvfloat_e;
 
   localparam int unsigned ADDR_WIDTH = (RVF==brq_pkg::RV64FDouble) ? 6 : 5;
-  localparam int unsigned NUM_WORDS  = 2**ADDR_WIDTH;
+  localparam int unsigned NUM_WORDS  = (RVF==brq_pkg::RV64FDouble) ? 64 : 32;
 
   logic [NUM_WORDS-1:0][DataWidth-1:0] rf_reg;
   logic [NUM_WORDS-1:0][DataWidth-1:0] rf_reg_q;
@@ -61,10 +61,10 @@ import brq_pkg::rvfloat_e;
       end else if(we_a_dec[i]) begin
         rf_reg_q[i] <= wdata_a_i;
       end
-      else begin
-        rf_reg_q[5] <= 32'h41a00000;
-        rf_reg_q[6] <= 32'h41200000;
-      end
+//      else begin
+//        rf_reg_q[5] <= 32'h41a00000;
+//        rf_reg_q[6] <= 32'h41200000;
+//      end
     end
   end
 

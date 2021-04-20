@@ -34,7 +34,7 @@ module data_mem
   assign data_we[1:0] = (wmask_i[23:16] != 8'b0) ? 2'b11: 2'b0;
   assign data_we[3:2] = (wmask_i[31:24] != 8'b0) ? 2'b11: 2'b0; 
   
-DFFRAMD dccm (
+DFFRAM dccm (
 
     .CLK    (clock),
     .EN     (req_i), // chip enable

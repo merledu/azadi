@@ -6,11 +6,11 @@ module azadi_soc_top #(
 )(
   input clock,
   input reset_ni,
-  input uart_rx_i,
+//  input uart_rx_i,
 
   input  logic [19:0] gpio_i,
   output logic [19:0] gpio_o,
-//  output logic [19:0] gpio_oe
+  output logic [19:0] gpio_oe,
 
   // jtag interface 
   input               jtag_tck_i,
@@ -36,11 +36,36 @@ module azadi_soc_top #(
   input                            sd_i 
 
 );
+//logic clock;
+//logic reset_ni;
+//assign reset_ni = ~reset;
+//
+//clk_wiz_0 clk_m (
+//  // Clock out ports
+//  .clk_out1(clock),
+//  // Status and control signals
+//  .resetn(reset_ni),
+//  .locked(),
+// // Clock in ports
+//  .clk_in1(clk_i)
+// );
 
-// added by zeeshan
+  logic      uart_rx_i;
 
-logic RESET;
-assign RESET = ~reset_ni;
+//  logic               jtag_tck_i;
+//  logic               jtag_tms_i;
+//  logic               jtag_trst_ni;
+//  logic               jtag_tdi_i;
+//  logic              jtag_tdo_o;
+//
+//  logic [19:0] gpio_i;
+//  logic [19:0] gpio_o;
+//
+// logic          [`SPI_SS_NB-1:0] ss_o;        
+// logic                           sclk_o;      
+// logic                           sd_o;       
+// logic                            sd_i; 
+
 
 logic system_rst_ni;
 
@@ -136,6 +161,8 @@ logic [11:0] iccm_cntrl_addr;
 logic [31:0] iccm_cntrl_data;
 logic iccm_cntrl_we;
 
+logic intr_timer;
+
 // jtag interface 
 
   jtag_pkg::jtag_req_t jtag_req;
@@ -163,7 +190,7 @@ brq_core_top #(
     .MHPMCounterNum   (0), 
     .MHPMCounterWidth (40), 
     .RV32E            (1'b0), 
-    .RV32M            (brq_pkg::RV32MFast), 
+    .RV32M            (brq_pkg::RV32MSlow), 
     .RV32B            (brq_pkg::RV32BNone), 
     .RegFile          (brq_pkg::RegFileFF), 
     .BranchTargetALU  (1'b0), 

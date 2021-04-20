@@ -1,6 +1,6 @@
 
-
-module brq_fpnew_top_wrapper(
+`include "/home/merl/github_repos/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
+module brq_fpnew_top_wrapper#(
   parameter fpnew_pkg::fpu_features_t Features = fpnew_pkg::RV64D_Xsflt
 ) (
   input logic                   clk_i,
@@ -34,7 +34,7 @@ module brq_fpnew_top_wrapper(
   output logic                  fp_rf_wen_o,
 
   // Controlling Signals
-  logic input                   fp_rf_wen_wb_i  
+  input logic                   fp_rf_wen_wb_i  
 );
 
 import fpnew_pkg::fpu_features_t;

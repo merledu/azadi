@@ -79,9 +79,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   //`ASSERT_PULSE(claimPulse, claim_re[i])
   //`ASSERT_PULSE(completePulse, complete_we[i])
 
-  `ASSERT(onehot0Claim, $onehot0(claim_re))
 
-  `ASSERT(onehot0Complete, $onehot0(complete_we))
 
   //////////////
   // Priority //
@@ -220,16 +218,16 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   );
 
   // Assertions
-  `ASSERT_KNOWN(TlDValidKnownO_A, tl_o.d_valid)
-  `ASSERT_KNOWN(TlAReadyKnownO_A, tl_o.a_ready)
-  `ASSERT_KNOWN(IrqKnownO_A, irq_o)
-  `ASSERT_KNOWN(MsipKnownO_A, msip_o)
-  for (genvar k = 0; k < NumTarget; k++) begin : gen_irq_id_known
-    `ASSERT_KNOWN(IrqIdKnownO_A, irq_id_o[k])
-  end
+//  `ASSERT_KNOWN(TlDValidKnownO_A, tl_o.d_valid)
+//  `ASSERT_KNOWN(TlAReadyKnownO_A, tl_o.a_ready)
+//  `ASSERT_KNOWN(IrqKnownO_A, irq_o)
+//  `ASSERT_KNOWN(MsipKnownO_A, msip_o)
+//  for (genvar k = 0; k < NumTarget; k++) begin : gen_irq_id_known
+//    `ASSERT_KNOWN(IrqIdKnownO_A, irq_id_o[k])
+//  end
 
-  // Assume
-  `ASSUME(Irq0Tied_A, intr_src_i[0] == 1'b0)
+//  // Assume
+//  `ASSUME(Irq0Tied_A, intr_src_i[0] == 1'b0)
 
 endmodule
 
