@@ -4,7 +4,7 @@
 #include <string>
 #include "VAzadi_top_verilator.h"
 #include "verilated.h"
-#include "verilated_fst_c.h"
+#include "verilated_vcd_c.h"
 #include "VAzadi_top_verilator__Dpi.h"
 
 
@@ -28,7 +28,7 @@ int main (int argc, char **argv) {
     //VerilatedVcdC* tfp = NULL;
 
     Verilated::traceEverOn(true);
-    VerilatedFstC* tfp = new VerilatedFstC;
+    VerilatedVcdC* tfp = new VerilatedVcdC;
     // if initialized above
     //tfp = new VerilatedVcdC;
 
@@ -45,7 +45,7 @@ int main (int argc, char **argv) {
     { 
         top->clock_i = top->clock_i ? 0 : 1; 
               // Toggle clock
-        if(main_time == 200)
+        if(main_time == 4)
         {
             top -> reset_ni = 0;
         }
