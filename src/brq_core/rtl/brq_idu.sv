@@ -182,7 +182,6 @@ module brq_idu #(
     output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
     output brq_pkg::op_b_sel_e    fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
                                                            // immediate 
-    output brq_pkg::fp_type_e    fp_floating_type_o,       // Single precision or double 
     output logic [4:0]           fp_rf_raddr_a_o,
     output logic [4:0]           fp_rf_raddr_b_o,
     output logic [4:0]           fp_rf_raddr_c_o,
@@ -504,13 +503,9 @@ module brq_idu #(
       // Floating point extensions IO
       .fp_rounding_mode_o              ( fp_rounding_mode_o    ),   // defines the rounding mode 
       .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel_o ),   // operand b selection: reg value or immediate                       
-      .fp_floating_type_o              ( fp_floating_type_o    ),   // Single precision or double 
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a_o       ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b_o       ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c_o       ),
-      .fp_rf_ren_a_o                   ( fp_rf_ren_a_o         ),     
-      .fp_rf_ren_b_o                   ( fp_rf_ren_b_o         ),     
-      .fp_rf_ren_c_o                   ( fp_rf_ren_c_o         ),
       .fp_rf_waddr_o                   ( fp_rf_waddr_o         ),
       .fp_rf_we_o                      ( fp_rf_we_o            ),
       .fp_alu_operator_o               ( fp_alu_operator_o     ),

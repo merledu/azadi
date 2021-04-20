@@ -1651,6 +1651,62 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
                                                            >> 5U)))))
                                         ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__ctrl_2)
                                         : 0U))))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
+        = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+            [5U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [5U][2U] 
+                                                >> 0xdU)))
+                                   ? (0U != (0xfU & 
+                                             (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [5U][2U] 
+                                                << 0x1fU) 
+                                               | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                  [5U][1U] 
+                                                  >> 1U)) 
+                                              & ((IData)(1U) 
+                                                 << 
+                                                 (3U 
+                                                  & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                      [5U][2U] 
+                                                      << 0x1bU) 
+                                                     | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                        [5U][1U] 
+                                                        >> 5U)))))))
+                                   : ((1U == (3U & 
+                                              (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                               [5U][2U] 
+                                               >> 0xdU)))
+                                       ? ((0x40U & 
+                                           vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                           [5U][1U])
+                                           ? (3U == 
+                                              (3U & 
+                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                 [5U][2U] 
+                                                 << 0x1dU) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                   [5U][1U] 
+                                                   >> 3U))))
+                                           : (3U == 
+                                              (3U & 
+                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                 [5U][2U] 
+                                                 << 0x1fU) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                   [5U][1U] 
+                                                   >> 1U)))))
+                                       : ((2U == (3U 
+                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                     [5U][2U] 
+                                                     >> 0xdU))) 
+                                          & (0xfU == 
+                                             (0xfU 
+                                              & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                  [5U][2U] 
+                                                  << 0x1fU) 
+                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                    [5U][1U] 
+                                                    >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__u_err__DOT__addr_sz_chk 
         = (1U & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                   [5U][2U] >> 0x15U) & ((0U == (3U 
@@ -1742,62 +1798,6 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                                                     [5U][2U] 
                                                     >> 0xdU)))))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
-        = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-            [5U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [5U][2U] 
-                                                >> 0xdU)))
-                                   ? (0U != (0xfU & 
-                                             (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [5U][2U] 
-                                                << 0x1fU) 
-                                               | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [5U][1U] 
-                                                  >> 1U)) 
-                                              & ((IData)(1U) 
-                                                 << 
-                                                 (3U 
-                                                  & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                      [5U][2U] 
-                                                      << 0x1bU) 
-                                                     | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                        [5U][1U] 
-                                                        >> 5U)))))))
-                                   : ((1U == (3U & 
-                                              (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                               [5U][2U] 
-                                               >> 0xdU)))
-                                       ? ((0x40U & 
-                                           vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                           [5U][1U])
-                                           ? (3U == 
-                                              (3U & 
-                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [5U][2U] 
-                                                 << 0x1dU) 
-                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [5U][1U] 
-                                                   >> 3U))))
-                                           : (3U == 
-                                              (3U & 
-                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [5U][2U] 
-                                                 << 0x1fU) 
-                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [5U][1U] 
-                                                   >> 1U)))))
-                                       : ((2U == (3U 
-                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                     [5U][2U] 
-                                                     >> 0xdU))) 
-                                          & (0xfU == 
-                                             (0xfU 
-                                              & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [5U][2U] 
-                                                  << 0x1fU) 
-                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                    [5U][1U] 
-                                                    >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__timer0__DOT__mtime_d[0U] 
         = (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__timer0__DOT__mtime
            [0U] + (QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__timer0__DOT__step
@@ -1813,6 +1813,62 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__timer0__DOT____Vcellinp__gen_harts__BRA__0__KET____DOT__u_core__mtimecmp[0U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__timer0__DOT__mtimecmp
         [0U][0U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
+        = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+            [2U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [2U][2U] 
+                                                >> 0xdU)))
+                                   ? (0U != (0xfU & 
+                                             (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [2U][2U] 
+                                                << 0x1fU) 
+                                               | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                  [2U][1U] 
+                                                  >> 1U)) 
+                                              & ((IData)(1U) 
+                                                 << 
+                                                 (3U 
+                                                  & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                      [2U][2U] 
+                                                      << 0x1bU) 
+                                                     | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                        [2U][1U] 
+                                                        >> 5U)))))))
+                                   : ((1U == (3U & 
+                                              (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                               [2U][2U] 
+                                               >> 0xdU)))
+                                       ? ((0x40U & 
+                                           vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                           [2U][1U])
+                                           ? (3U == 
+                                              (3U & 
+                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                 [2U][2U] 
+                                                 << 0x1dU) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                   [2U][1U] 
+                                                   >> 3U))))
+                                           : (3U == 
+                                              (3U & 
+                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                 [2U][2U] 
+                                                 << 0x1fU) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                   [2U][1U] 
+                                                   >> 1U)))))
+                                       : ((2U == (3U 
+                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                     [2U][2U] 
+                                                     >> 0xdU))) 
+                                          & (0xfU == 
+                                             (0xfU 
+                                              & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                  [2U][2U] 
+                                                  << 0x1fU) 
+                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                    [2U][1U] 
+                                                    >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__u_err__DOT__addr_sz_chk 
         = (1U & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                   [2U][2U] >> 0x15U) & ((0U == (3U 
@@ -1904,62 +1960,6 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                                                     [2U][2U] 
                                                     >> 0xdU)))))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
-        = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-            [2U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [2U][2U] 
-                                                >> 0xdU)))
-                                   ? (0U != (0xfU & 
-                                             (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [2U][2U] 
-                                                << 0x1fU) 
-                                               | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [2U][1U] 
-                                                  >> 1U)) 
-                                              & ((IData)(1U) 
-                                                 << 
-                                                 (3U 
-                                                  & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                      [2U][2U] 
-                                                      << 0x1bU) 
-                                                     | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                        [2U][1U] 
-                                                        >> 5U)))))))
-                                   : ((1U == (3U & 
-                                              (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                               [2U][2U] 
-                                               >> 0xdU)))
-                                       ? ((0x40U & 
-                                           vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                           [2U][1U])
-                                           ? (3U == 
-                                              (3U & 
-                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [2U][2U] 
-                                                 << 0x1dU) 
-                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [2U][1U] 
-                                                   >> 3U))))
-                                           : (3U == 
-                                              (3U & 
-                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [2U][2U] 
-                                                 << 0x1fU) 
-                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [2U][1U] 
-                                                   >> 1U)))))
-                                       : ((2U == (3U 
-                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                     [2U][2U] 
-                                                     >> 0xdU))) 
-                                          & (0xfU == 
-                                             (0xfU 
-                                              & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [2U][2U] 
-                                                  << 0x1fU) 
-                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                    [2U][1U] 
-                                                    >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__gen_target__BRA__0__KET____DOT__u_target__DOT__is_tree 
         = ((0x7fffffff7fffffffULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__gen_target__BRA__0__KET____DOT__u_target__DOT__is_tree) 
            | ((QData)((IData)((1U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__ip 
@@ -2485,6 +2485,62 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
                                                    [0U][1U] 
                                                    >> 5U))))) 
               << 0xbU));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
+        = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+            [6U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [6U][2U] 
+                                                >> 0xdU)))
+                                   ? (0U != (0xfU & 
+                                             (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [6U][2U] 
+                                                << 0x1fU) 
+                                               | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                  [6U][1U] 
+                                                  >> 1U)) 
+                                              & ((IData)(1U) 
+                                                 << 
+                                                 (3U 
+                                                  & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                      [6U][2U] 
+                                                      << 0x1bU) 
+                                                     | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                        [6U][1U] 
+                                                        >> 5U)))))))
+                                   : ((1U == (3U & 
+                                              (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                               [6U][2U] 
+                                               >> 0xdU)))
+                                       ? ((0x40U & 
+                                           vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                           [6U][1U])
+                                           ? (3U == 
+                                              (3U & 
+                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                 [6U][2U] 
+                                                 << 0x1dU) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                   [6U][1U] 
+                                                   >> 3U))))
+                                           : (3U == 
+                                              (3U & 
+                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                 [6U][2U] 
+                                                 << 0x1fU) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                   [6U][1U] 
+                                                   >> 1U)))))
+                                       : ((2U == (3U 
+                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                     [6U][2U] 
+                                                     >> 0xdU))) 
+                                          & (0xfU == 
+                                             (0xfU 
+                                              & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                  [6U][2U] 
+                                                  << 0x1fU) 
+                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                    [6U][1U] 
+                                                    >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_reg_if__DOT__u_err__DOT__addr_sz_chk 
         = (1U & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                   [6U][2U] >> 0x15U) & ((0U == (3U 
@@ -2576,61 +2632,61 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                                                     [6U][2U] 
                                                     >> 0xdU)))))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__u_reg__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
         = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-            [6U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [6U][2U] 
+            [0U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
+                                                [0U][2U] 
                                                 >> 0xdU)))
                                    ? (0U != (0xfU & 
                                              (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [6U][2U] 
+                                                [0U][2U] 
                                                 << 0x1fU) 
                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [6U][1U] 
+                                                  [0U][1U] 
                                                   >> 1U)) 
                                               & ((IData)(1U) 
                                                  << 
                                                  (3U 
                                                   & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                      [6U][2U] 
+                                                      [0U][2U] 
                                                       << 0x1bU) 
                                                      | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                        [6U][1U] 
+                                                        [0U][1U] 
                                                         >> 5U)))))))
                                    : ((1U == (3U & 
                                               (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                               [6U][2U] 
+                                               [0U][2U] 
                                                >> 0xdU)))
                                        ? ((0x40U & 
                                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                           [6U][1U])
+                                           [0U][1U])
                                            ? (3U == 
                                               (3U & 
                                                ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [6U][2U] 
+                                                 [0U][2U] 
                                                  << 0x1dU) 
                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [6U][1U] 
+                                                   [0U][1U] 
                                                    >> 3U))))
                                            : (3U == 
                                               (3U & 
                                                ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [6U][2U] 
+                                                 [0U][2U] 
                                                  << 0x1fU) 
                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [6U][1U] 
+                                                   [0U][1U] 
                                                    >> 1U)))))
                                        : ((2U == (3U 
                                                   & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                     [6U][2U] 
+                                                     [0U][2U] 
                                                      >> 0xdU))) 
                                           & (0xfU == 
                                              (0xfU 
                                               & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [6U][2U] 
+                                                  [0U][2U] 
                                                   << 0x1fU) 
                                                  | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                    [6U][1U] 
+                                                    [0U][1U] 
                                                     >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__u_reg__DOT__u_reg_if__DOT__u_err__DOT__addr_sz_chk 
         = (1U & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
@@ -2723,62 +2779,6 @@ void VAzadi_top_verilator::_settle__TOP__37(VAzadi_top_verilator__Syms* __restri
                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                                                     [0U][2U] 
                                                     >> 0xdU)))))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__u_reg__DOT__u_reg_if__DOT__u_err__DOT__fulldata_chk 
-        = ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-            [0U][2U] >> 0x15U) & ((0U == (3U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [0U][2U] 
-                                                >> 0xdU)))
-                                   ? (0U != (0xfU & 
-                                             (((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                [0U][2U] 
-                                                << 0x1fU) 
-                                               | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [0U][1U] 
-                                                  >> 1U)) 
-                                              & ((IData)(1U) 
-                                                 << 
-                                                 (3U 
-                                                  & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                      [0U][2U] 
-                                                      << 0x1bU) 
-                                                     | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                        [0U][1U] 
-                                                        >> 5U)))))))
-                                   : ((1U == (3U & 
-                                              (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                               [0U][2U] 
-                                               >> 0xdU)))
-                                       ? ((0x40U & 
-                                           vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                           [0U][1U])
-                                           ? (3U == 
-                                              (3U & 
-                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [0U][2U] 
-                                                 << 0x1dU) 
-                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [0U][1U] 
-                                                   >> 3U))))
-                                           : (3U == 
-                                              (3U & 
-                                               ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                 [0U][2U] 
-                                                 << 0x1fU) 
-                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                   [0U][1U] 
-                                                   >> 1U)))))
-                                       : ((2U == (3U 
-                                                  & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                     [0U][2U] 
-                                                     >> 0xdU))) 
-                                          & (0xfU == 
-                                             (0xfU 
-                                              & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                  [0U][2U] 
-                                                  << 0x1fU) 
-                                                 | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
-                                                    [0U][1U] 
-                                                    >> 1U))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_reg_if__DOT__a_ack 
         = (1U & ((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_h2d
                   [6U][2U] >> 0x15U) & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__tl_reg_d2h)));

@@ -112,7 +112,6 @@ module brq_core #(
   logic                   in_valid_c2fpu;   // valid - from FPU to core 
   logic                   out_ready_fpu2c;  // ready - from FPU to core
   logic                   out_valid_fpu2c;  // valid - from core to FPU
-  logic                   ready_id_fpu;     // select which ready signal will go to dec
   logic                   valid_id_fpu;     // select which valid signal will go to dec
   logic                   fp_rm_dynamic;
   logic                   fp_alu_op_mod;  
@@ -141,6 +140,7 @@ module brq_core #(
   logic                   fp_rf_write_wb;
   logic [31:0]            rf_int_fp_lsu;
   logic                   fp_swap_oprnds;
+  logic                   fpu_is_busy;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
@@ -683,9 +683,6 @@ module brq_core #(
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
-      .fp_rf_ren_a_o                   ( ), //fp_rf_ren_a           ),     
-      .fp_rf_ren_b_o                   ( ), //fp_rf_ren_b           ),     
-      .fp_rf_ren_c_o                   ( ), //fp_rf_ren_c           ),
       .fp_rf_waddr_o                   ( fp_rf_waddr_id        ),
       .fp_rf_we_o                      ( fp_rf_wen_id          ),
       .fp_alu_operator_o               ( fp_alu_operator       ),
@@ -698,7 +695,7 @@ module brq_core #(
       .use_fp_rs1_o                    ( use_fp_rs1            ),
       .use_fp_rs2_o                    ( use_fp_rs2            ),
       .use_fp_rd_o                     ( use_fp_rd             ),
-      .fpu_busy_i                      ( fp_busy               ),
+      .fpu_busy_i                      ( fpu_is_busy           ),
       .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
       .fp_swap_oprnds_o                ( fp_swap_oprnds        )
 
@@ -1187,7 +1184,6 @@ module brq_core #(
   assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
   assign in_ready_c2fpu = multdiv_ready_id;
   assign in_valid_c2fpu = (instr_valid_id & is_fp_instr) & ~busy;
-  // assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
   assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;
   
   logic busy;
@@ -1223,6 +1219,7 @@ module brq_core #(
     .busy_o         ( fp_busy          )
   );
 
+  assign fpu_is_busy = fp_busy & (~out_valid_fpu2c);
   assign data_wb = is_fp_instr ? fp_result : result_ex;
 
   // These assertions are in top-level as instr_valid_id required as the enable term

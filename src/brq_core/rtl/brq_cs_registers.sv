@@ -563,13 +563,13 @@ module brq_cs_registers #(
 
         CSR_FFLAG : begin
           fflags_en = 1'b1;
-          fflags_d  = csr_wdata_int;
+          fflags_d  = fpnew_pkg::status_t'(csr_wdata_int[4:0]);
           fcsr_d    = {frm_q, fflags_q};
         end
 
         CSR_FRM: begin
           frm_en = 1'b1;
-          frm_d  = csr_wdata_int; 
+          frm_d  = roundmode_e'(csr_wdata_int[7:5]); 
           fcsr_d = {frm_q, fflags_q};
         end
 
@@ -824,7 +824,7 @@ module brq_cs_registers #(
 
   // FCSR
   brq_csr #(
-    .Width      (32),
+    .Width      (8),
     .ShadowCopy (1'b0),
     .ResetValue ('0)
   ) fcsr_csr (
@@ -838,7 +838,7 @@ module brq_cs_registers #(
 
   // FFLAGS
   brq_csr #(
-    .Width      (32),
+    .Width      (5),
     .ShadowCopy (1'b0),
     .ResetValue ('0)
   ) fflags_csr (
@@ -852,7 +852,7 @@ module brq_cs_registers #(
 
   // FRM
   brq_csr #(
-    .Width      (32),
+    .Width      (3),
     .ShadowCopy (1'b0),
     .ResetValue ('0)
   ) frm_csr (

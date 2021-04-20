@@ -21,7 +21,7 @@ VL_MODULE(VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15) {
   public:
     
     // PORTS
-    // Begin mtask footprint all: 9 12 23 24 29 31 33 35 36 40 
+    // Begin mtask footprint all: 24 25 28 29 30 31 32 35 38 39 40 
     VL_OUTW(tl_d_o,85,0,3);
     // Begin mtask footprint all: 
     VL_INW(tl_h_i,85,0,3);
@@ -32,7 +32,7 @@ VL_MODULE(VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15) {
     VL_OUT8(__PVT__spare_req_o,0,0);
     VL_IN8(spare_rsp_i,0,0);
     VL_OUT8(__PVT__spare_rsp_o,0,0);
-    // Begin mtask footprint all: 7 11 12 14 29 33 
+    // Begin mtask footprint all: 4 5 8 28 29 32 33 
     VL_OUT64(tl_h_o,51,0);
     
     // INTERNAL VARIABLES
