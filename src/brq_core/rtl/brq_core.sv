@@ -126,6 +126,7 @@ module brq_core #(
   logic                   is_fp_instr;
   logic [2:0][W-1:0]      fp_operands;   // three operands in fpu   
   logic                   fp_busy;
+  logic                   fpu_busy_idu;
   logic [W-1:0]           fp_result;
   logic [ 31:0]           data_wb;
   logic [4:0]             fp_rf_waddr_id;
@@ -698,7 +699,7 @@ module brq_core #(
       .use_fp_rs1_o                    ( use_fp_rs1            ),
       .use_fp_rs2_o                    ( use_fp_rs2            ),
       .use_fp_rd_o                     ( use_fp_rd             ),
-      .fpu_busy_i                      ( fp_busy               ),
+      .fpu_busy_i                      ( fpu_busy_idu          ),
       .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
       .fp_swap_oprnds_o                ( fp_swap_oprnds        )
 
@@ -997,7 +998,7 @@ module brq_core #(
 );
   end
   logic  fp_wen;
-  assign fp_wen   = fp_rf_wen_wb & out_valid_fpu2c;
+  assign fp_wen   = fp_rf_wen_wb;
   assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
   assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
   assign fpu_op_c = fp_rf_rdata_c;
@@ -1186,15 +1187,10 @@ module brq_core #(
 
   assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
   assign in_ready_c2fpu = multdiv_ready_id;
-  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr) & ~busy;
+  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr);
   // assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
   assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;
   
-  logic busy;
-  always_ff @(posedge clk_i) begin : busy_signal // for valid signal
-    busy <= fp_busy;
-  end
-    
 // FPU instance
   fpnew_top #(
     .Features       ( fpnew_pkg::RV32F          ),
@@ -1223,6 +1219,7 @@ module brq_core #(
     .busy_o         ( fp_busy          )
   );
 
+  assign fpu_busy_idu = fp_busy & (~out_valid_fpu2c);
   assign data_wb = is_fp_instr ? fp_result : result_ex;
 
   // These assertions are in top-level as instr_valid_id required as the enable term
