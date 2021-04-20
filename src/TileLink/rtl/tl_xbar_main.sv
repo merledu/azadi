@@ -168,10 +168,10 @@ module tl_xbar_main (
   assign s1n_sm1_7[1]   = h3_dv_i[5];
 
 // Device 8 host connections
-  assign h2_dv_i[6] = sm1_s1n_8[0];
-  assign h3_dv_i[6] = sm1_s1n_8[1];
-  assign s1n_sm1_8[0]   = h2_dv_o[6];
-  assign s1n_sm1_8[1]   = h3_dv_o[6];
+  assign h2_dv_o[6] = sm1_s1n_8[0];
+  assign h3_dv_o[6] = sm1_s1n_8[1];
+  assign s1n_sm1_8[0]   = h2_dv_i[6];
+  assign s1n_sm1_8[1]   = h3_dv_i[6];
 
 // Device 9 host connections
   assign h2_dv_o[7] = sm1_s1n_9[0];

@@ -27,6 +27,7 @@
 /// in different clock domains. As we know the static timing relationship between the
 /// clock domains we can rely on static timing analysis (STA) to get the sampling windows
 /// right and therefore don't need any synchronization.
+`include "/home/merl/github_repos/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
 module isochronous_spill_register #(
   /// Data type of spill register.
   parameter type T      = logic,

@@ -26,7 +26,7 @@ logic [3:0]   be;
 logic [31:0]  rdata;
 logic         err;
 
-assign err = '0;
+//assign err = '0;
 
 PWM pwm_core(
 

@@ -120,7 +120,7 @@ module brq_core #(
   logic [4:0]             fp_rf_raddr_c;
   logic [W-1:0]           fp_rf_rdata_a;
   logic [W-1:0]           fp_rf_rdata_b;
-  logic                   fp_rf_rdata_c;
+  logic [W-1:0]           fp_rf_rdata_c;
   logic                   fp_rf_wen_id;
   logic                   is_fp_instr;
   logic [2:0][W-1:0]      fp_operands;   // three operands in fpu   
