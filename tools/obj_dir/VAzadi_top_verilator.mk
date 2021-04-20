@@ -10,11 +10,11 @@ default: VAzadi_top_verilator
 # Perl executable (from $PERL)
 PERL = perl
 # Path to Verilator kit (from $VERILATOR_ROOT)
-VERILATOR_ROOT = /usr/local/share/verilator
+VERILATOR_ROOT = /usr/share/verilator
 # SystemC include directory with systemc.h (from $SYSTEMC_INCLUDE)
-SYSTEMC_INCLUDE ?= 
+SYSTEMC_INCLUDE ?= /usr/include
 # SystemC library directory with libsystemc.a (from $SYSTEMC_LIBDIR)
-SYSTEMC_LIBDIR ?= 
+SYSTEMC_LIBDIR ?= /usr/lib/x86_64-linux-gnu
 
 ### Switches...
 # SystemC output mode?  0/1 (from --sc)
@@ -38,7 +38,6 @@ VM_USER_CFLAGS = \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	-lz \
 	-lpthread \
 
 # User .cpp files (from .cpp's on Verilator command line)
@@ -72,8 +71,8 @@ tcp_server.o: tcp_server.c
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 
 ### Link rules... (from --exe)
-VAzadi_top_verilator: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
-	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
+VAzadi_top_verilator: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a
+	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@ $(LIBS) $(SC_LIBS)
 
 
 # Verilated -*- Makefile -*-
