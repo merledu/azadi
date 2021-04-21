@@ -142,6 +142,7 @@ module brq_core #(
   logic [31:0]            rf_int_fp_lsu;
   logic                   fp_swap_oprnds;
   logic                   fpu_is_busy;
+  logic [31:0]            fp_rf_wdata_wb;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
@@ -680,7 +681,9 @@ module brq_core #(
 
       // Floating point extensions IO
       .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
-      .fp_alu_op_b_mux_sel_o           ( ), //fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
+      .fp_rf_rdata_a_i                 ( fp_rf_rdata_a         ),
+      .fp_rf_rdata_b_i                 ( fp_rf_rdata_b         ),
+      .fp_rf_rdata_c_i                 ( fp_rf_rdata_c         ),
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
@@ -698,8 +701,8 @@ module brq_core #(
       .use_fp_rd_o                     ( use_fp_rd             ),
       .fpu_busy_i                      ( fpu_busy_idu          ),
       .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
-      .fp_swap_oprnds_o                ( fp_swap_oprnds        )
-
+      .fp_swap_oprnds_o                ( fp_swap_oprnds        ),
+      .fp_rf_wdata_fwd_wb_i            ( fp_rf_wdata_wb        )
   );
 
   // for RVFI only
@@ -806,7 +809,7 @@ module brq_core #(
   brq_wbu #(
     .WritebackStage ( WritebackStage )
   ) wb_stage_i (
-    .clk_i                          ( clk                         ),
+    .clk_i                          ( clk                          ),
     .rst_ni                         ( rst_ni                       ),
     .en_wb_i                        ( en_wb                        ),
     .instr_type_wb_i                ( instr_type_wb                ),
@@ -841,12 +844,13 @@ module brq_core #(
     .instr_done_wb_o                ( instr_done_wb                ),
 
     // floating point
+    .is_fp_instr_i                  ( is_fp_instr                  ),
     .fp_rf_write_wb_o               ( fp_rf_write_wb               ),
     .fp_rf_wen_wb_o                 ( fp_rf_wen_wb                 ),
     .fp_rf_waddr_wb_o               ( fp_rf_waddr_wb               ),
     .fp_rf_wen_id_i                 ( fp_rf_wen_id                 ),
     .fp_rf_waddr_id_i               ( fp_rf_waddr_id               ),
-    .fp_rf_wdata_wb_o               ( )
+    .fp_rf_wdata_wb_o               ( fp_rf_wdata_wb               )
   );
 
   ///////////////////////
@@ -991,28 +995,9 @@ module brq_core #(
 
       .waddr_a_i ( fp_rf_waddr_wb ),
       .wdata_a_i ( rf_wdata_wb    ),
-      .we_a_i    ( fp_wen         )
+      .we_a_i    ( fp_swap_oprnds )
 );
   end
-  logic  fp_wen;
-  assign fp_wen   = fp_rf_wen_wb;
-  assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
-  assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
-  assign fpu_op_c = fp_rf_rdata_c;
-  
-  /* Swap operands */
-  logic [31:0] b,c;
-  always_comb begin : swapping
-    if (fp_swap_oprnds) begin
-      b = fpu_op_a;
-      c = fpu_op_b;
-    end else begin
-      b = fpu_op_b;
-      c = fpu_op_c;
-    end
-  end
-  
-  assign fp_operands = {c , b , fpu_op_a};
 
   ///////////////////
   // Alert outputs //

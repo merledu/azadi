@@ -64,7 +64,6 @@ module Azadi_top_verilator #(
   ) top_verilator(
     .clock(clock_i),
     .reset_ni(reset_ni),
-    .uart_rx_i(),
   
     .gpio_i(gpio_i),
     .gpio_o(gpio_o),
