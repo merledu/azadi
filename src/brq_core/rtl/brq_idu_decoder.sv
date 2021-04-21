@@ -98,13 +98,9 @@ module brq_idu_decoder #(
     output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
     output brq_pkg::op_b_sel_e    fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
                                                            // immediate 
-    output brq_pkg::fp_type_e fp_floating_type_o,          // Single precision or double 
     output logic [4:0]        fp_rf_raddr_a_o,
     output logic [4:0]        fp_rf_raddr_b_o,
     output logic [4:0]        fp_rf_raddr_c_o,
-    output logic              fp_rf_ren_a_o,     
-    output logic              fp_rf_ren_b_o,     
-    output logic              fp_rf_ren_c_o,
 
     output logic [4:0]        fp_rf_waddr_o,
     output logic              fp_rf_we_o,
@@ -262,9 +258,6 @@ module brq_idu_decoder #(
     wfi_insn_o            = 1'b0;
 
     // Floating Point
-    fp_rf_ren_a_o         = 1'b0;
-    fp_rf_ren_b_o         = 1'b0;
-    fp_rf_ren_c_o         = 1'b0;
     fp_rf_we_o            = 1'b0;
     is_fp_instr_o         = 1'b0;
     use_fp_rs1_o          = 1'b0;
@@ -670,8 +663,6 @@ module brq_idu_decoder #(
       //////////////////////////////////////////
 
       OPCODE_STORE_FP: begin
-        fp_rf_ren_a_o      = 1'b1;
-        fp_rf_ren_b_o      = 1'b1;
         data_req_o         = 1'b1;
         data_we_o          = 1'b1;
         data_type_o        = 2'b00;
@@ -680,11 +671,11 @@ module brq_idu_decoder #(
 
         unique case(instr[14:12])
           3'b011: begin // FSD
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = (RVF == RV64FDouble) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           3'b010: begin // FSW
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = (RVF == RV32FNone) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32; 
           end
           default: illegal_insn = 1'b1;
@@ -692,7 +683,6 @@ module brq_idu_decoder #(
         end
 
       OPCODE_LOAD_FP: begin
-        fp_rf_ren_a_o      = 1'b1;
         fp_rf_we_o         = 1'b1;
         data_req_o         = 1'b1;
         data_type_o        = 2'b00;
@@ -701,11 +691,11 @@ module brq_idu_decoder #(
 
         unique case(instr[14:12])
           3'b011: begin // FLD
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = (RVF == RV64FDouble) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           3'b010: begin // FLW
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = (RVF == RV32FNone) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32; 
           end
           default: illegal_insn = 1'b1;
@@ -716,9 +706,6 @@ module brq_idu_decoder #(
       OPCODE_MSUB_FP,  // FMSUB.S, FMSUB.D
       OPCODE_NMSUB_FP, // FNMSUB.S, FNMSUB.D
       OPCODE_NMADD_FP: begin //FNMADD.S, FNMADD.S
-        fp_rf_ren_a_o      = 1'b1;
-        fp_rf_ren_b_o      = 1'b1;
-        fp_rf_ren_c_o      = 1'b1;
         fp_rf_we_o         = 1'b1;
         fp_src_fmt_o       = FP32;
         is_fp_instr_o      = 1'b1;
@@ -730,11 +717,11 @@ module brq_idu_decoder #(
         
         unique case (instr[26:25])
           01: begin
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           00: begin
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
           default: illegal_insn = 1'b1;
@@ -742,7 +729,6 @@ module brq_idu_decoder #(
       end
 
       OPCODE_OP_FP: begin
-        fp_rf_ren_a_o      = 1'b1;
         fp_src_fmt_o       = FP32;
         is_fp_instr_o      = 1'b1;
 
@@ -753,9 +739,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
             fp_swap_oprnds_o   = 1'b1;
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           7'b0001001,      // FMUL.D
@@ -764,8 +749,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           7'b0000000,       // FADD.S
@@ -774,9 +758,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
             fp_swap_oprnds_o   = 1'b1;
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
           7'b0001000, // FMUL.S
@@ -785,8 +768,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
           7'b0101101: begin
@@ -794,7 +776,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (|instr[24:20]) begin //FSQRT.D
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -803,7 +785,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (|instr[24:20]) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -813,8 +795,7 @@ module brq_idu_decoder #(
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (instr[14] | (&instr[13:12])) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn  = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o  = FP64;
             end
           end
@@ -824,8 +805,7 @@ module brq_idu_decoder #(
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (instr[14] | (&instr[13:12])) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn  = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o  = FP32;
             end
           end
@@ -835,8 +815,7 @@ module brq_idu_decoder #(
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (|instr[14:13]) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn  = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o  = FP64;
             end
           end
@@ -846,8 +825,7 @@ module brq_idu_decoder #(
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (|instr[14:13]) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn  = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o  = FP32;
             end
           end
@@ -856,7 +834,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (|instr[24:21] | (~instr[20])) begin
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -864,7 +842,7 @@ module brq_idu_decoder #(
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
             if (~(|instr[24:21])) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -873,7 +851,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
             if (|instr[24:20]) begin 
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -883,7 +861,7 @@ module brq_idu_decoder #(
               {7'b0000000,3'b000},
               {7'b0000000,3'b001}: begin
                 use_fp_rs1_o         = 1'b1;
-                illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+                illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
                 fp_src_fmt_o = FP32;
               end
               default: begin
@@ -896,8 +874,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o     = 1'b1;
             use_fp_rs2_o     = 1'b1;
             if (~(instr[14]) | (&instr[13:12])) begin
-              fp_rf_ren_b_o      = 1'b1;
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -906,8 +883,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o     = 1'b1;
             use_fp_rs2_o     = 1'b1;
             if (~(instr[14]) | (&instr[13:12])) begin
-              fp_rf_ren_b_o      = 1'b1;
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -916,7 +892,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o     = 1'b1;
             unique case ({instr[24:20],instr[14:12]}) 
               {7'b0000000,3'b001}: begin  
-                illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+                illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
                 fp_src_fmt_o = FP64;
               end
               default: begin
@@ -928,7 +904,7 @@ module brq_idu_decoder #(
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
             if (|instr[24:21]) begin
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -936,7 +912,7 @@ module brq_idu_decoder #(
             fp_rf_we_o       = 1'b1;
             use_fp_rd_o      = 1'b1;
             if (~(|instr[24:21])) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -944,7 +920,7 @@ module brq_idu_decoder #(
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rd_o      = 1'b1;
             if (|instr[24:21]) begin
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -952,7 +928,7 @@ module brq_idu_decoder #(
             fp_rf_we_o        = 1'b1;
             use_fp_rd_o       = 1'b1;
             if ((|instr[24:20]) | (|instr[14:12])) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -984,9 +960,6 @@ module brq_idu_decoder #(
       csr_access_o    = 1'b0;
       
       // floating point
-      fp_rf_ren_a_o   = 1'b0;
-      fp_rf_ren_b_o   = 1'b0;
-      fp_rf_ren_c_o   = 1'b0;
       fp_rf_we_o      = 1'b0;
     end
   end
