@@ -111,7 +111,7 @@ assign		pwm 	  = ctrl[1];
 
 wire		  pwm_1;
 always @(posedge clk_i) begin
-    ctrl_2[1]   = 1'b1;
+    ctrl_2[1]   <= 1'b1;
 end
 
 assign		pwm_1 	  = ctrl_2[1];
