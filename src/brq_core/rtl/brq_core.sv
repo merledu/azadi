@@ -135,13 +135,11 @@ module brq_core #(
   logic                   use_fp_rs1;
   logic                   use_fp_rs2;
   logic                   use_fp_rd;
-  logic [W-1:0]           fpu_op_a;
-  logic [W-1:0]           fpu_op_b;
-  logic [W-1:0]           fpu_op_c;
   logic                   fp_rf_write_wb;
   logic [31:0]            rf_int_fp_lsu;
   logic                   fp_swap_oprnds;
   logic                   fpu_is_busy;
+  logic                   fp_load;
   logic [31:0]            fp_rf_wdata_wb;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
@@ -698,11 +696,13 @@ module brq_core #(
       .is_fp_instr_o                   ( is_fp_instr           ),
       .use_fp_rs1_o                    ( use_fp_rs1            ),
       .use_fp_rs2_o                    ( use_fp_rs2            ),
+      .use_fp_rs3_o                    ( use_fp_rs3            ),
       .use_fp_rd_o                     ( use_fp_rd             ),
       .fpu_busy_i                      ( fpu_busy_idu          ),
       .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
-      .fp_swap_oprnds_o                ( fp_swap_oprnds        ),
-      .fp_rf_wdata_fwd_wb_i            ( fp_rf_wdata_wb        )
+      .fp_rf_wdata_fwd_wb_i            ( fp_rf_wdata_wb        ),
+      .fp_operands_o                   ( fp_operands           ),
+      .fp_load_o                       ( fp_load               )
   );
 
   // for RVFI only
@@ -844,13 +844,13 @@ module brq_core #(
     .instr_done_wb_o                ( instr_done_wb                ),
 
     // floating point
-    .is_fp_instr_i                  ( is_fp_instr                  ),
     .fp_rf_write_wb_o               ( fp_rf_write_wb               ),
     .fp_rf_wen_wb_o                 ( fp_rf_wen_wb                 ),
     .fp_rf_waddr_wb_o               ( fp_rf_waddr_wb               ),
     .fp_rf_wen_id_i                 ( fp_rf_wen_id                 ),
     .fp_rf_waddr_id_i               ( fp_rf_waddr_id               ),
-    .fp_rf_wdata_wb_o               ( fp_rf_wdata_wb               )
+    .fp_rf_wdata_wb_o               ( fp_rf_wdata_wb               ),
+    .fp_load_i                      ( fp_load                      )
   );
 
   ///////////////////////
@@ -994,8 +994,8 @@ module brq_core #(
       .rdata_c_o ( fp_rf_rdata_c  ),
 
       .waddr_a_i ( fp_rf_waddr_wb ),
-      .wdata_a_i ( rf_wdata_wb    ),
-      .we_a_i    ( fp_swap_oprnds )
+      .wdata_a_i ( fp_rf_wdata_wb ),
+      .we_a_i    ( fp_rf_wen_wb   )
 );
   end
 

@@ -21,7 +21,7 @@ end
   //      mem[2] = 32'h00800513;
   //      mem[3] = 32'h00A42823;
   //     // mem[4] = 32'h00B42E23;
-  //  //    mem[5] = 32'h00A42E23;
+  //  //    mem[5] = 32'h00A42E23;  
   //  end     
 always @(posedge CLK) begin
     if (EN == 1'b1) begin

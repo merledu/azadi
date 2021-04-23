@@ -182,9 +182,9 @@ module brq_idu #(
     output fpnew_pkg::roundmode_e     fp_rounding_mode_o,    // defines the rounding mode 
     output brq_pkg::op_b_sel_e        fp_alu_op_b_mux_sel_o, // operand b selection: reg value or
                                                              // immediate 
-    input  logic [31:0]               fp_rf_rdata_a_i;
-    input  logic [31:0]               fp_rf_rdata_b_i;
-    input  logic [31:0]               fp_rf_rdata_c_i;
+    input  logic [31:0]               fp_rf_rdata_a_i,
+    input  logic [31:0]               fp_rf_rdata_b_i,
+    input  logic [31:0]               fp_rf_rdata_c_i,
     output logic [4:0]                fp_rf_raddr_a_o,
     output logic [4:0]                fp_rf_raddr_b_o,
     output logic [4:0]                fp_rf_raddr_c_o,
@@ -203,10 +203,13 @@ module brq_idu #(
     output logic                      is_fp_instr_o,
     output logic                      use_fp_rs1_o,
     output logic                      use_fp_rs2_o,
+    output logic                      use_fp_rs3_o,
     output logic                      use_fp_rd_o,
     input  logic                      fpu_busy_i,
     input  logic                      fp_rf_write_wb_i,
-    input  logic [31:0]               fp_rf_wdata_fwd_wb_i
+    input  logic [31:0]               fp_rf_wdata_fwd_wb_i,
+    output logic [2:0][31:0]          fp_operands_o,
+    output logic                      fp_load_o
 );
 
   import brq_pkg::*;
@@ -518,28 +521,40 @@ module brq_idu #(
       .is_fp_instr_o                   ( is_fp_instr_o         ), 
       .use_fp_rs1_o                    ( use_fp_rs1_o          ),
       .use_fp_rs2_o                    ( use_fp_rs2_o          ),
+      .use_fp_rs3_o                    ( use_fp_rs3_o          ),
       .use_fp_rd_o                     ( use_fp_rd_o           ),
-      .fp_swap_oprnds_o                ( fp_swap_oprnds        )
+      .fp_swap_oprnds_o                ( fp_swap_oprnds        ),
+      .fp_load_o                       ( fp_load_o             ),
+      .mv_float2int_o                  ( ),
+      .mv_int2float_o                  ( )
   );
 
   logic  fp_swap_oprnds;
-  assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
-  assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
-  assign fpu_op_c = fp_rf_rdata_c;
+  logic [31:0] fp_rf_rdata_a_fwd;
+  logic [31:0] fp_rf_rdata_b_fwd;
+  logic [31:0] fp_rf_rdata_c_fwd;
+  logic [31:0] temp;
+  logic [31:0] fpu_op_a;
+  logic [31:0] fpu_op_b;
+  logic [31:0] fpu_op_c;
+  assign fpu_op_a = use_fp_rs1_o ? fp_rf_rdata_a_fwd : rf_rdata_a_fwd;
+  assign fpu_op_b = use_fp_rs2_o ? fp_rf_rdata_b_fwd : rf_rdata_b_fwd;
+  assign fpu_op_c = fp_rf_rdata_c_fwd;
   
   /* Swap operands */
-  logic [31:0] b,c;
   always_comb begin : swapping
     if (fp_swap_oprnds) begin
-      b = fpu_op_a;
-      c = fpu_op_b;
+      temp = fpu_op_c;
+      fpu_op_c = fpu_op_a;
+      fpu_op_a = temp;
     end else begin
-      b = fpu_op_b;
-      c = fpu_op_c;
+      fpu_op_a = fpu_op_a;
+      fpu_op_b = fpu_op_b;
+      fpu_op_c = fpu_op_c;
     end
+    fp_operands_o = {fpu_op_c , fpu_op_b , fpu_op_a};
   end
-  
-  assign fp_operands_o = {c , b , fpu_op_a};
+   
 
   /////////////////////////////////
   // CSR-related pipline flushes //
@@ -677,7 +692,7 @@ module brq_idu #(
   assign lsu_we_o                = lsu_we;
   assign lsu_type_o              = lsu_type;
   assign lsu_sign_ext_o          = lsu_sign_ext;
-  assign lsu_wdata_o             = rf_rdata_b_fwd;
+  assign lsu_wdata_o             = fpu_op_b; //rf_rdata_b_fwd;
   // csr_op_en_o is set when CSR access should actually happen.
   // csv_access_o is set when CSR access instruction is present and is used to compute whether a CSR
   // access is illegal. A combinational loop would be created if csr_op_en_o was used along (as
@@ -891,6 +906,7 @@ module brq_idu #(
     // Hazard between registers being read and written
     logic rf_rd_a_hz;
     logic rf_rd_b_hz;
+    logic rf_rd_c_hz;
 
     logic outstanding_memory_access;
 
@@ -953,8 +969,9 @@ module brq_idu #(
 
     // If instruction is reading register that load will be writing stall in
     // ID until load is complete. No need to stall when reading zero register.
-    assign rf_rd_a_hz = rf_rd_a_wb_match & rf_ren_a;
-    assign rf_rd_b_hz = rf_rd_b_wb_match & rf_ren_b;
+    assign rf_rd_a_hz = rf_rd_a_wb_match & (rf_ren_a | use_fp_rs1_o);
+    assign rf_rd_b_hz = rf_rd_b_wb_match & (rf_ren_b | use_fp_rs2_o);
+    assign rf_rd_c_hz = rf_rd_b_wb_match & use_fp_rs3_o;
 
     // If instruction is read register that writeback is writing forward writeback data to read
     // data. Note this doesn't factor in load data as it arrives too late, such hazards are
@@ -964,11 +981,11 @@ module brq_idu #(
     assign rf_rdata_b_fwd = rf_rd_b_wb_match & rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_b_i;
     
     // forwarding for floating point unit
-    assign fp_rf_rdata_a_fwd = rf_rd_a_wb_match & rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_a_i;
-    assign fp_rf_rdata_b_fwd = rf_rd_b_wb_match & rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_b_i;
-    assign fp_rf_rdata_c_fwd = rf_rd_c_wb_match & rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_c_i; 
+    assign fp_rf_rdata_a_fwd = rf_rd_a_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_a_i;
+    assign fp_rf_rdata_b_fwd = rf_rd_b_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_b_i;
+    assign fp_rf_rdata_c_fwd = rf_rd_c_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_c_i; 
 
-    assign stall_ld_hz = outstanding_load_wb_i & (rf_rd_a_hz | rf_rd_b_hz);
+    assign stall_ld_hz = outstanding_load_wb_i & (rf_rd_a_hz | rf_rd_b_hz | rf_rd_c_hz);
 
     assign instr_type_wb_o = ~lsu_req_dec ? WB_INSTR_OTHER :
                               lsu_we      ? WB_INSTR_STORE :
