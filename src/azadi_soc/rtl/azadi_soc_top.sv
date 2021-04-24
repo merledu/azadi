@@ -146,7 +146,6 @@ assign gpio_o = gpio_out;
       1'b0
   };
 
-  logic [31:0] gpio_intr;
   logic       rx_dv_i;
   logic [7:0] rx_byte_i;
 

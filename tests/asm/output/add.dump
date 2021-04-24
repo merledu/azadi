@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
-/home/merl-lab/fyp/azadi/tests/asm/output/add.merl:     file format elf32-littleriscv
-=======
-/home/zeeshan/fyp/azadi/tests/asm/output/add.merl:     file format elf32-littleriscv
->>>>>>> 5e74c1a9791839744bb8dab0965e5a7e6b18e1c7
+/home/merl/github_repos/azadi/tests/asm/output/add.merl:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
@@ -154,19 +150,19 @@ Disassembly of section .text:
 200002ac:	fec42783          	lw	a5,-20(s0)
 200002b0:	fdc42703          	lw	a4,-36(s0)
 200002b4:	00e7a023          	sw	a4,0(a5)
-200002b8:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+200002b8:	00018713          	mv	a4,gp
 200002bc:	fdc42783          	lw	a5,-36(s0)
 200002c0:	00479793          	slli	a5,a5,0x4
 200002c4:	00f707b3          	add	a5,a4,a5
 200002c8:	00200713          	li	a4,2
 200002cc:	00e7a423          	sw	a4,8(a5)
-200002d0:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+200002d0:	00018713          	mv	a4,gp
 200002d4:	fdc42783          	lw	a5,-36(s0)
 200002d8:	00479793          	slli	a5,a5,0x4
 200002dc:	00f707b3          	add	a5,a4,a5
 200002e0:	00c7a783          	lw	a5,12(a5)
 200002e4:	00178713          	addi	a4,a5,1
-200002e8:	05018693          	addi	a3,gp,80 # 10000050 <hart0_interrupt_matrix>
+200002e8:	00018693          	mv	a3,gp
 200002ec:	fdc42783          	lw	a5,-36(s0)
 200002f0:	00479793          	slli	a5,a5,0x4
 200002f4:	00f687b3          	add	a5,a3,a5
@@ -212,13 +208,13 @@ Disassembly of section .text:
 2000037c:	fcb42c23          	sw	a1,-40(s0)
 20000380:	fadff0ef          	jal	ra,2000032c <interrupt_claim_request>
 20000384:	fea42623          	sw	a0,-20(s0)
-20000388:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+20000388:	00018713          	mv	a4,gp
 2000038c:	fec42783          	lw	a5,-20(s0)
 20000390:	00479793          	slli	a5,a5,0x4
 20000394:	00f707b3          	add	a5,a4,a5
 20000398:	00100713          	li	a4,1
 2000039c:	00e7a423          	sw	a4,8(a5)
-200003a0:	00018713          	mv	a4,gp
+200003a0:	14018713          	addi	a4,gp,320 # 10000140 <isr_table>
 200003a4:	fec42783          	lw	a5,-20(s0)
 200003a8:	00279793          	slli	a5,a5,0x2
 200003ac:	00f707b3          	add	a5,a4,a5
@@ -298,7 +294,7 @@ Disassembly of section .text:
 200004c4:	fec42783          	lw	a5,-20(s0)
 200004c8:	fea44703          	lbu	a4,-22(s0)
 200004cc:	00e78023          	sb	a4,0(a5)
-200004d0:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+200004d0:	00018713          	mv	a4,gp
 200004d4:	fdc42783          	lw	a5,-36(s0)
 200004d8:	00479793          	slli	a5,a5,0x4
 200004dc:	00f707b3          	add	a5,a4,a5
@@ -359,46 +355,46 @@ Disassembly of section .text:
 20000598:	00812c23          	sw	s0,24(sp)
 2000059c:	02010413          	addi	s0,sp,32
 200005a0:	fe042623          	sw	zero,-20(s0)
-200005a4:	19418793          	addi	a5,gp,404 # 10000194 <mcause_interrupt_table>
+200005a4:	19018793          	addi	a5,gp,400 # 10000190 <mcause_interrupt_table>
 200005a8:	00000717          	auipc	a4,0x0
 200005ac:	dc070713          	addi	a4,a4,-576 # 20000368 <mach_plic_handler>
 200005b0:	00e7a023          	sw	a4,0(a5)
-200005b4:	05018793          	addi	a5,gp,80 # 10000050 <hart0_interrupt_matrix>
+200005b4:	00018793          	mv	a5,gp
 200005b8:	0007a423          	sw	zero,8(a5)
-200005bc:	05018793          	addi	a5,gp,80 # 10000050 <hart0_interrupt_matrix>
+200005bc:	00018793          	mv	a5,gp
 200005c0:	0007a023          	sw	zero,0(a5)
-200005c4:	05018793          	addi	a5,gp,80 # 10000050 <hart0_interrupt_matrix>
+200005c4:	00018793          	mv	a5,gp
 200005c8:	0007a223          	sw	zero,4(a5)
-200005cc:	05018793          	addi	a5,gp,80 # 10000050 <hart0_interrupt_matrix>
+200005cc:	00018793          	mv	a5,gp
 200005d0:	0007a623          	sw	zero,12(a5)
 200005d4:	00100793          	li	a5,1
 200005d8:	fef42623          	sw	a5,-20(s0)
 200005dc:	0980006f          	j	20000674 <plic_init+0xe4>
-200005e0:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+200005e0:	00018713          	mv	a4,gp
 200005e4:	fec42783          	lw	a5,-20(s0)
 200005e8:	00479793          	slli	a5,a5,0x4
 200005ec:	00f707b3          	add	a5,a4,a5
 200005f0:	0007a423          	sw	zero,8(a5)
-200005f4:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+200005f4:	00018713          	mv	a4,gp
 200005f8:	fec42783          	lw	a5,-20(s0)
 200005fc:	00479793          	slli	a5,a5,0x4
 20000600:	00f707b3          	add	a5,a4,a5
 20000604:	fec42703          	lw	a4,-20(s0)
 20000608:	00e7a023          	sw	a4,0(a5)
-2000060c:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+2000060c:	00018713          	mv	a4,gp
 20000610:	fec42783          	lw	a5,-20(s0)
 20000614:	00479793          	slli	a5,a5,0x4
 20000618:	00f707b3          	add	a5,a4,a5
 2000061c:	00200713          	li	a4,2
 20000620:	00e7a223          	sw	a4,4(a5)
-20000624:	05018713          	addi	a4,gp,80 # 10000050 <hart0_interrupt_matrix>
+20000624:	00018713          	mv	a4,gp
 20000628:	fec42783          	lw	a5,-20(s0)
 2000062c:	00479793          	slli	a5,a5,0x4
 20000630:	00f707b3          	add	a5,a4,a5
 20000634:	0007a623          	sw	zero,12(a5)
 20000638:	fec42503          	lw	a0,-20(s0)
 2000063c:	e19ff0ef          	jal	ra,20000454 <interrupt_disable>
-20000640:	00018713          	mv	a4,gp
+20000640:	14018713          	addi	a4,gp,320 # 10000140 <isr_table>
 20000644:	fec42783          	lw	a5,-20(s0)
 20000648:	00279793          	slli	a5,a5,0x2
 2000064c:	00f707b3          	add	a5,a4,a5
@@ -489,7 +485,7 @@ Disassembly of section .text:
 20000780:	fdc42503          	lw	a0,-36(s0)
 20000784:	f69ff0ef          	jal	ra,200006ec <extract_ie_code>
 20000788:	fea42623          	sw	a0,-20(s0)
-2000078c:	19418713          	addi	a4,gp,404 # 10000194 <mcause_interrupt_table>
+2000078c:	19018713          	addi	a4,gp,400 # 10000190 <mcause_interrupt_table>
 20000790:	fec42783          	lw	a5,-20(s0)
 20000794:	00279793          	slli	a5,a5,0x2
 20000798:	00f707b3          	add	a5,a4,a5
@@ -498,7 +494,7 @@ Disassembly of section .text:
 200007a4:	fdc42503          	lw	a0,-36(s0)
 200007a8:	000780e7          	jalr	a5
 200007ac:	0240006f          	j	200007d0 <handle_trap+0x94>
-200007b0:	19018713          	addi	a4,gp,400 # 10000190 <mcause_trap_table>
+200007b0:	19418713          	addi	a4,gp,404 # 10000194 <mcause_trap_table>
 200007b4:	fdc42783          	lw	a5,-36(s0)
 200007b8:	00279793          	slli	a5,a5,0x2
 200007bc:	00f707b3          	add	a5,a4,a5
@@ -517,11 +513,11 @@ Disassembly of section .text:
 200007e8:	ff010113          	addi	sp,sp,-16
 200007ec:	00812623          	sw	s0,12(sp)
 200007f0:	01010413          	addi	s0,sp,16
-200007f4:	19418793          	addi	a5,gp,404 # 10000194 <mcause_interrupt_table>
+200007f4:	19018793          	addi	a5,gp,400 # 10000190 <mcause_interrupt_table>
 200007f8:	00000717          	auipc	a4,0x0
 200007fc:	b7070713          	addi	a4,a4,-1168 # 20000368 <mach_plic_handler>
 20000800:	00e7a023          	sw	a4,0(a5)
-20000804:	19018793          	addi	a5,gp,400 # 10000190 <mcause_trap_table>
+20000804:	19418793          	addi	a5,gp,404 # 10000194 <mcause_trap_table>
 20000808:	00000717          	auipc	a4,0x0
 2000080c:	f1c70713          	addi	a4,a4,-228 # 20000724 <default_handler>
 20000810:	00e7a023          	sw	a4,0(a5)
