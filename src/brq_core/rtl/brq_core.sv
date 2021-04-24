@@ -1168,7 +1168,7 @@ module brq_core #(
   );
 
   assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
-  assign in_ready_c2fpu = multdiv_ready_id;
+  assign in_ready_c2fpu = 1'b1; //id_in_ready; //multdiv_ready_id;
   assign in_valid_c2fpu = (instr_valid_id & is_fp_instr);
   // assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
   assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;

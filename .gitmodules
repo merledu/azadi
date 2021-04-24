@@ -1,0 +1,6 @@
+[submodule "fpnew"]
+	path = fpnew
+	url = https://github.com/pulp-platform/fpnew.git
+[submodule "src/fpnew"]
+	path = src/fpnew
+	url = https://github.com/pulp-platform/fpnew.git
