@@ -273,6 +273,7 @@ module brq_idu_decoder #(
     mv_int2float_o        = 1'b0;
     fp_src_fmt_o          = FP32; 
     fp_dst_fmt_o          = FP32;
+    fp_swap_oprnds_o      = 1'b0;
 
     opcode                = opcode_e'(instr[6:0]);
 
@@ -721,8 +722,7 @@ module brq_idu_decoder #(
         use_fp_rs1_o       = 1'b1;
         use_fp_rs2_o       = 1'b1;
         use_fp_rs3_o       = 1'b1;
-        use_fp_rd_o        = 1'b1;
-        fp_swap_oprnds_o   = 1'b0; 
+        use_fp_rd_o        = 1'b1; 
         
         unique case (instr[26:25])
           01: begin
@@ -784,7 +784,7 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:20]) begin //FSQRT.D
+            if (~|instr[24:20]) begin //FSQRT.D
               illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
@@ -793,7 +793,7 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:20]) begin
+            if (~|instr[24:20]) begin
               illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
@@ -803,7 +803,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (instr[14] | (&instr[13:12])) begin
+            if (~(instr[14] | (&instr[13:12]))) begin
               illegal_insn  = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o  = FP64;
             end
@@ -813,7 +813,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (instr[14] | (&instr[13:12])) begin
+            if (~(instr[14] | (&instr[13:12]))) begin
               illegal_insn  = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o  = FP32;
             end
@@ -823,7 +823,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[14:13]) begin
+            if (~|instr[14:13]) begin
               illegal_insn  = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o  = FP64;
             end
@@ -833,7 +833,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[14:13]) begin
+            if (~|instr[14:13]) begin
               illegal_insn  = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o  = FP32;
             end
@@ -842,7 +842,7 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:21] | (~instr[20])) begin
+            if (~(|instr[24:21] | (~instr[20]))) begin
               illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
@@ -850,7 +850,7 @@ module brq_idu_decoder #(
           7'b1100000: begin // FCVT.W.S, FCVT.WU.S
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
-            if (~(|instr[24:21])) begin
+            if (~|instr[24:21]) begin
               illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
@@ -859,7 +859,7 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:20]) begin 
+            if (~|instr[24:20]) begin 
               illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
@@ -917,7 +917,7 @@ module brq_idu_decoder #(
           7'b1100001: begin // // FCVT.W.D, FCVT.WU.D
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
-            if (|instr[24:21]) begin
+            if (~|instr[24:21]) begin
               illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
@@ -925,7 +925,7 @@ module brq_idu_decoder #(
           7'b1101000: begin // FCVT.S.W, FCVT.S.WU
             fp_rf_we_o       = 1'b1;
             use_fp_rd_o      = 1'b1;
-            if (~(|instr[24:21])) begin
+            if (~|instr[24:21]) begin
               illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
@@ -933,7 +933,7 @@ module brq_idu_decoder #(
           7'b1111001: begin // FCVT.D.W, FCVT.D.WU
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rd_o      = 1'b1;
-            if (|instr[24:21]) begin
+            if (~|instr[24:21]) begin
               illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
@@ -1590,111 +1590,111 @@ module brq_idu_decoder #(
             fp_alu_operator_o     = DIV;
           end
           7'b0101101: begin
-            if (|instr[24:20]) begin // FSQRT.D
+            if (~|instr[24:20]) begin // FSQRT.D
               fp_alu_operator_o     = SQRT;
             end
           end
           7'b0101100: begin // FSQRT.S
-            if (|instr[24:20]) begin
+            if (~|instr[24:20]) begin
               fp_alu_operator_o     = SQRT;
             end
           end
           7'b0010001: begin // FSGNJ.D, FSGNJN.D, FSGNJX.D
-            if (instr[14] | (&instr[13:12])) begin
+            if (~(instr[14] | (&instr[13:12]))) begin
               fp_alu_operator_o     = SGNJ;
             end
           end
           7'b0010000: begin // FSGNJ.S, FSGNJN.S, FSGNJX.S
-            if (instr[14] | (&instr[13:12])) begin
+            if (~(instr[14] | (&instr[13:12]))) begin
               fp_alu_operator_o     = SGNJ;
             end
           end
           7'b0010101: begin // FMIN.D, FMAX.D
-            if (|instr[14:13]) begin
+            if (~|instr[14:13]) begin
               fp_alu_operator_o     = MINMAX;
             end
           end
           7'b0010100: begin // FMIN.S, FMAX.S
-            if (|instr[14:13]) begin
+            if (~|instr[14:13]) begin
               fp_alu_operator_o     = MINMAX;
             end
           end
           7'b0100000: begin // FCVT.S.D
-            if (|instr[24:21] | (~instr[20])) begin
+            if (~(|instr[24:21] | (~instr[20]))) begin
               fp_alu_operator_o     = F2F;
             end
           end
           7'b1100000: begin // FCVT.W.S, FCVT.WU.S
-            if (~(|instr[24:21])) begin
+            if (~|instr[24:21]) begin
               fp_alu_operator_o     = F2I;
-            end
 
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
+              if (instr[20])
+                fp_alu_op_mod_o       = 1'b1;
+            end
           end
           7'b0100001: begin // FCVT.D.S
-            if (|instr[24:20]) begin 
+            if (~|instr[24:20]) begin 
               fp_alu_operator_o     = F2F;
             end
           end
           7'b1110000: begin // FMV.X.W , FCLASS.S
             unique case ({instr[24:20],instr[14:12]})
-              // {3'b0000000,3'b000}: begin
-              //   fp_alu_operator_o     = ADD;   // to be decided YET
-              // end
-              {3'b0000000,3'b001}: begin
+              {3'b0000000,3'b000}: begin
+                fp_alu_operator_o     = ADD;   // to be decided YET
+              end
+              {3'b000,3'b001}: begin
                 fp_alu_operator_o     = CLASSIFY;
               end
               default: ;
             endcase
           end
           7'b1010001: begin // FEQ.D, FLT.D, FLE.D
-            if (~(instr[14]) | (&instr[13:12])) begin
+            if ((~instr[14]) | (&instr[13:12])) begin
               fp_alu_operator_o     = CMP;
             end
           end
           7'b1010000: begin // FEQ.S, FLT.S, FLE.S
-            if (~(instr[14]) | (&instr[13:12])) begin
+            if ((~instr[14]) | (&instr[13:12])) begin
               fp_alu_operator_o     = CMP;
             end
           end
           7'b1110001: begin // FCLASS.D
             unique case ({instr[24:20],instr[14:12]})
-              {3'b0000000,3'b001}: begin
+              {3'b000,3'b001}: begin
                 fp_alu_operator_o     = CLASSIFY;
               end
               default: ;
             endcase
           end 
           7'b1100001: begin // // FCVT.W.D, FCVT.WU.D
-            if (|instr[24:21]) begin
+            if (~|instr[24:21]) begin
               fp_alu_operator_o     = F2I;
+              
+              if (instr[20])
+                fp_alu_op_mod_o     = 1'b1;
             end
-
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
           end
           7'b1101000: begin // FCVT.S.W, FCVT.S.WU
             if (~(|instr[24:21])) begin
               fp_alu_operator_o     = I2F;
-            end
 
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
+              if (instr[20])
+                fp_alu_op_mod_o     = 1'b1;
+            end
           end
           7'b1111001: begin // FCVT.D.W, FCVT.D.WU
-            if (|instr[24:21]) begin
+            if (~|instr[24:21]) begin
               fp_alu_operator_o     = I2F;
-            end
 
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
+              if (instr[20])
+                fp_alu_op_mod_o     = 1'b1;
+            end
           end
-          // 7'b1111000: begin // FMV.W.X
-          //   if ((|instr[24:20]) | (|instr[14:12])) begin
-          //     fp_alu_operator_o     = FMADD;  // to be decided
-          //   end
-          // end
+          7'b1111000: begin // FMV.W.X
+            if ((|instr[24:20]) | (|instr[14:12])) begin
+              fp_alu_operator_o     = FMADD;  // to be decided
+            end
+          end
           default: ;
         endcase
       end
