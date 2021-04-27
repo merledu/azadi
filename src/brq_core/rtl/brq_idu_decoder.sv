@@ -271,6 +271,7 @@ module brq_idu_decoder #(
     fp_src_fmt_o          = FP32; 
     fp_dst_fmt_o          = FP32;
     fp_swap_oprnds_o      = 1'b0;
+    mv_instr_o            = 1'b0;
 
     opcode                = opcode_e'(instr[6:0]);
 
