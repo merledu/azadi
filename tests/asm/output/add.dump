@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
-/home/merl-lab/fyp/azadi/tests/asm/output/add.merl:     file format elf32-littleriscv
-=======
 /home/zeeshan/fyp/azadi/tests/asm/output/add.merl:     file format elf32-littleriscv
->>>>>>> 5e74c1a9791839744bb8dab0965e5a7e6b18e1c7
 
 
 Disassembly of section .text:

@@ -252,6 +252,7 @@ package fpnew_pkg;
     IntFmtMask:    4'b0110
   };
 
+
   // FPU configuraion: implementation
   typedef struct packed {
     opgrp_fmt_unsigned_t   PipeRegs;
