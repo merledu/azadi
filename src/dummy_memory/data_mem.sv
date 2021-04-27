@@ -35,10 +35,9 @@ module data_mem
   assign data_we[3:2] = (wmask_i[31:24] != 8'b0) ? 2'b11: 2'b0; 
   
 DFFRAM dccm (
-
     .CLK    (clock),
     .EN     (req_i), // chip enable
-    .WE     (data_we), //write mask
+    .WE     (we_i ? data_we : '0), //write mask
     .Di     (wdata_i), //data input
     .Do     (rdata_o), // data output
     .A      (addr_i) // address
