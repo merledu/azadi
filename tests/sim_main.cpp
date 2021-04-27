@@ -1,7 +1,7 @@
 #include "verilated.h"
 #include <iostream>
 #include <iomanip>
-#include "Vazadi_soc_top.h"
+#include "VAzadi_top_verilator.h"
 #include <fstream>
 #include <algorithm>
 #include <verilated_vcd_c.h>
@@ -21,7 +21,7 @@ double sc_time_stamp () {
 
 int main(int argc, char **argv, char **env)
 {
-    Vazadi_soc_top* top = new Vazadi_soc_top();
+    VAzadi_top_verilator* top = new VAzadi_top_verilator();
     Verilated::commandArgs(argc, argv);
 
     // Tracing
@@ -38,7 +38,7 @@ int main(int argc, char **argv, char **env)
     // Reading file and counting number of lines
     ifstream file;
     string ins;
-    file.open("/home/merl/github_repos/azadi/tools/program.hex");
+    file.open("/home/zeeshan/fyp/azadi/tests/hex/assembly.hex");
     int totalLines = count(istreambuf_iterator<char>(file), istreambuf_iterator<char>(), '\n');
     file.clear();
     file.seekg(0, file.beg);
@@ -53,8 +53,8 @@ int main(int argc, char **argv, char **env)
     vluint64_t hcycle;
 
     // Set frequency and baudrate
-    long int frequency = 10000000;
-    long int baudrate = 9600;
+    long int frequency = 21000000;
+    long int baudrate = 115200;
 
     vluint64_t clk_bit = (frequency / baudrate) + 1;
 //
@@ -91,9 +91,9 @@ int main(int argc, char **argv, char **env)
     for (hcycle = 0; hcycle < (NUM_CYCLES * 8);)
     {
         // toggle clock
-        top->clock = top->clock ? 0 : 1;
+        top->clock_i = top->clock_i ? 0 : 1;
 
-        if (hcycle == 50)
+        if (hcycle == 500)
         {
             top->reset_ni = 0;
             top->uart_rx_i = 1;
