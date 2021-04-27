@@ -6,7 +6,7 @@ module azadi_soc_top #(
 )(
   input clock,
   input reset_ni,
-//  input uart_rx_i,
+  input uart_rx_i,
 
   input  logic [19:0] gpio_i,
   output logic [19:0] gpio_o,
@@ -50,7 +50,7 @@ module azadi_soc_top #(
 //  .clk_in1(clk_i)
 // );
 
-  logic      uart_rx_i;
+// logic      uart_rx_i;
 
 //  logic               jtag_tck_i;
 //  logic               jtag_tms_i;
@@ -68,6 +68,8 @@ module azadi_soc_top #(
 
 
 logic system_rst_ni;
+logic RESET;
+assign RESET = ~reset_ni;
 
 wire [19:0] gpio_in;
 wire [19:0] gpio_out;
@@ -243,7 +245,7 @@ brq_core_top #(
   .DirectDmiTap (DirectDmiTap)
   ) debug_module (
   .clk_i(clock),       // clock
-  .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
+  .rst_ni(RESET),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
   .testmode_i(),
   .ndmreset_o(dbg_rst),  // non-debug module reset
@@ -439,7 +441,7 @@ spi_top u_spi_host(
  .i_Clock       (clock),
  .rst_ni        (RESET),
  .i_Rx_Serial   (uart_rx_i),
- .CLKS_PER_BIT  (15'd87),
+ .CLKS_PER_BIT  (15'd182),
  .o_Rx_DV       (rx_dv_i),
  .o_Rx_Byte     (rx_byte_i)
  );
@@ -451,10 +453,10 @@ instr_mem_top iccm (
 
   .req        (req_i),
   .addr       (tlul_addr),
-  .wdata      (),
+  .wdata      (iccm_cntrl_data),
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         ('0)
+  .we         (iccm_cntrl_we)
 );
 
  tlul_sram_adapter #(
@@ -476,7 +478,7 @@ instr_mem_top iccm (
     .addr_o    (tlul_addr),
     .wdata_o   (),
     .wmask_o   (),
-    .rdata_i   ((reset_ni) ? tlul_data: '0),
+    .rdata_i   ((system_rst_ni) ? tlul_data: '0),
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
     );
@@ -484,6 +486,7 @@ instr_mem_top iccm (
 rstmgr reset_manager(
   .clk_i(clock),
   .rst_ni(reset_ni),
+  .iccm_rst_i(iccm_cntrl_reset),
   .ndmreset (dbg_rst),
   .sys_rst_ni(system_rst_ni)
 );

@@ -305,6 +305,18 @@ module brq_idu #(
   logic [31:0] alu_operand_a;
   logic [31:0] alu_operand_b;
 
+  // Floating point 
+  logic        fp_swap_oprnds;
+  logic [31:0] fp_rf_rdata_a_fwd;
+  logic [31:0] fp_rf_rdata_b_fwd;
+  logic [31:0] fp_rf_rdata_c_fwd;
+  logic [31:0] temp;
+  logic [31:0] fpu_op_a;
+  logic [31:0] fpu_op_b;
+  logic [31:0] fpu_op_c;
+  logic        mv_instr;
+  logic [31:0] result_wb;
+
   /////////////
   // LSU Mux //
   /////////////
@@ -409,22 +421,6 @@ module brq_idu #(
 
   assign imd_val_q_ex_o = imd_val_q;
 
-  ///////////////////////
-  // Register File MUX //
-  ///////////////////////
-
-  // Suppress register write if there is an illegal CSR access or instruction is not executing
-  assign rf_we_id_o = rf_we_raw & instr_executing & ~illegal_csr_insn_i;
-
-  // Register file write data mux
-  always_comb begin : rf_wdata_id_mux
-    unique case (rf_wdata_sel)
-      RF_WD_EX:  rf_wdata_id_o = result_ex_i;
-      RF_WD_CSR: rf_wdata_id_o = csr_rdata_i;
-      default:   rf_wdata_id_o = result_ex_i;
-    endcase
-  end
-
   /////////////
   // Decoder //
   /////////////
@@ -525,18 +521,9 @@ module brq_idu #(
       .use_fp_rd_o                     ( use_fp_rd_o           ),
       .fp_swap_oprnds_o                ( fp_swap_oprnds        ),
       .fp_load_o                       ( fp_load_o             ),
-      .mv_float2int_o                  ( ),
-      .mv_int2float_o                  ( )
+      .mv_instr_o                      ( mv_instr              )
   );
 
-  logic  fp_swap_oprnds;
-  logic [31:0] fp_rf_rdata_a_fwd;
-  logic [31:0] fp_rf_rdata_b_fwd;
-  logic [31:0] fp_rf_rdata_c_fwd;
-  logic [31:0] temp;
-  logic [31:0] fpu_op_a;
-  logic [31:0] fpu_op_b;
-  logic [31:0] fpu_op_c;
   assign fpu_op_a = use_fp_rs1_o ? fp_rf_rdata_a_fwd : rf_rdata_a_fwd;
   assign fpu_op_b = use_fp_rs2_o ? fp_rf_rdata_b_fwd : rf_rdata_b_fwd;
   assign fpu_op_c = fp_rf_rdata_c_fwd;
@@ -555,6 +542,23 @@ module brq_idu #(
     fp_operands_o = {fpu_op_c , fpu_op_b , fpu_op_a};
   end
    
+  assign result_wb = mv_instr ? fpu_op_a : result_ex_i;
+
+  ///////////////////////
+  // Register File MUX //
+  ///////////////////////
+
+  // Suppress register write if there is an illegal CSR access or instruction is not executing
+  assign rf_we_id_o = rf_we_raw & instr_executing & ~illegal_csr_insn_i;
+  
+  // Register file write data mux
+  always_comb begin : rf_wdata_id_mux
+    unique case (rf_wdata_sel)
+      RF_WD_EX:  rf_wdata_id_o = result_wb;
+      RF_WD_CSR: rf_wdata_id_o = csr_rdata_i;
+      default:   rf_wdata_id_o = result_wb;
+    endcase
+  end
 
   /////////////////////////////////
   // CSR-related pipline flushes //
@@ -902,7 +906,9 @@ module brq_idu #(
     // Register read address matches write address in WB
     logic rf_rd_a_wb_match;
     logic rf_rd_b_wb_match;
-    logic rf_rd_c_wb_match;
+    logic fp_rf_rd_a_wb_match;
+    logic fp_rf_rd_b_wb_match;
+    logic fp_rf_rd_c_wb_match;
     // Hazard between registers being read and written
     logic rf_rd_a_hz;
     logic rf_rd_b_hz;
@@ -961,8 +967,11 @@ module brq_idu #(
 
     assign rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_a_o) & |rf_raddr_a_o;
     assign rf_rd_b_wb_match = (rf_waddr_wb_i == rf_raddr_b_o) & |rf_raddr_b_o;
+
+    assign fp_rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_a_o);
+    assign fp_rf_rd_b_wb_match = (rf_waddr_wb_i == rf_raddr_b_o);
     
-    assign rf_rd_c_wb_match = (rf_waddr_wb_i == fp_rf_raddr_c_o) & |fp_rf_raddr_c_o; 
+    assign fp_rf_rd_c_wb_match = (rf_waddr_wb_i == fp_rf_raddr_c_o); 
 
     assign rf_rd_a_wb_match_o = rf_rd_a_wb_match;
     assign rf_rd_b_wb_match_o = rf_rd_b_wb_match;
@@ -981,9 +990,9 @@ module brq_idu #(
     assign rf_rdata_b_fwd = rf_rd_b_wb_match & rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_b_i;
     
     // forwarding for floating point unit
-    assign fp_rf_rdata_a_fwd = rf_rd_a_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_a_i;
-    assign fp_rf_rdata_b_fwd = rf_rd_b_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_b_i;
-    assign fp_rf_rdata_c_fwd = rf_rd_c_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_c_i; 
+    assign fp_rf_rdata_a_fwd = fp_rf_rd_a_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_a_i;
+    assign fp_rf_rdata_b_fwd = fp_rf_rd_b_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_b_i;
+    assign fp_rf_rdata_c_fwd = fp_rf_rd_c_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_c_i; 
 
     assign stall_ld_hz = outstanding_load_wb_i & (rf_rd_a_hz | rf_rd_b_hz | rf_rd_c_hz);
 
