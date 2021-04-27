@@ -479,7 +479,7 @@ instr_mem_top iccm (
     .addr_o    (tlul_addr),
     .wdata_o   (),
     .wmask_o   (),
-    .rdata_i   ((sys_rst_ni) ? tlul_data: '0),
+    .rdata_i   ((system_rst_ni) ? tlul_data: '0),
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
     );

@@ -117,8 +117,7 @@ module brq_idu_decoder #(
     output logic                  use_fp_rd_o,
     output logic                  fp_swap_oprnds_o,
     output logic                  fp_load_o,
-    output logic                  mv_float2int_o,
-    output logic                  mv_int2float_o
+    output logic                  mv_instr_o
 );
 
   import brq_pkg::*;
@@ -269,11 +268,10 @@ module brq_idu_decoder #(
     use_fp_rs3_o          = 1'b0;
     use_fp_rd_o           = 1'b0;
     fp_load_o             = 1'b0;
-    mv_float2int_o        = 1'b0;
-    mv_int2float_o        = 1'b0;
     fp_src_fmt_o          = FP32; 
     fp_dst_fmt_o          = FP32;
     fp_swap_oprnds_o      = 1'b0;
+    mv_instr_o            = 1'b0;
 
     opcode                = opcode_e'(instr[6:0]);
 
@@ -871,7 +869,7 @@ module brq_idu_decoder #(
                 use_fp_rs1_o   = 1'b1;
                 illegal_insn   = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
                 fp_src_fmt_o   = FP32;
-                mv_float2int_o = 1'b1;
+                mv_instr_o     = 1'b1;
               end
               {5'b00000,3'b001}: begin
                 use_fp_rs1_o = 1'b1;
@@ -941,8 +939,8 @@ module brq_idu_decoder #(
           7'b1111000: begin // FMV.W.X
             fp_rf_we_o        = 1'b1;
             use_fp_rd_o       = 1'b1;
-            mv_int2float_o    = 1'b1;
-            if ((|instr[24:20]) | (|instr[14:12])) begin
+            mv_instr_o        = 1'b1;
+            if (~(|instr[24:20]) | (|instr[14:12])) begin
               illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
@@ -1639,9 +1637,9 @@ module brq_idu_decoder #(
           end
           7'b1110000: begin // FMV.X.W , FCLASS.S
             unique case ({instr[24:20],instr[14:12]})
-              {3'b0000000,3'b000}: begin
-                fp_alu_operator_o     = ADD;   // to be decided YET
-              end
+              // {3'b0000000,3'b000}: begin
+              //   fp_alu_operator_o     = ADD;   // to be decided YET
+              // end
               {3'b000,3'b001}: begin
                 fp_alu_operator_o     = CLASSIFY;
               end
@@ -1690,11 +1688,11 @@ module brq_idu_decoder #(
                 fp_alu_op_mod_o     = 1'b1;
             end
           end
-          7'b1111000: begin // FMV.W.X
-            if ((|instr[24:20]) | (|instr[14:12])) begin
-              fp_alu_operator_o     = FMADD;  // to be decided
-            end
-          end
+          // 7'b1111000: begin // FMV.W.X
+          //   if ((|instr[24:20]) | (|instr[14:12])) begin
+          //     fp_alu_operator_o     = FMADD;  // to be decided
+          //   end
+          // end
           default: ;
         endcase
       end

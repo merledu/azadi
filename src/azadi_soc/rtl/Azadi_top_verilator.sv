@@ -76,8 +76,7 @@ module Azadi_top_verilator #(
     .DirectDmiTap (DirectDmiTap)
   ) top_verilator(
     .clock(clock_i),
-    .reset_ni(reset_ni),
-  
+    .reset_ni(reset_ni),  
     .gpio_i(gpio_i),
     .gpio_o(gpio_o),
     .pwm_o (pwm_o),
