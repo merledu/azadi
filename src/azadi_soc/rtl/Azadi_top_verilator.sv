@@ -9,19 +9,32 @@ module Azadi_top_verilator #(
   output logic [19:0] gpio_o,
 //  output logic [19:0] gpio_oe
 
-  input               uart_rx,
-  output              uart_tx,
-    // PWM
-  output logic pwm_o,
-  output logic pwm_o_2,
+  // input               uart_rx,
+  // output              uart_tx,
+
+  input logic uart_rx_i
+
+  // PWM
+  // output logic pwm_o,
+  // output logic pwm_o_2,
 
   // spi
 
-  output          [`SPI_SS_NB-1:0] ss_o,        
-  output                           sclk_o,      
-  output                           sd_o,       
-  input                            sd_i 
+  // output          [`SPI_SS_NB-1:0] ss_o,        
+  // output                           sclk_o,      
+  // output                           sd_o,       
+  // input                            sd_i 
 );
+  logic    uart_rx;
+  logic    uart_tx;
+
+  logic pwm_o;
+  logic pwm_o_2;
+
+  logic [`SPI_SS_NB-1:0] ss_o;        
+  logic                  sclk_o;      
+  logic                  sd_o;       
+  logic                  sd_i; 
 
 //logic clock; // output clock after dividing the input clock by divisor
 //reg[27:0] counter=28'd0;
@@ -79,6 +92,7 @@ module Azadi_top_verilator #(
     .jtag_tdi_i(cio_jtag_tdi),
     .jtag_tdo_o(cio_jtag_tdo),
 
+    .uart_rx_i(uart_rx_i),
 
   // spi interface 
     .ss_o        (ss_o),         
