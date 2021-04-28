@@ -38,7 +38,7 @@ int main(int argc, char **argv, char **env)
     // Reading file and counting number of lines
     ifstream file;
     string ins;
-    file.open("/home/zeeshan/fyp/azadi/tests/hex/assembly.hex");
+    file.open("/home/merl/github_repos/azadi/tests/prog.hex");
     int totalLines = count(istreambuf_iterator<char>(file), istreambuf_iterator<char>(), '\n');
     file.clear();
     file.seekg(0, file.beg);
@@ -120,18 +120,20 @@ int main(int argc, char **argv, char **env)
         }
         top->eval();
         // Next half cycle
-        hcycle++;
+        
 
-        if (Verilated::gotFinish())
-            exit(0);
+        //if (Verilated::gotFinish())
+        //    exit(0);
 
         if (tfp)
             tfp->dump(hcycle);
+            hcycle++;
     }
-    top->final();
-    tfp->close();
+    top -> final();
+
+    if (tfp) tfp -> close();
 
     delete top;
     exit(0);
-    return 0;
+
 }
