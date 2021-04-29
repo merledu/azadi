@@ -557,20 +557,26 @@ module brq_cs_registers #(
         // mstatus: IE bit
 
         CSR_FCSR: begin 
-          fcsr_en = 1'b1;
-          fcsr_d  = csr_wdata_int[7:0];
+          fcsr_en   = 1'b1;
+          fflags_en = 1'b1;
+          frm_en    = 1'b1;
+          fcsr_d    = csr_wdata_int[7:0];
+          fflags_d  = fcsr_d[4:0];
+          frm_d     = fcsr_d[7:5];
         end
 
         CSR_FFLAG : begin
           fflags_en = 1'b1;
+          fcsr_en   = 1'b1;
           fflags_d  = fpnew_pkg::status_t'(csr_wdata_int[4:0]);
-          fcsr_d    = {frm_q, fflags_q};
+          fcsr_d    = {frm_q, fflags_d};
         end
 
         CSR_FRM: begin
-          frm_en = 1'b1;
-          frm_d  = roundmode_e'(csr_wdata_int[2:0]); 
-          fcsr_d = {frm_q, fflags_q};
+          frm_en  = 1'b1;
+          fcsr_en = 1'b1;
+          frm_d   = roundmode_e'(csr_wdata_int[2:0]); 
+          fcsr_d  = {frm_d, fflags_q};
         end
 
         CSR_MSTATUS: begin
