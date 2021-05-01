@@ -157,7 +157,7 @@ void VAzadi_top_verilator::_initial__TOP__1(VAzadi_top_verilator__Syms* __restri
     // Variables
     // Begin mtask footprint all: 
     QData/*63:0*/ __Vfunc_Azadi_top_verilator__DOT__u_jtagdpi__DOT__jtagdpi_create__74__Vfuncout;
-    WData/*159:0*/ __Vtemp1[5];
+    WData/*255:0*/ __Vtemp1[8];
     // Body
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__programmer__DOT__r_Rx_DV = 0U;
     vlTOPp->__Vdpiimwrap_Azadi_top_verilator__DOT__u_jtagdpi__DOT__jtagdpi_create_TOP(
@@ -165,11 +165,14 @@ void VAzadi_top_verilator::_initial__TOP__1(VAzadi_top_verilator__Syms* __restri
     vlTOPp->Azadi_top_verilator__DOT__u_jtagdpi__DOT__ctx 
         = __Vfunc_Azadi_top_verilator__DOT__u_jtagdpi__DOT__jtagdpi_create__74__Vfuncout;
     __Vtemp1[0U] = 0x2e686578U;
-    __Vtemp1[1U] = 0x70726f67U;
-    __Vtemp1[2U] = 0x7374732fU;
-    __Vtemp1[3U] = 0x2e2f7465U;
-    __Vtemp1[4U] = 0x2eU;
-    VL_READMEM_N(true, 32, 4096, 0, VL_CVT_PACK_STR_NW(5, __Vtemp1)
+    __Vtemp1[1U] = 0x6772616dU;
+    __Vtemp1[2U] = 0x2f70726fU;
+    __Vtemp1[3U] = 0x74707574U;
+    __Vtemp1[4U] = 0x6d2f6f75U;
+    __Vtemp1[5U] = 0x732f6173U;
+    __Vtemp1[6U] = 0x74657374U;
+    __Vtemp1[7U] = 0x2e2e2fU;
+    VL_READMEM_N(true, 32, 4096, 0, VL_CVT_PACK_STR_NW(8, __Vtemp1)
                  , vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__iccm__DOT__iccm__DOT__mem
                  , 0, ~0ULL);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__programmer__DOT__r_Rx_Byte = 0U;

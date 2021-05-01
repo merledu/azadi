@@ -13,7 +13,7 @@ module DFFRAM (
 reg [31:0] mem [0:4096-1];
 
 initial begin
-    $readmemh("../tests/prog.hex", mem);
+    $readmemh("../tests/asm/output/program.hex", mem);
 end
   //  initial begin
   //      mem[0] = 32'h400C0437;

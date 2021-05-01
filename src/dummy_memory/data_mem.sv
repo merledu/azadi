@@ -38,7 +38,7 @@ DFFRAMD dccm (
 
     .CLK    (clock),
     .EN     (req_i), // chip enable
-    .WE     (data_we), //write mask
+    .WE     (we_i? data_we: '0), //write mask
     .Di     (wdata_i), //data input
     .Do     (rdata_o), // data output
     .A      (addr_i) // address

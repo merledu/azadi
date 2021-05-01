@@ -3281,6 +3281,7 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__rvalid_o = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__rdata_o = VL_RAND_RESET_I(32);
     Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_we = VL_RAND_RESET_I(4);
+    Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT____Vcellinp__dccm__WE = VL_RAND_RESET_I(4);
     for (int __Vi0=0; __Vi0<4096; ++__Vi0) {
         Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__dccm__DOT__mem[__Vi0] = VL_RAND_RESET_I(32);
     }
