@@ -8,8 +8,9 @@
 #include "VAzadi_top_verilator_gpio_reg_pkg.h"
 #include "VAzadi_top_verilator_rv_plic_reg_pkg.h"
 #include "VAzadi_top_verilator_uart_reg_pkg.h"
+#include "VAzadi_top_verilator_i2c_reg_pkg.h"
 #include "VAzadi_top_verilator_rv_timer_reg_pkg.h"
-#include "VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15.h"
+#include "VAzadi_top_verilator_tlul_fifo_sync__RC0_RD0.h"
 
 
 
@@ -18,7 +19,6 @@ VAzadi_top_verilator__Syms::VAzadi_top_verilator__Syms(VAzadi_top_verilator* top
     // Setup locals
     : __Vm_namep(namep)
     , __Vm_activity(false)
-    , __Vm_baseCode(0)
     , __Vm_didInit(false)
     // Setup submodule names
     , TOP__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM(Verilated::catName(topp->name(), "Azadi_top_verilator.top_verilator.main_swith.DCCM"))
@@ -92,6 +92,7 @@ VAzadi_top_verilator__Syms::VAzadi_top_verilator__Syms(VAzadi_top_verilator* top
     , TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d(Verilated::catName(topp->name(), "Azadi_top_verilator.top_verilator.periph_switch.u_s1n_14.gen_dfifo[8].fifo_d"))
     , TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d(Verilated::catName(topp->name(), "Azadi_top_verilator.top_verilator.periph_switch.u_s1n_14.gen_dfifo[9].fifo_d"))
     , TOP__gpio_reg_pkg(Verilated::catName(topp->name(), "gpio_reg_pkg"))
+    , TOP__i2c_reg_pkg(Verilated::catName(topp->name(), "i2c_reg_pkg"))
     , TOP__rv_plic_reg_pkg(Verilated::catName(topp->name(), "rv_plic_reg_pkg"))
     , TOP__rv_timer_reg_pkg(Verilated::catName(topp->name(), "rv_timer_reg_pkg"))
     , TOP__uart_reg_pkg(Verilated::catName(topp->name(), "uart_reg_pkg"))
@@ -170,6 +171,7 @@ VAzadi_top_verilator__Syms::VAzadi_top_verilator__Syms(VAzadi_top_verilator* top
     TOPp->__PVT__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d = &TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d;
     TOPp->__PVT__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d = &TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d;
     TOPp->__PVT__gpio_reg_pkg = &TOP__gpio_reg_pkg;
+    TOPp->__PVT__i2c_reg_pkg = &TOP__i2c_reg_pkg;
     TOPp->__PVT__rv_plic_reg_pkg = &TOP__rv_plic_reg_pkg;
     TOPp->__PVT__rv_timer_reg_pkg = &TOP__rv_timer_reg_pkg;
     TOPp->__PVT__uart_reg_pkg = &TOP__uart_reg_pkg;
@@ -246,6 +248,7 @@ VAzadi_top_verilator__Syms::VAzadi_top_verilator__Syms(VAzadi_top_verilator* top
     TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__8__KET____DOT__fifo_d.__Vconfigure(this, false);
     TOP__Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__gen_dfifo__BRA__9__KET____DOT__fifo_d.__Vconfigure(this, false);
     TOP__gpio_reg_pkg.__Vconfigure(this, true);
+    TOP__i2c_reg_pkg.__Vconfigure(this, true);
     TOP__rv_plic_reg_pkg.__Vconfigure(this, true);
     TOP__rv_timer_reg_pkg.__Vconfigure(this, true);
     TOP__uart_reg_pkg.__Vconfigure(this, true);

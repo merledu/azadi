@@ -4,7 +4,7 @@
 #include <string>
 #include "VAzadi_top_verilator.h"
 #include "verilated.h"
-#include "verilated_fst_c.h"
+#include "verilated_vcd_c.h"
 #include "VAzadi_top_verilator__Dpi.h"
 
 
@@ -28,7 +28,7 @@ int main (int argc, char **argv) {
     //VerilatedVcdC* tfp = NULL;
 
     Verilated::traceEverOn(true);
-    VerilatedFstC* tfp = new VerilatedFstC;
+    VerilatedVcdC* tfp = new VerilatedVcdC;
     // if initialized above
     //tfp = new VerilatedVcdC;
 
@@ -37,14 +37,16 @@ int main (int argc, char **argv) {
     Verilated::mkdir("logs");
     tfp->open("logs/sim.vcd");
 
-    top -> clock_i = 0;
+    top -> clock = 0;
     
 
    top -> gpio_i = 8;
     while (!Verilated::gotFinish()) 
     { 
-        top->clock_i = top->clock_i ? 0 : 1; 
-              // Toggle clock
+        if (main_time % 5 == 0) {
+          top->clock = top->clock ? 0 : 1; 
+        }
+
         if(main_time == 200)
         {
             top -> reset_ni = 0;
