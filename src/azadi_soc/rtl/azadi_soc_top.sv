@@ -23,7 +23,7 @@ module azadi_soc_top #(
   output              uart_tx,
   input               uart_rx,
 
-  // PWM interface 
+  // PWM interface  
 
   output              pwm_o,
   output              pwm_o_2,

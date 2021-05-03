@@ -294,8 +294,7 @@ module brq_cs_registers #(
   // See RISC-V Privileged Specification, version 1.11, Section 2.1
   assign illegal_csr_priv    = (csr_addr[9:8] > {priv_lvl_q});
   assign illegal_csr_write   = (csr_addr[11:10] == 2'b11) && csr_wreq;
-  assign illegal_csr_insn_o  = csr_access_i & (illegal_csr | illegal_csr_write | illegal_csr_priv
-                               | illegal_csr_dyn_mod);
+  assign illegal_csr_insn_o  = (csr_access_i & (illegal_csr | illegal_csr_write | illegal_csr_priv)) | illegal_csr_dyn_mod;
 
   // mip CSR is purely combinational - must be able to re-enable the clock upon WFI
   assign mip.irq_software = irq_software_i;
@@ -304,8 +303,18 @@ module brq_cs_registers #(
   assign mip.irq_fast     = irq_fast_i;
   
   // Floating point
-  assign fp_frm_o = frm_q;
-
+  always_comb begin
+    unique case (frm_q)
+      000,
+      001,
+      010,
+      011,
+      100: illegal_dyn_mod =  1'b0;
+      default: illegal_dyn_mod =  1'b1;
+    endcase 
+    fp_frm_o = frm_q;
+  end
+  
   // read logic
   always_comb begin
     csr_rdata_int = '0;
@@ -321,14 +330,6 @@ module brq_cs_registers #(
       // frm: floating-point dynamic rounding mode
       CSR_FRM: begin
         csr_rdata_int = {29'b0 , frm_q};
-        unique case (frm_q)
-          000,
-          001,
-          010,
-          011,
-          100: illegal_dyn_mod =  1'b0;
-          default: illegal_dyn_mod =  1'b1;
-        endcase 
       end
 
       // mhartid: unique hardware thread id
@@ -557,20 +558,26 @@ module brq_cs_registers #(
         // mstatus: IE bit
 
         CSR_FCSR: begin 
-          fcsr_en = 1'b1;
-          fcsr_d  = csr_wdata_int[7:0];
+          fcsr_en   = 1'b1;
+          fflags_en = 1'b1;
+          frm_en    = 1'b1;
+          fcsr_d    = csr_wdata_int[7:0];
+          fflags_d  = fcsr_d[4:0];
+          frm_d     = fcsr_d[7:5];
         end
 
         CSR_FFLAG : begin
           fflags_en = 1'b1;
+          fcsr_en   = 1'b1;
           fflags_d  = fpnew_pkg::status_t'(csr_wdata_int[4:0]);
-          fcsr_d    = {frm_q, fflags_q};
+          fcsr_d    = {frm_q, fflags_d};
         end
 
         CSR_FRM: begin
-          frm_en = 1'b1;
-          frm_d  = roundmode_e'(csr_wdata_int[2:0]); 
-          fcsr_d = {frm_q, fflags_q};
+          frm_en  = 1'b1;
+          fcsr_en = 1'b1;
+          frm_d   = roundmode_e'(csr_wdata_int[2:0]); 
+          fcsr_d  = {frm_d, fflags_q};
         end
 
         CSR_MSTATUS: begin

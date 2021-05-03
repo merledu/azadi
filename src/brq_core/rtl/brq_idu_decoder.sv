@@ -324,7 +324,6 @@ module brq_idu_decoder #(
           3'b111:  illegal_insn = 1'b0;
           default: illegal_insn = 1'b1;
         endcase
-
         rf_ren_a_o = 1'b1;
         rf_ren_b_o = 1'b1;
       end
