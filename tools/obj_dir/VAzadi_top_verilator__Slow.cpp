@@ -8,26 +8,21 @@
 #include "verilated_dpi.h"
 
 //==========
-// Begin mtask footprint all: 35 
+// Begin mtask footprint all: 38 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable14_Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__rx_watermark_d[512];
-// Begin mtask footprint all: 36 
+// Begin mtask footprint all: 39 
+CData/*0:0*/ VAzadi_top_verilator::__Vtable15_Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_watermark_d[512];
+// Begin mtask footprint all: 22 
+CData/*5:0*/ VAzadi_top_verilator::__Vtable8_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__State_ctl_S[256];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_BIAS_AONE[4];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_HALF_BIAS[4];
+// Begin mtask footprint all: 35 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__in_ready[128];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__out_valid[128];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__hold_result[128];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__data_is_held[128];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__unit_busy[128];
 CData/*1:0*/ VAzadi_top_verilator::__Vtable7_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__state_d[128];
-// Begin mtask footprint all: 18 
-CData/*0:0*/ VAzadi_top_verilator::__Vtable2_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__adder_op_b_negate[64];
-// Begin mtask footprint all: 21 
-CData/*3:0*/ VAzadi_top_verilator::__Vtable6_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be[32];
-// Begin mtask footprint all: 15 
-CData/*0:0*/ VAzadi_top_verilator::__Vtable3_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_signed[64];
-CData/*0:0*/ VAzadi_top_verilator::__Vtable4_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_result[256];
-CData/*0:0*/ VAzadi_top_verilator::__Vtable5_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left[64];
-CData/*5:0*/ VAzadi_top_verilator::__Vtable8_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__State_ctl_S[256];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_BIAS_AONE[4];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable9_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__gen_operation_groups__BRA__1__KET____DOT__i_opgroup_block__DOT__gen_merged_slice__DOT__i_multifmt_slice__DOT__gen_num_lanes__BRA__0__KET____DOT__active_lane__DOT__lane_instance__DOT__i_fpnew_divsqrt_multi__DOT__i_divsqrt_lei__DOT__nrbd_nrsc_U0__DOT__control_U0__DOT__C_HALF_BIAS[4];
 // Begin mtask footprint all: 17 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable10_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__dmi_access[32];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable10_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__dtmcs_select[32];
@@ -41,34 +36,43 @@ CData/*0:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_veri
 CData/*0:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__shift_ir[32];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__update_ir[32];
 CData/*3:0*/ VAzadi_top_verilator::__Vtable11_Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dap__DOT__i_dmi_jtag_tap__DOT__tap_state_d[32];
-// Begin mtask footprint all: 14 
-CData/*1:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
-CData/*1:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
-IData/*31:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
-// Begin mtask footprint all: 13 
+// Begin mtask footprint all: 20 
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__instr_fetch_err_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__illegal_insn_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__ecall_insn_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__ebrk_insn_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__store_err_prio[64];
 CData/*0:0*/ VAzadi_top_verilator::__Vtable1_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__id_stage_i__DOT__controller_i__DOT__load_err_prio[64];
+CData/*0:0*/ VAzadi_top_verilator::__Vtable3_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_signed[64];
+CData/*0:0*/ VAzadi_top_verilator::__Vtable4_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_result[256];
+CData/*0:0*/ VAzadi_top_verilator::__Vtable5_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left[64];
+// Begin mtask footprint all: 15 
+CData/*0:0*/ VAzadi_top_verilator::__Vtable2_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__ex_block_i__DOT__alu_i__DOT__adder_op_b_negate[64];
+CData/*3:0*/ VAzadi_top_verilator::__Vtable6_Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__load_store_unit_i__DOT__data_be[32];
+// Begin mtask footprint all: 9 
+CData/*1:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable12_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
+CData/*1:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__idx_o[8];
+IData/*31:0*/ VAzadi_top_verilator::__Vtable13_Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__unnamedblk3__DOT__i[8];
 
-VL_CTOR_IMP(VAzadi_top_verilator), __Vm_mt_6(1), __Vm_mt_8(1), 
-  __Vm_mt_16(1), __Vm_mt_18(1), __Vm_mt_21(2), __Vm_mt_1(1), 
-  __Vm_mt_11(1), __Vm_mt_13(1), __Vm_mt_14(1), __Vm_mt_17(1), 
-  __Vm_mt_22(1), __Vm_mt_23(2), __Vm_mt_24(3), __Vm_mt_27(2), 
-  __Vm_mt_31(4), __Vm_mt_5(3), __Vm_mt_9(3), __Vm_mt_10(1), 
-  __Vm_mt_20(3), __Vm_mt_29(1), __Vm_mt_32(1), __Vm_mt_33(4), 
-  __Vm_mt_34(1), __Vm_mt_4(2), __Vm_mt_12(5), __Vm_mt_30(3), 
-  __Vm_mt_35(3), __Vm_mt_36(2), __Vm_mt_37(2), __Vm_mt_38(1), 
-  __Vm_mt_39(1), __Vm_mt_40(1), __Vm_mt_28(1), __Vm_mt_final(4), 
-  __Vm_threadPoolp(nullptr), __Vm_even_cycle(false) {
+VL_CTOR_IMP(VAzadi_top_verilator), __Vm_mt_3(1), __Vm_mt_8(1), 
+  __Vm_mt_9(1), __Vm_mt_10(1), __Vm_mt_11(1), __Vm_mt_12(1), 
+  __Vm_mt_15(3), __Vm_mt_20(2), __Vm_mt_22(1), __Vm_mt_24(2), 
+  __Vm_mt_26(2), __Vm_mt_27(2), __Vm_mt_28(2), __Vm_mt_29(4), 
+  __Vm_mt_30(1), __Vm_mt_32(2), __Vm_mt_13(2), __Vm_mt_17(1), 
+  __Vm_mt_19(1), __Vm_mt_23(1), __Vm_mt_1(2), __Vm_mt_6(1), 
+  __Vm_mt_35(5), __Vm_mt_36(1), __Vm_mt_41(3), __Vm_mt_42(1), 
+  __Vm_mt_43(3), __Vm_mt_45(1), __Vm_mt_2(2), __Vm_mt_4(1), 
+  __Vm_mt_5(1), __Vm_mt_31(6), __Vm_mt_33(3), __Vm_mt_34(1), 
+  __Vm_mt_37(2), __Vm_mt_39(3), __Vm_mt_40(2), __Vm_mt_44(1), 
+  __Vm_mt_46(1), __Vm_mt_38(1), __Vm_mt_final(4), __Vm_threadPoolp(nullptr), 
+  __Vm_even_cycle(false) {
     VAzadi_top_verilator__Syms* __restrict vlSymsp = __VlSymsp = new VAzadi_top_verilator__Syms(this, name());
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     VL_CELL(__PVT__gpio_reg_pkg, VAzadi_top_verilator_gpio_reg_pkg);
     VL_CELL(__PVT__rv_plic_reg_pkg, VAzadi_top_verilator_rv_plic_reg_pkg);
     VL_CELL(__PVT__uart_reg_pkg, VAzadi_top_verilator_uart_reg_pkg);
+    VL_CELL(__PVT__i2c_reg_pkg, VAzadi_top_verilator_i2c_reg_pkg);
     VL_CELL(__PVT__rv_timer_reg_pkg, VAzadi_top_verilator_rv_timer_reg_pkg);
     VL_CELL(__PVT__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DCCM, VAzadi_top_verilator_tlul_socket_m1__pi7);
     VL_CELL(__PVT__Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__DEBUG_ROM, VAzadi_top_verilator_tlul_socket_m1__pi7);
@@ -2651,12 +2655,14 @@ void VAzadi_top_verilator::_settle__TOP__2(VAzadi_top_verilator__Syms* __restric
         = (0x38U | (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__i_fpnew_top__DOT__is_boxed));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[1U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_uart1_i;
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[2U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_spi0_i;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[3U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_spi1_i;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[4U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_spi2_i;
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[7U] 
-        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_i2c0_i;
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[5U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_pwm_i;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[8U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_i2c1_i;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[9U] 
@@ -3103,22 +3109,163 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
     vlTOPp->gpio_o = (0xfffffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__addr_d 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__addr_q;
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__divisor 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__divisor)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__divisor 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__divisor)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__divisor 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__divisor)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__divisor 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__divisor)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                  >> 1U)))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_rready = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_rready = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_rready = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                      >> 4U)))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_rready = 1U;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_rready = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_rready = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_rready = 0U;
+                        }
+                    }
+                } else {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_rready = 1U;
+                        }
+                    } else {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_rready = 1U;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_stop = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_stop = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_stop = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                      >> 4U)))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_stop = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_start = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_start = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_start = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                      >> 4U)))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__log_start = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__shift_data_en = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__shift_data_en = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__shift_data_en = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__shift_data_en = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__gen_filter__BRA__0__KET____DOT__filter__DOT__diff_ctr_d 
         = (((1U & vlTOPp->gpio_i) != (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__gen_filter__BRA__0__KET____DOT__filter__DOT__filter_q))
             ? 0U : ((0xfU == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__gen_filter__BRA__0__KET____DOT__filter__DOT__diff_ctr_q))
@@ -3279,6 +3426,212 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
             ? 0U : ((0xfU == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__gen_filter__BRA__31__KET____DOT__filter__DOT__diff_ctr_q))
                      ? 0xfU : (0xfU & ((IData)(1U) 
                                        + (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__gen_filter__BRA__31__KET____DOT__filter__DOT__diff_ctr_q)))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_clr = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_clr = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_clr = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                if ((0U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index))) {
+                                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_clr = 1U;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                if ((0U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index))) {
+                                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_clr = 1U;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__byte_decr = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__byte_decr = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__byte_decr = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                if ((1U != (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__byte_index))) {
+                                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__byte_decr = 1U;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__read_byte_clr = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__read_byte_clr = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__read_byte_clr = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                if ((0U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index))) {
+                                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__read_byte_clr = 1U;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_decr = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_decr = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_decr = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                if ((0U != (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index))) {
+                                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_decr = 1U;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q)) {
+                                if ((0U != (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index))) {
+                                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_decr = 1U;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wdata = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wdata = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wdata = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if (((0U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index)) 
+                                 & (1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q))) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wdata 
+                                    = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__read_byte;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (2U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
@@ -3288,25 +3641,6 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (2U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_vector 
-        = (((QData)((IData)(((0xfffffffeU & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_gpio 
-                                             << 1U)) 
-                             | (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_parity_err)))) 
-            << 9U) | (QData)((IData)((((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_timeout) 
-                                       << 8U) | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_break_err) 
-                                                  << 7U) 
-                                                 | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_frame_err) 
-                                                     << 6U) 
-                                                    | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_overflow) 
-                                                        << 5U) 
-                                                       | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_tx_empty) 
-                                                           << 4U) 
-                                                          | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_watermark) 
-                                                              << 3U) 
-                                                             | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_tx_watermark) 
-                                                                 << 2U) 
-                                                                | ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_spi) 
-                                                                   << 1U)))))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__i_fifo__DOT__gen_normal_fifo__DOT__fifo_empty 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__i_fifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__i_fifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
@@ -3325,6 +3659,56 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
             << 0x18U) | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__rx_byte_q1) 
                           << 0x10U) | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__rx_byte_q2) 
                                         << 8U) | (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__rx_byte_q3))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_vector 
+        = (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_gpio)) 
+            << 0x19U) | (QData)((IData)((((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_fmt_watermark) 
+                                          << 0x18U) 
+                                         | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_rx_watermark) 
+                                             << 0x17U) 
+                                            | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_fmt_overflow) 
+                                                << 0x16U) 
+                                               | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_rx_overflow) 
+                                                   << 0x15U) 
+                                                  | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_nak) 
+                                                      << 0x14U) 
+                                                     | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_scl_interference) 
+                                                         << 0x13U) 
+                                                        | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_sda_interference) 
+                                                            << 0x12U) 
+                                                           | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_stretch_timeout) 
+                                                               << 0x11U) 
+                                                              | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_sda_unstable) 
+                                                                  << 0x10U) 
+                                                                 | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_trans_complete) 
+                                                                     << 0xfU) 
+                                                                    | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_tx_empty) 
+                                                                        << 0xeU) 
+                                                                       | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_tx_nonempty) 
+                                                                           << 0xdU) 
+                                                                          | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_tx_overflow) 
+                                                                              << 0xcU) 
+                                                                             | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_acq_overflow) 
+                                                                                << 0xbU) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_ack_stop) 
+                                                                                << 0xaU) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_host_timeout) 
+                                                                                << 9U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_parity_err) 
+                                                                                << 8U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_timeout) 
+                                                                                << 7U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_break_err) 
+                                                                                << 6U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_frame_err) 
+                                                                                << 5U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_overflow) 
+                                                                                << 4U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_tx_empty) 
+                                                                                << 3U) 
+                                                                                | (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_rx_watermark) 
+                                                                                << 2U) 
+                                                                                | ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_uart0_tx_watermark) 
+                                                                                << 1U)))))))))))))))))))))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_mem__DOT__resume = 0U;
     if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_mem__DOT__state_q))) {
         if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_mem__DOT__state_q)))) {
@@ -3558,6 +3942,16 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
         vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_mem__DOT__abstract_cmd[0U] = 0x100073U;
         vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_mem__DOT__unsupported_command = 1U;
     }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[0U] 
+        = ((0x3ffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[0U]) 
+           | (0xfffffc00U & (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__scl_rx_val) 
+                              << 0x1aU) | ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__sda_rx_val) 
+                                           << 0xaU))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U] 
+        = ((0xfffffc00U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U]) 
+           | (0x3ffU & ((0x3ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__scl_rx_val) 
+                                   >> 6U)) | ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__sda_rx_val) 
+                                              >> 0x16U))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__hw2reg[0U] 
         = ((0xffffff7fU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__hw2reg[0U]) 
            | (0x80U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__ip 
@@ -3688,6 +4082,46 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__i_fifo__DOT__gen_normal_fifo__DOT__full 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__i_fifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (2U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__i_fifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__host_idle = 1U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__host_idle = 1U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__host_idle = 1U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__host_idle = 0U;
+                        }
+                    }
+                }
+            } else {
+                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__host_idle = 0U;
+            }
+        } else {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__host_idle 
+                = (1U & ((~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                             >> 3U)) & ((~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                            >> 2U)) 
+                                        & ((~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                               >> 1U)) 
+                                           & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))))));
+        }
+    }
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
@@ -3725,14 +4159,130 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
                >> (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__hartsel_idx0) 
                             << 5U)));
     }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wvalid = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wvalid = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wvalid = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if (((0U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_index)) 
+                                 & (1U == vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__tcount_q))) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wvalid = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__irq_id_o[0U] 
         = (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__gen_target__BRA__0__KET____DOT__u_target__DOT__irq_id_q));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 1U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 1U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle 
+                        = (1U & (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U) & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)));
+                } else {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 0U;
+                    } else {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 0U;
+                        }
+                    }
+                }
+            } else {
+                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 0U;
+            }
+        }
+    } else {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 0U;
+                } else {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 0U;
+                    } else {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__target_idle = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__restart = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__restart = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__restart = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                      >> 4U)))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            if (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__no_stop) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__restart = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__full 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (0x20U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__full 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (0x20U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__full 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (0x20U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
@@ -3744,358 +4294,21 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
         = (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__testmode_i)
                   ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i)
                   : (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT____Vcellinp__dap__tck_i))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffdU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (2U & (((~ (0x3fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                    >> 2U))) & (~ (0x7fffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                      >> 1U)))) 
-                    << 1U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (8U & (((~ (0xfffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 4U))) & (~ (0x1fffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                     >> 3U)))) 
-                    << 3U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x20U & (((~ (0x3ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                      >> 6U))) & (~ 
-                                                  (0x7ffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                      >> 5U)))) 
-                       << 5U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x80U & (((~ (0xffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 8U))) & (~ 
-                                                 (0x1ffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                     >> 7U)))) 
-                       << 7U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x200U & (((~ (0x3fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                      >> 0xaU))) & 
-                         (~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                      >> 9U)))) << 9U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x800U & (((~ (0xfU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 0xcU))) & (~ 
-                                                   (0x1fU 
-                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                       >> 0xbU)))) 
-                        << 0xbU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x2000U & (((~ (3U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                    >> 0xeU))) & (~ 
-                                                  (7U 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                      >> 0xdU)))) 
-                         << 0xdU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x8000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 0xfU))) << 0xfU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffbU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (4U & ((~ (0x1fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 3U))) << 2U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x10U & ((~ (0x7ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 5U))) << 4U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x40U & ((~ (0x1ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 7U))) << 6U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x100U & ((~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 9U))) << 8U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x400U & ((~ (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 0xbU))) << 0xaU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x1000U & ((~ (7U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 0xdU))) << 0xcU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)) 
-           | (0x4000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 0xfU))) << 0xeU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffdU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (2U & (((~ (0x3fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                    >> 2U))) & (~ (0x7fffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                      >> 1U)))) 
-                    << 1U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (8U & (((~ (0xfffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 4U))) & (~ (0x1fffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                     >> 3U)))) 
-                    << 3U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x20U & (((~ (0x3ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                      >> 6U))) & (~ 
-                                                  (0x7ffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                      >> 5U)))) 
-                       << 5U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x80U & (((~ (0xffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 8U))) & (~ 
-                                                 (0x1ffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                     >> 7U)))) 
-                       << 7U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x200U & (((~ (0x3fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                      >> 0xaU))) & 
-                         (~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                      >> 9U)))) << 9U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x800U & (((~ (0xfU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 0xcU))) & (~ 
-                                                   (0x1fU 
-                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                       >> 0xbU)))) 
-                        << 0xbU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x2000U & (((~ (3U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                    >> 0xeU))) & (~ 
-                                                  (7U 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                                      >> 0xdU)))) 
-                         << 0xdU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x8000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 0xfU))) << 0xfU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffbU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (4U & ((~ (0x1fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 3U))) << 2U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x10U & ((~ (0x7ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 5U))) << 4U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x40U & ((~ (0x1ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 7U))) << 6U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x100U & ((~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 9U))) << 8U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x400U & ((~ (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                     >> 0xbU))) << 0xaU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x1000U & ((~ (7U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 0xdU))) << 0xcU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)) 
-           | (0x4000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                                   >> 0xfU))) << 0xeU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffdU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (2U & (((~ (0x3fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                    >> 2U))) & (~ (0x7fffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                      >> 1U)))) 
-                    << 1U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (8U & (((~ (0xfffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 4U))) & (~ (0x1fffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                     >> 3U)))) 
-                    << 3U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x20U & (((~ (0x3ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                      >> 6U))) & (~ 
-                                                  (0x7ffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                      >> 5U)))) 
-                       << 5U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x80U & (((~ (0xffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 8U))) & (~ 
-                                                 (0x1ffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                     >> 7U)))) 
-                       << 7U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x200U & (((~ (0x3fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                      >> 0xaU))) & 
-                         (~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                      >> 9U)))) << 9U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x800U & (((~ (0xfU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 0xcU))) & (~ 
-                                                   (0x1fU 
-                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                       >> 0xbU)))) 
-                        << 0xbU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x2000U & (((~ (3U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                    >> 0xeU))) & (~ 
-                                                  (7U 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                      >> 0xdU)))) 
-                         << 0xdU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x8000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 0xfU))) << 0xfU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffbU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (4U & ((~ (0x1fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 3U))) << 2U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x10U & ((~ (0x7ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 5U))) << 4U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x40U & ((~ (0x1ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 7U))) << 6U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x100U & ((~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 9U))) << 8U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x400U & ((~ (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 0xbU))) << 0xaU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x1000U & ((~ (7U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 0xdU))) << 0xcU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x4000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 0xfU))) << 0xeU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffdU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (2U & (((~ (0x3fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                    >> 2U))) & (~ (0x7fffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                      >> 1U)))) 
-                    << 1U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (8U & (((~ (0xfffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 4U))) & (~ (0x1fffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                     >> 3U)))) 
-                    << 3U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x20U & (((~ (0x3ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                      >> 6U))) & (~ 
-                                                  (0x7ffU 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                      >> 5U)))) 
-                       << 5U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x80U & (((~ (0xffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 8U))) & (~ 
-                                                 (0x1ffU 
-                                                  & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                     >> 7U)))) 
-                       << 7U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x200U & (((~ (0x3fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                      >> 0xaU))) & 
-                         (~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                      >> 9U)))) << 9U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x800U & (((~ (0xfU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 0xcU))) & (~ 
-                                                   (0x1fU 
-                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                       >> 0xbU)))) 
-                        << 0xbU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x2000U & (((~ (3U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                    >> 0xeU))) & (~ 
-                                                  (7U 
-                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                                      >> 0xdU)))) 
-                         << 0xdU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x8000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 0xfU))) << 0xfU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (1U & (~ (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                  >> 1U)))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfffbU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (4U & ((~ (0x1fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 3U))) << 2U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x10U & ((~ (0x7ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 5U))) << 4U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x40U & ((~ (0x1ffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 7U))) << 6U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x100U & ((~ (0x7fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 9U))) << 8U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x400U & ((~ (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                     >> 0xbU))) << 0xaU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x1000U & ((~ (7U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 0xdU))) << 0xcU)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)) 
-           | (0x4000U & ((~ (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                                   >> 0xfU))) << 0xeU)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__full 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (0x20U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__full 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (0x20U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__full 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (0x20U ^ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+           == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__reg2hw[4U] 
         = ((0xffffefffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__reg2hw[4U]) 
            | (0xfffff000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__u_reg__DOT____Vcellout__u_le_le_0__q) 
@@ -4478,18 +4691,6 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__reg2hw[4U] 
         = ((0xfffff000U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__reg2hw[4U]) 
            | (0xfffU & (__Vtemp17[2U] >> 0x14U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__go 
-        = ((0U != (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor) 
-                              >> 1U))) & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__reset_manager__DOT__rst_fq));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__go 
-        = ((0U != (0x7fffU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__divisor_2) 
-                              >> 1U))) & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__reset_manager__DOT__rst_fq));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__c 
-        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__a)) 
-                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__b))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__c 
-        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__a)) 
-                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__b))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__hfifo_rspvalid 
         = ((6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__hfifo_rspvalid)) 
            | ((IData)((vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__drsp_fifo_o 
@@ -4530,20 +4731,6 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
                                                           (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__drsp_fifo_o 
                                                            >> 0x23U))))) 
               << 2U));
-}
-
-void VAzadi_top_verilator::_settle__TOP__5(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    VAzadi_top_verilator::_settle__TOP__5\n"); );
-    VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__winner 
-        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
-           ^ (6U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__ICCM__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
-                    << 1U)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__winner 
-        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
-           ^ (6U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__gen_arb_ppc__DOT__u_reqarb__DOT__gen_normal_case__DOT__ppc_out) 
-                    << 1U)));
 }
 
 void VAzadi_top_verilator::_settle__TOP__6(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
@@ -4719,34 +4906,6 @@ void VAzadi_top_verilator::_settle__TOP__6(VAzadi_top_verilator__Syms* __restric
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_empty 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
            == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_reqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__pwm_to_xbar 
-        = (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__outstanding)) 
-            << 0x33U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__rspop)) 
-                          << 0x30U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__reqsz)) 
-                                        << 0x2bU) | 
-                                       (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__reqid)) 
-                                         << 0x23U) 
-                                        | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__rdata)) 
-                                            << 2U) 
-                                           | (QData)((IData)(
-                                                             (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__error) 
-                                                               << 1U) 
-                                                              | (1U 
-                                                                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__u_reg_if__DOT__outstanding)))))))))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__spi_to_xbar 
-        = (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__outstanding)) 
-            << 0x33U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__rspop)) 
-                          << 0x30U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__reqsz)) 
-                                        << 0x2bU) | 
-                                       (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__reqid)) 
-                                         << 0x23U) 
-                                        | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__rdata)) 
-                                            << 2U) 
-                                           | (QData)((IData)(
-                                                             (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__error) 
-                                                               << 1U) 
-                                                              | (1U 
-                                                                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__u_reg_if__DOT__outstanding)))))))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__tl_reg_d2h 
         = (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_reg_if__DOT__outstanding)) 
             << 0x33U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_reg_if__DOT__rspop)) 
@@ -4775,6 +4934,20 @@ void VAzadi_top_verilator::_settle__TOP__6(VAzadi_top_verilator__Syms* __restric
                                                                << 1U) 
                                                               | (1U 
                                                                  & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__u_reg__DOT__u_reg_if__DOT__outstanding)))))))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__tl_reg_d2h 
+        = (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__outstanding)) 
+            << 0x33U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__rspop)) 
+                          << 0x30U) | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__reqsz)) 
+                                        << 0x2bU) | 
+                                       (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__reqid)) 
+                                         << 0x23U) 
+                                        | (((QData)((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__rdata)) 
+                                            << 2U) 
+                                           | (QData)((IData)(
+                                                             (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__error) 
+                                                               << 1U) 
+                                                              | (1U 
+                                                                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__u_reg_if__DOT__outstanding)))))))))));
 }
 
 void VAzadi_top_verilator::_settle__TOP__7(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
@@ -4992,6 +5165,32 @@ void VAzadi_top_verilator::_settle__TOP__8(VAzadi_top_verilator__Syms* __restric
                                                     & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
                                                        << 3U)))))) 
                              << 3U)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U] 
+        = ((0xffff03ffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U]) 
+           | (0xfffffc00U & (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__full)
+                               ? 0x20U : (0x3fU & (
+                                                   ((1U 
+                                                     & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+                                                        >> 5U)) 
+                                                    == 
+                                                    (1U 
+                                                     & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                                        >> 5U)))
+                                                    ? 
+                                                   ((0x1fU 
+                                                     & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr)) 
+                                                    - 
+                                                    (0x1fU 
+                                                     & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))
+                                                    : 
+                                                   (((IData)(0x20U) 
+                                                     - 
+                                                     (0x1fU 
+                                                      & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
+                                                    + 
+                                                    (0x1fU 
+                                                     & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_wptr)))))) 
+                             << 0xaU)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__halted_flat1 = 0U;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__haltsum1 = 0U;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__hartsel_idx1 
@@ -5008,9 +5207,87 @@ void VAzadi_top_verilator::_settle__TOP__8(VAzadi_top_verilator__Syms* __restric
                >> (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__hartsel_idx1) 
                             << 5U)));
     }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__acq_fifo_rdata 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_empty)
+            ? 0U : ((0x13fU >= (0x1ffU & ((IData)(0xaU) 
+                                          * (0x1fU 
+                                             & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))))
+                     ? (0x3ffU & (((0U == (0x1fU & 
+                                           ((IData)(0xaU) 
+                                            * (0x1fU 
+                                               & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))))
+                                    ? 0U : (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__storage[
+                                            ((IData)(1U) 
+                                             + (0xfU 
+                                                & (((IData)(0xaU) 
+                                                    * 
+                                                    (0x1fU 
+                                                     & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
+                                                   >> 5U)))] 
+                                            << ((IData)(0x20U) 
+                                                - (0x1fU 
+                                                   & ((IData)(0xaU) 
+                                                      * 
+                                                      (0x1fU 
+                                                       & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))))))) 
+                                  | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__storage[
+                                     (0xfU & (((IData)(0xaU) 
+                                               * (0x1fU 
+                                                  & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
+                                              >> 5U))] 
+                                     >> (0x1fU & ((IData)(0xaU) 
+                                                  * 
+                                                  (0x1fU 
+                                                   & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))))))
+                     : 0U));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__acq_fifo_rvalid 
+        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__fifo_empty)) 
+                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__under_rst))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_rvalid 
+        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_empty)) 
+                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__under_rst))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__cc_id[0U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__irq_id_o
         [0U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_trans_complete = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_trans_complete = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_trans_complete = 0U;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                      >> 4U)))) {
+            if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                          >> 3U)))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_trans_complete = 1U;
+                        }
+                    }
+                } else {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            if (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__restart) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_trans_complete = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__tx_fifo_depth 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__full)
             ? 0x20U : (0x3fU & (((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
@@ -5033,6 +5310,51 @@ void VAzadi_top_verilator::_settle__TOP__8(VAzadi_top_verilator__Syms* __restric
                                  : (((IData)(0x20U) 
                                      - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
                                     + (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__uart_core__DOT__u_uart_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_wready 
+        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__full)) 
+                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__under_rst))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_wready 
+        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__full)) 
+                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__under_rst))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wready 
+        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__full)) 
+                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__under_rst))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__acq_fifo_wready 
+        = (1U & ((~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__full)) 
+                 & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_acqfifo__DOT__gen_normal_fifo__DOT__under_rst))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_depth 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__full)
+            ? 0x20U : (0x3fU & (((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+                                        >> 5U)) == 
+                                 (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                        >> 5U))) ? 
+                                ((0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr)) 
+                                 - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))
+                                 : (((IData)(0x20U) 
+                                     - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
+                                    + (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_wptr))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_depth 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__full)
+            ? 0x20U : (0x3fU & (((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+                                        >> 5U)) == 
+                                 (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                        >> 5U))) ? 
+                                ((0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_wptr)) 
+                                 - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))
+                                 : (((IData)(0x20U) 
+                                     - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
+                                    + (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fmtfifo__DOT__gen_normal_fifo__DOT__fifo_wptr))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_depth 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__full)
+            ? 0x20U : (0x3fU & (((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr) 
+                                        >> 5U)) == 
+                                 (1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                        >> 5U))) ? 
+                                ((0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr)) 
+                                 - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr)))
+                                 : (((IData)(0x20U) 
+                                     - (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_rptr))) 
+                                    + (0x1fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_txfifo__DOT__gen_normal_fifo__DOT__fifo_wptr))))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o 
         = (0x3fffffffcULL | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o 
@@ -5049,242 +5371,6 @@ void VAzadi_top_verilator::_settle__TOP__8(VAzadi_top_verilator__Syms* __restric
         = ((0x8ffffffffffffULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o) 
            | ((QData)((IData)(((4U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_opcode))
                                 ? 1U : 0U))) << 0x30U));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (8U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                       << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (8U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                       << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (8U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                       << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (8U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                       << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                          << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                           << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1) 
-                            << 2U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xffefU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_1)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o 
         = (0x3fffffffcULL | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o 
@@ -5301,14 +5387,6 @@ void VAzadi_top_verilator::_settle__TOP__8(VAzadi_top_verilator__Syms* __restric
         = ((0x8ffffffffffffULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o) 
            | ((QData)((IData)(((4U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_opcode))
                                 ? 1U : 0U))) << 0x30U));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__eclk 
-        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__go)
-            ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__clk)
-            : (IData)(vlTOPp->clock_i));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__eclk_2 
-        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__go)
-            ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__clk)
-            : (IData)(vlTOPp->clock_i));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o 
         = (0x3fffffffcULL | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_2__DOT____Vcellout__err_resp__tl_h_o 
@@ -5410,12 +5488,10 @@ void VAzadi_top_verilator::_settle__TOP__9(VAzadi_top_verilator__Syms* __restric
         = (2ULL | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT____Vcellout__err_resp__tl_h_o);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[0U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_uart0__DOT__u_reg__DOT__tl_reg_d2h;
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[2U] 
-        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__spi_to_xbar;
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[5U] 
-        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__pwm_to_xbar;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[6U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__tl_reg_d2h;
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h[7U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__u_reg__DOT__tl_reg_d2h;
 }
 
 void VAzadi_top_verilator::_settle__TOP__10(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
@@ -5449,28 +5525,12 @@ void VAzadi_top_verilator::_settle__TOP__10(VAzadi_top_verilator__Syms* __restri
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__irqs 
         = (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__mip 
            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_top__DOT__u_core__DOT__cs_registers_i__DOT__u_mie_csr__DOT__rdata_q);
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__clgen__DOT__cnt_zero 
-        = (0U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__clgen__DOT__cnt));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_incr_wptr 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rspfifo_wvalid) 
            & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_incr_wptr 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rspfifo_wvalid) 
            & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__rx_bit_pos 
-        = (0xffU & ((0x800U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__ctrl))
-                     ? (((0x80U & ((~ (IData)((0U != 
-                                               (0x7fU 
-                                                & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__ctrl))))) 
-                                   << 7U)) | (0x7fU 
-                                              & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__ctrl))) 
-                        - ((0x200U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__ctrl))
-                            ? ((IData)(1U) + (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__cnt))
-                            : (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__cnt)))
-                     : ((0x200U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__ctrl))
-                         ? (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__cnt)
-                         : ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_spi_host__DOT__spi_host__DOT__shift__DOT__cnt) 
-                            - (IData)(1U)))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_incr_wptr 
         = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rspfifo_wvalid) 
            & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__full)));
@@ -5487,6 +5547,10 @@ void VAzadi_top_verilator::_settle__TOP__10(VAzadi_top_verilator__Syms* __restri
             vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__reset_d = 0U;
         }
     }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_incr_wptr 
+        = (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wvalid) 
+            & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_wready)) 
+           & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__under_rst)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__we_d 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__we_q;
     if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_dut__DOT__ctrl_fsm_cs))) {
@@ -5545,231 +5609,124 @@ void VAzadi_top_verilator::_settle__TOP__10(VAzadi_top_verilator__Syms* __restri
                >> (0x1fU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_csrs__DOT__hartsel_idx2) 
                             << 5U)));
     }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U] 
+        = ((0xffc0ffffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U]) 
+           | (0xffff0000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__rx_fifo_depth) 
+                             << 0x10U)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U] 
+        = ((0xf03fffffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U]) 
+           | (0xffc00000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_depth) 
+                             << 0x16U)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[0U] 
+        = ((0xfffffc00U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[0U]) 
+           | ((0x3fcU & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__acq_fifo_rdata) 
+                         << 2U)) | (3U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__acq_fifo_rdata) 
+                                          >> 8U))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U] 
+        = ((0xfffffffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[1U]) 
+           | (0xf0000000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_depth) 
+                             << 0x1cU)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[2U] 
+        = ((0xfffffc00U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__hw2reg[2U]) 
+           | (0xfffffffU & ((0xffffffcU & (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_empty)
+                                             ? 0U : 
+                                            (0xffU 
+                                             & (((0U 
+                                                  == 
+                                                  (0x18U 
+                                                   & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                                      << 3U)))
+                                                  ? 0U
+                                                  : 
+                                                 (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__storage[
+                                                  ((IData)(1U) 
+                                                   + 
+                                                   (7U 
+                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                                       >> 2U)))] 
+                                                  << 
+                                                  ((IData)(0x20U) 
+                                                   - 
+                                                   (0x18U 
+                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                                       << 3U))))) 
+                                                | (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__storage[
+                                                   (7U 
+                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                                       >> 2U))] 
+                                                   >> 
+                                                   (0x18U 
+                                                    & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_rxfifo__DOT__gen_normal_fifo__DOT__fifo_rptr) 
+                                                       << 3U)))))) 
+                                           << 2U)) 
+                            | ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__fmt_fifo_depth) 
+                               >> 4U))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__hw2reg[0U] 
         = ((0xffffffc0U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__hw2reg[0U]) 
            | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__cc_id
            [0U]);
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_tx_nonempty = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_tx_nonempty = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_tx_nonempty = 0U;
+                        }
+                    }
+                } else {
+                    if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                                  >> 1U)))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            if ((0U != (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__tx_fifo_depth))) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_tx_nonempty = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_ack_stop = 0U;
+    if ((0x20U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+        if ((0x10U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_ack_stop = 0U;
+        } else {
+            if ((8U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                if ((4U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                            vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_ack_stop = 0U;
+                        }
+                    }
+                }
+            } else {
+                if ((1U & (~ ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q) 
+                              >> 2U)))) {
+                    if ((2U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q))) {
+                        if ((1U & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__state_q)))) {
+                            if (((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__host_ack) 
+                                 & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__start_det) 
+                                    | (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__stop_det)))) {
+                                vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__event_ack_stop = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_ack 
+        = ((8U == (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__bit_idx)) 
+           & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__i2c0__DOT__i2c_core__DOT__u_i2c_fsm__DOT__start_det)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o 
         = ((0x7ffffffffffffULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT____Vcellout__err_resp__tl_h_o) 
            | ((QData)((IData)(((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_req_pending) 
                                | (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_3__DOT__err_resp__DOT__err_rsp_pending)))) 
               << 0x33U));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xffe7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x18U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_3)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xffe7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x18U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_3)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xffe7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x18U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_ev_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xffdfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xff7fU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x80U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                       & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                          << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfdffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x200U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xf7ffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x800U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                        & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                           << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xdfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x2000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0x7fffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x8000U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                         & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2) 
-                            << 4U))));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfffeU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (1U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfff9U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (6U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xffe7U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x18U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xffbfU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x40U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfeffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x100U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xfbffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x400U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xefffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x1000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3 
-        = ((0xbfffU & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_3)) 
-           | (0x4000U & (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__u_pwm__DOT__pwm_core__DOT__clock_div_od_2__DOT__minus_one_0__DOT__G_2)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o 
         = ((0x7ffffffffffffULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT____Vcellout__err_resp__tl_h_o) 
            | ((QData)((IData)(((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__host_1__DOT__err_resp__DOT__err_req_pending) 
@@ -5899,4 +5856,174 @@ void VAzadi_top_verilator::_settle__TOP__10(VAzadi_top_verilator__Syms* __restri
                                                                       | (1U 
                                                                          & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__main_swith__DOT__FLASH_CTRL__DOT__hgrant) 
                                                                             >> 2U))))))))))));
+}
+
+void VAzadi_top_verilator::_settle__TOP__11(VAzadi_top_verilator__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VAzadi_top_verilator::_settle__TOP__11\n"); );
+    VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask = 0U;
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask 
+        = ((0xffffff00U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask) 
+           | (0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                        >> 1U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(8U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 2U))))) 
+              << (0x1fU & ((IData)(8U) + (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                   << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(0x10U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 3U))))) 
+              << (0x1fU & ((IData)(0x10U) + (0x20U 
+                                             & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(0x18U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 4U))))) 
+              << (0x1fU & ((IData)(0x18U) + (0x20U 
+                                             & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask = 0U;
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask 
+        = ((0xffffff00U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask) 
+           | (0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                        >> 1U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(8U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 2U))))) 
+              << (0x1fU & ((IData)(8U) + (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                   << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(0x10U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 3U))))) 
+              << (0x1fU & ((IData)(0x10U) + (0x20U 
+                                             & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(0x18U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 4U))))) 
+              << (0x1fU & ((IData)(0x18U) + (0x20U 
+                                             & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask = 0U;
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask 
+        = ((0xffffff00U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask) 
+           | (0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                        >> 1U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(8U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 2U))))) 
+              << (0x1fU & ((IData)(8U) + (0x20U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                   << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(0x10U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 3U))))) 
+              << (0x1fU & ((IData)(0x10U) + (0x20U 
+                                             & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask 
+        = (((~ ((IData)(0xffU) << (0x1fU & ((IData)(0x18U) 
+                                            + (0x20U 
+                                               & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                  << 5U)))))) 
+            & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rmask) 
+           | ((0xffU & (- (IData)((1U & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                         >> 4U))))) 
+              << (0x1fU & ((IData)(0x18U) + (0x20U 
+                                             & ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT____Vcellout__u_sramreqfifo__rdata_o) 
+                                                << 5U))))));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_empty) 
+           & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__dccm__DOT__data_mem__DOT__rspfifo_wvalid)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_empty) 
+           & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__tl_adapter_device_mem__DOT__rspfifo_wvalid)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__empty 
+        = ((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__u_rspfifo__DOT__gen_normal_fifo__DOT__fifo_empty) 
+           & (~ (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__inst_mem__DOT__rspfifo_wvalid)));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT____Vcellout__err_resp__tl_h_o 
+        = ((0x7ffffffffffffULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT____Vcellout__err_resp__tl_h_o) 
+           | ((QData)((IData)(((IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__err_resp__DOT__err_req_pending) 
+                               | (IData)(vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__err_resp__DOT__err_rsp_pending)))) 
+              << 0x33U));
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[0U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [0U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[1U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [1U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[2U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [2U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[3U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [3U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[4U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [4U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[5U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [5U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[6U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [6U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[7U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [7U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[8U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [8U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[9U] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [9U];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[0xaU] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [0xaU];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[0xbU] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [0xbU];
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT____Vcellinp__u_s1n_14__tl_d_i[0xcU] 
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__tl_s1n_14_ds_d2h
+        [0xcU];
 }

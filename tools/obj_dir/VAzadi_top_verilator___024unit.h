@@ -36,10 +36,7 @@ VL_MODULE(VAzadi_top_verilator___024unit) {
     void __Vconfigure(VAzadi_top_verilator__Syms* symsp, bool first);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
-  public:
-    static void traceInit(VerilatedVcd* vcdp, void* userthis, uint32_t code);
-    static void traceFull(VerilatedVcd* vcdp, void* userthis, uint32_t code);
-    static void traceChg(VerilatedVcd* vcdp, void* userthis, uint32_t code);
+    static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 //----------
