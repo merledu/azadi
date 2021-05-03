@@ -453,10 +453,10 @@ instr_mem_top iccm (
 
   .req        (req_i),
   .addr       (tlul_addr),
-  .wdata      (iccm_cntrl_data),
+  .wdata      (iccm_cntrl_data),//iccm_cntrl_data
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         (iccm_cntrl_we)
+  .we         (iccm_cntrl_we)//iccm_cntrl_we
 );
 
  tlul_sram_adapter #(

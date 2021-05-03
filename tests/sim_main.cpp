@@ -4,7 +4,7 @@
 #include "VAzadi_top_verilator.h"
 #include <fstream>
 #include <algorithm>
-#include <verilated_vcd_c.h>
+#include <verilated_fst_c.h>
 #include <math.h>
 
 #define NUM_CYCLES ((vluint64_t)190000000000)
@@ -26,7 +26,7 @@ int main(int argc, char **argv, char **env)
 
     // Tracing
     Verilated::traceEverOn(true);
-    VerilatedVcdC *tfp = new VerilatedVcdC;
+    VerilatedFstC *tfp = new VerilatedFstC;
     top->trace(tfp, 99); // Trace 99 levels of hierarchy
     tfp->spTrace()->set_time_resolution("50 ns");
     tfp->open("obj_dir/sim.vcd");
@@ -62,7 +62,7 @@ int main(int argc, char **argv, char **env)
     //top->io_CLK_PER_BIT = clk_bit;
 
     // converting instructions to byte
-    top->reset_ni = 1;
+    
     top->gpio_i = 8;
     while (getline(file, ins))
     {
@@ -92,15 +92,17 @@ int main(int argc, char **argv, char **env)
     {
         // toggle clock
         top->clock_i = top->clock_i ? 0 : 1;
-
-        if (hcycle == 500)
+        top->reset_ni = 1;
+        if (hcycle == 50)
         {
             top->reset_ni = 0;
             top->uart_rx_i = 1;
         }
+        
         // multiplying by 2 because verilator increments half cycle per loop
         else if (hcycle >= (clk_bit * 2) && (hcycle % (clk_bit * 2)) == 0)
         {
+            
             if (bit == 0)
             {
                 top->uart_rx_i = 0; //start bit
