@@ -507,7 +507,7 @@ typedef enum logic[11:0] {
   // Floating point fcsr
   CSR_FCSR           = 12'h003,
   CSR_FRM            = 12'h002,
-  CSR_FFLAG          = 12'b001
+  CSR_FFLAG          = 12'h001
 } csr_num_e;
 
 // CSR pmp-related offsets

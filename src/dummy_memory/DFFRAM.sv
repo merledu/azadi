@@ -12,9 +12,9 @@ module DFFRAM (
 ///home/merl/github_repos/azadi/progm.hex
 reg [31:0] mem [0:4096-1];
 
- initial begin
-     $readmemh("/home/merl/github_repos/azadi/tests/asm/output/program.hex", mem);
- end
+initial begin
+    $readmemh("../tests/hex/instruction.hex", mem);
+end
   //  initial begin
   //      mem[0] = 32'h400C0437;
   //      mem[1] = 32'h00040413;
