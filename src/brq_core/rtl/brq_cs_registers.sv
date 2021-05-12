@@ -112,8 +112,10 @@ module brq_cs_registers #(
     input  logic                div_wait_i,              // core waiting for divide
 
     // floating point
-    input logic                   fp_rm_dynamic_i,
-    output fpnew_pkg::roundmode_e fp_frm_o
+    input  logic                  fp_rm_dynamic_i,
+    output fpnew_pkg::roundmode_e fp_frm_o,
+    input  fpnew_pkg::status_t    fp_status_i,
+    input  logic                  is_fp_instr_i
 );
   import brq_pkg::*;
   import fpnew_pkg::roundmode_e;
@@ -178,20 +180,12 @@ module brq_cs_registers #(
     logic        icache_enable;
   } cpu_ctrl_t;
 
-  // // Floating Point
-  // typedef struct packed { 
-  //   frm_e     frm;
-  //   fflags_e  fflags;            
-  // } fcsr_t;
-
   // Interrupt and exception control signals
   logic [31:0] exception_pc;
 
   // CSRs
-  fpnew_pkg::status_t fflags_q, fflags_d;
+  fpnew_pkg::status_t fflags_q, fflags_d, fflag_wdata;
 
-  logic        fcsr_en;
-  logic [7:0]  fcsr_q, fcsr_d;
   logic        fflags_en;
   logic        frm_en;
   roundmode_e  frm_q, frm_d;
@@ -322,7 +316,7 @@ module brq_cs_registers #(
 
     unique case (csr_addr_i)
       // fcsr: floating-point control and status register (frm+fflags)
-      CSR_FCSR: csr_rdata_int = {24'b0 , fcsr_q};
+      CSR_FCSR: csr_rdata_int = {24'b0 , frm_q, fflags_q};
       
       // fflags: floating-point accrued exception
       CSR_FFLAG: csr_rdata_int = {27'b0 , fflags_q};
@@ -509,9 +503,6 @@ module brq_cs_registers #(
     exception_pc = pc_id_i;
 
     // Floating point
-    fcsr_d      = fcsr_q;
-    fcsr_en     = 1'b0;
-
     fflags_d    = fflags_q;
     fflags_en   = 1'b0;
 
@@ -558,26 +549,21 @@ module brq_cs_registers #(
         // mstatus: IE bit
 
         CSR_FCSR: begin 
-          fcsr_en   = 1'b1;
           fflags_en = 1'b1;
           frm_en    = 1'b1;
-          fcsr_d    = csr_wdata_int[7:0];
-          fflags_d  = fcsr_d[4:0];
-          frm_d     = fcsr_d[7:5];
+          fflags_d  = csr_wdata_int[4:0];
+          frm_d     = csr_wdata_int[7:5];  
         end
+        
 
         CSR_FFLAG : begin
           fflags_en = 1'b1;
-          fcsr_en   = 1'b1;
           fflags_d  = fpnew_pkg::status_t'(csr_wdata_int[4:0]);
-          fcsr_d    = {frm_q, fflags_d};
         end
 
         CSR_FRM: begin
           frm_en  = 1'b1;
-          fcsr_en = 1'b1;
           frm_d   = roundmode_e'(csr_wdata_int[2:0]); 
-          fcsr_d  = {frm_d, fflags_q};
         end
 
         CSR_MSTATUS: begin
@@ -829,20 +815,7 @@ module brq_cs_registers #(
     .rd_error_o (mstatus_err)
   );
 
-  // FCSR
-  brq_csr #(
-    .Width      (8),
-    .ShadowCopy (1'b0),
-    .ResetValue ('0)
-  ) fcsr_csr (
-    .clk_i      (clk_i),
-    .rst_ni     (rst_ni),
-    .wr_data_i  (fcsr_d),
-    .wr_en_i    (fcsr_en),
-    .rd_data_o  (fcsr_q),
-    .rd_error_o ()
-  );
-
+  assign fflag_wdata = is_fp_instr_i ? fp_status_i : fflags_d;
   // FFLAGS
   brq_csr #(
     .Width      (5),
@@ -851,8 +824,8 @@ module brq_cs_registers #(
   ) fflags_csr (
     .clk_i      (clk_i),
     .rst_ni     (rst_ni),
-    .wr_data_i  (fflags_d),
-    .wr_en_i    (fflags_en),
+    .wr_data_i  (fflag_wdata),
+    .wr_en_i    (fflags_en | is_fp_instr_i),
     .rd_data_o  (fflags_q),
     .rd_error_o ()
   );

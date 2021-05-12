@@ -1164,7 +1164,9 @@ module brq_core #(
 
       // floating point
       .fp_rm_dynamic_i         ( fp_rm_dynamic                ),
-      .fp_frm_o                ( fp_frm_csr                   )
+      .fp_frm_o                ( fp_frm_csr                   ),
+      .fp_status_i             ( fp_status                    ),
+      .is_fp_instr_i           ( is_fp_instr                  )
   );
 
   assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
