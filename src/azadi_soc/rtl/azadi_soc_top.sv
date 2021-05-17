@@ -25,7 +25,17 @@ module azadi_soc_top #(
   input  logic i2c0_scl_in,
   output logic i2c0_scl_out,
   input  logic i2c0_sda_in, 
-  output logic i2c0_sda_out
+  output logic i2c0_sda_out,
+
+  // dmi
+
+  input  dm::dmi_req_t  dmi_req,
+  output dm::dmi_resp_t dmi_rsp,
+  input  logic dmi_req_valid, 
+  output  logic dmi_req_ready,
+  output logic dmi_rsp_valid,
+  input logic dmi_rsp_ready,
+  input  logic dmi_rst_n
 );
 
   logic RESET;
@@ -262,7 +272,15 @@ module azadi_soc_top #(
     .tl_h_i(xbar_to_dm),
 
     .jtag_req_i(jtag_req),
-    .jtag_rsp_o(jtag_rsp)
+    .jtag_rsp_o(jtag_rsp),
+
+    .dmi_req        (dmi_req),
+    .dmi_rsp        (dmi_rsp),
+    .dmi_req_valid  (dmi_req_valid), 
+    .dmi_req_ready  (dmi_req_ready),
+    .dmi_rsp_valid  (dmi_rsp_valid),
+    .dmi_rsp_ready  (dmi_rsp_ready),
+    .dmi_rst_n      (dmi_rst_n)
   );
 
   // main xbar module
@@ -404,6 +422,9 @@ module azadi_soc_top #(
    .o_Rx_Byte     (rx_byte_i)
   );
 
+  logic [31:0] wdatai;
+  logic [3:0] wei;
+  logic write;
 
   instr_mem_top iccm (
     .clock      (clock),
@@ -411,10 +432,10 @@ module azadi_soc_top #(
 
     .req        (req_i),
     .addr       (tlul_addr),
-    .wdata      (),
+    .wdata      (wdatai),
     .rdata      (tlul_data),
     .rvalid     (instr_valid),
-    .we         ('0)
+    .we         (write? wei: '0)
   );
 
   tlul_sram_adapter #(
@@ -432,10 +453,10 @@ module azadi_soc_top #(
       .tl_o      (iccm_to_xbar), 
       .req_o     (req_i),
       .gnt_i     (1'b1),
-      .we_o      (),
+      .we_o      (write),
       .addr_o    (tlul_addr),
-      .wdata_o   (),
-      .wmask_o   (),
+      .wdata_o   (wdatai),
+      .wmask_o   (wei),
       .rdata_i   ((reset_ni) ? tlul_data: '0),
       .rvalid_i  (instr_valid),
       .rerror_i  (2'b0)

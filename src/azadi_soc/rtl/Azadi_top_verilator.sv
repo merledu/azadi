@@ -48,7 +48,13 @@ module Azadi_top_verilator #(
     logic i2c0_scl_in;
     logic i2c0_scl_out;
     logic i2c0_sda_in;
-    logic i2c0_sda_out;    
+    logic i2c0_sda_out;
+
+    dm::dmi_req_t  dmi_req;
+    dm::dmi_resp_t dmi_rsp;
+    logic dmi_req_valid, dmi_req_ready;
+    logic dmi_rsp_valid, dmi_rsp_ready;
+    logic dmi_rst_n;    
     
 
   azadi_soc_top #(
@@ -74,37 +80,45 @@ module Azadi_top_verilator #(
     .jtag_tms_i(cio_jtag_tms),
     .jtag_trst_ni(cio_jtag_trst_n),
     .jtag_tdi_i(cio_jtag_tdi),
-    .jtag_tdo_o(cio_jtag_tdo)
+    .jtag_tdo_o(cio_jtag_tdo),
+
+    .dmi_req        (dmi_req),
+    .dmi_rsp        (dmi_rsp),
+    .dmi_req_valid  (dmi_req_valid), 
+    .dmi_req_ready  (dmi_req_ready),
+    .dmi_rsp_valid  (dmi_rsp_valid),
+    .dmi_rsp_ready  (dmi_rsp_ready),
+    .dmi_rst_n      (dmi_rst_n)
   );
 
 
-   //if(DirectDmiTap) begin
-   //   bind rv_dm dmidpi u_dmidpi (
-   //   .clk_i(clock),
-   //   .rst_ni(reset_ni),
-   //   .dmi_req_valid,
-   //   .dmi_req_ready,
-   //   .dmi_req_addr   (dmi_req.addr),
-   //   .dmi_req_op     (dmi_req.op),
-   //   .dmi_req_data   (dmi_req.data),
-   //   .dmi_rsp_valid,
-   //   .dmi_rsp_ready,
-   //   .dmi_rsp_data   (dmi_rsp.data),
-   //   .dmi_rsp_resp   (dmi_rsp.resp),
-   //   .dmi_rst_n      (dmi_rst_n)
-   // );
-   //end else begin
-     // jtag dpi for openocd
-    jtagdpi u_jtagdpi (
+  // if(DirectDmiTap) begin
+    dmidpi u_dmidpi (
       .clk_i(clock),
       .rst_ni(reset_ni),
-      .jtag_tck    (cio_jtag_tck),
-      .jtag_tms    (cio_jtag_tms),
-      .jtag_tdi    (cio_jtag_tdi),
-      .jtag_tdo    (cio_jtag_tdo),
-      .jtag_trst_n (cio_jtag_trst_n),
-      .jtag_srst_n (cio_jtag_srst_n)
+      .dmi_req_valid,
+      .dmi_req_ready,
+      .dmi_req_addr   (dmi_req.addr),
+      .dmi_req_op     (dmi_req.op),
+      .dmi_req_data   (dmi_req.data),
+      .dmi_rsp_valid,
+      .dmi_rsp_ready,
+      .dmi_rsp_data   (dmi_rsp.data),
+      .dmi_rsp_resp   (dmi_rsp.resp),
+      .dmi_rst_n      (dmi_rst_n)
     );
+   //end else begin
+     // jtag dpi for openocd
+    //jtagdpi u_jtagdpi (
+    //  .clk_i(clock),
+    //  .rst_ni(reset_ni),
+    //  .jtag_tck    (cio_jtag_tck),
+    //  .jtag_tms    (cio_jtag_tms),
+    //  .jtag_tdi    (cio_jtag_tdi),
+    //  .jtag_tdo    (cio_jtag_tdo),
+    //  .jtag_trst_n (cio_jtag_trst_n),
+    //  .jtag_srst_n (cio_jtag_srst_n)
+    //);
 
   // end
 

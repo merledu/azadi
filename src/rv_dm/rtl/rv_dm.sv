@@ -24,7 +24,15 @@ module rv_dm #(
   input  tlul_pkg::tl_d2h_t  tl_h_i,
 
   input  jtag_pkg::jtag_req_t jtag_req_i,
-  output jtag_pkg::jtag_rsp_t jtag_rsp_o
+  output jtag_pkg::jtag_rsp_t jtag_rsp_o,
+
+  input  dm::dmi_req_t  dmi_req,
+  output dm::dmi_resp_t dmi_rsp,
+  input  logic dmi_req_valid, 
+  output  logic dmi_req_ready,
+  output logic dmi_rsp_valid,
+  input logic dmi_rsp_ready,
+  input  logic dmi_rst_n
 );
 
 
@@ -69,11 +77,11 @@ module rv_dm #(
   logic                             sberror_valid;
   logic [2:0]                       sberror;
 
-  dm::dmi_req_t  dmi_req;
-  dm::dmi_resp_t dmi_rsp;
-  logic dmi_req_valid, dmi_req_ready;
-  logic dmi_rsp_valid, dmi_rsp_ready;
-  logic dmi_rst_n;
+  //dm::dmi_req_t  dmi_req;
+  //dm::dmi_resp_t dmi_rsp;
+  //logic dmi_req_valid, dmi_req_ready;
+  //logic dmi_rsp_valid, dmi_rsp_ready;
+  //logic dmi_rst_n;
 
   // static debug hartinfo
   localparam dm::hartinfo_t DebugHartInfo = '{
@@ -138,6 +146,22 @@ module rv_dm #(
     .sberror_valid_i         ( sberror_valid         ),
     .sberror_i               ( sberror               )
   );
+
+
+    //  bind rv_dm dmidpi u_dmidpi (
+    //  .clk_i(clock),
+    //  .rst_ni(reset_ni),
+    //  .dmi_req_valid,
+    //  .dmi_req_ready,
+    //  .dmi_req_addr   (dmi_req.addr),
+    //  .dmi_req_op     (dmi_req.op),
+    //  .dmi_req_data   (dmi_req.data),
+    //  .dmi_rsp_valid,
+    //  .dmi_rsp_ready,
+    //  .dmi_rsp_data   (dmi_rsp.data),
+    //  .dmi_rsp_resp   (dmi_rsp.resp),
+    //  .dmi_rst_n      (dmi_rst_n)
+    //);
 
   logic                   host_req;
   logic   [BusWidth-1:0]  host_add;
@@ -258,31 +282,32 @@ module rv_dm #(
 
   // Bound-in DPI module replaces the TAP
 //if (DirectDmiTap) begin
+  // SRAM interface
   // JTAG TAP
-  dmi_jtag #(
-    .IdcodeValue    (IdcodeValue)
-  ) dap (
-    .clk_i            (clk_i),
-    .rst_ni           (rst_ni),
-    .testmode_i       (testmode_i),
-
-    .dmi_rst_no       (dmi_rst_n),
-    .dmi_req_o        (dmi_req),
-    .dmi_req_valid_o  (dmi_req_valid),
-    .dmi_req_ready_i  (dmi_req_ready),
-
-    .dmi_resp_i       (dmi_rsp      ),
-    .dmi_resp_ready_o (dmi_rsp_ready),
-    .dmi_resp_valid_i (dmi_rsp_valid),
-
-    //JTAG
-    .tck_i            (jtag_req_i.tck),
-    .tms_i            (jtag_req_i.tms),
-    .trst_ni          (jtag_req_i.trst_n),
-    .td_i             (jtag_req_i.tdi),
-    .td_o             (jtag_rsp_o.tdo),
-    .tdo_oe_o         (jtag_rsp_o.tdo_oe)
-  );
+  //dmi_jtag #(
+  //  .IdcodeValue    (IdcodeValue)
+  //) dap (
+  //  .clk_i            (clk_i),
+  //  .rst_ni           (rst_ni),
+  //  .testmode_i       (testmode_i),
+//
+  //  .dmi_rst_no       (dmi_rst_n),
+  //  .dmi_req_o        (dmi_req),
+  //  .dmi_req_valid_o  (dmi_req_valid),
+  //  .dmi_req_ready_i  (dmi_req_ready),
+//
+  //  .dmi_resp_i       (dmi_rsp      ),
+  //  .dmi_resp_ready_o (dmi_rsp_ready),
+  //  .dmi_resp_valid_i (dmi_rsp_valid),
+//
+  //  //JTAG
+  //  .tck_i            (jtag_req_i.tck),
+  //  .tms_i            (jtag_req_i.tms),
+  //  .trst_ni          (jtag_req_i.trst_n),
+  //  .td_i             (jtag_req_i.tdi),
+  //  .td_o             (jtag_rsp_o.tdo),
+  //  .tdo_oe_o         (jtag_rsp_o.tdo_oe)
+ // );
 //end
 
   tlul_sram_adapter #(

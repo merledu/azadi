@@ -204,7 +204,7 @@ module spi_core
       end
   end
   
-  assign ss_pad_o = ~((ss & {`SPI_SS_NB{tip & ass}}) | (ss & {`SPI_SS_NB{!ass}}));
+  assign ss_o = ~((ss & {`SPI_SS_NB{tip & ass}}) | (ss & {`SPI_SS_NB{!ass}}));
   
   spi_clgen clgen (
     .clk_in      (clk_i), 
