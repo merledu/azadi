@@ -12,7 +12,7 @@ module instr_mem_top
   input  logic        we
 );
 
-  always_ff @(negedge clk_i) begin
+  always_ff @(posedge clk_i) begin
   if (!rst_ni) begin
     rvalid <= 1'b0;
   end else if (we) begin
@@ -29,10 +29,10 @@ sram #(
   .ADDR_WIDTH  (10),
   .DELAY       (0),
   .IZERO       (0),
-  .IFILE       ("/home/merl/github_repos/azadi/tests/prog")
+  .IFILE       ("/home/merl/github_repos/azadi/tests/asm/output/program")
 ) iccm (
   
-  .clk0     (~clk_i),
+  .clk0     (clk_i),
   .csb0     (~req),
   .web0     (~we),
   .wmask0   (wmask),

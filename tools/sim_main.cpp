@@ -47,7 +47,7 @@ int main (int argc, char **argv) {
           top->clock = top->clock ? 0 : 1; 
         }
 
-        if(main_time == 200)
+        if(main_time < 5)
         {
             top -> reset_ni = 0;
         }
