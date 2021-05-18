@@ -4,7 +4,7 @@
 #include <string>
 #include "VAzadi_top_verilator.h"
 #include "verilated.h"
-#include "verilated_vcd_c.h"
+#include "verilated_fst_c.h"
 #include "VAzadi_top_verilator__Dpi.h"
 
 
@@ -28,7 +28,7 @@ int main (int argc, char **argv) {
     //VerilatedVcdC* tfp = NULL;
 
     Verilated::traceEverOn(true);
-    VerilatedVcdC* tfp = new VerilatedVcdC;
+    VerilatedFstC* tfp = new VerilatedFstC;
     // if initialized above
     //tfp = new VerilatedVcdC;
 
