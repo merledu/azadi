@@ -25,7 +25,17 @@ module azadi_soc_top #(
   input  logic i2c0_scl_in,
   output logic i2c0_scl_out,
   input  logic i2c0_sda_in, 
-  output logic i2c0_sda_out
+  output logic i2c0_sda_out,
+
+  //pwm
+  output              pwm_o,
+  output              pwm_o_2,
+
+  // spi host
+  output          [`SPI_SS_NB-1:0] ss_o,        
+  output                           sclk_o,      
+  output                           sd_o,       
+  input                            sd_i
 );
 
   logic RESET;
@@ -116,13 +126,19 @@ module azadi_soc_top #(
   logic intr_acq_overflow;
   logic intr_ack_stop;
   logic intr_host_timeout; 
+  logic intr_timer;
+  logic intr_srx;
+  logic intr_stx;
 
   logic intr_req;
 
   assign intr_vector = {  
       // gpio
       intr_gpio,
-      
+      //spi
+
+      intr_srx,
+      intr_stx,
       // i2c0
       intr_fmt_watermark,
       intr_rx_watermark,
@@ -308,8 +324,8 @@ module azadi_soc_top #(
   // dummy data memory
 
   data_mem dccm(
-    .clock    (clock),
-    .reset    (system_rst_ni),
+    .clk_i    (clock),
+    .rst_ni   (system_rst_ni),
 
     // tl-ul insterface
     .tl_d_i   (xbar_to_dccm),
@@ -342,14 +358,14 @@ module azadi_soc_top #(
     .tl_uart0_i         (uart_to_xbarp),
     .tl_uart1_o         (),
     .tl_uart1_i         (),
-    .tl_spi0_o          (),
-    .tl_spi0_i          (),
+    .tl_spi0_o          (xbar_to_spi),
+    .tl_spi0_i          (spi_to_xbar),
     .tl_spi1_o          (),
     .tl_spi1_i          (),
     .tl_spi2_o          (),
     .tl_spi2_i          (),
-    .tl_pwm_o           (),
-    .tl_pwm_i           (),
+    .tl_pwm_o           (xbar_to_pwm),
+    .tl_pwm_i           (pwm_to_xbar),
     .tl_gpio_o          (xbarp_to_gpio),
     .tl_gpio_i          (gpio_to_xbarp),
     .tl_i2c0_o          (xbarp_to_i2c ),
@@ -384,6 +400,36 @@ module azadi_soc_top #(
     .intr_gpio_o    (intr_gpio )  
   );
 
+  spi_top u_spi_host(
+
+  .clk_i       (clock),
+  .rst_ni      (system_rst_ni),
+
+  .tl_i        (xbar_to_spi),
+  .tl_o        (spi_to_xbar),
+
+  // SPI signals                  
+  .intr_rx_o   (intr_srx),
+  .intr_tx_o   (intr_stx),                    
+  .ss_o        (ss_o),         
+  .sclk_o      (sclk_o),       
+  .sd_o        (sd_o),       
+  .sd_i        (sd_i)
+);
+
+  pwm_top u_pwm(
+
+    .clk_i   (clock),
+    .rst_ni  (system_rst_ni),
+
+    .tl_i    (xbar_to_pwm),
+    .tl_o    (pwm_to_xbar),
+
+
+    .pwm_o   (pwm_o),
+    .pwm_o_2 (pwm_o_2)
+  );
+
   iccm_controller u_dut(
   	.clk_i       (clock),
   	.rst_ni      (RESET),
@@ -404,10 +450,18 @@ module azadi_soc_top #(
    .o_Rx_Byte     (rx_byte_i)
   );
 
+  // logic [31:0] instr_wdata;
+  // logic        instr_we;
+  // logic [3:0]  instr_be;
+// 
+// import tlul_pkg::*;
+  // assign instr_wdata = dm_to_xbar.a_data;
+  // assign instr_be    = dm_to_xbar.a_mask;
+  // assign instr_we    = dm_to_xbar.a_valid & logic'(dm_to_xbar.a_opcode inside {PutFullData, PutPartialData});
 
   instr_mem_top iccm (
-    .clock      (clock),
-    .reset      (system_rst_ni),
+    .clk_i      (clock),
+    .rst_ni     (system_rst_ni),
 
     .req        (req_i),
     .addr       (tlul_addr),
