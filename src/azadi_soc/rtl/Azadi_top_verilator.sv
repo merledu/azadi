@@ -2,13 +2,16 @@
 module Azadi_top_verilator #(
   parameter  logic DirectDmiTap = 1'b1
 )(
-  input clock_i,
+  input clock,
   input reset_ni,
 
   input  logic [19:0] gpio_i,
   output logic [19:0] gpio_o,
-//  output logic [19:0] gpio_oe
 
+<<<<<<< HEAD
+  input               uart_rx,
+  output              uart_tx
+=======
   // input               uart_rx,
   // output              uart_tx,
 
@@ -24,10 +27,25 @@ module Azadi_top_verilator #(
   // output                           sclk_o,      
   // output                           sd_o,       
   // input                            sd_i 
+>>>>>>> main
 );
   logic    uart_rx;
   logic    uart_tx;
 
+<<<<<<< HEAD
+// logic clock; // output clock after dividing the input clock by divisor
+// reg[27:0] counter=28'd0;
+// parameter DIVISOR = 28'd5000;
+// // The frequency of the output clk_out
+// //  = The frequency of the input clk_in divided by DIVISOR
+// // For example: Fclk_in = 50Mhz, if you want to get 1Hz signal to blink LEDs
+// // You will modify the DIVISOR parameter value to 28'd50.000.000
+// // Then the frequency of the output clk_out = 50Mhz/50.000.000 = 1Hz
+// always @(posedge clock_i) begin
+//  counter <= counter + 28'd1;
+//  if(counter>=(DIVISOR-1))
+//   counter <= 28'd0;
+=======
   logic pwm_o;
   logic pwm_o_2;
 
@@ -51,7 +69,10 @@ module Azadi_top_verilator #(
 //
 // clock <= (counter<DIVISOR/2)?1'b1:1'b0;
 //end
+>>>>>>> main
 
+//  clock <= (counter<DIVISOR/2)?1'b1:1'b0;
+// end
 
 
 
@@ -69,6 +90,11 @@ module Azadi_top_verilator #(
     logic cio_jtag_tms;
     logic cio_jtag_trst_n;
     logic cio_jtag_srst_n;
+
+    logic i2c0_scl_in;
+    logic i2c0_scl_out;
+    logic i2c0_sda_in;
+    logic i2c0_sda_out;    
     
 
   azadi_soc_top #(
@@ -79,11 +105,13 @@ module Azadi_top_verilator #(
     .reset_ni(reset_ni),  
     .gpio_i(gpio_i),
     .gpio_o(gpio_o),
-    .pwm_o (pwm_o),
-    .pwm_o_2(pwm_o_2),
     .uart_tx(uart_tx),
     .uart_rx(uart_rx),
-  //  output logic [19:0] gpio_oe
+    
+    .i2c0_scl_in(i2c0_scl_in),   
+    .i2c0_scl_out(i2c0_scl_out), 
+    .i2c0_sda_in(i2c0_sda_in),   
+    .i2c0_sda_out(i2c0_sda_out), 
   
   // jtag interface 
     .jtag_tck_i(cio_jtag_tck),

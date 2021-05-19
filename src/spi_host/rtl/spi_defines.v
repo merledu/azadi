@@ -4,7 +4,7 @@
 // Use SPI_DIVIDER_LEN for fine tuning theexact number.
 //
 //`define SPI_DIVIDER_LEN_8
-`define SPI_DIVIDER_LEN_16
+`define SPI_DIVIDER_LEN_32
 //`define SPI_DIVIDER_LEN_24
 //`define SPI_DIVIDER_LEN_32
 
@@ -26,7 +26,7 @@
 // Use SPI_MAX_CHAR for fine tuning the exact number, when using
 // SPI_MAX_CHAR_32, SPI_MAX_CHAR_24, SPI_MAX_CHAR_16, SPI_MAX_CHAR_8.
 //
-`define SPI_MAX_CHAR_128
+`define SPI_MAX_CHAR_32
 //`define SPI_MAX_CHAR_64
 //`define SPI_MAX_CHAR_32
 //`define SPI_MAX_CHAR_24
@@ -62,11 +62,13 @@
 // Number of device select signals. Use SPI_SS_NB for fine tuning the 
 // exact number.
 //
-`define SPI_SS_NB_8
+`define SPI_SS_NB_4
 //`define SPI_SS_NB_16
 //`define SPI_SS_NB_24
 //`define SPI_SS_NB_32
-
+`ifdef SPI_SS_NB_4
+  `define SPI_SS_NB             4    // Can be set from 1 to 4
+`endif
 `ifdef SPI_SS_NB_8
   `define SPI_SS_NB             8    // Can be set from 1 to 8
 `endif
@@ -88,14 +90,8 @@
 //
 // Register offset
 //
-`define SPI_RX_0                0
-`define SPI_RX_1                1
-`define SPI_RX_2                2
-`define SPI_RX_3                3
+`define SPI_RX_0                8
 `define SPI_TX_0                0
-`define SPI_TX_1                1
-`define SPI_TX_2                2
-`define SPI_TX_3                3
 `define SPI_CTRL                4
 `define SPI_DEVIDE              5
 `define SPI_SS                  6
@@ -103,11 +99,13 @@
 //
 // Number of bits in ctrl register
 //
-`define SPI_CTRL_BIT_NB         14
+`define SPI_CTRL_BIT_NB         16
 
 //
 // Control register bit position
 //
+`define SPI_RX_SEL              15
+`define SPI_TX_SEL              14
 `define SPI_CTRL_ASS            13
 `define SPI_CTRL_IE             12
 `define SPI_CTRL_LSB            11

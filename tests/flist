@@ -66,9 +66,9 @@ $AZADI_ROOT/src/TileLink/rtl/xbar_periph.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio_reg_top.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio.sv
 $AZADI_ROOT/src/dummy_memory/DFFRAM.sv
-$AZADI_ROOT/src/dummy_memory/DFFRAMD.sv
 $AZADI_ROOT/src/dummy_memory/data_mem.sv
 $AZADI_ROOT/src/dummy_memory/instr_mem_top.sv
+$AZADI_ROOT/src/primitives/rtl/prim_fifo_sync.sv
 $AZADI_ROOT/src/primitives/rtl/prim_subreg_arb.sv
 $AZADI_ROOT/src/primitives/rtl/prim_subreg.sv
 $AZADI_ROOT/src/primitives/rtl/prim_arbiter_ppc.sv
@@ -113,19 +113,10 @@ $AZADI_ROOT/src/uart/rtl/uart.sv
 $AZADI_ROOT/src/rv_timer/rtl/timer_core.sv
 $AZADI_ROOT/src/rv_timer/rtl/rv_timer.sv
 $AZADI_ROOT/src/rv_timer/rtl/rv_timer_reg_top.sv
-//$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_chk.sv
-//$AZADI_ROOT/src/TileLink/rtl/prim_secded_64_57_dec.sv
-//$AZADI_ROOT/src/TileLink/rtl/tlul_cmd_intg_gen.sv
-$AZADI_ROOT/src/pwm/src/rtl/PWM.v
-$AZADI_ROOT/src/pwm/src/rtl/pwm_top.sv
-$AZADI_ROOT/src/pwm/src/rtl/minus_one.v
-$AZADI_ROOT/src/pwm/src/rtl/down_clocking_odd.v
-$AZADI_ROOT/src/pwm/src/rtl/down_clocking_even.v
-$AZADI_ROOT/src/spi_host/rtl/spi_core.v
-$AZADI_ROOT/src/spi_host/rtl/spi_shift.v
-$AZADI_ROOT/src/spi_host/rtl/spi_clgen.v
-$AZADI_ROOT/src/spi_host/rtl/spi_top.sv
-
+$AZADI_ROOT/src/i2c/rtl/i2c.sv
+$AZADI_ROOT/src/i2c/rtl/i2c_fsm.sv
+$AZADI_ROOT/src/i2c/rtl/i2c_core.sv
+$AZADI_ROOT/src/i2c/rtl/i2c_reg_top.sv
 
 $AZADI_ROOT/src/fpnew/src/fpnew_cast_multi.sv
 $AZADI_ROOT/src/fpnew/src/fpnew_classifier.sv
@@ -205,7 +196,11 @@ $AZADI_ROOT/src/fpnew/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio_reg_top.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio.sv
 $AZADI_ROOT/src/dummy_memory/DFFRAM.sv
+<<<<<<< HEAD
+$AZADI_ROOT/src/dummy_memory/sram.v
+=======
 $AZADI_ROOT/src/dummy_memory/DFFRAMD.sv
+>>>>>>> main
 $AZADI_ROOT/src/dummy_memory/data_mem.sv
 $AZADI_ROOT/src/dummy_memory/instr_mem_top.sv
 $AZADI_ROOT/src/primitives/rtl/prim_subreg_arb.sv
@@ -221,3 +216,13 @@ $AZADI_ROOT/src/primitives/rtl/prim_generic_flop_2sync.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_gating.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_flop.sv
 $AZADI_ROOT/src/TileLink/rtl/xbar_mai_t.sv
+$AZADI_ROOT/src/pwm/src/rtl/down_clocking_even.v
+$AZADI_ROOT/src/pwm/src/rtl/down_clocking_odd.v
+$AZADI_ROOT/src/pwm/src/rtl/minus_one.v
+$AZADI_ROOT/src/pwm/src/rtl/pwm_top.sv
+$AZADI_ROOT/src/pwm/src/rtl/PWM.v
+
+$AZADI_ROOT/src/spi_host/rtl/spi_clgen.v
+$AZADI_ROOT/src/spi_host/rtl/spi_core.v
+$AZADI_ROOT/src/spi_host/rtl/spi_shift.v
+$AZADI_ROOT/src/spi_host/rtl/spi_top.sv

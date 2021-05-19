@@ -10,7 +10,8 @@ module spi_top(
   output tlul_pkg::tl_d2h_t tl_o,
 
   // SPI signals                  
-  output                           intr_o,                   
+  output        intr_rx_o,
+  output        intr_tx_o,                   
   output          [`SPI_SS_NB-1:0] ss_o,        
   output                           sclk_o,      
   output                           sd_o,       
@@ -41,7 +42,8 @@ spi_core spi_host(
   .re_i        (re),        
   .error_o     (err),
 
-  .intr_o      (intr_o),         
+  .intr_rx_o   (intr_rx_o),
+  .intr_tx_o   (intr_tx_o),         
                                                      
   // SPI signals                                     
   .ss_o        (ss_o),         // slave select

@@ -3,7 +3,7 @@
 module spi_shift (
   input                          clk,          // system clock
   input                          rst,          // reset
-  input                    [3:0] latch,        // latch signal for storing the data in shift register
+  input                          latch,        // latch signal for storing the data in shift register
   input                    [3:0] byte_sel,     // byte select signals for storing the data in shift register
   input [`SPI_CHAR_LEN_BITS-1:0] len,          // data len in bits (minus one)
   input                          lsb,          // lbs first on the line
@@ -18,20 +18,22 @@ module spi_shift (
   output     [`SPI_MAX_CHAR-1:0] p_out,        // parallel out
   input                          s_clk,        // serial clock
   input                          s_in,         // serial in
-  output   reg                   s_out         // serial out
+  output   reg                   s_out,        // serial out
+  input                          rx_en         // serial rx enable  
 );
                                    
  // reg                            s_out;        
  // reg                            tip;
                               
   reg     [`SPI_CHAR_LEN_BITS:0] cnt;          // data bit count
-  reg        [`SPI_MAX_CHAR-1:0] data;         // shift register
+  reg        [`SPI_MAX_CHAR-1:0] data; 
+  reg        [`SPI_MAX_CHAR-1:0] data_rx;        // shift register
   wire    [`SPI_CHAR_LEN_BITS:0] tx_bit_pos;   // next bit position
   wire    [`SPI_CHAR_LEN_BITS:0] rx_bit_pos;   // next bit position
   wire                           rx_clk;       // rx clock enable
   wire                           tx_clk;       // tx clock enable
   
-  assign p_out = data;
+  assign p_out = data_rx;
   
   assign tx_bit_pos = lsb ? {!(|len), len} - cnt : cnt - {{`SPI_CHAR_LEN_BITS{1'b0}},1'b1};
   assign rx_bit_pos = lsb ? {!(|len), len} - (rx_negedge ? cnt + {{`SPI_CHAR_LEN_BITS{1'b0}},1'b1} : cnt) : 
@@ -81,111 +83,20 @@ module spi_shift (
   begin
     if (rst)
       data   <=  {`SPI_MAX_CHAR{1'b0}};
-`ifdef SPI_MAX_CHAR_128
-    else if (latch[0] && !tip)
+    else if (latch && !tip)
       begin
-        if (byte_sel[3])
-          data[31:24] <=  p_in[31:24];
-        if (byte_sel[2])
-          data[23:16] <=  p_in[23:16];
-        if (byte_sel[1])
-          data[15:8] <=  p_in[15:8];
         if (byte_sel[0])
-          data[7:0] <=  p_in[7:0];
-      end
-    else if (latch[1] && !tip)
-      begin
-        if (byte_sel[3])
-          data[63:56] <=  p_in[31:24];
-        if (byte_sel[2])
-          data[55:48] <=  p_in[23:16];
-        if (byte_sel[1])
-          data[47:40] <=  p_in[15:8];
-        if (byte_sel[0])
-          data[39:32] <=  p_in[7:0];
-      end
-    else if (latch[2] && !tip)
-      begin
-        if (byte_sel[3])
-          data[95:88] <=  p_in[31:24];
-        if (byte_sel[2])
-          data[87:80] <=  p_in[23:16];
-        if (byte_sel[1])
-          data[79:72] <=  p_in[15:8];
-        if (byte_sel[0])
-          data[71:64] <=  p_in[7:0];
-      end
-    else if (latch[3] && !tip)
-      begin
-        if (byte_sel[3])
-          data[127:120] <=  p_in[31:24];
-        if (byte_sel[2])
-          data[119:112] <=  p_in[23:16];
-        if (byte_sel[1])
-          data[111:104] <=  p_in[15:8];
-        if (byte_sel[0])
-          data[103:96] <=  p_in[7:0];
-      end
-`else
-`ifdef SPI_MAX_CHAR_64
-    else if (latch[0] && !tip)
-      begin
-        if (byte_sel[3])
-          data[31:24] <=  p_in[31:24];
-        if (byte_sel[2])
-          data[23:16] <=  p_in[23:16];
-        if (byte_sel[1])
-          data[15:8] <=  p_in[15:8];
-        if (byte_sel[0])
-          data[7:0] <=  p_in[7:0];
-      end
-    else if (latch[1] && !tip)
-      begin
-        if (byte_sel[3])
-          data[63:56] <=  p_in[31:24];
-        if (byte_sel[2])
-          data[55:48] <=  p_in[23:16];
-        if (byte_sel[1])
-          data[47:40] <=  p_in[15:8];
-        if (byte_sel[0])
-          data[39:32] <=  p_in[7:0];
-      end
-`else
-    else if (latch[0] && !tip)
-      begin
-      `ifdef SPI_MAX_CHAR_8
-        if (byte_sel[0])
-          data[`SPI_MAX_CHAR-1:0] <=  p_in[`SPI_MAX_CHAR-1:0];
-      `endif
-      `ifdef SPI_MAX_CHAR_16
-        if (byte_sel[0])
-          data[7:0] <=  p_in[7:0];
-        if (byte_sel[1])
-          data[`SPI_MAX_CHAR-1:8] <=  p_in[`SPI_MAX_CHAR-1:8];
-      `endif
-      `ifdef SPI_MAX_CHAR_24
-        if (byte_sel[0])
-          data[7:0] <=  p_in[7:0];
+          data[7:0] <=   p_in[7:0];
         if (byte_sel[1])
           data[15:8] <=  p_in[15:8];
         if (byte_sel[2])
-          data[`SPI_MAX_CHAR-1:16] <=  p_in[`SPI_MAX_CHAR-1:16];
-      `endif
-      `ifdef SPI_MAX_CHAR_32
-        if (byte_sel[0])
-          data[7:0] <=  p_in[7:0];
-        if (byte_sel[1])
-          data[15:8] <=  p_in[15:8];
-        if (byte_sel[2])
-          data[23:16] <=  p_in[23:16];
+          data[23:16] <= p_in[23:16];
         if (byte_sel[3])
           data[`SPI_MAX_CHAR-1:24] <=  p_in[`SPI_MAX_CHAR-1:24];
-      `endif
       end
-`endif
-`endif
-    else
-      data[rx_bit_pos[`SPI_CHAR_LEN_BITS-1:0]] <=  rx_clk ? s_in : data[rx_bit_pos[`SPI_CHAR_LEN_BITS-1:0]];
+    else if (rx_en && tip) begin
+      data_rx[rx_bit_pos[`SPI_CHAR_LEN_BITS-1:0]] <=  rx_clk ? s_in : data_rx[rx_bit_pos[`SPI_CHAR_LEN_BITS-1:0]];
+    end
   end
   
 endmodule

@@ -13,7 +13,8 @@ module spi_core
   input         we_i,       
   input         re_i,        
   output        error_o,       
-  output   reg     intr_o,         
+  output        intr_rx_o,
+  output        intr_tx_o,         
                                                      
   // SPI signals                                     
   output          [`SPI_SS_NB-1:0] ss_o,         // slave select
@@ -22,11 +23,6 @@ module spi_core
   input                            sd_i       // master in slave out
 );
 
-
-                                                     
-  //reg                     [32-1:0] rdata_o;
- // reg                              wb_ack_o;
- // reg                              wb_int_o;
                                                
   // Internal signals
   reg       [`SPI_DIVIDER_LEN-1:0] divider;          // Divider register
@@ -43,48 +39,30 @@ module spi_core
   wire                             ass;              // automatic slave select
   wire                             spi_divider_sel;  // divider register select
   wire                             spi_ctrl_sel;     // ctrl register select
-  wire                       [3:0] spi_tx_sel;       // tx_l register select
+  wire                             spi_tx_sel;       // tx_l register select
   wire                             spi_ss_sel;       // ss register select
   wire                             tip;              // transfer in progress
   wire                             pos_edge;         // recognize posedge of sclk
   wire                             neg_edge;         // recognize negedge of sclk
   wire                             last_bit;         // marks last character bit
+  wire                             tx_en;            // enables spi transmission
+  wire                             rx_en;            // enables spi reception
   
   // Address decoder
   assign spi_divider_sel = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_DEVIDE);
   assign spi_ctrl_sel    = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_CTRL);
-  assign spi_tx_sel[0]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_0);
-  assign spi_tx_sel[1]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_1);
-  assign spi_tx_sel[2]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_2);
-  assign spi_tx_sel[3]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_3);
+  assign spi_tx_sel      = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_0) & tx_en;
   assign spi_ss_sel      = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_SS);
   
   // Read from registers
   always @(addr_i or rx or ctrl or divider or ss)
   begin
     case (addr_i[`SPI_OFS_BITS])
-`ifdef SPI_MAX_CHAR_128
-      `SPI_RX_0:    wb_dat = rx[31:0];
-      `SPI_RX_1:    wb_dat = rx[63:32];
-      `SPI_RX_2:    wb_dat = rx[95:64];
-      `SPI_RX_3:    wb_dat = {{128-`SPI_MAX_CHAR{1'b0}}, rx[`SPI_MAX_CHAR-1:96]};
-`else
-`ifdef SPI_MAX_CHAR_64
-      `SPI_RX_0:    wb_dat = rx[31:0];
-      `SPI_RX_1:    wb_dat = {{64-`SPI_MAX_CHAR{1'b0}}, rx[`SPI_MAX_CHAR-1:32]};
-      `SPI_RX_2:    wb_dat = 32'b0;
-      `SPI_RX_3:    wb_dat = 32'b0;
-`else
       `SPI_RX_0:    wb_dat = {{32-`SPI_MAX_CHAR{1'b0}}, rx[`SPI_MAX_CHAR-1:0]};
-      `SPI_RX_1:    wb_dat = 32'b0;
-      `SPI_RX_2:    wb_dat = 32'b0;
-      `SPI_RX_3:    wb_dat = 32'b0;
-`endif
-`endif
       `SPI_CTRL:    wb_dat = {{32-`SPI_CTRL_BIT_NB{1'b0}}, ctrl};
       `SPI_DEVIDE:  wb_dat = {{32-`SPI_DIVIDER_LEN{1'b0}}, divider};
       `SPI_SS:      wb_dat = {{32-`SPI_SS_NB{1'b0}}, ss};
-      default:      wb_dat = 32'bx;
+      default:      wb_dat = 32'b0;
     endcase
   end
   
@@ -105,11 +83,21 @@ module spi_core
   always @(posedge clk_i or posedge rst_ni)
   begin
     if (~rst_ni)
-      intr_o <=  1'b0;
-    else if (ie && tip && last_bit && pos_edge)
-      intr_o <=  1'b1;
+      intr_tx_o <=  1'b0;
+    else if (ie && tip && last_bit && pos_edge && tx_en)
+      intr_tx_o <=  1'b1;
     else 
-      intr_o <=  1'b0;
+      intr_tx_o <=  1'b0;
+  end
+
+  always @(posedge clk_i or posedge rst_ni)
+  begin
+    if (~rst_ni)
+      intr_rx_o <=  1'b0;
+    else if (ie && tip && last_bit && pos_edge && rx_en)
+      intr_rx_o <=  1'b1;
+    else 
+      intr_rx_o <=  1'b0;
   end
   
   // Divider register
@@ -173,6 +161,8 @@ module spi_core
   assign lsb        = ctrl[`SPI_CTRL_LSB];
   assign ie         = ctrl[`SPI_CTRL_IE];
   assign ass        = ctrl[`SPI_CTRL_ASS];
+  assign rx_en      = ctrl[`SPI_RX_SEL];
+  assign tx_en      = ctrl[`SPI_TX_SEL];
   
   // Slave select register
   always @(posedge clk_i or posedge rst_ni)
@@ -181,6 +171,10 @@ module spi_core
       ss <=  {`SPI_SS_NB{1'b0}};
     else if(spi_ss_sel && we_i && !tip)
       begin
+      `ifdef SPI_SS_NB_4
+        if (be_i[0])
+          ss <=  wdata_i[`SPI_SS_NB-1:0];
+      `endif
       `ifdef SPI_SS_NB_8
         if (be_i[0])
           ss <=  wdata_i[`SPI_SS_NB-1:0];
@@ -230,7 +224,7 @@ module spi_core
     .clk          (clk_i), 
     .rst          (~rst_ni), 
     .len          (char_len[`SPI_CHAR_LEN_BITS-1:0]),
-    .latch        (spi_tx_sel[3:0] & {4{we_i}}), 
+    .latch        (spi_tx_sel & we_i), 
     .byte_sel     (be_i), 
     .lsb          (lsb), 
     .go           (go), 
@@ -244,7 +238,8 @@ module spi_core
     .p_out        (rx), 
     .s_clk        (sclk_o), 
     .s_in         (sd_i), 
-    .s_out        (sd_o)
+    .s_out        (sd_o),
+    .rx_en        (rx_en) 
     );
 endmodule
   
