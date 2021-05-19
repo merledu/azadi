@@ -91,3 +91,5 @@ help:
 	@echo Possible targets: verilator vcs irun vlog help clean all verilator-build irun-build vcs-build program.hex
 
 .PHONY: help build clean verilator
+
+#riscv32-unknown-elf-elf2hex --bit-width 32 --input test --output prog.hex

@@ -130,7 +130,7 @@ module fpnew_top #(
       .flush_i,
       .result_o        ( opgrp_outputs[opgrp].result ),
       .status_o        ( opgrp_outputs[opgrp].status ),
-      .extension_bit_o ( opgrp_ext[opgrp]            ), 
+      .extension_bit_o ( opgrp_ext[opgrp]            ),
       .tag_o           ( opgrp_outputs[opgrp].tag    ),
       .out_valid_o     ( opgrp_out_valid[opgrp]      ),
       .out_ready_i     ( opgrp_out_ready[opgrp]      ),

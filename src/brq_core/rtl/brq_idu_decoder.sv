@@ -53,21 +53,21 @@ module brq_idu_decoder #(
     output logic [31:0]          zimm_rs1_type_o,
 
     // register file
-    output brq_pkg::rf_wd_sel_e rf_wdata_sel_o,   // RF write data selection
-    output logic                rf_we_o,          // write enable for regfile
-    output logic [4:0]          rf_raddr_a_o,
-    output logic [4:0]          rf_raddr_b_o,
-    output logic [4:0]          rf_waddr_o,
-    output logic                rf_ren_a_o,          // Instruction reads from RF addr A
-    output logic                rf_ren_b_o,          // Instruction reads from RF addr B
+    output brq_pkg::rf_wd_sel_e  rf_wdata_sel_o,   // RF write data selection
+    output logic                 rf_we_o,          // write enable for regfile
+    output logic [4:0]           rf_raddr_a_o,
+    output logic [4:0]           rf_raddr_b_o,
+    output logic [4:0]           rf_waddr_o,
+    output logic                 rf_ren_a_o,          // Instruction reads from RF addr A
+    output logic                 rf_ren_b_o,          // Instruction reads from RF addr B
 
     // ALU
-    output brq_pkg::alu_op_e   alu_operator_o,       // ALU operation selection
-    output brq_pkg::op_a_sel_e alu_op_a_mux_sel_o,   // operand a selection: reg value, PC,
-                                                     // immediate or zero
-    output brq_pkg::op_b_sel_e alu_op_b_mux_sel_o,   // operand b selection: reg value or
-                                                     // immediate
-    output logic               alu_multicycle_o,     // ternary bitmanip instruction
+    output brq_pkg::alu_op_e     alu_operator_o,       // ALU operation selection
+    output brq_pkg::op_a_sel_e   alu_op_a_mux_sel_o,   // operand a selection: reg value, PC,
+                                                       // immediate or zero
+    output brq_pkg::op_b_sel_e   alu_op_b_mux_sel_o,   // operand b selection: reg value or
+                                                       // immediate
+    output logic                 alu_multicycle_o,     // ternary bitmanip instruction
 
     // MULT & DIV
     output logic                 mult_en_o,             // perform integer multiplication
@@ -75,12 +75,12 @@ module brq_idu_decoder #(
     output logic                 mult_sel_o,            // as above but static, for data muxes
     output logic                 div_sel_o,             // as above but static, for data muxes
 
-    output brq_pkg::md_op_e    multdiv_operator_o,
-    output logic [1:0]         multdiv_signed_mode_o,
+    output brq_pkg::md_op_e      multdiv_operator_o,
+    output logic [1:0]           multdiv_signed_mode_o,
 
     // CSRs
-    output logic               csr_access_o,          // access to CSR
-    output brq_pkg::csr_op_e   csr_op_o,              // operation to perform on CSR
+    output logic                 csr_access_o,          // access to CSR
+    output brq_pkg::csr_op_e     csr_op_o,              // operation to perform on CSR
 
     // LSU
     output logic                 data_req_o,            // start transaction to data memory
@@ -98,16 +98,12 @@ module brq_idu_decoder #(
     output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
     output brq_pkg::op_b_sel_e    fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
                                                            // immediate 
-    output brq_pkg::fp_type_e fp_floating_type_o,          // Single precision or double 
-    output logic [4:0]        fp_rf_raddr_a_o,
-    output logic [4:0]        fp_rf_raddr_b_o,
-    output logic [4:0]        fp_rf_raddr_c_o,
-    output logic              fp_rf_ren_a_o,     
-    output logic              fp_rf_ren_b_o,     
-    output logic              fp_rf_ren_c_o,
+    output logic [4:0]            fp_rf_raddr_a_o,
+    output logic [4:0]            fp_rf_raddr_b_o,
+    output logic [4:0]            fp_rf_raddr_c_o,
 
-    output logic [4:0]        fp_rf_waddr_o,
-    output logic              fp_rf_we_o,
+    output logic [4:0]            fp_rf_waddr_o,
+    output logic                  fp_rf_we_o,
 
     output fpnew_pkg::operation_e fp_alu_operator_o,
     output logic                  fp_alu_op_mod_o,
@@ -117,8 +113,11 @@ module brq_idu_decoder #(
     output logic                  is_fp_instr_o,
     output logic                  use_fp_rs1_o,
     output logic                  use_fp_rs2_o,
+    output logic                  use_fp_rs3_o,
     output logic                  use_fp_rd_o,
-    output logic                  fp_swap_oprnds_o
+    output logic                  fp_swap_oprnds_o,
+    output logic                  fp_load_o,
+    output logic                  mv_instr_o
 );
 
   import brq_pkg::*;
@@ -262,16 +261,17 @@ module brq_idu_decoder #(
     wfi_insn_o            = 1'b0;
 
     // Floating Point
-    fp_rf_ren_a_o         = 1'b0;
-    fp_rf_ren_b_o         = 1'b0;
-    fp_rf_ren_c_o         = 1'b0;
     fp_rf_we_o            = 1'b0;
     is_fp_instr_o         = 1'b0;
     use_fp_rs1_o          = 1'b0;
     use_fp_rs2_o          = 1'b0;
+    use_fp_rs3_o          = 1'b0;
     use_fp_rd_o           = 1'b0;
+    fp_load_o             = 1'b0;
     fp_src_fmt_o          = FP32; 
     fp_dst_fmt_o          = FP32;
+    fp_swap_oprnds_o      = 1'b0;
+    mv_instr_o            = 1'b0;
 
     opcode                = opcode_e'(instr[6:0]);
 
@@ -324,7 +324,6 @@ module brq_idu_decoder #(
           3'b111:  illegal_insn = 1'b0;
           default: illegal_insn = 1'b1;
         endcase
-
         rf_ren_a_o = 1'b1;
         rf_ren_b_o = 1'b1;
       end
@@ -670,8 +669,6 @@ module brq_idu_decoder #(
       //////////////////////////////////////////
 
       OPCODE_STORE_FP: begin
-        fp_rf_ren_a_o      = 1'b1;
-        fp_rf_ren_b_o      = 1'b1;
         data_req_o         = 1'b1;
         data_we_o          = 1'b1;
         data_type_o        = 2'b00;
@@ -680,11 +677,11 @@ module brq_idu_decoder #(
 
         unique case(instr[14:12])
           3'b011: begin // FSD
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = (RVF == RV64FDouble) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           3'b010: begin // FSW
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = (RVF == RV32FNone) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32; 
           end
           default: illegal_insn = 1'b1;
@@ -692,20 +689,19 @@ module brq_idu_decoder #(
         end
 
       OPCODE_LOAD_FP: begin
-        fp_rf_ren_a_o      = 1'b1;
-        fp_rf_we_o         = 1'b1;
         data_req_o         = 1'b1;
         data_type_o        = 2'b00;
+        fp_load_o          = 1'b1;
 
         use_fp_rd_o        = 1'b1; 
 
         unique case(instr[14:12])
           3'b011: begin // FLD
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = (RVF == RV64FDouble) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           3'b010: begin // FLW
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = (RVF == RV32FNone) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32; 
           end
           default: illegal_insn = 1'b1;
@@ -716,25 +712,22 @@ module brq_idu_decoder #(
       OPCODE_MSUB_FP,  // FMSUB.S, FMSUB.D
       OPCODE_NMSUB_FP, // FNMSUB.S, FNMSUB.D
       OPCODE_NMADD_FP: begin //FNMADD.S, FNMADD.S
-        fp_rf_ren_a_o      = 1'b1;
-        fp_rf_ren_b_o      = 1'b1;
-        fp_rf_ren_c_o      = 1'b1;
         fp_rf_we_o         = 1'b1;
         fp_src_fmt_o       = FP32;
         is_fp_instr_o      = 1'b1;
 
         use_fp_rs1_o       = 1'b1;
         use_fp_rs2_o       = 1'b1;
-        use_fp_rd_o        = 1'b1;
-        fp_swap_oprnds_o   = 1'b0; 
+        use_fp_rs3_o       = 1'b1;
+        use_fp_rd_o        = 1'b1; 
         
         unique case (instr[26:25])
           01: begin
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           00: begin
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
           default: illegal_insn = 1'b1;
@@ -742,7 +735,6 @@ module brq_idu_decoder #(
       end
 
       OPCODE_OP_FP: begin
-        fp_rf_ren_a_o      = 1'b1;
         fp_src_fmt_o       = FP32;
         is_fp_instr_o      = 1'b1;
 
@@ -753,9 +745,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
             fp_swap_oprnds_o   = 1'b1;
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           7'b0001001,      // FMUL.D
@@ -764,8 +755,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
-            illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
             fp_src_fmt_o = FP64;
           end
           7'b0000000,       // FADD.S
@@ -774,9 +764,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
             fp_swap_oprnds_o   = 1'b1;
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
           7'b0001000, // FMUL.S
@@ -785,16 +774,15 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            fp_rf_ren_b_o      = 1'b1;
-            illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
             fp_src_fmt_o = FP32;
           end
           7'b0101101: begin
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:20]) begin //FSQRT.D
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~|instr[24:20]) begin //FSQRT.D
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -802,8 +790,8 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:20]) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            if (~|instr[24:20]) begin
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -812,9 +800,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (instr[14] | (&instr[13:12])) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~(instr[14] | (&instr[13:12]))) begin
+              illegal_insn  = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o  = FP64;
             end
           end
@@ -823,9 +810,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (instr[14] | (&instr[13:12])) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            if (~(instr[14] | (&instr[13:12]))) begin
+              illegal_insn  = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o  = FP32;
             end
           end
@@ -834,9 +820,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[14:13]) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~|instr[14:13]) begin
+              illegal_insn  = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o  = FP64;
             end
           end
@@ -845,9 +830,8 @@ module brq_idu_decoder #(
             use_fp_rs1_o       = 1'b1;
             use_fp_rs2_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[14:13]) begin
-              fp_rf_ren_b_o = 1'b1;
-              illegal_insn  = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            if (~|instr[14:13]) begin
+              illegal_insn  = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o  = FP32;
             end
           end
@@ -855,16 +839,16 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:21] | (~instr[20])) begin
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~(|instr[24:21] | (~instr[20]))) begin
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
           7'b1100000: begin // FCVT.W.S, FCVT.WU.S
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
-            if (~(|instr[24:21])) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            if (~|instr[24:21]) begin
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -872,18 +856,23 @@ module brq_idu_decoder #(
             fp_rf_we_o         = 1'b1;
             use_fp_rs1_o       = 1'b1;
             use_fp_rd_o        = 1'b1;
-            if (|instr[24:20]) begin 
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~|instr[24:20]) begin 
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
           7'b1110000: begin // FMV.X.W , FCLASS.S
             rf_we            = 1'b1;  // write back in int_regfile
             unique case ({instr[24:20],instr[14:12]})
-              {7'b0000000,3'b000},
-              {7'b0000000,3'b001}: begin
-                use_fp_rs1_o         = 1'b1;
-                illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              {5'b00000,3'b000}: begin
+                use_fp_rs1_o   = 1'b1;
+                illegal_insn   = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
+                fp_src_fmt_o   = FP32;
+                mv_instr_o     = 1'b1;
+              end
+              {5'b00000,3'b001}: begin
+                use_fp_rs1_o = 1'b1;
+                illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
                 fp_src_fmt_o = FP32;
               end
               default: begin
@@ -896,8 +885,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o     = 1'b1;
             use_fp_rs2_o     = 1'b1;
             if (~(instr[14]) | (&instr[13:12])) begin
-              fp_rf_ren_b_o      = 1'b1;
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
@@ -906,8 +894,7 @@ module brq_idu_decoder #(
             use_fp_rs1_o     = 1'b1;
             use_fp_rs2_o     = 1'b1;
             if (~(instr[14]) | (&instr[13:12])) begin
-              fp_rf_ren_b_o      = 1'b1;
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -915,8 +902,8 @@ module brq_idu_decoder #(
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
             unique case ({instr[24:20],instr[14:12]}) 
-              {7'b0000000,3'b001}: begin  
-                illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+              {5'b00000,3'b001}: begin  
+                illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
                 fp_src_fmt_o = FP64;
               end
               default: begin
@@ -927,32 +914,33 @@ module brq_idu_decoder #(
           7'b1100001: begin // // FCVT.W.D, FCVT.WU.D
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rs1_o     = 1'b1;
-            if (|instr[24:21]) begin
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~|instr[24:21]) begin
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
           7'b1101000: begin // FCVT.S.W, FCVT.S.WU
             fp_rf_we_o       = 1'b1;
             use_fp_rd_o      = 1'b1;
-            if (~(|instr[24:21])) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            if (~|instr[24:21]) begin
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
           7'b1111001: begin // FCVT.D.W, FCVT.D.WU
             rf_we            = 1'b1;  // write back in int_regfile
             use_fp_rd_o      = 1'b1;
-            if (|instr[24:21]) begin
-              illegal_insn = ((RVF == RV64FDouble)|(~fp_invalid_rm)) ? 1'b0 : 1'b1;
+            if (~|instr[24:21]) begin
+              illegal_insn = ((RVF == RV64FDouble) & (fp_invalid_rm)) ? 1'b0 : 1'b1;
               fp_src_fmt_o = FP64;
             end
           end
           7'b1111000: begin // FMV.W.X
             fp_rf_we_o        = 1'b1;
             use_fp_rd_o       = 1'b1;
-            if ((|instr[24:20]) | (|instr[14:12])) begin
-              illegal_insn = ((RVF == RV32FNone)|(fp_invalid_rm)) ? 1'b1 : 1'b0;
+            mv_instr_o        = 1'b1;
+            if (~(|instr[24:20]) | (|instr[14:12])) begin
+              illegal_insn = ((RVF == RV32FNone) & (~fp_invalid_rm)) ? 1'b1 : 1'b0;
               fp_src_fmt_o = FP32;
             end
           end
@@ -984,9 +972,6 @@ module brq_idu_decoder #(
       csr_access_o    = 1'b0;
       
       // floating point
-      fp_rf_ren_a_o   = 1'b0;
-      fp_rf_ren_b_o   = 1'b0;
-      fp_rf_ren_c_o   = 1'b0;
       fp_rf_we_o      = 1'b0;
     end
   end
@@ -1523,12 +1508,10 @@ module brq_idu_decoder #(
         unique case (instr[26:25])
           01: begin
             fp_alu_operator_o     = FMADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b0;
           end
           00: begin
             fp_alu_operator_o     = FMADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b0;
           end
           default: ;
@@ -1539,12 +1522,10 @@ module brq_idu_decoder #(
         unique case (instr[26:25])
           01: begin
             fp_alu_operator_o     = FMADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
           00: begin
             fp_alu_operator_o     = FMADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
           default: ;
@@ -1555,11 +1536,9 @@ module brq_idu_decoder #(
         unique case (instr[26:25])
           01: begin
             fp_alu_operator_o     = FNMSUB;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           00: begin
             fp_alu_operator_o     = FNMSUB;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           default: ;
         endcase
@@ -1569,12 +1548,10 @@ module brq_idu_decoder #(
         unique case (instr[26:25])
           01: begin
             fp_alu_operator_o     = FNMSUB;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
           00: begin
             fp_alu_operator_o     = FNMSUB;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
           default: ;
@@ -1585,162 +1562,136 @@ module brq_idu_decoder #(
         unique case (instr[31:25])
           7'b0000001: begin // FADD.D
             fp_alu_operator_o     = ADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0000101: begin // FSUB.D
             fp_alu_operator_o     = ADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
           7'b0001001: begin // FMUL.D
             fp_alu_operator_o     = MUL;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0001101:begin // FDIV.S
             fp_alu_operator_o     = DIV;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0000000: begin // FADD.S
             fp_alu_operator_o     = ADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0000100: begin // FSUB.S
             fp_alu_operator_o     = ADD;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             fp_alu_op_mod_o       = 1'b1;
           end
           7'b0001000: begin // FMUL.S
             fp_alu_operator_o     = MUL;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0001100: begin // FDIV.S
             fp_alu_operator_o     = DIV;
-            fp_alu_op_b_mux_sel_o = OP_B_REG_B;
           end
           7'b0101101: begin
-            if (|instr[24:20]) begin // FSQRT.D
+            if (~|instr[24:20]) begin // FSQRT.D
               fp_alu_operator_o     = SQRT;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b0101100: begin // FSQRT.S
-            if (|instr[24:20]) begin
+            if (~|instr[24:20]) begin
               fp_alu_operator_o     = SQRT;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b0010001: begin // FSGNJ.D, FSGNJN.D, FSGNJX.D
-            if (instr[14] | (&instr[13:12])) begin
+            if (~(instr[14] | (&instr[13:12]))) begin
               fp_alu_operator_o     = SGNJ;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b0010000: begin // FSGNJ.S, FSGNJN.S, FSGNJX.S
-            if (instr[14] | (&instr[13:12])) begin
+            if (~(instr[14] | (&instr[13:12]))) begin
               fp_alu_operator_o     = SGNJ;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b0010101: begin // FMIN.D, FMAX.D
-            if (|instr[14:13]) begin
+            if (~|instr[14:13]) begin
               fp_alu_operator_o     = MINMAX;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b0010100: begin // FMIN.S, FMAX.S
-            if (|instr[14:13]) begin
+            if (~|instr[14:13]) begin
               fp_alu_operator_o     = MINMAX;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b0100000: begin // FCVT.S.D
-            if (|instr[24:21] | (~instr[20])) begin
+            if (~(|instr[24:21] | (~instr[20]))) begin
               fp_alu_operator_o     = F2F;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b1100000: begin // FCVT.W.S, FCVT.WU.S
-            if (~(|instr[24:21])) begin
-              fp_alu_operator_o     = I2F;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            end
+            if (~|instr[24:21]) begin
+              fp_alu_operator_o     = F2I;
 
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
+              if (instr[20])
+                fp_alu_op_mod_o       = 1'b1;
+            end
           end
           7'b0100001: begin // FCVT.D.S
-            if (|instr[24:20]) begin 
+            if (~|instr[24:20]) begin 
               fp_alu_operator_o     = F2F;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b1110000: begin // FMV.X.W , FCLASS.S
             unique case ({instr[24:20],instr[14:12]})
-              {3'b0000000,3'b000}: begin
-                fp_alu_operator_o     = ADD;   // to be decided
-                fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-              end
-              {3'b0000000,3'b001}: begin
+              // {3'b0000000,3'b000}: begin
+              //   fp_alu_operator_o     = ADD;   // to be decided YET
+              // end
+              {3'b000,3'b001}: begin
                 fp_alu_operator_o     = CLASSIFY;
-                fp_alu_op_b_mux_sel_o = OP_B_REG_B;
               end
               default: ;
             endcase
           end
           7'b1010001: begin // FEQ.D, FLT.D, FLE.D
-            if (~(instr[14]) | (&instr[13:12])) begin
+            if ((~instr[14]) | (&instr[13:12])) begin
               fp_alu_operator_o     = CMP;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b1010000: begin // FEQ.S, FLT.S, FLE.S
-            if (~(instr[14]) | (&instr[13:12])) begin
+            if ((~instr[14]) | (&instr[13:12])) begin
               fp_alu_operator_o     = CMP;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
             end
           end
           7'b1110001: begin // FCLASS.D
             unique case ({instr[24:20],instr[14:12]})
-              {3'b0000000,3'b001}: begin
+              {3'b000,3'b001}: begin
                 fp_alu_operator_o     = CLASSIFY;
-                fp_alu_op_b_mux_sel_o = OP_B_REG_B;
               end
               default: ;
             endcase
           end 
           7'b1100001: begin // // FCVT.W.D, FCVT.WU.D
-            if (|instr[24:21]) begin
+            if (~|instr[24:21]) begin
               fp_alu_operator_o     = F2I;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
+              
+              if (instr[20])
+                fp_alu_op_mod_o     = 1'b1;
             end
-
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
           end
           7'b1101000: begin // FCVT.S.W, FCVT.S.WU
             if (~(|instr[24:21])) begin
               fp_alu_operator_o     = I2F;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            end
 
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
+              if (instr[20])
+                fp_alu_op_mod_o     = 1'b1;
+            end
           end
           7'b1111001: begin // FCVT.D.W, FCVT.D.WU
-            if (|instr[24:21]) begin
+            if (~|instr[24:21]) begin
               fp_alu_operator_o     = I2F;
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
-            end
 
-            if (instr[20])
-              fp_alu_op_mod_o       = 1'b1;
-          end
-          7'b1111000: begin // FMV.W.X
-            if ((|instr[24:20]) | (|instr[14:12])) begin
-              fp_alu_operator_o     = FMADD;  // to be decided
-              fp_alu_op_b_mux_sel_o = OP_B_REG_B;
+              if (instr[20])
+                fp_alu_op_mod_o     = 1'b1;
             end
           end
+          // 7'b1111000: begin // FMV.W.X
+          //   if ((|instr[24:20]) | (|instr[14:12])) begin
+          //     fp_alu_operator_o     = FMADD;  // to be decided
+          //   end
+          // end
           default: ;
         endcase
       end
@@ -1763,7 +1714,7 @@ module brq_idu_decoder #(
   // Assertions //
   ////////////////
 
-  // Selectors must be known/valid.
+//   // Selectors must be known/valid.
 //  `ASSERT(buraqRegImmAluOpKnown, (opcode == OPCODE_OP_IMM) |->
 //      !$isunknown(instr[14:12]))
-endmodule // controller
+endmodule 

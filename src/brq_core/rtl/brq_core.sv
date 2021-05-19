@@ -112,7 +112,6 @@ module brq_core #(
   logic                   in_valid_c2fpu;   // valid - from FPU to core 
   logic                   out_ready_fpu2c;  // ready - from FPU to core
   logic                   out_valid_fpu2c;  // valid - from core to FPU
-  logic                   ready_id_fpu;     // select which ready signal will go to dec
   logic                   valid_id_fpu;     // select which valid signal will go to dec
   logic                   fp_rm_dynamic;
   logic                   fp_alu_op_mod;  
@@ -121,11 +120,12 @@ module brq_core #(
   logic [4:0]             fp_rf_raddr_c;
   logic [W-1:0]           fp_rf_rdata_a;
   logic [W-1:0]           fp_rf_rdata_b;
-  logic                   fp_rf_rdata_c;
+  logic [W-1:0]           fp_rf_rdata_c;
   logic                   fp_rf_wen_id;
   logic                   is_fp_instr;
   logic [2:0][W-1:0]      fp_operands;   // three operands in fpu   
   logic                   fp_busy;
+  logic                   fpu_busy_idu;
   logic [W-1:0]           fp_result;
   logic [ 31:0]           data_wb;
   logic [4:0]             fp_rf_waddr_id;
@@ -135,12 +135,12 @@ module brq_core #(
   logic                   use_fp_rs1;
   logic                   use_fp_rs2;
   logic                   use_fp_rd;
-  logic [W-1:0]           fpu_op_a;
-  logic [W-1:0]           fpu_op_b;
-  logic [W-1:0]           fpu_op_c;
   logic                   fp_rf_write_wb;
   logic [31:0]            rf_int_fp_lsu;
   logic                   fp_swap_oprnds;
+  logic                   fpu_is_busy;
+  logic                   fp_load;
+  logic [31:0]            fp_rf_wdata_wb;
   fpnew_pkg::status_t     fp_status;
   fpnew_pkg::operation_e  fp_operation;
   fpnew_pkg::roundmode_e  fp_rounding_mode;
@@ -679,13 +679,12 @@ module brq_core #(
 
       // Floating point extensions IO
       .fp_rounding_mode_o              ( fp_rounding_mode      ),   // defines the rounding mode 
-      .fp_alu_op_b_mux_sel_o           ( ), //fp_alu_op_b_mux_sel   ),   // operand b selection: reg value or immediate                       
+      .fp_rf_rdata_a_i                 ( fp_rf_rdata_a         ),
+      .fp_rf_rdata_b_i                 ( fp_rf_rdata_b         ),
+      .fp_rf_rdata_c_i                 ( fp_rf_rdata_c         ),
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a         ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b         ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c         ),
-      .fp_rf_ren_a_o                   ( ), //fp_rf_ren_a           ),     
-      .fp_rf_ren_b_o                   ( ), //fp_rf_ren_b           ),     
-      .fp_rf_ren_c_o                   ( ), //fp_rf_ren_c           ),
       .fp_rf_waddr_o                   ( fp_rf_waddr_id        ),
       .fp_rf_we_o                      ( fp_rf_wen_id          ),
       .fp_alu_operator_o               ( fp_alu_operator       ),
@@ -697,11 +696,13 @@ module brq_core #(
       .is_fp_instr_o                   ( is_fp_instr           ),
       .use_fp_rs1_o                    ( use_fp_rs1            ),
       .use_fp_rs2_o                    ( use_fp_rs2            ),
+      .use_fp_rs3_o                    ( use_fp_rs3            ),
       .use_fp_rd_o                     ( use_fp_rd             ),
-      .fpu_busy_i                      ( fp_busy               ),
+      .fpu_busy_i                      ( fpu_busy_idu          ),
       .fp_rf_write_wb_i                ( fp_rf_write_wb        ),
-      .fp_swap_oprnds_o                ( fp_swap_oprnds        )
-
+      .fp_rf_wdata_fwd_wb_i            ( fp_rf_wdata_wb        ),
+      .fp_operands_o                   ( fp_operands           ),
+      .fp_load_o                       ( fp_load               )
   );
 
   // for RVFI only
@@ -808,7 +809,7 @@ module brq_core #(
   brq_wbu #(
     .WritebackStage ( WritebackStage )
   ) wb_stage_i (
-    .clk_i                          ( clk                         ),
+    .clk_i                          ( clk                          ),
     .rst_ni                         ( rst_ni                       ),
     .en_wb_i                        ( en_wb                        ),
     .instr_type_wb_i                ( instr_type_wb                ),
@@ -848,7 +849,8 @@ module brq_core #(
     .fp_rf_waddr_wb_o               ( fp_rf_waddr_wb               ),
     .fp_rf_wen_id_i                 ( fp_rf_wen_id                 ),
     .fp_rf_waddr_id_i               ( fp_rf_waddr_id               ),
-    .fp_rf_wdata_wb_o               ( )
+    .fp_rf_wdata_wb_o               ( fp_rf_wdata_wb               ),
+    .fp_load_i                      ( fp_load                      )
   );
 
   ///////////////////////
@@ -992,29 +994,10 @@ module brq_core #(
       .rdata_c_o ( fp_rf_rdata_c  ),
 
       .waddr_a_i ( fp_rf_waddr_wb ),
-      .wdata_a_i ( rf_wdata_wb    ),
-      .we_a_i    ( fp_wen         )
+      .wdata_a_i ( fp_rf_wdata_wb ),
+      .we_a_i    ( fp_rf_wen_wb   )
 );
   end
-  logic  fp_wen;
-  assign fp_wen   = fp_rf_wen_wb & out_valid_fpu2c;
-  assign fpu_op_a = use_fp_rs1 ? fp_rf_rdata_a : rf_rdata_a_ecc;
-  assign fpu_op_b = use_fp_rs2 ? fp_rf_rdata_b : rf_rdata_b_ecc;
-  assign fpu_op_c = fp_rf_rdata_c;
-  
-  /* Swap operands */
-  logic [31:0] b,c;
-  always_comb begin : swapping
-    if (fp_swap_oprnds) begin
-      b = fpu_op_a;
-      c = fpu_op_b;
-    end else begin
-      b = fpu_op_b;
-      c = fpu_op_c;
-    end
-  end
-  
-  assign fp_operands = {c , b , fpu_op_a};
 
   ///////////////////
   // Alert outputs //
@@ -1185,16 +1168,11 @@ module brq_core #(
   );
 
   assign fp_frm_fpnew   = fp_rm_dynamic ? fp_frm_csr : fp_rounding_mode;
-  assign in_ready_c2fpu = multdiv_ready_id;
-  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr) & ~busy;
+  assign in_ready_c2fpu = id_in_ready; //multdiv_ready_id;
+  assign in_valid_c2fpu = (instr_valid_id & is_fp_instr);
   // assign ready_id_fpu = id_in_ready; // (is_fp_instr) ? out_ready_fpu2c : id_in_ready;
   assign valid_id_fpu = (is_fp_instr) ? out_valid_fpu2c : ex_valid;
   
-  logic busy;
-  always_ff @(posedge clk_i) begin : busy_signal // for valid signal
-    busy <= fp_busy;
-  end
-    
 // FPU instance
   fpnew_top #(
     .Features       ( fpnew_pkg::RV32F          ),
@@ -1223,6 +1201,7 @@ module brq_core #(
     .busy_o         ( fp_busy          )
   );
 
+  assign fpu_busy_idu = fp_busy & (~out_valid_fpu2c);
   assign data_wb = is_fp_instr ? fp_result : result_ex;
 
   // These assertions are in top-level as instr_valid_id required as the enable term

@@ -53,7 +53,8 @@ module brq_wbu #(
   output logic [4:0]               fp_rf_waddr_wb_o,
   input  logic [4:0]               fp_rf_waddr_id_i,
   input  logic                     fp_rf_wen_id_i,
-  output logic [31:0]              fp_rf_wdata_wb_o
+  output logic [31:0]              fp_rf_wdata_wb_o,
+  output logic                     fp_load_i
 );
 
   import brq_pkg::*;
@@ -85,6 +86,7 @@ module brq_wbu #(
     logic [31:0]    fp_rf_wdata_wb_q;
     logic           fp_rf_we_wb_q;
     logic [4:0]     fp_rf_waddr_wb_q;
+    logic           fp_load_q;
 
     // Stage becomes valid if an instruction enters for ID/EX and valid is cleared when instruction
     // is done
@@ -117,6 +119,7 @@ module brq_wbu #(
         fp_rf_we_wb_q    <= fp_rf_wen_id_i;
         fp_rf_waddr_wb_q <= rf_waddr_id_i;
         fp_rf_wdata_wb_q <= rf_wdata_id_i;
+        fp_load_q        <= fp_load_i;
       end
     end
 
@@ -151,6 +154,12 @@ module brq_wbu #(
     // rf_wdata_wb_q is used rather than rf_wdata_wb_o as the latter includes read data from memory
     // that returns too late to be used on the forwarding path.
     assign rf_wdata_fwd_wb_o = rf_wdata_wb_q;
+
+    assign rf_wdata_wb_mux[1]     = rf_wdata_lsu_i;
+    assign rf_wdata_wb_mux_we[1]  = rf_we_lsu_i & ~fp_load_q;
+  
+    assign fp_rf_wdata_wb_mux[1]    = rf_wdata_lsu_i;
+    assign fp_rf_wdata_wb_mux_we[1] = rf_we_lsu_i & fp_load_q;
   end else begin : g_bypass_wb
     // without writeback stage just pass through register write signals
     assign rf_waddr_wb_o         = rf_waddr_id_i;
@@ -189,19 +198,17 @@ module brq_wbu #(
     assign rf_write_wb_o          = 1'b0;
     assign rf_wdata_fwd_wb_o      = 32'b0;
     assign instr_done_wb_o        = 1'b0;
+
+    assign rf_wdata_wb_mux[1]     = rf_wdata_lsu_i;
+    assign rf_wdata_wb_mux_we[1]  = rf_we_lsu_i & ~fp_load_i;
+  
+    assign fp_rf_wdata_wb_mux[1]    = rf_wdata_lsu_i;
+    assign fp_rf_wdata_wb_mux_we[1] = rf_we_lsu_i & fp_load_i;
   end
-
-  assign rf_wdata_wb_mux[1]    = rf_wdata_lsu_i;
-  assign rf_wdata_wb_mux_we[1] = rf_we_lsu_i;
-
-  assign fp_rf_wdata_wb_mux[1]    = rf_wdata_lsu_i;
-  assign fp_rf_wdata_wb_mux_we[1] = rf_we_lsu_i;
 
   // RF write data can come from ID results (all RF writes that aren't because of loads will come
   // from here) or the LSU (RF writes for load data)
-  logic  we_temp;
-  assign we_temp = fp_rf_wdata_wb_mux_we[0];
-  assign rf_wdata_wb_o  = (rf_wdata_wb_mux_we[0] | we_temp) ? rf_wdata_wb_mux[0] : 
+  assign rf_wdata_wb_o  = (rf_wdata_wb_mux_we[0]) ? rf_wdata_wb_mux[0] : 
                           rf_wdata_wb_mux[1];
   assign rf_we_wb_o     = |rf_wdata_wb_mux_we;
   
