@@ -71,11 +71,8 @@
 ///     -through [get_pins -hierarchical -filter async]
 /// ```
 
-<<<<<<< HEAD
 //`include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
-=======
 // `include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
->>>>>>> 191f5b4e6a6c94649b09bfea433bdb46b57961bf
 
 (* no_ungroup *)
 (* no_boundary_optimization *)

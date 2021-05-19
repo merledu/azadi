@@ -13,11 +13,8 @@
 
 /// `stream_to_mem`: Allows to use memories with flow control (`valid`/`ready`) for requests but without flow
 /// control for output data to be used in streams.
-<<<<<<< HEAD
 //`include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
-=======
 // `include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
->>>>>>> 191f5b4e6a6c94649b09bfea433bdb46b57961bf
 module stream_to_mem #(
   /// Memory request payload type, usually write enable, write data, etc.
   parameter type         mem_req_t  = logic,

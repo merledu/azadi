@@ -65,7 +65,6 @@ $AZADI_ROOT/src/TileLink/rtl/xbar_periph.sv
 
 $AZADI_ROOT/src/GPIO/rtl/gpio_reg_top.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio.sv
-$AZADI_ROOT/src/dummy_memory/DFFRAM.sv
 $AZADI_ROOT/src/dummy_memory/data_mem.sv
 $AZADI_ROOT/src/dummy_memory/instr_mem_top.sv
 $AZADI_ROOT/src/primitives/rtl/prim_fifo_sync.sv
@@ -196,11 +195,7 @@ $AZADI_ROOT/src/fpnew/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio_reg_top.sv
 $AZADI_ROOT/src/GPIO/rtl/gpio.sv
 $AZADI_ROOT/src/dummy_memory/DFFRAM.sv
-<<<<<<< HEAD
 $AZADI_ROOT/src/dummy_memory/sram.v
-=======
-$AZADI_ROOT/src/dummy_memory/DFFRAMD.sv
->>>>>>> main
 $AZADI_ROOT/src/dummy_memory/data_mem.sv
 $AZADI_ROOT/src/dummy_memory/instr_mem_top.sv
 $AZADI_ROOT/src/primitives/rtl/prim_subreg_arb.sv

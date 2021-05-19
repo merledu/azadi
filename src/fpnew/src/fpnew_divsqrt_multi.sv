@@ -12,11 +12,8 @@
 // Author: Stefan Mach <smach@iis.ee.ethz.ch>
 
 
-<<<<<<< HEAD
 //`include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
-=======
 // `include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
->>>>>>> 191f5b4e6a6c94649b09bfea433bdb46b57961bf
 
 //`include "/home/merl-lab/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
 ///`include "/home/merl/github_repos/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"

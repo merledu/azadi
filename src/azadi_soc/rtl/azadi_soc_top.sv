@@ -41,7 +41,7 @@ module azadi_soc_top #(
 );
 
   logic RESET;
-  assign RESET = ~reset_ni;
+  assign RESET = reset_ni;
   
   logic system_rst_ni;
   
@@ -258,60 +258,6 @@ brq_core_top #(
     .core_sleep_o   ()
 );
 
-// Debug module
-
-  brq_core_top #(
-      .PMPEnable        (1'b0),
-      .PMPGranularity   (0), 
-      .PMPNumRegions    (0), 
-      .MHPMCounterNum   (0), 
-      .MHPMCounterWidth (40), 
-      .RV32E            (1'b0), 
-      .RV32M            (brq_pkg::RV32MFast), 
-      .RV32B            (brq_pkg::RV32BNone), 
-      .RegFile          (brq_pkg::RegFileFF), 
-      .BranchTargetALU  (1'b0), 
-      .WritebackStage   (1'b1), 
-      .ICache           (1'b0), 
-      .ICacheECC        (1'b0), 
-      .BranchPredictor  (1'b0), 
-      .DbgTriggerEn     (1'b1), 
-      .DbgHwBreakNum    (2), 
-      .Securebrq        (1'b0),
-      .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800), 
-      .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress) 
-  ) u_top (
-      .clock (clock),
-      .reset (system_rst_ni),
-
-    // instruction memory interface 
-      .tl_i_i (xbar_to_ifu),
-      .tl_i_o (ifu_to_xbar),
-
-    // data memory interface 
-      .tl_d_i (xbar_to_lsu),
-      .tl_d_o (lsu_to_xbar),
-
-      .test_en_i   (1'b0),     // enable all clock gates for testing
-
-      .hart_id_i   (32'b0), 
-      .boot_addr_i (32'h20000000),
-
-          // Interrupt inputs
-      .irq_software_i (1'b0),
-      .irq_timer_i    (intr_timer),
-      .irq_external_i (intr_req),
-      .irq_fast_i     (1'b0),
-      .irq_nm_i       (1'b0),       // non-maskeable interrupt
-
-      // Debug Interface
-      .debug_req_i    (dbg_req),
-          // CPU Control Signals
-      .fetch_enable_i (1'b1),
-      .alert_minor_o  (),
-      .alert_major_o  (),
-      .core_sleep_o   ()
-  );
 
   // Debug module
   rv_dm #(

@@ -11,8 +11,7 @@ module Azadi_top_verilator #(
   input               uart_rx,
   output              uart_tx
 );
-  logic    uart_rx;
-  logic    uart_tx;
+
 
   logic pwm_o;
   logic pwm_o_2;
