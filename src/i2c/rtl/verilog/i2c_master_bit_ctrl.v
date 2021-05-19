@@ -72,7 +72,7 @@
 //               Fixed cmd_ack generation item (no bug).
 //
 //               Revision 1.8  2003/02/05 00:06:10  rherveille
-//               Fixed a bug where the core would trigger an erroneous 'arbitration lost' interrupt after being reset, when the reset pulse width < 3 clk cycles.
+//               Fixed a bug where the core would trigger an erroneous 'arbitration lost' interrupt after being reset, when the reset pulse width < 3 clk_i cycles.
 //
 //               Revision 1.7  2002/12/26 16:05:12  rherveille
 //               Small code simplifications
@@ -141,7 +141,7 @@
 // `include "i2c_master_defines.v"
 
 module i2c_master_bit_ctrl (
-    input             clk,      // system clock
+    input             clk_i,      // system clock
     input             rst,      // synchronous active high reset
     input             nReset,   // asynchronous active low reset
     input             ena,      // core enable signal
@@ -190,12 +190,12 @@ module i2c_master_bit_ctrl (
 
     // whenever the slave is not ready it can delay the cycle by pulling SCL low
     // delay scl_oen
-    always @(posedge clk)
+    always @(posedge clk_i)
       dscl_oen <= #1 scl_oen;
 
     // slave_wait is asserted when master wants to drive SCL high, but the slave pulls it low
     // slave_wait remains asserted until the slave releases SCL
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (!nReset) slave_wait <= 1'b0;
       else         slave_wait <= (scl_oen & ~dscl_oen & ~sSCL) | (slave_wait & ~sSCL);
 
@@ -204,8 +204,8 @@ module i2c_master_bit_ctrl (
     wire scl_sync   = dSCL & ~sSCL & scl_oen;
 
 
-    // generate clk enable signal
-    always @(posedge clk or negedge nReset)
+    // generate clk_i enable signal
+    always @(posedge clk_i or negedge nReset)
       if (~nReset)
       begin
           cnt    <= #1 16'h0;
@@ -232,7 +232,7 @@ module i2c_master_bit_ctrl (
 
     // capture SDA and SCL
     // reduce metastability risk
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (!nReset)
       begin
           cSCL <= #1 2'b00;
@@ -251,14 +251,14 @@ module i2c_master_bit_ctrl (
 
 
     // filter SCL and SDA signals; (attempt to) remove glitches
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if      (!nReset     ) filter_cnt <= 14'h0;
       else if (rst || !ena ) filter_cnt <= 14'h0;
       else if (~|filter_cnt) filter_cnt <= clk_cnt >> 2; //16x I2C bus frequency
       else                   filter_cnt <= filter_cnt -1;
 
 
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (!nReset)
       begin
           fSCL <= 3'b111;
@@ -277,7 +277,7 @@ module i2c_master_bit_ctrl (
 
 
     // generate filtered SCL and SDA signals
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (~nReset)
       begin
           sSCL <= #1 1'b1;
@@ -307,7 +307,7 @@ module i2c_master_bit_ctrl (
     // detect stop condition => detect rising edge on SDA while SCL is high
     reg sta_condition;
     reg sto_condition;
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (~nReset)
       begin
           sta_condition <= #1 1'b0;
@@ -326,7 +326,7 @@ module i2c_master_bit_ctrl (
 
 
     // generate i2c bus busy signal
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if      (!nReset) busy <= #1 1'b0;
       else if (rst    ) busy <= #1 1'b0;
       else              busy <= #1 (sta_condition | busy) & ~sto_condition;
@@ -337,7 +337,7 @@ module i2c_master_bit_ctrl (
     // 1) master drives SDA high, but the i2c bus is low
     // 2) stop detected while not requested
     reg cmd_stop;
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (~nReset)
           cmd_stop <= #1 1'b0;
       else if (rst)
@@ -345,7 +345,7 @@ module i2c_master_bit_ctrl (
       else if (clk_en)
           cmd_stop <= #1 cmd == `I2C_CMD_STOP;
 
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (~nReset)
           al <= #1 1'b0;
       else if (rst)
@@ -355,7 +355,7 @@ module i2c_master_bit_ctrl (
 
 
     // generate dout signal (store SDA on rising edge of SCL)
-    always @(posedge clk)
+    always @(posedge clk_i)
       if (sSCL & ~dSCL) dout <= #1 sSDA;
 
 
@@ -381,7 +381,7 @@ module i2c_master_bit_ctrl (
     parameter [17:0] wr_c    = 18'b0_1000_0000_0000_0000;
     parameter [17:0] wr_d    = 18'b1_0000_0000_0000_0000;
 
-    always @(posedge clk or negedge nReset)
+    always @(posedge clk_i or negedge nReset)
       if (!nReset)
       begin
           c_state <= #1 idle;

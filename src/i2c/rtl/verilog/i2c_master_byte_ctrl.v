@@ -73,13 +73,13 @@
 // `include "i2c_master_defines.v"
 
 module i2c_master_byte_ctrl (
-	clk, rst, nReset, ena, clk_cnt, start, stop, read, write, ack_in, din,
+	clk_i, rst, nReset, ena, clk_cnt, start, stop, read, write, ack_in, din,
 	cmd_ack, ack_out, dout, i2c_busy, i2c_al, scl_i, scl_o, scl_oen, sda_i, sda_o, sda_oen );
 
 	//
 	// inputs & outputs
 	//
-	input clk;     // master clock
+	input clk_i;     // master clock
 	input rst;     // synchronous active high reset
 	input nReset;  // asynchronous active low reset
 	input ena;     // core enable signal
@@ -144,7 +144,7 @@ module i2c_master_byte_ctrl (
 
 	// hookup bit_controller
 	i2c_master_bit_ctrl bit_controller (
-		.clk     ( clk      ),
+		.clk_i     ( clk_i      ),
 		.rst     ( rst      ),
 		.nReset  ( nReset   ),
 		.ena     ( ena      ),
@@ -170,7 +170,7 @@ module i2c_master_byte_ctrl (
 	assign dout = sr;
 
 	// generate shift register
-	always @(posedge clk or negedge nReset)
+	always @(posedge clk_i or negedge nReset)
 	  if (!nReset)
 	    sr <= #1 8'h0;
 	  else if (rst)
@@ -181,7 +181,7 @@ module i2c_master_byte_ctrl (
 	    sr <= #1 {sr[6:0], core_rxd};
 
 	// generate counter
-	always @(posedge clk or negedge nReset)
+	always @(posedge clk_i or negedge nReset)
 	  if (!nReset)
 	    dcnt <= #1 3'h0;
 	  else if (rst)
@@ -198,7 +198,7 @@ module i2c_master_byte_ctrl (
 	//
 	reg [4:0] c_state; // synopsys enum_state
 
-	always @(posedge clk or negedge nReset)
+	always @(posedge clk_i or negedge nReset)
 	  if (!nReset)
 	    begin
 	        core_cmd <= #1 `I2C_CMD_NOP;

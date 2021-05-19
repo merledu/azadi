@@ -1,8 +1,8 @@
 
 
 module xbar_periph (
-  input clk_peri_i,
-  input rst_peri_ni,
+  input clk_i,
+  input rst_ni,
 
   // Host interfaces
   input  tlul_pkg::tl_h2d_t tl_xbar_main_i,
@@ -154,8 +154,8 @@ end
     .DRspDepth (52'h0),
     .N         (13)
   ) u_s1n_14 (
-    .clk_i        (clk_peri_i),
-    .rst_ni       (rst_peri_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (tl_s1n_14_us_h2d),
     .tl_h_o       (tl_s1n_14_us_d2h),
     .tl_d_o       (tl_s1n_14_ds_h2d),
