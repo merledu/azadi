@@ -12,7 +12,7 @@ module instr_mem_top
   input  logic        we
 );
 
-  always_ff @(negedge clk_i) begin
+  always_ff @(posedge clk_i) begin
   if (!rst_ni) begin
     rvalid <= 1'b0;
   end else if (we) begin
