@@ -120,7 +120,7 @@ module brq_idu #(
     // Interrupt signals
     input  logic                      csr_mstatus_mie_i,
     input  logic                      irq_pending_i,
-    input  brq_pkg::irqs_t           irqs_i,
+    input  brq_pkg::irqs_t            irqs_i,
     input  logic                      irq_nm_i,
     output logic                      nmi_mode_o,
 
@@ -179,32 +179,37 @@ module brq_idu #(
     output logic                      instr_id_done_o,
 
     // Floating point extensions IO
-    output fpnew_pkg::roundmode_e fp_rounding_mode_o,      // defines the rounding mode 
-    output brq_pkg::op_b_sel_e    fp_alu_op_b_mux_sel_o,   // operand b selection: reg value or
-                                                           // immediate 
-    output brq_pkg::fp_type_e    fp_floating_type_o,       // Single precision or double 
-    output logic [4:0]           fp_rf_raddr_a_o,
-    output logic [4:0]           fp_rf_raddr_b_o,
-    output logic [4:0]           fp_rf_raddr_c_o,
-    output logic                 fp_rf_ren_a_o,     
-    output logic                 fp_rf_ren_b_o,     
-    output logic                 fp_rf_ren_c_o,
-    output logic [4:0]           fp_rf_waddr_o,
-    output logic                 fp_rf_we_o,
+    output fpnew_pkg::roundmode_e     fp_rounding_mode_o,    // defines the rounding mode 
+    output brq_pkg::op_b_sel_e        fp_alu_op_b_mux_sel_o, // operand b selection: reg value or
+                                                             // immediate 
+    input  logic [31:0]               fp_rf_rdata_a_i,
+    input  logic [31:0]               fp_rf_rdata_b_i,
+    input  logic [31:0]               fp_rf_rdata_c_i,
+    output logic [4:0]                fp_rf_raddr_a_o,
+    output logic [4:0]                fp_rf_raddr_b_o,
+    output logic [4:0]                fp_rf_raddr_c_o,
+    output logic                      fp_rf_ren_a_o,     
+    output logic                      fp_rf_ren_b_o,     
+    output logic                      fp_rf_ren_c_o,
+    output logic [4:0]                fp_rf_waddr_o,
+    output logic                      fp_rf_we_o,
 
-    output fpnew_pkg::operation_e fp_alu_operator_o,
-    output logic                  fp_alu_op_mod_o,
-    output fpnew_pkg::fp_format_e fp_src_fmt_o,
-    output fpnew_pkg::fp_format_e fp_dst_fmt_o,
-    output logic                  fp_rm_dynamic_o,
-    output logic                  fp_flush_o,
-    output logic                  is_fp_instr_o,
-    output logic                  use_fp_rs1_o,
-    output logic                  use_fp_rs2_o,
-    output logic                  use_fp_rd_o,
-    input  logic                  fpu_busy_i,
-    input  logic                  fp_rf_write_wb_i,
-    output logic                  fp_swap_oprnds_o
+    output fpnew_pkg::operation_e     fp_alu_operator_o,
+    output logic                      fp_alu_op_mod_o,
+    output fpnew_pkg::fp_format_e     fp_src_fmt_o,
+    output fpnew_pkg::fp_format_e     fp_dst_fmt_o,
+    output logic                      fp_rm_dynamic_o,
+    output logic                      fp_flush_o,
+    output logic                      is_fp_instr_o,
+    output logic                      use_fp_rs1_o,
+    output logic                      use_fp_rs2_o,
+    output logic                      use_fp_rs3_o,
+    output logic                      use_fp_rd_o,
+    input  logic                      fpu_busy_i,
+    input  logic                      fp_rf_write_wb_i,
+    input  logic [31:0]               fp_rf_wdata_fwd_wb_i,
+    output logic [2:0][31:0]          fp_operands_o,
+    output logic                      fp_load_o
 );
 
   import brq_pkg::*;
@@ -299,6 +304,18 @@ module brq_idu #(
 
   logic [31:0] alu_operand_a;
   logic [31:0] alu_operand_b;
+
+  // Floating point 
+  logic        fp_swap_oprnds;
+  logic [31:0] fp_rf_rdata_a_fwd;
+  logic [31:0] fp_rf_rdata_b_fwd;
+  logic [31:0] fp_rf_rdata_c_fwd;
+  logic [31:0] temp;
+  logic [31:0] fpu_op_a;
+  logic [31:0] fpu_op_b;
+  logic [31:0] fpu_op_c;
+  logic        mv_instr;
+  logic [31:0] result_wb;
 
   /////////////
   // LSU Mux //
@@ -404,22 +421,6 @@ module brq_idu #(
 
   assign imd_val_q_ex_o = imd_val_q;
 
-  ///////////////////////
-  // Register File MUX //
-  ///////////////////////
-
-  // Suppress register write if there is an illegal CSR access or instruction is not executing
-  assign rf_we_id_o = rf_we_raw & instr_executing & ~illegal_csr_insn_i;
-
-  // Register file write data mux
-  always_comb begin : rf_wdata_id_mux
-    unique case (rf_wdata_sel)
-      RF_WD_EX:  rf_wdata_id_o = result_ex_i;
-      RF_WD_CSR: rf_wdata_id_o = csr_rdata_i;
-      default:   rf_wdata_id_o = result_ex_i;
-    endcase
-  end
-
   /////////////
   // Decoder //
   /////////////
@@ -503,14 +504,9 @@ module brq_idu #(
 
       // Floating point extensions IO
       .fp_rounding_mode_o              ( fp_rounding_mode_o    ),   // defines the rounding mode 
-      .fp_alu_op_b_mux_sel_o           ( fp_alu_op_b_mux_sel_o ),   // operand b selection: reg value or immediate                       
-      .fp_floating_type_o              ( fp_floating_type_o    ),   // Single precision or double 
       .fp_rf_raddr_a_o                 ( fp_rf_raddr_a_o       ),
       .fp_rf_raddr_b_o                 ( fp_rf_raddr_b_o       ),
       .fp_rf_raddr_c_o                 ( fp_rf_raddr_c_o       ),
-      .fp_rf_ren_a_o                   ( fp_rf_ren_a_o         ),     
-      .fp_rf_ren_b_o                   ( fp_rf_ren_b_o         ),     
-      .fp_rf_ren_c_o                   ( fp_rf_ren_c_o         ),
       .fp_rf_waddr_o                   ( fp_rf_waddr_o         ),
       .fp_rf_we_o                      ( fp_rf_we_o            ),
       .fp_alu_operator_o               ( fp_alu_operator_o     ),
@@ -521,8 +517,48 @@ module brq_idu #(
       .is_fp_instr_o                   ( is_fp_instr_o         ), 
       .use_fp_rs1_o                    ( use_fp_rs1_o          ),
       .use_fp_rs2_o                    ( use_fp_rs2_o          ),
-      .use_fp_rd_o                     ( use_fp_rd_o           )
+      .use_fp_rs3_o                    ( use_fp_rs3_o          ),
+      .use_fp_rd_o                     ( use_fp_rd_o           ),
+      .fp_swap_oprnds_o                ( fp_swap_oprnds        ),
+      .fp_load_o                       ( fp_load_o             ),
+      .mv_instr_o                      ( mv_instr              )
   );
+
+  assign fpu_op_a = use_fp_rs1_o ? fp_rf_rdata_a_fwd : rf_rdata_a_fwd;
+  assign fpu_op_b = use_fp_rs2_o ? fp_rf_rdata_b_fwd : rf_rdata_b_fwd;
+  assign fpu_op_c = fp_rf_rdata_c_fwd;
+  
+  /* Swap operands */
+  always_comb begin : swapping
+    if (fp_swap_oprnds) begin
+      temp = fpu_op_c;
+      fpu_op_c = fpu_op_a;
+      fpu_op_a = temp;
+    end else begin
+      fpu_op_a = fpu_op_a;
+      fpu_op_b = fpu_op_b;
+      fpu_op_c = fpu_op_c;
+    end
+    fp_operands_o = {fpu_op_c , fpu_op_b , fpu_op_a};
+  end
+   
+  assign result_wb = mv_instr ? fpu_op_a : result_ex_i;
+
+  ///////////////////////
+  // Register File MUX //
+  ///////////////////////
+
+  // Suppress register write if there is an illegal CSR access or instruction is not executing
+  assign rf_we_id_o = rf_we_raw & instr_executing & ~illegal_csr_insn_i;
+  
+  // Register file write data mux
+  always_comb begin : rf_wdata_id_mux
+    unique case (rf_wdata_sel)
+      RF_WD_EX:  rf_wdata_id_o = result_wb;
+      RF_WD_CSR: rf_wdata_id_o = csr_rdata_i;
+      default:   rf_wdata_id_o = result_wb;
+    endcase
+  end
 
   /////////////////////////////////
   // CSR-related pipline flushes //
@@ -660,7 +696,7 @@ module brq_idu #(
   assign lsu_we_o                = lsu_we;
   assign lsu_type_o              = lsu_type;
   assign lsu_sign_ext_o          = lsu_sign_ext;
-  assign lsu_wdata_o             = rf_rdata_b_fwd;
+  assign lsu_wdata_o             = fpu_op_b; //rf_rdata_b_fwd;
   // csr_op_en_o is set when CSR access should actually happen.
   // csv_access_o is set when CSR access instruction is present and is used to compute whether a CSR
   // access is illegal. A combinational loop would be created if csr_op_en_o was used along (as
@@ -870,9 +906,13 @@ module brq_idu #(
     // Register read address matches write address in WB
     logic rf_rd_a_wb_match;
     logic rf_rd_b_wb_match;
+    logic fp_rf_rd_a_wb_match;
+    logic fp_rf_rd_b_wb_match;
+    logic fp_rf_rd_c_wb_match;
     // Hazard between registers being read and written
     logic rf_rd_a_hz;
     logic rf_rd_b_hz;
+    logic rf_rd_c_hz;
 
     logic outstanding_memory_access;
 
@@ -928,24 +968,33 @@ module brq_idu #(
     assign rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_a_o) & |rf_raddr_a_o;
     assign rf_rd_b_wb_match = (rf_waddr_wb_i == rf_raddr_b_o) & |rf_raddr_b_o;
 
+    assign fp_rf_rd_a_wb_match = (rf_waddr_wb_i == rf_raddr_a_o);
+    assign fp_rf_rd_b_wb_match = (rf_waddr_wb_i == rf_raddr_b_o);
+    
+    assign fp_rf_rd_c_wb_match = (rf_waddr_wb_i == fp_rf_raddr_c_o); 
+
     assign rf_rd_a_wb_match_o = rf_rd_a_wb_match;
     assign rf_rd_b_wb_match_o = rf_rd_b_wb_match;
 
     // If instruction is reading register that load will be writing stall in
     // ID until load is complete. No need to stall when reading zero register.
-    assign rf_rd_a_hz = rf_rd_a_wb_match & rf_ren_a;
-    assign rf_rd_b_hz = rf_rd_b_wb_match & rf_ren_b;
+    assign rf_rd_a_hz = rf_rd_a_wb_match & (rf_ren_a | use_fp_rs1_o);
+    assign rf_rd_b_hz = rf_rd_b_wb_match & (rf_ren_b | use_fp_rs2_o);
+    assign rf_rd_c_hz = rf_rd_b_wb_match & use_fp_rs3_o;
 
     // If instruction is read register that writeback is writing forward writeback data to read
     // data. Note this doesn't factor in load data as it arrives too late, such hazards are
     // resolved via a stall (see above).
+
     assign rf_rdata_a_fwd = rf_rd_a_wb_match & rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_a_i;
     assign rf_rdata_b_fwd = rf_rd_b_wb_match & rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_b_i;
+    
+    // forwarding for floating point unit
+    assign fp_rf_rdata_a_fwd = fp_rf_rd_a_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_a_i;
+    assign fp_rf_rdata_b_fwd = fp_rf_rd_b_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_b_i;
+    assign fp_rf_rdata_c_fwd = fp_rf_rd_c_wb_match & fp_rf_write_wb_i ? fp_rf_wdata_fwd_wb_i : fp_rf_rdata_c_i; 
 
-    // assign fp_rf_rdata_a_fwd = rf_rd_a_wb_match & fp_rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_a_i;
-    // assign fp_rf_rdata_b_fwd = rf_rd_a_wb_match & fp_rf_write_wb_i ? rf_wdata_fwd_wb_i : rf_rdata_a_i;
-
-    assign stall_ld_hz = outstanding_load_wb_i & (rf_rd_a_hz | rf_rd_b_hz);
+    assign stall_ld_hz = outstanding_load_wb_i & (rf_rd_a_hz | rf_rd_b_hz | rf_rd_c_hz);
 
     assign instr_type_wb_o = ~lsu_req_dec ? WB_INSTR_OTHER :
                               lsu_we      ? WB_INSTR_STORE :
@@ -979,6 +1028,10 @@ module brq_idu #(
     // register file
     assign rf_rdata_a_fwd = rf_rdata_a_i;
     assign rf_rdata_b_fwd = rf_rdata_b_i;
+
+    assign fp_rf_rdata_a_fwd = fp_rf_rdata_a_i;
+    assign fp_rf_rdata_b_fwd = fp_rf_rdata_b_i;
+    assign fp_rf_rdata_c_fwd = fp_rf_rdata_c_i;
 
     assign rf_rd_a_wb_match_o = 1'b0;
     assign rf_rd_b_wb_match_o = 1'b0;

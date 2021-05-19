@@ -44,6 +44,7 @@ defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/ecc_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cf_math_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/include/common_cells/registers.svh
+defines += $(AZADI_ROOT)/src/i2c/rtl/verilog/i2c_master_defines.v
 
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
@@ -91,3 +92,5 @@ help:
 	@echo Possible targets: verilator vcs irun vlog help clean all verilator-build irun-build vcs-build program.hex
 
 .PHONY: help build clean verilator
+
+#riscv32-unknown-elf-elf2hex --bit-width 32 --input test --output prog.hex

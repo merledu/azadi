@@ -34,4 +34,13 @@ If you want to run a program build using GCC compiler, in the working directory.
 3. type: 
 `vim $AZADI_ROOT/src/dummy_memory/DFFRAM.sv`
 
-Locate the "$readmemh" function and swap the path of the custom hex file to the output hex file.
+Locate the "$readmemh" function and swap the path of the custom hex file to the output hex file. 
+
+##  Connecting with GDB
+1. For debugging programs make sure that your code is compiled with -g or -ggdb flag.
+2. program can only be debuged when it is running which means user should start simulation first
+by executing ```make``` in ```$AZADI_ROOT/tools```.
+3. open a new terminal and run command ```openocd -f board/azadi.cfg``` in ```$AZADI_ROOT```. this will establish openocd connection.
+4. open another terminal and run the command
+```riscv32-unknown-elf-gdb -ex "target extended-remote :3333" -ex "info reg" <path to your .elf file of running program>``` in ```$AZADI_ROOT/tools```.
+this will start a ```GDB``` session and print all the register values on termial upon start.
