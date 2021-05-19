@@ -3595,6 +3595,12 @@ module rv_plic_reg_top (
     // from internal hardware
     .de     (1'b0),
     .d      ('0  ),
+        // to internal hardware
+    .qe     (),
+    .q      (reg2hw.ie0[26].q ),
+
+    // to register interface (read)
+    .qs     (ie0_e_26_qs)
 
   );
 

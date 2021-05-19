@@ -2,28 +2,54 @@
 module Azadi_top_verilator #(
   parameter  logic DirectDmiTap = 1'b1
 )(
-  input clock,
+  input clock_i,
   input reset_ni,
 
   input  logic [19:0] gpio_i,
   output logic [19:0] gpio_o,
 
-  input               uart_rx,
-  output              uart_tx
-);
+  // input               uart_rx,
+  // output              uart_tx,
 
-// logic clock; // output clock after dividing the input clock by divisor
-// reg[27:0] counter=28'd0;
-// parameter DIVISOR = 28'd5000;
-// // The frequency of the output clk_out
-// //  = The frequency of the input clk_in divided by DIVISOR
-// // For example: Fclk_in = 50Mhz, if you want to get 1Hz signal to blink LEDs
-// // You will modify the DIVISOR parameter value to 28'd50.000.000
-// // Then the frequency of the output clk_out = 50Mhz/50.000.000 = 1Hz
-// always @(posedge clock_i) begin
-//  counter <= counter + 28'd1;
-//  if(counter>=(DIVISOR-1))
-//   counter <= 28'd0;
+  input logic uart_rx_i
+
+  // PWM
+  // output logic pwm_o,
+  // output logic pwm_o_2,
+
+  // spi
+
+  // output          [`SPI_SS_NB-1:0] ss_o,        
+  // output                           sclk_o,      
+  // output                           sd_o,       
+  // input                            sd_i 
+);
+  logic    uart_rx;
+  logic    uart_tx;
+
+  logic pwm_o;
+  logic pwm_o_2;
+
+  logic [`SPI_SS_NB-1:0] ss_o;        
+  logic                  sclk_o;      
+  logic                  sd_o;       
+  logic                  sd_i; 
+
+//logic clock; // output clock after dividing the input clock by divisor
+//reg[27:0] counter=28'd0;
+//parameter DIVISOR = 28'd6000;
+//// The frequency of the output clk_out
+////  = The frequency of the input clk_in divided by DIVISOR
+//// For example: Fclk_in = 50Mhz, if you want to get 1Hz signal to blink LEDs
+//// You will modify the DIVISOR parameter value to 28'd50.000.000
+//// Then the frequency of the output clk_out = 50Mhz/50.000.000 = 1Hz
+//always @(posedge clock_i) begin
+// counter <= counter + 28'd1;
+// if(counter>=(DIVISOR-1))
+//  counter <= 28'd0;
+//
+// clock <= (counter<DIVISOR/2)?1'b1:1'b0;
+//end
 
 //  clock <= (counter<DIVISOR/2)?1'b1:1'b0;
 // end
@@ -55,26 +81,32 @@ module Azadi_top_verilator #(
     .JTAG_ID(JTAG_IDCODE),
     .DirectDmiTap (DirectDmiTap)
   ) top_verilator(
-    .clock(clock),
-    .reset_ni(reset_ni),
-    .uart_rx_i(),
-  
+    .clock(clock_i),
+    .reset_ni(reset_ni),  
     .gpio_i(gpio_i),
     .gpio_o(gpio_o),
     .uart_tx(uart_tx),
     .uart_rx(uart_rx),
     
-    .i2c0_scl_in(i2c0_scl_in),   
-    .i2c0_scl_out(i2c0_scl_out), 
-    .i2c0_sda_in(i2c0_sda_in),   
-    .i2c0_sda_out(i2c0_sda_out), 
+    // .i2c0_scl_in(i2c0_scl_in),   
+    // .i2c0_scl_out(i2c0_scl_out), 
+    // .i2c0_sda_in(i2c0_sda_in),   
+    // .i2c0_sda_out(i2c0_sda_out), 
   
   // jtag interface 
     .jtag_tck_i(cio_jtag_tck),
     .jtag_tms_i(cio_jtag_tms),
     .jtag_trst_ni(cio_jtag_trst_n),
     .jtag_tdi_i(cio_jtag_tdi),
-    .jtag_tdo_o(cio_jtag_tdo)
+    .jtag_tdo_o(cio_jtag_tdo),
+
+    .uart_rx_i(uart_rx_i),
+
+  // spi interface 
+    .ss_o        (ss_o),         
+    .sclk_o      (sclk_o),       
+    .sd_o        (sd_o),       
+    .sd_i        (sd_i)
   );
 
 
@@ -96,7 +128,7 @@ module Azadi_top_verilator #(
    //end else begin
      // jtag dpi for openocd
     jtagdpi u_jtagdpi (
-      .clk_i(clock),
+      .clk_i(clock_i),
       .rst_ni(reset_ni),
       .jtag_tck    (cio_jtag_tck),
       .jtag_tms    (cio_jtag_tms),

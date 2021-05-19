@@ -113,10 +113,7 @@ $AZADI_ROOT/src/uart/rtl/uart.sv
 $AZADI_ROOT/src/rv_timer/rtl/timer_core.sv
 $AZADI_ROOT/src/rv_timer/rtl/rv_timer.sv
 $AZADI_ROOT/src/rv_timer/rtl/rv_timer_reg_top.sv
-$AZADI_ROOT/src/i2c/rtl/i2c.sv
-$AZADI_ROOT/src/i2c/rtl/i2c_fsm.sv
-$AZADI_ROOT/src/i2c/rtl/i2c_core.sv
-$AZADI_ROOT/src/i2c/rtl/i2c_reg_top.sv
+
 
 $AZADI_ROOT/src/fpnew/src/fpnew_cast_multi.sv
 $AZADI_ROOT/src/fpnew/src/fpnew_classifier.sv
@@ -222,3 +219,11 @@ $AZADI_ROOT/src/spi_host/rtl/spi_clgen.v
 $AZADI_ROOT/src/spi_host/rtl/spi_core.v
 $AZADI_ROOT/src/spi_host/rtl/spi_shift.v
 $AZADI_ROOT/src/spi_host/rtl/spi_top.sv
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_bit_ctrl.v
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_bit_ctrl.v
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_byte_ctrl.v
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_byte_ctrl.v
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_core.v
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_core.v
+$AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_top.sv
+$AZADI_ROOT/src/i2c/rtl/verilog/timescale.v

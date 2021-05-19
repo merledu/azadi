@@ -111,8 +111,10 @@ module rr_arb_tree #(
 
   // pragma translate_off
   `ifndef VERILATOR
+  `ifndef XSIM
   // Default SVA reset
   default disable iff (!rst_ni || flush_i);
+  `endif
   `endif
   // pragma translate_on
 
@@ -306,6 +308,7 @@ module rr_arb_tree #(
 
     // pragma translate_off
     `ifndef VERILATOR
+    `ifndef XSIM
     initial begin : p_assert
       assert(NumIn)
         else $fatal(1, "Input must be at least one element wide.");
@@ -336,6 +339,7 @@ module rr_arb_tree #(
     req1 : assert property(
       @(posedge clk_i) req_o |-> |req_i)
         else $fatal (1, "Req out implies req in.");
+    `endif
     `endif
     // pragma translate_on
   end

@@ -53,7 +53,7 @@ sram #(
   .IFILE       ("")
 ) dccm (
   
-  .clk0     (~clk_i),
+  .clk0     (clk_i),
   .csb0     (~req_i),
   .web0     (~we_i),
   .wmask0   (data_we),
