@@ -43,9 +43,8 @@ int main (int argc, char **argv) {
    top -> gpio_i = 8;
     while (!Verilated::gotFinish()) 
     { 
-        if (main_time % 5 == 0) {
+    
           top->clock = top->clock ? 0 : 1; 
-        }
 
         if(main_time < 5)
         {
