@@ -36,41 +36,9 @@ module azadi_soc_top #(
   input                            sd_i 
 
 );
-//logic clock;
-//logic reset_ni;
-//assign reset_ni = ~reset;
-//
-//clk_wiz_0 clk_m (
-//  // Clock out ports
-//  .clk_out1(clock),
-//  // Status and control signals
-//  .resetn(reset_ni),
-//  .locked(),
-// // Clock in ports
-//  .clk_in1(clk_i)
-// );
-
-// logic      uart_rx_i;
-
-//  logic               jtag_tck_i;
-//  logic               jtag_tms_i;
-//  logic               jtag_trst_ni;
-//  logic               jtag_tdi_i;
-//  logic              jtag_tdo_o;
-//
-//  logic [19:0] gpio_i;
-//  logic [19:0] gpio_o;
-//
-// logic          [`SPI_SS_NB-1:0] ss_o;        
-// logic                           sclk_o;      
-// logic                           sd_o;       
-// logic                            sd_i; 
 
 
 logic system_rst_ni;
-logic RESET;
-assign RESET = ~reset_ni;
-
 wire [19:0] gpio_in;
 wire [19:0] gpio_out;
 
@@ -245,7 +213,7 @@ brq_core_top #(
   .DirectDmiTap (DirectDmiTap)
   ) debug_module (
   .clk_i(clock),       // clock
-  .rst_ni(RESET),      // asynchronous reset active low, connect PoR
+  .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
   .testmode_i(),
   .ndmreset_o(dbg_rst),  // non-debug module reset
@@ -428,7 +396,7 @@ spi_top u_spi_host(
 
  iccm_controller u_dut(
 	.clk_i       (clock),
-	.rst_ni      (RESET),
+	.rst_ni      (reset_ni),
 	.rx_dv_i     (rx_dv_i),
 	.rx_byte_i   (rx_byte_i),
 	.we_o        (iccm_cntrl_we),
@@ -439,7 +407,7 @@ spi_top u_spi_host(
 
  uart_receiver programmer (
  .i_Clock       (clock),
- .rst_ni        (RESET),
+ .rst_ni        (reset_ni),
  .i_Rx_Serial   (uart_rx_i),
  .CLKS_PER_BIT  (15'd182),
  .o_Rx_DV       (rx_dv_i),
@@ -453,10 +421,10 @@ instr_mem_top iccm (
 
   .req        (req_i),
   .addr       (tlul_addr),
-  .wdata      (iccm_cntrl_data),//iccm_cntrl_data
+  .wdata      (iccm_cntrl_we? iccm_cntrl_data: '0),//iccm_cntrl_data
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         (iccm_cntrl_we)//iccm_cntrl_we
+  .we         (iccm_cntrl_we? 4'hf: '0)//iccm_cntrl_we
 );
 
  tlul_sram_adapter #(
@@ -481,7 +449,7 @@ instr_mem_top iccm (
     .rdata_i   ((system_rst_ni) ? tlul_data: '0),
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
-    );
+  );
 
 rstmgr reset_manager(
   .clk_i(clock),
