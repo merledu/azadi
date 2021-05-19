@@ -8,9 +8,9 @@ module azadi_soc_top #(
   input reset_ni,
   input uart_rx_i,
 
-  input  logic [19:0] gpio_i,
-  output logic [19:0] gpio_o,
-  output logic [19:0] gpio_oe,
+  input  logic [32:0] gpio_i,
+  output logic [32:0] gpio_o,
+  output logic [32:0] gpio_oe,
 
   // jtag interface 
   input  logic       jtag_tck_i,
@@ -49,8 +49,8 @@ module azadi_soc_top #(
 
 
 logic system_rst_ni;
-wire [19:0] gpio_in;
-wire [19:0] gpio_out;
+wire [32:0] gpio_in;
+wire [32:0] gpio_out;
 
 assign gpio_in = gpio_i;
 assign gpio_o = gpio_out; 
@@ -404,9 +404,9 @@ spi_top u_spi_host(
   .tl_i           (xbarp_to_gpio),
   .tl_o           (gpio_to_xbarp),
 
-  .cio_gpio_i     ({12'b0,gpio_in}),
+  .cio_gpio_i     (gpio_in),
   .cio_gpio_o     (gpio_out),
-  .cio_gpio_en_o  (),
+  .cio_gpio_en_o  (gpio_oe),
 
   .intr_gpio_o    (intr_gpio )  
 );

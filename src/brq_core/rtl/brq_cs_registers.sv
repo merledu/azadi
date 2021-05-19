@@ -816,20 +816,6 @@ module brq_cs_registers #(
   );
 
   assign fflag_wdata = is_fp_instr_i ? fp_status_i : fflags_d;
-  // FCSR
-  brq_csr #(
-    .Width      (8),
-    .ShadowCopy (1'b0),
-    .ResetValue ('0)
-  ) fcsr_csr (
-    .clk_i      (clk_i),
-    .rst_ni     (rst_ni),
-    .wr_data_i  (fcsr_d),
-    .wr_en_i    (fcsr_en),
-    .rd_data_o  (fcsr_q),
-    .rd_error_o ()
-  );
-
   // FFLAGS
   brq_csr #(
     .Width      (5),
