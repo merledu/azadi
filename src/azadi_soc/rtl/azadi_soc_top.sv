@@ -4,9 +4,8 @@ module azadi_soc_top #(
   parameter logic [31:0] JTAG_ID = 32'h 0000_0001,
   parameter logic DirectDmiTap = 1'b1
 )(
-  input clock,
-  input reset_ni,
-  input uart_rx_i,
+  input clk_i,
+  input rst_ni,
 
   input  logic [32:0] gpio_i,
   output logic [32:0] gpio_o,
@@ -48,12 +47,19 @@ module azadi_soc_top #(
 );
 
 
-logic system_rst_ni;
-wire [32:0] gpio_in;
-wire [32:0] gpio_out;
+  logic system_rst_ni;
+  wire [32:0] gpio_in;
+  wire [32:0] gpio_out;
+  
+  assign gpio_in = gpio_i;
+  assign gpio_o = gpio_out; 
 
-assign gpio_in = gpio_i;
-assign gpio_o = gpio_out; 
+  logic         instr_valid;
+  logic [11:0]  tlul_addr;
+  logic         req_i;
+  logic [31:0]  tlul_data;
+  logic dbg_req;
+  logic dbg_rst;
 
 
 // end here
@@ -117,6 +123,7 @@ assign gpio_o = gpio_out;
   logic        intr_i2c;
   logic        intr_srx;
   logic        intr_stx;
+  logic        intr_timer;
 
   assign intr_vector = { 
       intr_srx,
@@ -135,22 +142,6 @@ assign gpio_o = gpio_out;
       1'b0
   };
 
-  logic       rx_dv_i;
-  logic [7:0] rx_byte_i;
-
-
-logic instr_valid;
-logic [11:0] tlul_addr;
-logic req_i;
-logic [31:0] tlul_data;
-
-logic iccm_cntrl_reset;
-logic [11:0] iccm_cntrl_addr;
-logic [31:0] iccm_cntrl_data;
-logic iccm_cntrl_we;
-
-logic intr_timer;
-
 // jtag interface 
 
   jtag_pkg::jtag_req_t jtag_req;
@@ -164,12 +155,6 @@ logic intr_timer;
   assign jtag_tdo_o      = jtag_rsp.tdo;
   assign unused_jtag_tdo_oe_o = jtag_rsp.tdo_oe;
 
-  logic dbg_req;
-  logic dbg_rst;
-//wire 
-
-  //tlul_pkg::tl_h2d_t core_to_gpio;
-  //tlul_pkg::tl_d2h_t gpio_to_core;
 
 brq_core_top #(
     .PMPEnable        (1'b0),
@@ -192,8 +177,8 @@ brq_core_top #(
     .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800), 
     .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress) 
 ) u_top (
-    .clock (clock),
-    .reset (system_rst_ni),
+    .clk_i (clk_i),
+    .rst_ni (system_rst_ni),
 
   // instruction memory interface 
     .tl_i_i (xbar_to_ifu),
@@ -203,7 +188,7 @@ brq_core_top #(
     .tl_d_i (xbar_to_lsu),
     .tl_d_o (lsu_to_xbar),
 
-    .test_en_i   (1'b0),     // enable all clock gates for testing
+    .test_en_i   (1'b0),     // enable all clk_i gates for testing
 
     .hart_id_i   (32'b0), 
     .boot_addr_i (32'h20000000),
@@ -231,8 +216,8 @@ brq_core_top #(
   .IdcodeValue(JTAG_ID),
   .DirectDmiTap (DirectDmiTap)
   ) debug_module (
-  .clk_i(clock),       // clock
-  .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
+  .clk_i(clk_i),       // clk_i
+  .rst_ni(rst_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
   .testmode_i(),
   .ndmreset_o(dbg_rst),  // non-debug module reset
@@ -257,8 +242,8 @@ brq_core_top #(
 
 // main xbar module
   tl_xbar_main main_swith (
-  .clk_main_i         (clock),
-  .rst_main_ni        (system_rst_ni),
+  .clk_i         (clk_i),
+  .rst_ni        (system_rst_ni),
 
   // Host interfaces
   .tl_brqif_i         (ifu_to_xbar),
@@ -298,7 +283,7 @@ brq_core_top #(
 // dummy data memory
 
 data_mem dccm(
-  .clk_i    (clock),
+  .clk_i    (clk_i),
   .rst_ni    (system_rst_ni),
 
 // tl-ul insterface
@@ -307,7 +292,7 @@ data_mem dccm(
 );
 
 rv_timer timer0(
-  .clk_i  (clock),
+  .clk_i  (clk_i),
   .rst_ni (system_rst_ni),
 
   .tl_i   (xbar_to_timer),
@@ -320,8 +305,8 @@ rv_timer timer0(
 //peripheral xbar
 
 xbar_periph periph_switch (
-  .clk_peri_i         (clock),
-  .rst_peri_ni        (system_rst_ni),
+  .clk_i         (clk_i),
+  .rst_ni        (system_rst_ni),
 
   // Host interfaces
   .tl_xbar_main_i     (xbarm_to_xbarp),
@@ -363,7 +348,7 @@ xbar_periph periph_switch (
 
 pwm_top u_pwm(
 
-  .clk_i   (clock),
+  .clk_i   (clk_i),
   .rst_ni  (system_rst_ni),
 
   .tl_i    (xbar_to_pwm),
@@ -379,7 +364,7 @@ pwm_top u_pwm(
 
 spi_top u_spi_host(
 
-  .clk_i       (clock),
+  .clk_i       (clk_i),
   .rst_ni      (system_rst_ni),
 
   .tl_i        (xbar_to_spi),
@@ -397,7 +382,7 @@ spi_top u_spi_host(
 
 //GPIO module
  gpio GPIO (
-  .clk_i          (clock),
+  .clk_i          (clk_i),
   .rst_ni         (system_rst_ni),
 
   // Below Regster interface can be changed
@@ -412,31 +397,8 @@ spi_top u_spi_host(
 );
 
 
-
-
- iccm_controller u_dut(
-	.clk_i       (clock),
-	.rst_ni      (reset_ni),
-	.rx_dv_i     (rx_dv_i),
-	.rx_byte_i   (rx_byte_i),
-	.we_o        (iccm_cntrl_we),
-	.addr_o      (iccm_cntrl_addr),
-	.wdata_o     (iccm_cntrl_data),
-	.reset_o     (iccm_cntrl_reset)
-);
-
- uart_receiver programmer (
- .i_Clock       (clock),
- .rst_ni        (reset_ni),
- .i_Rx_Serial   (uart_rx_i),
- .CLKS_PER_BIT  (15'd182),
- .o_Rx_DV       (rx_dv_i),
- .o_Rx_Byte     (rx_byte_i)
- );
-
-
 instr_mem_top iccm (
-  .clk_i      (clock),
+  .clk_i      (clk_i),
   .rst_ni      (system_rst_ni),
 
   .req        (req_i),
@@ -456,7 +418,7 @@ instr_mem_top iccm (
   .ErrOnRead    (0)   // 1: Reads not allowed, automatically error  
 
 ) inst_mem (
-    .clk_i     (clock),
+    .clk_i     (clk_i),
     .rst_ni    (system_rst_ni),
     .tl_i      (xbar_to_iccm),
     .tl_o      (iccm_to_xbar), 
@@ -472,15 +434,15 @@ instr_mem_top iccm (
     );
 
 rstmgr reset_manager(
-  .clk_i(clock),
-  .rst_ni(reset_ni),
+  .clk_i(clk_i),
+  .rst_ni(rst_ni),
   .ndmreset (dbg_rst),
   .sys_rst_ni(system_rst_ni)
 );
 
 
 rv_plic intr_controller (
-  .clk_i(clock),
+  .clk_i(clk_i),
   .rst_ni(system_rst_ni),
 
   // Bus Interface (device)
@@ -498,7 +460,7 @@ rv_plic intr_controller (
 );
 
 uart u_uart0(
-  .clk_i                   (clock             ),
+  .clk_i                   (clk_i             ),
   .rst_ni                  (system_rst_ni     ),
 
   // Bus Interface
@@ -522,7 +484,7 @@ uart u_uart0(
 );
 
 i2c_master_top I2C (
-  .clk_i           (clock ),
+  .clk_i           (clk_i ),
   .rst_ni          (system_rst_ni),
 
   .tl_i            (xbar_to_i2c),

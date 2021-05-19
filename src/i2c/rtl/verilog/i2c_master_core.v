@@ -231,7 +231,7 @@ module i2c_master_core(
 
 	// hookup byte controller block
 	i2c_master_byte_ctrl byte_controller (
-		.clk      ( clk_i     ),
+		.clk_i      ( clk_i     ),
 		.rst      ( rst_ni     ),
 		.nReset   ( rst_i        ),
 		.ena      ( core_en      ),

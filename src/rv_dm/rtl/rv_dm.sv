@@ -183,8 +183,8 @@ module rv_dm #(
   tlul_host_adapter #(
     .MAX_REQS(1)
   ) tl_adapter_host_sba (
-    .clock(clk_i),
-    .reset(rst_ni),
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
     .req_i        (host_req),
     .gnt_o        (host_gnt),
     .addr_i       (host_add),
