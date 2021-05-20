@@ -90,11 +90,12 @@
 //
 // Register offset
 //
-`define SPI_RX_0                8
+
 `define SPI_TX_0                0
 `define SPI_CTRL                4
 `define SPI_DEVIDE              5
 `define SPI_SS                  6
+`define SPI_RX_0                8
 
 //
 // Number of bits in ctrl register
