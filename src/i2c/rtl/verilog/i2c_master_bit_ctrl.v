@@ -1,3 +1,4 @@
+//`include "/home/merl/Desktop/azadi_soc/src/i2c_master_defines.v"
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
 ////  WISHBONE rev.B2 compliant I2C Master bit-controller        ////
@@ -72,7 +73,7 @@
 //               Fixed cmd_ack generation item (no bug).
 //
 //               Revision 1.8  2003/02/05 00:06:10  rherveille
-//               Fixed a bug where the core would trigger an erroneous 'arbitration lost' interrupt after being reset, when the reset pulse width < 3 clk_i cycles.
+//               Fixed a bug where the core would trigger an erroneous 'arbitration lost' interrupt after being reset, when the reset pulse width < 3 clk cycles.
 //
 //               Revision 1.7  2002/12/26 16:05:12  rherveille
 //               Small code simplifications
@@ -175,7 +176,7 @@ module i2c_master_bit_ctrl (
     reg        dSCL, dSDA;      // delayed versions of sSCL and sSDA
     reg        dscl_oen;        // delayed scl_oen
     reg        sda_chk;         // check SDA output (Multi-master arbitration)
-    reg        clk_en;          // clock generation signals
+    reg        clk_i_en;          // clock generation signals
     reg        slave_wait;      // slave inserts wait states
     reg [15:0] cnt;             // clock divider counter (synthesis)
     reg [13:0] filter_cnt;      // clock divider for filter
@@ -209,22 +210,22 @@ module i2c_master_bit_ctrl (
       if (~nReset)
       begin
           cnt    <= #1 16'h0;
-          clk_en <= #1 1'b1;
+          clk_i_en <= #1 1'b1;
       end
       else if (rst || ~|cnt || !ena || scl_sync)
       begin
           cnt    <= #1 clk_cnt;
-          clk_en <= #1 1'b1;
+          clk_i_en <= #1 1'b1;
       end
       else if (slave_wait)
       begin
           cnt    <= #1 cnt;
-          clk_en <= #1 1'b0;    
+          clk_i_en <= #1 1'b0;    
       end
       else
       begin
           cnt    <= #1 cnt - 16'h1;
-          clk_en <= #1 1'b0;
+          clk_i_en <= #1 1'b0;
       end
 
 
@@ -342,7 +343,7 @@ module i2c_master_bit_ctrl (
           cmd_stop <= #1 1'b0;
       else if (rst)
           cmd_stop <= #1 1'b0;
-      else if (clk_en)
+      else if (clk_i_en)
           cmd_stop <= #1 cmd == `I2C_CMD_STOP;
 
     always @(posedge clk_i or negedge nReset)
@@ -400,9 +401,9 @@ module i2c_master_bit_ctrl (
       end
       else
       begin
-          cmd_ack   <= #1 1'b0; // default no command acknowledge + assert cmd_ack only 1clk cycle
+          cmd_ack   <= #1 1'b0; // default no command acknowledge + assert cmd_ack only 1clk_i cycle
 
-          if (clk_en)
+          if (clk_i_en)
               case (c_state) // synopsys full_case parallel_case
                     // idle state
                     idle:

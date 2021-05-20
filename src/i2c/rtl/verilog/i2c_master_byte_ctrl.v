@@ -1,3 +1,4 @@
+//`include "/home/merl/Desktop/azadi_soc/src/i2c_master_defines.v"
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
 ////  WISHBONE rev.B2 compliant I2C Master byte-controller       ////
@@ -342,3 +343,4 @@ module i2c_master_byte_ctrl (
 	      endcase
 	  end
 endmodule
+

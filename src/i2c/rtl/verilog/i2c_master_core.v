@@ -102,7 +102,7 @@ module i2c_master_core(
 
 	reg [7:0] rdata_o;
 	reg intra_o;
-	reg error_o;
+//	reg error_o;
 
 	// I2C signals
 	// i2c clock line
@@ -173,14 +173,14 @@ module i2c_master_core(
 	end
 
 	// generate registers
-	always @(posedge clk_i or negedge rst_i)
-	  if (!rst_i)
+	always @(posedge clk_i or negedge rst_ni)
+	  if (!rst_ni)
 	    begin
 	        prer <= #1 16'hffff;
 	        ctr  <= #1  8'h0;
 	        txr  <= #1  8'h0;
 	    end
-	  else if (rst_ni)
+	  else if (rst_i)
 	    begin
 	        prer <= #1 16'hffff;
 	        ctr  <= #1  8'h0;
@@ -197,10 +197,10 @@ module i2c_master_core(
 	      endcase
 
 	// generate command register (special case)
-	always @(posedge clk_i or negedge rst_i)
-	  if (!rst_i)
+	always @(posedge clk_i or negedge rst_ni)
+	  if (!rst_ni)
 	    cr <= #1 8'h0;
-	  else if (rst_ni)
+	  else if (rst_i)
 	    cr <= #1 8'h0;
 	  else if (we_i)
 	    begin
@@ -256,15 +256,15 @@ module i2c_master_core(
 	);
 
 	// status register block + interrupt request signal
-	always @(posedge clk_i or negedge rst_i)
-	  if (!rst_i)
+	always @(posedge clk_i or negedge rst_ni)
+	  if (!rst_ni)
 	    begin
 	        al       <= #1 1'b0;
 	        rxack    <= #1 1'b0;
 	        tip      <= #1 1'b0;
 	        irq_flag <= #1 1'b0;
 	    end
-	  else if (rst_ni)
+	  else if (rst_i)
 	    begin
 	        al       <= #1 1'b0;
 	        rxack    <= #1 1'b0;
@@ -280,10 +280,10 @@ module i2c_master_core(
 	    end
 
 	// generate interrupt request signals
-	always @(posedge clk_i or negedge rst_i)
-	  if (!rst_i)
+	always @(posedge clk_i or negedge rst_ni)
+	  if (!rst_ni)
 	    intra_o <= #1 1'b0;
-	  else if (rst_ni)
+	  else if (rst_i)
 	    intra_o <= #1 1'b0;
 	  else
 	    intra_o <= #1 irq_flag && ien; // interrupt signal is only generated when IEN (interrupt enable bit is set)

@@ -17,12 +17,12 @@ module i2c_master_top (
   output logic sda_padoen_o
 );
 
-  localparam int AW = 3;
+  localparam int AW = 8;
   localparam int DW = 8;
 
   logic [7:0] wdata;
   logic [7:0] rdata;
-  logic [2:0] addr;
+  logic [7:0] addr;
   logic [3:0] be_i;
   logic       wen;
   logic       ren;
@@ -32,7 +32,7 @@ module i2c_master_top (
 	  .clk_i        (clk_i), 
     .rst_ni       (rst_ni), 
     .arst_i       (~rst_ni), 
-    .addr_i       (addr), 
+    .addr_i       (addr[4:2]), 
     .wdata_i      (wdata), 
     .rdata_o      (rdata),
 	  .we_i         (wen), 
