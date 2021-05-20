@@ -6,7 +6,11 @@ module Azadi_top_verilator #(
   input reset_ni,
 
   input  logic [19:0] gpio_i,
-  output logic [19:0] gpio_o
+  output logic [19:0] gpio_o,
+
+  // iccm controller 
+  input logic RESET,
+  input logic uart_rx_i
 
   // input               uart_rx,
   // output              uart_tx,

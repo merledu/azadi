@@ -38,7 +38,7 @@ int main(int argc, char **argv, char **env)
     // Reading file and counting number of lines
     ifstream file;
     string ins;
-    file.open("/home/zeeshan/fyp/azadi/tests/hex/assembly.hex");
+    file.open("/home/zeeshan/fyp/program.hex");
     int totalLines = count(istreambuf_iterator<char>(file), istreambuf_iterator<char>(), '\n');
     file.clear();
     file.seekg(0, file.beg);
@@ -53,8 +53,8 @@ int main(int argc, char **argv, char **env)
     vluint64_t hcycle;
 
     // Set frequency and baudrate
-    long int frequency = 21000000;
-    long int baudrate = 115200;
+    long int frequency = 2500000000;
+    long int baudrate = 9600;
 
     vluint64_t clk_bit = (frequency / baudrate) + 1;
 //
@@ -93,10 +93,12 @@ int main(int argc, char **argv, char **env)
         // toggle clock
         top->clock_i = top->clock_i ? 0 : 1;
         top->reset_ni = 1;
+        // top->RESET    = 0;
         if (hcycle == 50)
         {
             top->reset_ni = 0;
             top->uart_rx_i = 1;
+            // top->RESET     = 1;
         }
         
         // multiplying by 2 because verilator increments half cycle per loop

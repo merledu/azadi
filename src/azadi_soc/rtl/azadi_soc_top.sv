@@ -27,6 +27,10 @@ module azadi_soc_top #(
   output logic       pwm_o,
   output logic       pwm_o_2,
 
+  // iccm controller 
+  // input logic RESET,
+  input logic uart_rx_i,
+
   // SPI interface
 
   output logic    [`SPI_SS_NB-1:0] ss_o,        
@@ -396,17 +400,42 @@ spi_top u_spi_host(
   .intr_gpio_o    (intr_gpio )  
 );
 
+logic [31:0] iccm_cntrl_data;
+logic        iccm_cntrl_reset;
+logic [13:0] iccm_cntrl_addr;
+logic        iccm_cntrl_we;
+logic        rx_byte_i;
+
+iccm_controller u_dut(
+	.clk_i       (clk_i),
+	.rst_ni      (rst_ni),
+	.rx_dv_i     (rx_dv_i),
+	.rx_byte_i   (rx_byte_i),
+	.we_o        (iccm_cntrl_we),
+	.addr_o      (iccm_cntrl_addr),
+	.wdata_o     (iccm_cntrl_data),
+	.reset_o     (iccm_cntrl_reset)
+);
+
+uart_receiver programmer (
+ .i_Clock       (clk_i),
+ .rst_ni        (rst_ni),
+ .i_Rx_Serial   (uart_rx_i),
+ .CLKS_PER_BIT  (15'd1563),
+ .o_Rx_DV       (rx_dv_i),
+ .o_Rx_Byte     (rx_byte_i)
+);
 
 instr_mem_top iccm (
   .clk_i      (clk_i),
-  .rst_ni      (system_rst_ni),
+  .rst_ni     (rst_ni),
 
   .req        (req_i),
-  .addr       (tlul_addr),
-  .wdata      (),//iccm_cntrl_data
+  .addr       (system_rst_ni? tlul_addr : iccm_cntrl_addr),
+  .wdata      (iccm_cntrl_data),//iccm_cntrl_data
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         ()//iccm_cntrl_we
+  .we         (iccm_cntrl_we)//iccm_cntrl_we
 );
 
  tlul_sram_adapter #(
@@ -431,12 +460,13 @@ instr_mem_top iccm (
     .rdata_i   ((system_rst_ni) ? tlul_data: '0),
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
-    );
+);
 
 rstmgr reset_manager(
   .clk_i(clk_i),
   .rst_ni(rst_ni),
   .ndmreset (dbg_rst),
+  .prog_uart(iccm_cntrl_reset),
   .sys_rst_ni(system_rst_ni)
 );
 

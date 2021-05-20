@@ -5,8 +5,7 @@ module rstmgr(
 
     input clk_i, //system clock
     input rst_ni, // system reset
-
-  
+    input  logic  prog_uart, 
     input  logic  ndmreset, // non-debug module reset
     output logic  sys_rst_ni // reset for system except debug module
 );
@@ -19,6 +18,9 @@ module rstmgr(
       rst_d = 1'b0;
     end else 
     if(ndmreset) begin
+      rst_d = 1'b0;
+    end else 
+    if (prog_uart)begin
       rst_d = 1'b0;
     end else begin
       rst_d = 1'b1;
