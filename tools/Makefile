@@ -23,6 +23,7 @@ TBFILES = $(AZADI_ROOT)/src/azadi_soc/rtl/Azadi_top_verilator.sv
 # Package imports
 
 
+
 defines =  $(AZADI_ROOT)/src/brq_core/rtl/brq_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tlul_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_periph_pkg.sv
@@ -34,6 +35,7 @@ defines += $(AZADI_ROOT)/src/rv_plic/rtl/rv_plic_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/uart/rtl/uart_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_timer/rtl/rv_timer_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/brq_core/rtl/prim_pkg.sv
+defines += $(AZADI_ROOT)/src/primitives/rtl/prim_util_pkg.sv
 defines += $(AZADI_ROOT)/src/spi_host/rtl/spi_defines.v
 
 defines += $(AZADI_ROOT)/src/fpnew/src/fpnew_pkg.sv
@@ -41,8 +43,9 @@ defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cb_filter_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/ecc_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cf_math_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv
-
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/include/common_cells/registers.svh
+defines += $(AZADI_ROOT)/src/i2c/rtl/verilog/i2c_master_defines.v
+
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
 # complains for `auto` variables

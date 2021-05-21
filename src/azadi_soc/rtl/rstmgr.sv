@@ -15,12 +15,12 @@ module rstmgr(
   
   always_comb begin
     if(!rst_ni) begin
-      rst_d = 1'b0;
+      if (!prog_uart)
+        rst_d = 1'b0;
+      else 
+        rst_d = 1'b1;
     end else 
     if(ndmreset) begin
-      rst_d = 1'b0;
-    end else 
-    if (prog_uart)begin
       rst_d = 1'b0;
     end else begin
       rst_d = 1'b1;

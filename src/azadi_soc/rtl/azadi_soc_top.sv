@@ -6,6 +6,7 @@ module azadi_soc_top #(
 )(
   input clk_i,
   input rst_ni,
+  input logic [15:0] CLKS_PER_BIT,
 
   input  logic [32:0] gpio_i,
   output logic [32:0] gpio_o,
@@ -402,9 +403,9 @@ spi_top u_spi_host(
 
 logic [31:0] iccm_cntrl_data;
 logic        iccm_cntrl_reset;
-logic [13:0] iccm_cntrl_addr;
+logic [12:0] iccm_cntrl_addr;
 logic        iccm_cntrl_we;
-logic        rx_byte_i;
+logic [7:0]  rx_byte_i;
 
 iccm_controller u_dut(
 	.clk_i       (clk_i),
@@ -421,7 +422,7 @@ uart_receiver programmer (
  .i_Clock       (clk_i),
  .rst_ni        (rst_ni),
  .i_Rx_Serial   (uart_rx_i),
- .CLKS_PER_BIT  (15'd1563),
+ .CLKS_PER_BIT  (CLKS_PER_BIT),
  .o_Rx_DV       (rx_dv_i),
  .o_Rx_Byte     (rx_byte_i)
 );
