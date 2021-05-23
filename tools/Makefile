@@ -32,7 +32,6 @@ defines += $(AZADI_ROOT)/src/rv_dm/rtl/jtag_pkg.sv
 defines += $(AZADI_ROOT)/src/pulp_riscv_dbg/src/dm_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_plic/rtl/rv_plic_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/uart/rtl/uart_reg_pkg.sv
-defines += $(AZADI_ROOT)/src/i2c/rtl/i2c_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_timer/rtl/rv_timer_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/brq_core/rtl/prim_pkg.sv
 defines += $(AZADI_ROOT)/src/primitives/rtl/prim_util_pkg.sv
@@ -44,6 +43,7 @@ defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/ecc_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cf_math_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/include/common_cells/registers.svh
+defines += $(AZADI_ROOT)/src/i2c/rtl/verilog/i2c_master_defines.v
 
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
@@ -66,7 +66,7 @@ clean:
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
-	  --trace --trace-structs --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-IMPLICIT -Wno-LITENDIAN -Wno-UNSIGNED -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
+	  --trace --trace-structs --trace-fst --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-IMPLICIT -Wno-LITENDIAN -Wno-UNSIGNED -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
 	  -exe sim_main.cpp dmidpi.c jtagdpi.c tcp_server.c --autoflush --trace -DSYNTHESIS
 #	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f VAzadi_top_verilator.mk $(VERILATOR_MAKE_FLAGS)
@@ -91,3 +91,5 @@ help:
 	@echo Possible targets: verilator vcs irun vlog help clean all verilator-build irun-build vcs-build program.hex
 
 .PHONY: help build clean verilator
+
+#riscv32-unknown-elf-elf2hex --bit-width 32 --input test --output prog.hex

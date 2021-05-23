@@ -1,7 +1,7 @@
 
 
 module spi_shift (
-  input                          clk,          // system clock
+  input                          clk_i,          // system clock
   input                          rst,          // reset
   input                          latch,        // latch signal for storing the data in shift register
   input                    [3:0] byte_sel,     // byte select signals for storing the data in shift register
@@ -45,7 +45,7 @@ module spi_shift (
   assign tx_clk = (tx_negedge ? neg_edge : pos_edge) && !last;
   
   // Character bit counter
-  always @(posedge clk or posedge rst)
+  always @(posedge clk_i or posedge rst)
   begin
     if(rst)
       cnt <=  {`SPI_CHAR_LEN_BITS+1{1'b0}};
@@ -59,7 +59,7 @@ module spi_shift (
   end
   
   // Transfer in progress
-  always @(posedge clk or posedge rst)
+  always @(posedge clk_i or posedge rst)
   begin
     if(rst)
       tip <=  1'b0;
@@ -70,7 +70,7 @@ module spi_shift (
   end
   
   // Sending bits to the line
-  always @(posedge clk or posedge rst)
+  always @(posedge clk_i or posedge rst)
   begin
     if (rst)
       s_out   <=  1'b0;
@@ -79,7 +79,7 @@ module spi_shift (
   end
   
   // Receiving bits from the line
-  always @(posedge clk or posedge rst)
+  always @(posedge clk_i or posedge rst)
   begin
     if (rst)
       data   <=  {`SPI_MAX_CHAR{1'b0}};

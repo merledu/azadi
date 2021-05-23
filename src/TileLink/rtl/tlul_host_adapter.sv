@@ -18,8 +18,8 @@
 module tlul_host_adapter #(
     parameter int unsigned MAX_REQS = 1
 ) (
-    input clock,
-    input reset,
+    input clk_i,
+    input rst_ni,
 // interface with host agent 
     input                               req_i,
     output logic                        gnt_o,
@@ -46,8 +46,8 @@ module tlul_host_adapter #(
         localparam int ReqNumW = $clog2(MAX_REQS);
         logic [ReqNumW-1:0] source_d, source_q;
 
-        always_ff @(posedge clock) begin
-            if(!reset) begin
+        always_ff @(posedge clk_i) begin
+            if(!rst_ni) begin
                 source_q <= '0;
             end else begin
                 source_q <= source_d;

@@ -3,8 +3,8 @@
 
 module tl_xbar_main (
 
-  input clk_main_i,
-  input rst_main_ni,
+  input clk_i,
+  input rst_ni,
 
 
   // Host interfaces
@@ -168,10 +168,10 @@ module tl_xbar_main (
   assign s1n_sm1_7[1]   = h3_dv_i[5];
 
 // Device 8 host connections
-  assign h2_dv_i[6] = sm1_s1n_8[0];
-  assign h3_dv_i[6] = sm1_s1n_8[1];
-  assign s1n_sm1_8[0]   = h2_dv_o[6];
-  assign s1n_sm1_8[1]   = h3_dv_o[6];
+  assign h2_dv_o[6] = sm1_s1n_8[0];
+  assign h3_dv_o[6] = sm1_s1n_8[1];
+  assign s1n_sm1_8[0]   = h2_dv_i[6];
+  assign s1n_sm1_8[1]   = h3_dv_i[6];
 
 // Device 9 host connections
   assign h2_dv_o[7] = sm1_s1n_9[0];
@@ -221,8 +221,8 @@ module tl_xbar_main (
     .DRspDepth (12'h0),
     .N         (3)
   ) host_1 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (brqifu_to_s1n),
     .tl_h_o       (s1n_to_brqifu),
     .tl_d_o       (h1_dv_i),
@@ -269,8 +269,8 @@ module tl_xbar_main (
     .DRspDepth (36'h0),
     .N         (11)
   ) host_2 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (brqlsu_to_s1n),
     .tl_h_o       (s1n_to_brqlsu),
     .tl_d_o       (h2_dv_i),
@@ -314,8 +314,8 @@ module tl_xbar_main (
     .DRspDepth (36'h0),
     .N         (10)
   ) host_3 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (dbg_to_s1n),
     .tl_h_o       (s1n_to_dbg),
     .tl_d_o       (h3_dv_i),
@@ -332,8 +332,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (3)
   ) ICCM (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_1),
     .tl_h_o       (sm1_s1n_1),
     .tl_d_o       (tl_iccm_o),
@@ -347,8 +347,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) DCCM (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_2),
     .tl_h_o       (sm1_s1n_2),
     .tl_d_o       (tl_dccm_o),
@@ -362,8 +362,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (3)
   ) FLASH_CTRL (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_3),
     .tl_h_o       (sm1_s1n_3),
     .tl_d_o       (tl_flash_ctrl_o),
@@ -377,8 +377,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) DEBUG_ROM (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_4),
     .tl_h_o       (sm1_s1n_4),
     .tl_d_o       (tl_debug_rom_o),
@@ -392,8 +392,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) TIMER_0 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_5),
     .tl_h_o       (sm1_s1n_5),
     .tl_d_o       (tl_timer0_o),
@@ -407,8 +407,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) TIMER_1 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_6),
     .tl_h_o       (sm1_s1n_6),
     .tl_d_o       (tl_timer1_o),
@@ -422,8 +422,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) TIMER_2 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_7),
     .tl_h_o       (sm1_s1n_7),
     .tl_d_o       (tl_timer2_o),
@@ -437,8 +437,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) TIMER_3 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_8),
     .tl_h_o       (sm1_s1n_8),
     .tl_d_o       (tl_timer3_o),
@@ -452,8 +452,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) TIMER_4 (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_9),
     .tl_h_o       (sm1_s1n_9),
     .tl_d_o       (tl_timer4_o),
@@ -467,8 +467,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) PLIC (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_10),
     .tl_h_o       (sm1_s1n_10),
     .tl_d_o       (tl_plic_o),
@@ -482,8 +482,8 @@ module tl_xbar_main (
     .DRspDepth (4'h0),
     .M         (2)
   ) XBAR_PERI (
-    .clk_i        (clk_main_i),
-    .rst_ni       (rst_main_ni),
+    .clk_i        (clk_i),
+    .rst_ni       (rst_ni),
     .tl_h_i       (s1n_sm1_11),
     .tl_h_o       (sm1_s1n_11),
     .tl_d_o       (tl_xbar_peri_o),

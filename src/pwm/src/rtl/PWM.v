@@ -102,11 +102,18 @@ always@(posedge clk_i)
 
 
 wire		  pwm;
-assign  	ctrl[1] = 1'b1;
+always @(posedge clk_i) begin
+  	ctrl[1] <= 1'b1;
+end
+
+
 assign		pwm 	  = ctrl[1];
 
 wire		  pwm_1;
-assign  	ctrl_2[1]   = 1'b1;
+always @(posedge clk_i) begin
+    ctrl_2[1]   <= 1'b1;
+end
+
 assign		pwm_1 	  = ctrl_2[1];
 wire	    eclk_2,oclk_2;
 ///////////////////////////////////////////////////////////
@@ -116,13 +123,13 @@ wire	  clk_source;
 wire	  eclk,oclk;
 assign	clk_source = clk_i;
 down_clocking_even	clock_div_ev(
-	.i_clk			(clk_source) ,
+	.clk_i			(clk_source) ,
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor[15:1]}),
 	.o_clk			(eclk)
 );
 down_clocking_odd	clock_div_od(
-	.i_clk			(clk_source),
+	.clk_i			(clk_source),
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor[15:1]}),
 	.o_clk			(oclk)
@@ -134,13 +141,13 @@ assign	clk = divisor[0]? oclk: eclk;
 
 
 down_clocking_even	clock_div_ev_2(
-	.i_clk			(clk_source) ,
+	.clk_i			(clk_source) ,
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor_2[15:1]}),
 	.o_clk			(eclk_2)
 );
 down_clocking_odd	clock_div_od_2(
-	.i_clk			(clk_source),
+	.clk_i			(clk_source),
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor_2[15:1]}),
 	.o_clk			(oclk_2)
@@ -166,8 +173,8 @@ assign						rst_ct	=	~rst_ni|ctrl[7];
 reg		[15:0]   		ct_2;
 reg								pts_2;	//PWM signal 
 reg		[15:0]			extDC_2;
-wire	[15:0]			DC_2;
-assign						DC_2 =	ctrl_2[6]?	extDC_2:	DC_2;	//external or internal duty cycle toggle
+wire	[15:0]			DCw_2;
+assign						DCw_2 =	ctrl_2[6]?	extDC_2:	DC_2;	//external or internal duty cycle toggle
 wire	[15:0]			period_P2;
 assign						period_P2	=	(period_2==0)?	0:	(period_2-1);
 
@@ -209,10 +216,10 @@ always@(posedge clk_2 )
 	if(i_valid_DC)	extDC_2	<=	i_DC;
 	if(ctrl_2[2])begin
 		if(pwm_1) begin
-			if(ctrl_2	>=	period_P2) ct_2	<=	0;
+			if(ct_2	>=	period_P2) ct_2	<=	0;
 			else ct_2	<=	ct_2+1;
 
-			if(ct_2	<	DC_2)	pts_2	<=	1;
+			if(ct_2	<	DCw_2)	pts_2	<=	1;
 			else pts_2	<=	0;
 		end
 	end

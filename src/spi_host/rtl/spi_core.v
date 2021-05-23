@@ -1,3 +1,5 @@
+// `include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
+//`include "/home/zeeshan/fyp/azadi/src/spi_host/rtl/spi_defines.v"
 
 module spi_core
 (
@@ -207,7 +209,7 @@ module spi_core
   assign ss_pad_o = ~((ss & {`SPI_SS_NB{tip & ass}}) | (ss & {`SPI_SS_NB{!ass}}));
   
   spi_clgen clgen (
-    .clk_in      (clk_i), 
+    .clk_i      (clk_i), 
     .rst         (~rst_ni), 
     .go          (go), 
     .enable      (tip), 
@@ -219,7 +221,7 @@ module spi_core
     );
   
   spi_shift shift (
-    .clk          (clk_i), 
+    .clk_i          (clk_i), 
     .rst          (~rst_ni), 
     .len          (char_len[`SPI_CHAR_LEN_BITS-1:0]),
     .latch        (spi_tx_sel & we_i), 
