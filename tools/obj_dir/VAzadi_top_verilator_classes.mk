@@ -32,8 +32,6 @@ VM_CLASSES_FAST += \
 	VAzadi_top_verilator__4 \
 	VAzadi_top_verilator__5 \
 	VAzadi_top_verilator__6 \
-	VAzadi_top_verilator__7 \
-	VAzadi_top_verilator__8 \
 	VAzadi_top_verilator___024unit \
 	VAzadi_top_verilator_tlul_socket_m1__pi7 \
 	VAzadi_top_verilator_gpio_reg_pkg \
@@ -51,7 +49,6 @@ VM_CLASSES_SLOW += \
 	VAzadi_top_verilator__3__Slow \
 	VAzadi_top_verilator__4__Slow \
 	VAzadi_top_verilator__5__Slow \
-	VAzadi_top_verilator__6__Slow \
 	VAzadi_top_verilator___024unit__Slow \
 	VAzadi_top_verilator_tlul_socket_m1__pi7__Slow \
 	VAzadi_top_verilator_gpio_reg_pkg__Slow \
@@ -78,7 +75,6 @@ VM_SUPPORT_SLOW += \
 	VAzadi_top_verilator__Trace__2__Slow \
 	VAzadi_top_verilator__Trace__3__Slow \
 	VAzadi_top_verilator__Trace__4__Slow \
-	VAzadi_top_verilator__Trace__5__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

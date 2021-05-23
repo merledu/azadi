@@ -112,7 +112,7 @@ class VAzadi_top_verilator__Syms : public VerilatedSyms {
     
     // CREATORS
     VAzadi_top_verilator__Syms(VAzadi_top_verilator* topp, const char* namep);
-    ~VAzadi_top_verilator__Syms() = default;
+    ~VAzadi_top_verilator__Syms();
     
     // METHODS
     inline const char* name() { return __Vm_namep; }

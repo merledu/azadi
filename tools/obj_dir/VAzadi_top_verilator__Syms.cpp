@@ -15,6 +15,10 @@
 
 
 // FUNCTIONS
+VAzadi_top_verilator__Syms::~VAzadi_top_verilator__Syms()
+{
+}
+
 VAzadi_top_verilator__Syms::VAzadi_top_verilator__Syms(VAzadi_top_verilator* topp, const char* namep)
     // Setup locals
     : __Vm_namep(namep)
