@@ -237,7 +237,7 @@ static bool get_byte(struct tcp_server_ctx *ctx, char *cmd) {
     return false;
   }
   if (num_read == -1) {
-    if (errno == EAGAIN || errno == EWOULDBLOCK) {
+    if ((errno == EAGAIN) | (errno == EWOULDBLOCK)) {
       return false;
     } else if (errno == EBADF) {
       // Possibly client went away? Accept a new connection.
@@ -264,7 +264,7 @@ static void put_byte(struct tcp_server_ctx *ctx, char cmd) {
   while (1) {
     ssize_t num_written = send(ctx->cfd, &cmd, sizeof(cmd), MSG_NOSIGNAL);
     if (num_written == -1) {
-      if (errno == EAGAIN || errno == EWOULDBLOCK) {
+      if ((errno == EAGAIN) | (errno == EWOULDBLOCK)) {
         continue;
       } else if (errno == EPIPE) {
         printf("%s: Remote disconnected.\n", ctx->display_name);

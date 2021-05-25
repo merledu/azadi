@@ -6,6 +6,7 @@ module azadi_soc_top #(
 )(
   input clk_i,
   input rst_ni,
+  input logic [15:0] CLKS_PER_BIT,
 
   input  logic [32:0] gpio_i,
   output logic [32:0] gpio_o,
@@ -26,6 +27,10 @@ module azadi_soc_top #(
 
   output logic       pwm_o,
   output logic       pwm_o_2,
+
+  // iccm controller 
+  // input logic RESET,
+  input logic uart_rx_i,
 
   // SPI interface
 
@@ -85,8 +90,7 @@ module azadi_soc_top #(
   tlul_pkg::tl_d2h_t xbar_to_dm;
 
   tlul_pkg::tl_h2d_t dbgrom_to_xbar;
-  tlul_pkg::tl_d2h_t xbar_to_dbgrom;
-
+  tlul_pkg::tl_d2h_t xbar_to_dbgrom; 
   tlul_pkg::tl_h2d_t plic_req;
   tlul_pkg::tl_d2h_t plic_resp;
 
@@ -396,17 +400,42 @@ spi_top u_spi_host(
   .intr_gpio_o    (intr_gpio )  
 );
 
+logic [31:0] iccm_cntrl_data;
+logic        iccm_cntrl_reset;
+logic [12:0] iccm_cntrl_addr;
+logic        iccm_cntrl_we;
+logic [7:0]  rx_byte_i;
+
+iccm_controller u_dut(
+	.clk_i       (clk_i),
+	.rst_ni      (rst_ni),
+	.rx_dv_i     (rx_dv_i),
+	.rx_byte_i   (rx_byte_i),
+	.we_o        (iccm_cntrl_we),
+	.addr_o      (iccm_cntrl_addr),
+	.wdata_o     (iccm_cntrl_data),
+	.reset_o     (iccm_cntrl_reset)
+);
+
+uart_receiver programmer (
+ .i_Clock       (clk_i),
+ .rst_ni        (rst_ni),
+ .i_Rx_Serial   (uart_rx_i),
+ .CLKS_PER_BIT  (CLKS_PER_BIT),
+ .o_Rx_DV       (rx_dv_i),
+ .o_Rx_Byte     (rx_byte_i)
+);
 
 instr_mem_top iccm (
   .clk_i      (clk_i),
-  .rst_ni      (system_rst_ni),
+  .rst_ni     (rst_ni),
 
   .req        (req_i),
-  .addr       (tlul_addr),
-  .wdata      (),//iccm_cntrl_data
+  .addr       (system_rst_ni? tlul_addr : iccm_cntrl_addr),
+  .wdata      (iccm_cntrl_data),//iccm_cntrl_data
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         ()//iccm_cntrl_we
+  .we         (iccm_cntrl_we)//iccm_cntrl_we
 );
 
  tlul_sram_adapter #(
@@ -431,12 +460,13 @@ instr_mem_top iccm (
     .rdata_i   ((system_rst_ni) ? tlul_data: '0),
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
-    );
+);
 
 rstmgr reset_manager(
   .clk_i(clk_i),
   .rst_ni(rst_ni),
   .ndmreset (dbg_rst),
+  .prog_uart(iccm_cntrl_reset),
   .sys_rst_ni(system_rst_ni)
 );
 
