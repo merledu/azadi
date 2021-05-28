@@ -2,7 +2,7 @@
 Output clock frequency is the original frequency divided by an even number
 */
 module	down_clocking_even(
-input	i_clk,
+input	clk_i,
 input	i_rst,
 input	[15:0]i_divisor,
 output	o_clk
@@ -21,7 +21,7 @@ wire	go;
 assign	go=((i_divisor!=0)&&i_rst);
 reg	[15:0]ct;
 reg	clk;
-always@(posedge i_clk )
+always@(posedge clk_i )
 	if(!i_rst)begin
 		ct<=0;
 		clk<=0;
@@ -33,5 +33,5 @@ always@(posedge i_clk )
 		end
 		else ct<=ct+1;
 	end
-assign	o_clk=go?clk:i_clk;
+assign	o_clk=go?clk:clk_i;
 endmodule

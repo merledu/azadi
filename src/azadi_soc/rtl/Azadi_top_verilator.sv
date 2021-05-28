@@ -6,12 +6,10 @@ module Azadi_top_verilator #(
   input reset_ni,
 
   input  logic [19:0] gpio_i,
-  output logic [19:0] gpio_o,
+  output logic [19:0] gpio_o
 
   // input               uart_rx,
   // output              uart_tx,
-
-  input logic uart_rx_i
 
   // PWM
   // output logic pwm_o,
@@ -81,8 +79,8 @@ module Azadi_top_verilator #(
     .JTAG_ID(JTAG_IDCODE),
     .DirectDmiTap (DirectDmiTap)
   ) top_verilator(
-    .clock(clock_i),
-    .reset_ni(reset_ni),  
+    .clk_i(clock_i),
+    .rst_ni(reset_ni),  
     .gpio_i(gpio_i),
     .gpio_o(gpio_o),
     .uart_tx(uart_tx),
@@ -99,8 +97,6 @@ module Azadi_top_verilator #(
     .jtag_trst_ni(cio_jtag_trst_n),
     .jtag_tdi_i(cio_jtag_tdi),
     .jtag_tdo_o(cio_jtag_tdo),
-
-    .uart_rx_i(uart_rx_i),
 
   // spi interface 
     .ss_o        (ss_o),         

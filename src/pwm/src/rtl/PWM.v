@@ -123,13 +123,13 @@ wire	  clk_source;
 wire	  eclk,oclk;
 assign	clk_source = clk_i;
 down_clocking_even	clock_div_ev(
-	.i_clk			(clk_source) ,
+	.clk_i			(clk_source) ,
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor[15:1]}),
 	.o_clk			(eclk)
 );
 down_clocking_odd	clock_div_od(
-	.i_clk			(clk_source),
+	.clk_i			(clk_source),
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor[15:1]}),
 	.o_clk			(oclk)
@@ -141,13 +141,13 @@ assign	clk = divisor[0]? oclk: eclk;
 
 
 down_clocking_even	clock_div_ev_2(
-	.i_clk			(clk_source) ,
+	.clk_i			(clk_source) ,
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor_2[15:1]}),
 	.o_clk			(eclk_2)
 );
 down_clocking_odd	clock_div_od_2(
-	.i_clk			(clk_source),
+	.clk_i			(clk_source),
 	.i_rst			(rst_ni),
 	.i_divisor	({1'b0,divisor_2[15:1]}),
 	.o_clk			(oclk_2)
