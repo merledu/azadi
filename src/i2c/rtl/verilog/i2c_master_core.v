@@ -160,14 +160,14 @@ module i2c_master_core(
 	begin
 		if (ren_i) begin
 	  	case (addr_i) // synopsys parallel_case
-	  	  3'b000: rdata_o <= #1 prer[ 7:0];
-	  	  3'b001: rdata_o <= #1 prer[15:8];
-	  	  3'b010: rdata_o <= #1 ctr;
-	  	  3'b011: rdata_o <= #1 rxr; // write is transmit register (txr)
-	  	  3'b100: rdata_o <= #1 sr;  // write is command register (cr)
-	  	  3'b101: rdata_o <= #1 txr;
-	  	  3'b110: rdata_o <= #1 cr;
-	  	  3'b111: rdata_o <= #1 0;   // reserved
+	  	  3'b000: rdata_o <= prer[ 7:0];
+	  	  3'b001: rdata_o <= prer[15:8];
+	  	  3'b010: rdata_o <= ctr;
+	  	  3'b011: rdata_o <= rxr; // write is transmit register (txr)
+	  	  3'b100: rdata_o <= sr;  // write is command register (cr)
+	  	  3'b101: rdata_o <= txr;
+	  	  3'b110: rdata_o <= cr;
+	  	  3'b111: rdata_o <= 0;   // reserved
 	  	endcase
 		end
 	end
@@ -176,44 +176,44 @@ module i2c_master_core(
 	always @(posedge clk_i or negedge rst_i)
 	  if (!rst_i)
 	    begin
-	        prer <= #1 16'hffff;
-	        ctr  <= #1  8'h0;
-	        txr  <= #1  8'h0;
+	        prer <= 16'hffff;
+	        ctr  <=  8'h0;
+	        txr  <=  8'h0;
 	    end
 	  else if (rst_ni)
 	    begin
-	        prer <= #1 16'hffff;
-	        ctr  <= #1  8'h0;
-	        txr  <= #1  8'h0;
+	        prer <= 16'hffff;
+	        ctr  <=  8'h0;
+	        txr  <=  8'h0;
 	    end
 	  else
 	    if (we_i)
 	      case (addr_i) // synopsys parallel_case
-	         3'b000 : prer [ 7:0] <= #1 wdata_i;
-	         3'b001 : prer [15:8] <= #1 wdata_i;
-	         3'b010 : ctr         <= #1 wdata_i;
-	         3'b011 : txr         <= #1 wdata_i;
+	         3'b000 : prer [ 7:0] <= wdata_i;
+	         3'b001 : prer [15:8] <= wdata_i;
+	         3'b010 : ctr         <= wdata_i;
+	         3'b011 : txr         <= wdata_i;
 	         default: ;
 	      endcase
 
 	// generate command register (special case)
 	always @(posedge clk_i or negedge rst_i)
 	  if (!rst_i)
-	    cr <= #1 8'h0;
+	    cr <= 8'h0;
 	  else if (rst_ni)
-	    cr <= #1 8'h0;
+	    cr <= 8'h0;
 	  else if (we_i)
 	    begin
 	        if (core_en & (addr_i == 3'b100) )
-	          cr <= #1 wdata_i;
+	          cr <= wdata_i;
 	    end
 	  else
 	    begin
 	        if (done | i2c_al)
-	          cr[7:4] <= #1 4'h0;           // clear command bits when done
+	          cr[7:4] <= 4'h0;           // clear command bits when done
 	                                        // or when aribitration lost
-	        cr[2:1] <= #1 2'b0;             // reserved bits
-	        cr[0]   <= #1 1'b0;             // clear IRQ_ACK bit
+	        cr[2:1] <= 2'b0;             // reserved bits
+	        cr[0]   <= 1'b0;             // clear IRQ_ACK bit
 	    end
 
 
@@ -259,34 +259,34 @@ module i2c_master_core(
 	always @(posedge clk_i or negedge rst_i)
 	  if (!rst_i)
 	    begin
-	        al       <= #1 1'b0;
-	        rxack    <= #1 1'b0;
-	        tip      <= #1 1'b0;
-	        irq_flag <= #1 1'b0;
+	        al       <= 1'b0;
+	        rxack    <= 1'b0;
+	        tip      <= 1'b0;
+	        irq_flag <= 1'b0;
 	    end
 	  else if (rst_ni)
 	    begin
-	        al       <= #1 1'b0;
-	        rxack    <= #1 1'b0;
-	        tip      <= #1 1'b0;
-	        irq_flag <= #1 1'b0;
+	        al       <= 1'b0;
+	        rxack    <= 1'b0;
+	        tip      <= 1'b0;
+	        irq_flag <= 1'b0;
 	    end
 	  else
 	    begin
-	        al       <= #1 i2c_al | (al & ~sta);
-	        rxack    <= #1 irxack;
-	        tip      <= #1 (rd | wr);
-	        irq_flag <= #1 (done | i2c_al | irq_flag) & ~iack; // interrupt request flag is always generated
+	        al       <= i2c_al | (al & ~sta);
+	        rxack    <= irxack;
+	        tip      <= (rd | wr);
+	        irq_flag <= (done | i2c_al | irq_flag) & ~iack; // interrupt request flag is always generated
 	    end
 
 	// generate interrupt request signals
 	always @(posedge clk_i or negedge rst_i)
 	  if (!rst_i)
-	    intra_o <= #1 1'b0;
+	    intra_o <= 1'b0;
 	  else if (rst_ni)
-	    intra_o <= #1 1'b0;
+	    intra_o <= 1'b0;
 	  else
-	    intra_o <= #1 irq_flag && ien; // interrupt signal is only generated when IEN (interrupt enable bit is set)
+	    intra_o <= irq_flag && ien; // interrupt signal is only generated when IEN (interrupt enable bit is set)
 
 	// assign status register bits
 	assign sr[7]   = rxack;

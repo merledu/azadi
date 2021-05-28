@@ -85,7 +85,7 @@
 //
 // Bits of WISHBONE address used for partial decoding of SPI registers.
 //
-`define SPI_OFS_BITS	          4:2
+`define SPI_OFS_BITS	          6:2
 
 //
 // Register offset

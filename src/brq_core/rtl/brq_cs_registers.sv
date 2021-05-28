@@ -523,8 +523,8 @@ module brq_cs_registers #(
     mtvec_en     = csr_mtvec_init_i;
     // mtvec.MODE set to vectored
     // mtvec.BASE must be 256-byte aligned
-    mtvec_d      = csr_mtvec_init_i ? {boot_addr_i[31:8], 6'h00, 2'b00} :
-                                      {csr_wdata_int[31:8], 6'h00, 2'b00};
+    mtvec_d      = csr_mtvec_init_i ? {boot_addr_i[31:2],2'b00} :
+                                      {csr_wdata_int[31:2], 2'b00};
     dcsr_en      = 1'b0;
     dcsr_d       = dcsr_q;
     depc_d       = {csr_wdata_int[31:1], 1'b0};
@@ -1329,12 +1329,20 @@ module brq_cs_registers #(
 
     // Write select
     assign tselect_we = csr_we_int & debug_mode_i & (csr_addr_i == CSR_TSELECT);
-    for (genvar i = 0; i < DbgHwBreakNum; i++) begin : g_dbg_tmatch_we
-      assign tmatch_control_we[i] = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
+    // for (genvar i = 0; i < DbgHwBreakNum; i++) begin : g_dbg_tmatch_we
+    //   assign tmatch_control_we[i] = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
+    //                                 (csr_addr_i == CSR_TDATA1);
+    //   assign tmatch_value_we[i]   = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
+    //                                 (csr_addr_i == CSR_TDATA2);
+    // end
+
+    //for (genvar i = 0; i < DbgHwBreakNum; i++) begin : g_dbg_tmatch_we
+      assign tmatch_control_we[0] = (1'b0 == tselect_q) & csr_we_int & debug_mode_i &
                                     (csr_addr_i == CSR_TDATA1);
-      assign tmatch_value_we[i]   = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
+      assign tmatch_value_we[0]   = (1'b0 == tselect_q) & csr_we_int & debug_mode_i &
                                     (csr_addr_i == CSR_TDATA2);
-    end
+  //  end
+
 
     // Debug interface tests the available number of triggers by writing and reading the trigger
     // select register. Only allow changes to the register if it is within the supported region.

@@ -40,7 +40,7 @@ int main (int argc, char **argv) {
     top -> clock_i = 0;
     
 
-   top -> gpio_i = 8;
+//    top -> gpio_i = 8;
     while (!Verilated::gotFinish()) 
     { 
         top->clock_i = top->clock_i ? 0 : 1; 
@@ -52,6 +52,10 @@ int main (int argc, char **argv) {
         else
         {
             top -> reset_ni = 1;
+        }
+        if(main_time == 10000)
+        {
+            top -> gpio_i = 8;
         }
         top->eval(); 
 
