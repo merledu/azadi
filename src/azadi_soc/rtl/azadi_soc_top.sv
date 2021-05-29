@@ -7,9 +7,9 @@ module azadi_soc_top #(
   input clk_i,
   input rst_ni,
 
-  input  logic [32:0] gpio_i,
-  output logic [32:0] gpio_o,
-  output logic [32:0] gpio_oe,
+  input  logic [31:0] gpio_i,
+  output logic [31:0] gpio_o,
+  output logic [31:0] gpio_oe,
 
   // jtag interface 
   input  logic       jtag_tck_i,
@@ -48,8 +48,8 @@ module azadi_soc_top #(
 
 
   logic system_rst_ni;
-  wire [32:0] gpio_in;
-  wire [32:0] gpio_out;
+  wire [31:0] gpio_in;
+  wire [31:0] gpio_out;
   
   assign gpio_in = gpio_i;
   assign gpio_o = gpio_out; 
@@ -106,7 +106,7 @@ module azadi_soc_top #(
   tlul_pkg::tl_d2h_t i2c_to_xbar;
 
   // interrupt vector
-  logic [40:0] intr_vector;
+  logic [63:0] intr_vector;
 
   // Interrupt source list 
   logic [31:0] intr_gpio;
@@ -119,7 +119,7 @@ module azadi_soc_top #(
   logic        intr_uart0_rx_timeout;
   logic        intr_uart0_rx_parity_err;
   logic        intr_req;
-  logic        intr_spi;
+ // logic        intr_spi;
   logic        intr_i2c;
   logic        intr_srx;
   logic        intr_stx;
@@ -127,7 +127,6 @@ module azadi_soc_top #(
 
   assign intr_vector = { 
       intr_srx,
-      intr_stx,
       intr_i2c, 
       intr_gpio,
       intr_uart0_rx_parity_err,
@@ -138,7 +137,7 @@ module azadi_soc_top #(
       intr_uart0_tx_empty,
       intr_uart0_rx_watermark,
       intr_uart0_tx_watermark,
-      intr_spi,
+      intr_stx,
       1'b0
   };
 

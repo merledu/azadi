@@ -7,7 +7,7 @@
 package rv_plic_reg_pkg;
 
   // Param list
-  parameter int NumSrc = 32;
+  parameter int NumSrc = 64;
   parameter int NumTarget = 1;
 
   // Address width within the block
@@ -181,7 +181,7 @@ package rv_plic_reg_pkg;
   // Register to internal design logic //
   ///////////////////////////////////////
   typedef struct packed {
-    rv_plic_reg2hw_le_mreg_t [31:0] le; // [171:140]
+    rv_plic_reg2hw_le_mreg_t [63:0] le; // [171:140]
     rv_plic_reg2hw_prio0_reg_t prio0; // [139:137]
     rv_plic_reg2hw_prio1_reg_t prio1; // [136:134]
     rv_plic_reg2hw_prio2_reg_t prio2; // [133:131]
@@ -214,7 +214,7 @@ package rv_plic_reg_pkg;
     rv_plic_reg2hw_prio29_reg_t prio29; // [52:50]
     rv_plic_reg2hw_prio30_reg_t prio30; // [49:47]
     rv_plic_reg2hw_prio31_reg_t prio31; // [46:44]
-    rv_plic_reg2hw_ie0_mreg_t [31:0] ie0; // [43:12]
+    rv_plic_reg2hw_ie0_mreg_t [63:0] ie0; // [43:12]
     rv_plic_reg2hw_threshold0_reg_t threshold0; // [11:9]
     rv_plic_reg2hw_cc0_reg_t cc0; // [8:1]
     rv_plic_reg2hw_msip0_reg_t msip0; // [0:0]

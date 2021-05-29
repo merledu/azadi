@@ -1,3 +1,4 @@
+`include "/home/merl/github_repos/azadi/src/i2c/rtl/verilog/i2c_master_defines.v"
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
 ////  WISHBONE rev.B2 compliant I2C Master bit-controller        ////
@@ -72,7 +73,7 @@
 //               Fixed cmd_ack generation item (no bug).
 //
 //               Revision 1.8  2003/02/05 00:06:10  rherveille
-//               Fixed a bug where the core would trigger an erroneous 'arbitration lost' interrupt after being reset, when the reset pulse width < 3 clk_i cycles.
+//               Fixed a bug where the core would trigger an erroneous 'arbitration lost' interrupt after being reset, when the reset pulse width < 3 clk cycles.
 //
 //               Revision 1.7  2002/12/26 16:05:12  rherveille
 //               Small code simplifications
@@ -175,7 +176,7 @@ module i2c_master_bit_ctrl (
     reg        dSCL, dSDA;      // delayed versions of sSCL and sSDA
     reg        dscl_oen;        // delayed scl_oen
     reg        sda_chk;         // check SDA output (Multi-master arbitration)
-    reg        clk_en;          // clock generation signals
+    reg        clk_i_en;          // clock generation signals
     reg        slave_wait;      // slave inserts wait states
     reg [15:0] cnt;             // clock divider counter (synthesis)
     reg [13:0] filter_cnt;      // clock divider for filter
@@ -190,13 +191,8 @@ module i2c_master_bit_ctrl (
 
     // whenever the slave is not ready it can delay the cycle by pulling SCL low
     // delay scl_oen
-<<<<<<< HEAD
-    always @(posedge clk)
-      dscl_oen <=  scl_oen;
-=======
     always @(posedge clk_i)
-      dscl_oen <= #1 scl_oen;
->>>>>>> d14afe66d70af8ec21b00dbd84dda7f683bf87f6
+      dscl_oen <=  scl_oen;
 
     // slave_wait is asserted when master wants to drive SCL high, but the slave pulls it low
     // slave_wait remains asserted until the slave releases SCL
@@ -213,23 +209,23 @@ module i2c_master_bit_ctrl (
     always @(posedge clk_i or negedge nReset)
       if (~nReset)
       begin
-          cnt    <= 16'h0;
-          clk_en <=  1'b1;
+          cnt    <=  16'h0;
+          clk_i_en <=  1'b1;
       end
       else if (rst || ~|cnt || !ena || scl_sync)
       begin
-          cnt    <= clk_cnt;
-          clk_en <=  1'b1;
+          cnt    <=  clk_cnt;
+          clk_i_en <=  1'b1;
       end
       else if (slave_wait)
       begin
           cnt    <=  cnt;
-          clk_en <= 1'b0;    
+          clk_i_en <=  1'b0;    
       end
       else
       begin
           cnt    <=  cnt - 16'h1;
-          clk_en <= 1'b0;
+          clk_i_en <=  1'b0;
       end
 
 
@@ -245,7 +241,7 @@ module i2c_master_bit_ctrl (
       end
       else if (rst)
       begin
-          cSCL <= 2'b00;
+          cSCL <=  2'b00;
           cSDA <=  2'b00;
       end
       else
@@ -286,26 +282,26 @@ module i2c_master_bit_ctrl (
       if (~nReset)
       begin
           sSCL <=  1'b1;
-          sSDA <= 1'b1;
+          sSDA <=  1'b1;
 
-          dSCL <= 1'b1;
-          dSDA <= 1'b1;
+          dSCL <=  1'b1;
+          dSDA <=  1'b1;
       end
       else if (rst)
       begin
-          sSCL <= 1'b1;
-          sSDA <= 1'b1;
+          sSCL <=  1'b1;
+          sSDA <=  1'b1;
 
-          dSCL <= 1'b1;
-          dSDA <= 1'b1;
+          dSCL <=  1'b1;
+          dSDA <=  1'b1;
       end
       else
       begin
-          sSCL <= &fSCL[2:1] | &fSCL[1:0] | (fSCL[2] & fSCL[0]);
-          sSDA <= &fSDA[2:1] | &fSDA[1:0] | (fSDA[2] & fSDA[0]);
+          sSCL <=  &fSCL[2:1] | &fSCL[1:0] | (fSCL[2] & fSCL[0]);
+          sSDA <=  &fSDA[2:1] | &fSDA[1:0] | (fSDA[2] & fSDA[0]);
 
-          dSCL <= sSCL;
-          dSDA <= sSDA;
+          dSCL <=  sSCL;
+          dSDA <=  sSDA;
       end
 
     // detect start condition => detect falling edge on SDA while SCL is high
@@ -315,26 +311,26 @@ module i2c_master_bit_ctrl (
     always @(posedge clk_i or negedge nReset)
       if (~nReset)
       begin
-          sta_condition <= 1'b0;
-          sto_condition <= 1'b0;
+          sta_condition <=  1'b0;
+          sto_condition <=  1'b0;
       end
       else if (rst)
       begin
-          sta_condition <= 1'b0;
-          sto_condition <= 1'b0;
+          sta_condition <=  1'b0;
+          sto_condition <=  1'b0;
       end
       else
       begin
-          sta_condition <= ~sSDA &  dSDA & sSCL;
-          sto_condition <=  sSDA & ~dSDA & sSCL;
+          sta_condition <=  ~sSDA &  dSDA & sSCL;
+          sto_condition <=   sSDA & ~dSDA & sSCL;
       end
 
 
     // generate i2c bus busy signal
-    always @(posedge clk or negedge nReset)
-      if      (!nReset) busy <= 1'b0;
-      else if (rst    ) busy <= 1'b0;
-      else              busy <= (sta_condition | busy) & ~sto_condition;
+    always @(posedge clk_i or negedge nReset)
+      if      (!nReset) busy <=  1'b0;
+      else if (rst    ) busy <=  1'b0;
+      else              busy <=  (sta_condition | busy) & ~sto_condition;
 
 
     // generate arbitration lost signal
@@ -344,29 +340,24 @@ module i2c_master_bit_ctrl (
     reg cmd_stop;
     always @(posedge clk_i or negedge nReset)
       if (~nReset)
-          cmd_stop <= 1'b0;
+          cmd_stop <=  1'b0;
       else if (rst)
-          cmd_stop <= 1'b0;
-      else if (clk_en)
-          cmd_stop <= cmd == `I2C_CMD_STOP;
+          cmd_stop <=  1'b0;
+      else if (clk_i_en)
+          cmd_stop <=  cmd == `I2C_CMD_STOP;
 
     always @(posedge clk_i or negedge nReset)
       if (~nReset)
-          al <= 1'b0;
+          al <=  1'b0;
       else if (rst)
-          al <= 1'b0;
+          al <=  1'b0;
       else
-          al <= (sda_chk & ~sSDA & sda_oen) | (|c_state & sto_condition & ~cmd_stop);
+          al <=  (sda_chk & ~sSDA & sda_oen) | (|c_state & sto_condition & ~cmd_stop);
 
 
     // generate dout signal (store SDA on rising edge of SCL)
-<<<<<<< HEAD
-    always @(posedge clk)
-      if (sSCL & ~dSCL) dout <= sSDA;
-=======
     always @(posedge clk_i)
-      if (sSCL & ~dSCL) dout <= #1 sSDA;
->>>>>>> d14afe66d70af8ec21b00dbd84dda7f683bf87f6
+      if (sSCL & ~dSCL) dout <=  sSDA;
 
 
     // generate statemachine
@@ -394,185 +385,185 @@ module i2c_master_bit_ctrl (
     always @(posedge clk_i or negedge nReset)
       if (!nReset)
       begin
-          c_state <= idle;
-          cmd_ack <= 1'b0;
-          scl_oen <= 1'b1;
-          sda_oen <= 1'b1;
-          sda_chk <= 1'b0;
+          c_state <=  idle;
+          cmd_ack <=  1'b0;
+          scl_oen <=  1'b1;
+          sda_oen <=  1'b1;
+          sda_chk <=  1'b0;
       end
       else if (rst | al)
       begin
-          c_state <= idle;
-          cmd_ack <= 1'b0;
-          scl_oen <= 1'b1;
-          sda_oen <= 1'b1;
-          sda_chk <= 1'b0;
+          c_state <=  idle;
+          cmd_ack <=  1'b0;
+          scl_oen <=  1'b1;
+          sda_oen <=  1'b1;
+          sda_chk <=  1'b0;
       end
       else
       begin
-          cmd_ack   <= 1'b0; // default no command acknowledge + assert cmd_ack only 1clk cycle
+          cmd_ack   <=  1'b0; // default no command acknowledge + assert cmd_ack only 1clk_i cycle
 
-          if (clk_en)
+          if (clk_i_en)
               case (c_state) // synopsys full_case parallel_case
                     // idle state
                     idle:
                     begin
                         case (cmd) // synopsys full_case parallel_case
-                             `I2C_CMD_START: c_state <= start_a;
-                             `I2C_CMD_STOP:  c_state <= stop_a;
-                             `I2C_CMD_WRITE: c_state <= wr_a;
-                             `I2C_CMD_READ:  c_state <= rd_a;
-                             default:        c_state <= idle;
+                             `I2C_CMD_START: c_state <=  start_a;
+                             `I2C_CMD_STOP:  c_state <=  stop_a;
+                             `I2C_CMD_WRITE: c_state <=  wr_a;
+                             `I2C_CMD_READ:  c_state <=  rd_a;
+                             default:        c_state <=  idle;
                         endcase
 
-                        scl_oen <= scl_oen; // keep SCL in same state
-                        sda_oen <= sda_oen; // keep SDA in same state
-                        sda_chk <= 1'b0;    // don't check SDA output
+                        scl_oen <=  scl_oen; // keep SCL in same state
+                        sda_oen <=  sda_oen; // keep SDA in same state
+                        sda_chk <=  1'b0;    // don't check SDA output
                     end
 
                     // start
                     start_a:
                     begin
-                        c_state <= start_b;
-                        scl_oen <= scl_oen; // keep SCL in same state
-                        sda_oen <= 1'b1;    // set SDA high
-                        sda_chk <= 1'b0;    // don't check SDA output
+                        c_state <=  start_b;
+                        scl_oen <=  scl_oen; // keep SCL in same state
+                        sda_oen <=  1'b1;    // set SDA high
+                        sda_chk <=  1'b0;    // don't check SDA output
                     end
 
                     start_b:
                     begin
-                        c_state <= start_c;
-                        scl_oen <= 1'b1; // set SCL high
-                        sda_oen <= 1'b1; // keep SDA high
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  start_c;
+                        scl_oen <=  1'b1; // set SCL high
+                        sda_oen <=  1'b1; // keep SDA high
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     start_c:
                     begin
-                        c_state <= start_d;
-                        scl_oen <= 1'b1; // keep SCL high
-                        sda_oen <= 1'b0; // set SDA low
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  start_d;
+                        scl_oen <=  1'b1; // keep SCL high
+                        sda_oen <=  1'b0; // set SDA low
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     start_d:
                     begin
-                        c_state <= start_e;
-                        scl_oen <= 1'b1; // keep SCL high
-                        sda_oen <= 1'b0; // keep SDA low
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  start_e;
+                        scl_oen <=  1'b1; // keep SCL high
+                        sda_oen <=  1'b0; // keep SDA low
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     start_e:
                     begin
-                        c_state <= idle;
-                        cmd_ack <= 1'b1;
-                        scl_oen <= 1'b0; // set SCL low
-                        sda_oen <= 1'b0; // keep SDA low
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  idle;
+                        cmd_ack <=  1'b1;
+                        scl_oen <=  1'b0; // set SCL low
+                        sda_oen <=  1'b0; // keep SDA low
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     // stop
                     stop_a:
                     begin
-                        c_state <= stop_b;
-                        scl_oen <= 1'b0; // keep SCL low
-                        sda_oen <= 1'b0; // set SDA low
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  stop_b;
+                        scl_oen <=  1'b0; // keep SCL low
+                        sda_oen <=  1'b0; // set SDA low
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     stop_b:
                     begin
-                        c_state <= stop_c;
-                        scl_oen <= 1'b1; // set SCL high
-                        sda_oen <= 1'b0; // keep SDA low
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  stop_c;
+                        scl_oen <=  1'b1; // set SCL high
+                        sda_oen <=  1'b0; // keep SDA low
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     stop_c:
                     begin
-                        c_state <= stop_d;
-                        scl_oen <= 1'b1; // keep SCL high
-                        sda_oen <= 1'b0; // keep SDA low
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  stop_d;
+                        scl_oen <=  1'b1; // keep SCL high
+                        sda_oen <=  1'b0; // keep SDA low
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     stop_d:
                     begin
-                        c_state <= idle;
-                        cmd_ack <= 1'b1;
-                        scl_oen <= 1'b1; // keep SCL high
-                        sda_oen <= 1'b1; // set SDA high
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  idle;
+                        cmd_ack <=  1'b1;
+                        scl_oen <=  1'b1; // keep SCL high
+                        sda_oen <=  1'b1; // set SDA high
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     // read
                     rd_a:
                     begin
-                        c_state <= rd_b;
-                        scl_oen <= 1'b0; // keep SCL low
-                        sda_oen <= 1'b1; // tri-state SDA
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  rd_b;
+                        scl_oen <=  1'b0; // keep SCL low
+                        sda_oen <=  1'b1; // tri-state SDA
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     rd_b:
                     begin
-                        c_state <= rd_c;
-                        scl_oen <= 1'b1; // set SCL high
-                        sda_oen <= 1'b1; // keep SDA tri-stated
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  rd_c;
+                        scl_oen <=  1'b1; // set SCL high
+                        sda_oen <=  1'b1; // keep SDA tri-stated
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     rd_c:
                     begin
-                        c_state <= rd_d;
-                        scl_oen <= 1'b1; // keep SCL high
-                        sda_oen <= 1'b1; // keep SDA tri-stated
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  rd_d;
+                        scl_oen <=  1'b1; // keep SCL high
+                        sda_oen <=  1'b1; // keep SDA tri-stated
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     rd_d:
                     begin
-                        c_state <= idle;
-                        cmd_ack <= 1'b1;
-                        scl_oen <= 1'b0; // set SCL low
-                        sda_oen <= 1'b1; // keep SDA tri-stated
-                        sda_chk <= 1'b0; // don't check SDA output
+                        c_state <=  idle;
+                        cmd_ack <=  1'b1;
+                        scl_oen <=  1'b0; // set SCL low
+                        sda_oen <=  1'b1; // keep SDA tri-stated
+                        sda_chk <=  1'b0; // don't check SDA output
                     end
 
                     // write
                     wr_a:
                     begin
-                        c_state <= wr_b;
-                        scl_oen <= 1'b0; // keep SCL low
-                        sda_oen <= din;  // set SDA
-                        sda_chk <= 1'b0; // don't check SDA output (SCL low)
+                        c_state <=  wr_b;
+                        scl_oen <=  1'b0; // keep SCL low
+                        sda_oen <=  din;  // set SDA
+                        sda_chk <=  1'b0; // don't check SDA output (SCL low)
                     end
 
                     wr_b:
                     begin
-                        c_state <= wr_c;
-                        scl_oen <= 1'b1; // set SCL high
-                        sda_oen <= din;  // keep SDA
-                        sda_chk <= 1'b0; // don't check SDA output yet
+                        c_state <=  wr_c;
+                        scl_oen <=  1'b1; // set SCL high
+                        sda_oen <=  din;  // keep SDA
+                        sda_chk <=  1'b0; // don't check SDA output yet
                                             // allow some time for SDA and SCL to settle
                     end
 
                     wr_c:
                     begin
-                        c_state <= wr_d;
-                        scl_oen <= 1'b1; // keep SCL high
-                        sda_oen <= din;
-                        sda_chk <= 1'b1; // check SDA output
+                        c_state <=  wr_d;
+                        scl_oen <=  1'b1; // keep SCL high
+                        sda_oen <=  din;
+                        sda_chk <=  1'b1; // check SDA output
                     end
 
                     wr_d:
                     begin
-                        c_state <= idle;
-                        cmd_ack <= 1'b1;
-                        scl_oen <= 1'b0; // set SCL low
-                        sda_oen <= din;
-                        sda_chk <= 1'b0; // don't check SDA output (SCL low)
+                        c_state <=  idle;
+                        cmd_ack <=  1'b1;
+                        scl_oen <=  1'b0; // set SCL low
+                        sda_oen <=  din;
+                        sda_chk <=  1'b0; // don't check SDA output (SCL low)
                     end
 
               endcase

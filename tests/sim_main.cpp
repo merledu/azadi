@@ -63,7 +63,7 @@ int main(int argc, char **argv, char **env)
 
     // converting instructions to byte
     
-    top->gpio_i = 8;
+    
     while (getline(file, ins))
     {
         int inst = (int)strtol(ins.c_str(), NULL, 0);
@@ -98,7 +98,7 @@ int main(int argc, char **argv, char **env)
             top->reset_ni = 0;
             top->uart_rx_i = 1;
         }
-        
+     
         // multiplying by 2 because verilator increments half cycle per loop
         else if (hcycle >= (clk_bit * 2) && (hcycle % (clk_bit * 2)) == 0)
         {

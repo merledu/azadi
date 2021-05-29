@@ -5,8 +5,8 @@ module Azadi_top_verilator #(
   input clock_i,
   input reset_ni,
 
-  input  logic [19:0] gpio_i,
-  output logic [19:0] gpio_o
+  input  logic [31:0] gpio_i,
+  output logic [31:0] gpio_o
 
   // input               uart_rx,
   // output              uart_tx,
