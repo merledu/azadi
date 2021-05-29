@@ -66,9 +66,9 @@ module brq_ifu_compressed_decoder (
             illegal_instr_o = 1'b1;
           end
 
-          default: begin
-            illegal_instr_o = 1'b1;
-          end
+          //default: begin
+          //  illegal_instr_o = 1'b1;
+          //end
         endcase
       end
 
@@ -168,15 +168,15 @@ module brq_ifu_compressed_decoder (
                     illegal_instr_o = 1'b1;
                   end
 
-                  default: begin
-                    illegal_instr_o = 1'b1;
-                  end
+               //   default: begin
+               //     illegal_instr_o = 1'b1;
+               //   end
                 endcase
               end
 
-              default: begin
-                illegal_instr_o = 1'b1;
-              end
+             // default: begin
+             //   illegal_instr_o = 1'b1;
+             // end
             endcase
           end
 
@@ -188,9 +188,9 @@ module brq_ifu_compressed_decoder (
                        instr_i[12], {OPCODE_BRANCH}};
           end
 
-          default: begin
-            illegal_instr_o = 1'b1;
-          end
+        //  default: begin
+        //    illegal_instr_o = 1'b1;
+        //  end
         endcase
       end
 
@@ -256,18 +256,18 @@ module brq_ifu_compressed_decoder (
             illegal_instr_o = 1'b1;
           end
 
-          default: begin
-            illegal_instr_o = 1'b1;
-          end
+         // default: begin
+         //   illegal_instr_o = 1'b1;
+         // end
         endcase
       end
 
       // Incoming instruction is not compressed.
       2'b11:;
 
-      default: begin
-        illegal_instr_o = 1'b1;
-      end
+     // default: begin
+     //   illegal_instr_o = 1'b1;
+     // end
     endcase
   end
 

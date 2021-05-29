@@ -9,7 +9,9 @@ module pwm_top (
 
 
   output        pwm_o,
-  output        pwm_o_2
+  output        pwm_o_2,
+  output        pwm1_oe,
+  output        pwm2_oe
 
 );
 
@@ -39,13 +41,15 @@ PWM pwm_core(
 .wdata_i    (wdata),												
 .be_i       (be),										    
 .rdata_o    (rdata),												
-.error_o    (err),												
+//.error_o    (err),												
 
 .i_extclk   ('0),
 .i_DC       ('0),
 .i_valid_DC ('0),
 .o_pwm      (pwm_o),
-.o_pwm_2    (pwm_o_2)
+.o_pwm_2    (pwm_o_2),
+.oe_pwm1    (pwm1_oe),
+.oe_pwm2    (pwm2_oe)
 
 );
 
@@ -65,7 +69,7 @@ tlul_adapter_reg #(
   .wdata_o (wdata),
   .be_o    (be),
   .rdata_i (rdata),
-  .error_i (err)
+  .error_i (1'b0)
 );
 
 endmodule

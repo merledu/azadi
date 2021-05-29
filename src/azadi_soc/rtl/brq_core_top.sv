@@ -4,7 +4,7 @@
 module brq_core_top #(
     parameter bit                 PMPEnable        = 1'b0,
     parameter int unsigned        PMPGranularity   = 0,
-    parameter int unsigned        PMPNumRegions    = 0,
+    parameter int unsigned        PMPNumRegions    = 4,
     parameter int unsigned        MHPMCounterNum   = 0,
     parameter int unsigned        MHPMCounterWidth = 40,
     parameter bit                 RV32E            = 1'b0,

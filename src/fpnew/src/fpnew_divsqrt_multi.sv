@@ -12,11 +12,6 @@
 // Author: Stefan Mach <smach@iis.ee.ethz.ch>
 
 
-//`include "/home/zeeshan/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
-
-//`include "/home/merl-lab/fyp/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
-///`include "/home/merl/github_repos/azadi/src/fpnew/src/common_cells/include/common_cells/registers.svh"
-
 module fpnew_divsqrt_multi #(
   parameter fpnew_pkg::fmt_logic_t   FpFmtConfig  = '1,
   // FPU configuration
@@ -240,7 +235,7 @@ module fpnew_divsqrt_multi #(
     end
   end
 
-  // FSM status register (asynch active low reset)
+  // FSM status register (asynch active low rst_ni)
   `FF(state_q, state_d, IDLE)
 
   // Hold additional information while the operation is in progress
@@ -280,7 +275,7 @@ module fpnew_divsqrt_multi #(
   // Adjust result width and fix FP8
   assign adjusted_result = result_is_fp8_q ? unit_result >> 8 : unit_result;
 
-  // The Hold register (load, no reset)
+  // The Hold register (load, no rst_ni)
   `FFLNR(held_result_q, adjusted_result, hold_result, clk_i)
   `FFLNR(held_status_q, unit_status,     hold_result, clk_i)
 

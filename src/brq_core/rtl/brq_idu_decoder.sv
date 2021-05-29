@@ -476,7 +476,7 @@ module brq_idu_decoder #(
             end
           end
 
-          default: illegal_insn = 1'b1;
+         // default: illegal_insn = 1'b1;
         endcase
       end
 
@@ -1249,7 +1249,7 @@ module brq_idu_decoder #(
             end
           end
 
-          default: ;
+        //  default: ;
         endcase
       end
 

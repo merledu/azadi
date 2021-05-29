@@ -1,9 +1,8 @@
-// `include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
-//`include "/home/zeeshan/fyp/azadi/src/spi_host/rtl/spi_defines.v"
+
 
 module spi_clgen (
   input                            clk_i,   // input clock (system clock)
-  input                            rst,      // reset
+  input                            rst_ni,      // reset
   input                            enable,   // clock enable
   input                            go,       // start transfer
   input                            last_clk, // last clock
@@ -27,9 +26,9 @@ module spi_clgen (
   assign cnt_one  = cnt == {{`SPI_DIVIDER_LEN-1{1'b0}}, 1'b1};
   
   // Counter counts half period
-  always @(posedge clk_i or posedge rst)
+  always @(posedge clk_i or negedge rst_ni)
   begin
-    if(rst)
+    if(~rst_ni)
       cnt <=  {`SPI_DIVIDER_LEN{1'b1}};
     else
       begin
@@ -41,18 +40,18 @@ module spi_clgen (
   end
   
   // clk_out is asserted every other half period
-  always @(posedge clk_i or posedge rst)
+  always @(posedge clk_i or negedge rst_ni)
   begin
-    if(rst)
+    if(~rst_ni)
       clk_out <=  1'b0;
     else
       clk_out <=  (enable && cnt_zero && (!last_clk || clk_out)) ? ~clk_out : clk_out;
   end
    
   // Pos and neg edge signals
-  always @(posedge clk_i or posedge rst)
+  always @(posedge clk_i or negedge rst_ni)
   begin
-    if(rst)
+    if(~rst_ni)
       begin
         pos_edge  <=  1'b0;
         neg_edge  <=  1'b0;

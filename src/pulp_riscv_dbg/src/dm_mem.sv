@@ -187,7 +187,7 @@ module dm_mem #(
         end
       end
 
-      default: ;
+      //default: ;
     endcase
 
     // only signal once that cmd is unsupported so that we can clear cmderr

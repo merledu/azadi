@@ -132,10 +132,10 @@ module brq_exu_multdiv_slow
           end
         endcase
       end
-      default: begin
-        alu_operand_a_o = accum_window_q;
-        alu_operand_b_o = {~op_b_shift_q[31:0], 1'b1};
-      end
+      //default: begin
+      //  alu_operand_a_o = accum_window_q;
+      //  alu_operand_b_o = {~op_b_shift_q[31:0], 1'b1};
+     // end
     endcase
   end
 
@@ -214,7 +214,7 @@ module brq_exu_multdiv_slow
               accum_window_d = op_a_ext;
               md_state_d     = (!data_ind_timing_i && equal_to_zero_i) ? MD_FINISH : MD_ABS_A;
             end
-            default:;
+           // default:;
           endcase
           multdiv_count_d   = 5'd31;
         end
@@ -259,7 +259,7 @@ module brq_exu_multdiv_slow
               op_a_shift_d   = next_quotient;
               md_state_d     = (multdiv_count_q == 5'd1) ? MD_LAST : MD_COMP;
             end
-            default: ;
+          //  default: ;
           endcase
         end
 
@@ -291,7 +291,7 @@ module brq_exu_multdiv_slow
               accum_window_d = {1'b0, next_remainder[31:0]};
               md_state_d     = MD_CHANGE_SIGN;
             end
-            default: ;
+          //  default: ;
           endcase
         end
 

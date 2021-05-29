@@ -1191,7 +1191,7 @@ module brq_core #(
     .dst_fmt_i      ( fp_dst_fmt       ),
     .int_fmt_i      ( fpnew_pkg::INT32 ),
     .vectorial_op_i ( 1'b0             ),
-    .tag_i          ( 1                ),
+    .tag_i          ( '1               ),
     .in_valid_i     ( in_valid_c2fpu   ),
     .in_ready_o     ( out_ready_fpu2c  ),
     .flush_i        ( fp_flush         ),

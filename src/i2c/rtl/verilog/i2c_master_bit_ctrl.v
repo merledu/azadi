@@ -1,4 +1,4 @@
-`include "/home/merl/github_repos/azadi/src/i2c/rtl/verilog/i2c_master_defines.v"
+
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
 ////  WISHBONE rev.B2 compliant I2C Master bit-controller        ////
@@ -183,8 +183,7 @@ module i2c_master_bit_ctrl (
 
 
     // state machine variable
-    reg [17:0] c_state; // synopsys enum_state
-
+    reg [17:0] c_state; 
     //
     // module body
     //

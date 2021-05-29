@@ -523,7 +523,7 @@ module control_mvp
   always_ff @(posedge Clk_CI, negedge Rst_RBI) begin  //  generate Div_enable_SO signal
     if(~Rst_RBI)
       Div_enable_SO<=1'b0;
-    // Synchronous reset with Flush
+    // Synchronous rst_ni with Flush
     else if (Kill_SI)
       Div_enable_SO <= 1'b0;
     else if(Div_start_SI&&Ready_SO)

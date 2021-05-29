@@ -47,10 +47,10 @@ module data_mem
 sram #(
   .NUM_WMASKS  (4), 
   .DATA_WIDTH  (32),
-  .ADDR_WIDTH  (10),
+  .ADDR_WIDTH  (12),
   .DELAY       (0),
-  .IZERO       (1),
-  .IFILE       ("")
+  .IZERO       (1)
+  //.IFILE       ("")
 ) dccm (
   
   .clk0     (~clk_i),
@@ -61,9 +61,9 @@ sram #(
   .din0     (wdata_i),
   .dout0    (rdata_o),
 
-  .clk1     (0),
-  .csb1     (0),
-  .addr1    (0),
+  .clk1     (1'b0),
+  .csb1     (1'b0),
+  .addr1    ('0),
   .dout1    ()
 );
 

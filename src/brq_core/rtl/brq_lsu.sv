@@ -111,7 +111,7 @@ module brq_lsu
             2'b01:   data_be = 4'b1110;
             2'b10:   data_be = 4'b1100;
             2'b11:   data_be = 4'b1000;
-            default: data_be = 4'b1111;
+           // default: data_be = 4'b1111;
           endcase // case (data_offset)
         end else begin // second part of misaligned transaction
           unique case (data_offset)
@@ -119,7 +119,7 @@ module brq_lsu
             2'b01:   data_be = 4'b0001;
             2'b10:   data_be = 4'b0011;
             2'b11:   data_be = 4'b0111;
-            default: data_be = 4'b1111;
+           // default: data_be = 4'b1111;
           endcase // case (data_offset)
         end
       end
@@ -131,7 +131,7 @@ module brq_lsu
             2'b01:   data_be = 4'b0110;
             2'b10:   data_be = 4'b1100;
             2'b11:   data_be = 4'b1000;
-            default: data_be = 4'b1111;
+           // default: data_be = 4'b1111;
           endcase // case (data_offset)
         end else begin // second part of misaligned transaction
           data_be = 4'b0001;
@@ -145,11 +145,11 @@ module brq_lsu
           2'b01:   data_be = 4'b0010;
           2'b10:   data_be = 4'b0100;
           2'b11:   data_be = 4'b1000;
-          default: data_be = 4'b1111;
+         // default: data_be = 4'b1111;
         endcase // case (data_offset)
       end
 
-      default:     data_be = 4'b1111;
+     // default:     data_be = 4'b1111;
     endcase // case (lsu_type_i)
   end
 
@@ -165,7 +165,7 @@ module brq_lsu
       2'b01:   data_wdata = {lsu_wdata_i[23:0], lsu_wdata_i[31:24]};
       2'b10:   data_wdata = {lsu_wdata_i[15:0], lsu_wdata_i[31:16]};
       2'b11:   data_wdata = {lsu_wdata_i[ 7:0], lsu_wdata_i[31: 8]};
-      default: data_wdata =  lsu_wdata_i[31:0];
+     // default: data_wdata =  lsu_wdata_i[31:0];
     endcase // case (data_offset)
   end
 
@@ -214,7 +214,7 @@ module brq_lsu
       2'b01:   rdata_w_ext = {data_rdata_i[ 7:0], rdata_q[31:8]};
       2'b10:   rdata_w_ext = {data_rdata_i[15:0], rdata_q[31:16]};
       2'b11:   rdata_w_ext = {data_rdata_i[23:0], rdata_q[31:24]};
-      default: rdata_w_ext =  data_rdata_i[31:0];
+     // default: rdata_w_ext =  data_rdata_i[31:0];
     endcase
   end
 
@@ -257,7 +257,7 @@ module brq_lsu
         end
       end
 
-      default: rdata_h_ext = {16'h0000, data_rdata_i[15:0]};
+     // default: rdata_h_ext = {16'h0000, data_rdata_i[15:0]};
     endcase // case (rdata_offset_q)
   end
 
@@ -296,7 +296,7 @@ module brq_lsu
         end
       end
 
-      default: rdata_b_ext = {24'h00_0000, data_rdata_i[7:0]};
+     // default: rdata_b_ext = {24'h00_0000, data_rdata_i[7:0]};
     endcase // case (rdata_offset_q)
   end
 
@@ -306,7 +306,7 @@ module brq_lsu
       2'b00:       data_rdata_ext = rdata_w_ext;
       2'b01:       data_rdata_ext = rdata_h_ext;
       2'b10,2'b11: data_rdata_ext = rdata_b_ext;
-      default:     data_rdata_ext = rdata_w_ext;
+    //  default:     data_rdata_ext = rdata_w_ext;
     endcase // case (data_type_q)
   end
 

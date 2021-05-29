@@ -55,7 +55,7 @@ module tl_xbar_main (
 // host 1 IFU
   tlul_pkg::tl_h2d_t brqifu_to_s1n; 
   tlul_pkg::tl_d2h_t s1n_to_brqifu;
-  logic [2:0] device_sel_1;
+  logic [1:0] device_sel_1;
 
 // host 2 LSU
   tlul_pkg::tl_h2d_t brqlsu_to_s1n;
@@ -203,13 +203,13 @@ module tl_xbar_main (
 
 // host 1 device selection
   always_comb begin 
-      device_sel_1 = 3'd3;
+      device_sel_1 = 2'd3;
     if((brqifu_to_s1n.a_address & ~(ADDR_MASK_ICCM)) == ADDR_SPACE_ICCM) begin
-      device_sel_1 = 3'd0;
+      device_sel_1 = 2'd0;
     end else if ((brqifu_to_s1n.a_address & ~(ADDR_MASK_FLASH_CTRL)) == ADDR_SPACE_FLASH_CTRL) begin
-      device_sel_1 = 3'd1;
+      device_sel_1 = 2'd1;
     end else if ((brqifu_to_s1n.a_address & ~(ADDR_MASK_DEBUG_ROM)) == ADDR_SPACE_DEBUG_ROM) begin
-      device_sel_1 = 3'd2;
+      device_sel_1 = 2'd2;
     end
   end
 

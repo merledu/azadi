@@ -204,9 +204,9 @@ module tlul_sram_adapter #(
   end
 
   tlul_err u_err (
-    .clk_i,
-    .rst_ni,
-    .tl_i,
+    .clk_i  (clk_i),
+    .rst_ni (rst_ni),
+    .tl_i   (tl_i),
     .err_o (tlul_error)
   );
 

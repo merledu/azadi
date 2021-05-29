@@ -180,7 +180,7 @@ module brq_idu #(
 
     // Floating point extensions IO
     output fpnew_pkg::roundmode_e     fp_rounding_mode_o,    // defines the rounding mode 
-    output brq_pkg::op_b_sel_e        fp_alu_op_b_mux_sel_o, // operand b selection: reg value or
+   // output brq_pkg::op_b_sel_e        fp_alu_op_b_mux_sel_o, // operand b selection: reg value or
                                                              // immediate 
     input  logic [31:0]               fp_rf_rdata_a_i,
     input  logic [31:0]               fp_rf_rdata_b_i,
@@ -188,9 +188,9 @@ module brq_idu #(
     output logic [4:0]                fp_rf_raddr_a_o,
     output logic [4:0]                fp_rf_raddr_b_o,
     output logic [4:0]                fp_rf_raddr_c_o,
-    output logic                      fp_rf_ren_a_o,     
-    output logic                      fp_rf_ren_b_o,     
-    output logic                      fp_rf_ren_c_o,
+    //output logic                      fp_rf_ren_a_o,     
+    //output logic                      fp_rf_ren_b_o,     
+    //output logic                      fp_rf_ren_c_o,
     output logic [4:0]                fp_rf_waddr_o,
     output logic                      fp_rf_we_o,
 
@@ -340,7 +340,7 @@ module brq_idu #(
       OP_A_FWD:    alu_operand_a = lsu_addr_last_i;
       OP_A_CURRPC: alu_operand_a = pc_id_i;
       OP_A_IMM:    alu_operand_a = imm_a;
-      default:     alu_operand_a = pc_id_i;
+      //default:     alu_operand_a = pc_id_i;
     endcase
   end
 
@@ -524,25 +524,9 @@ module brq_idu #(
       .mv_instr_o                      ( mv_instr              )
   );
 
-  assign fpu_op_a = use_fp_rs1_o ? fp_rf_rdata_a_fwd : rf_rdata_a_fwd;
-  assign fpu_op_b = use_fp_rs2_o ? fp_rf_rdata_b_fwd : rf_rdata_b_fwd;
-  assign fpu_op_c = fp_rf_rdata_c_fwd;
-  
-  /* Swap operands */
-  always_comb begin : swapping
-    if (fp_swap_oprnds) begin
-      temp = fpu_op_c;
-      fpu_op_c = fpu_op_a;
-      fpu_op_a = temp;
-    end else begin
-      fpu_op_a = fpu_op_a;
-      fpu_op_b = fpu_op_b;
-      fpu_op_c = fpu_op_c;
-    end
-    fp_operands_o = {fpu_op_c , fpu_op_b , fpu_op_a};
-  end
-   
-  assign result_wb = mv_instr ? fpu_op_a : result_ex_i;
+//  assign fpu_op_a = use_fp_rs1_o ? fp_rf_rdata_a_fwd : rf_rdata_a_fwd;
+//  assign fpu_op_b = use_fp_rs2_o ? fp_rf_rdata_b_fwd : rf_rdata_b_fwd;
+//  assign fpu_op_c = fp_rf_rdata_c_fwd;
 
   ///////////////////////
   // Register File MUX //
@@ -556,7 +540,7 @@ module brq_idu #(
     unique case (rf_wdata_sel)
       RF_WD_EX:  rf_wdata_id_o = result_wb;
       RF_WD_CSR: rf_wdata_id_o = csr_rdata_i;
-      default:   rf_wdata_id_o = result_wb;
+     // default:   rf_wdata_id_o = result_wb;
     endcase
   end
 
@@ -878,9 +862,9 @@ module brq_idu #(
           end
         end
 
-        default: begin
-          id_fsm_d          = FIRST_CYCLE;
-        end
+       // default: begin
+       //   id_fsm_d          = FIRST_CYCLE;
+       // end
       endcase
     end
   end
@@ -1062,6 +1046,20 @@ module brq_idu #(
 
     assign instr_id_done_o = instr_done;
   end
+  
+    /* Swap operands */
+  always_comb begin : swapping
+    fpu_op_a = use_fp_rs1_o ? fp_rf_rdata_a_fwd : rf_rdata_a_fwd;
+    fpu_op_b = use_fp_rs2_o ? fp_rf_rdata_b_fwd : rf_rdata_b_fwd;
+    if (fp_swap_oprnds) begin
+      fpu_op_c = fpu_op_a;
+    end else begin
+      fpu_op_c = fp_rf_rdata_c_fwd;
+    end
+    fp_operands_o = {fpu_op_c , fpu_op_b , fpu_op_a};
+  end
+   
+  assign result_wb = mv_instr ? fpu_op_a : result_ex_i;
 
   // Signal which instructions to count as retired in minstret, all traps along with ebrk and
   // ecall instructions are not counted.

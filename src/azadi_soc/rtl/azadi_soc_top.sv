@@ -1,12 +1,12 @@
- 
+
 module azadi_soc_top #(
-  
-  parameter logic [31:0] JTAG_ID = 32'h 0000_0001,
-  parameter logic DirectDmiTap = 1'b1
-)(
+    localparam logic [31:0] JTAG_IDCODE = '0
+) (
   input clk_i,
   input rst_ni,
-
+  input prog,
+  output system_rst_ni,
+  output prog_rst_n,
   input  logic [31:0] gpio_i,
   output logic [31:0] gpio_o,
   output logic [31:0] gpio_oe,
@@ -20,18 +20,22 @@ module azadi_soc_top #(
 
   // uart-periph interface
   output logic       uart_tx,
+  output logic       tx_en_o,
   input  logic       uart_rx,
 
   // PWM interface  
 
   output logic       pwm_o,
   output logic       pwm_o_2,
+  output logic       pwm1_oe,
+  output logic       pwm2_oe,
 
   // SPI interface
 
   output logic    [`SPI_SS_NB-1:0] ss_o,        
   output logic                     sclk_o,      
-  output logic                     sd_o,       
+  output logic                     sd_o,
+  output logic                     sd_oe,       
   input  logic                     sd_i,
 
   // i2c interface 
@@ -46,10 +50,18 @@ module azadi_soc_top #(
 
 );
 
+//localparam logic [31:0] JTAG_IDCODE = {
+  //4'h0,     // Version
+  //16'h4F54, // Part Number: "OT"
+  //11'h426,  // Manufacturer Identity: Google
+  //1'b1      // (fixed)
+//};
 
-  logic system_rst_ni;
-  wire [31:0] gpio_in;
-  wire [31:0] gpio_out;
+
+//  logic prog_rst_n;
+//  logic system_rst_ni;
+  logic [31:0] gpio_in;
+  logic [31:0] gpio_out;
   
   assign gpio_in = gpio_i;
   assign gpio_o = gpio_out; 
@@ -119,7 +131,6 @@ module azadi_soc_top #(
   logic        intr_uart0_rx_timeout;
   logic        intr_uart0_rx_parity_err;
   logic        intr_req;
- // logic        intr_spi;
   logic        intr_i2c;
   logic        intr_srx;
   logic        intr_stx;
@@ -127,6 +138,7 @@ module azadi_soc_top #(
 
   assign intr_vector = { 
       intr_srx,
+      intr_stx,
       intr_i2c, 
       intr_gpio,
       intr_uart0_rx_parity_err,
@@ -158,7 +170,7 @@ module azadi_soc_top #(
 brq_core_top #(
     .PMPEnable        (1'b0),
     .PMPGranularity   (0), 
-    .PMPNumRegions    (0), 
+    .PMPNumRegions    (4), 
     .MHPMCounterNum   (0), 
     .MHPMCounterWidth (40), 
     .RV32E            (1'b0), 
@@ -171,7 +183,7 @@ brq_core_top #(
     .ICacheECC        (1'b0), 
     .BranchPredictor  (1'b0), 
     .DbgTriggerEn     (1'b1), 
-    .DbgHwBreakNum    (2), 
+    .DbgHwBreakNum    (1), 
     .Securebrq        (1'b0),
     .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800), 
     .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress) 
@@ -196,7 +208,7 @@ brq_core_top #(
     .irq_software_i (1'b0),
     .irq_timer_i    (intr_timer),
     .irq_external_i (intr_req),
-    .irq_fast_i     (1'b0),
+    .irq_fast_i     ('0),
     .irq_nm_i       (1'b0),       // non-maskeable interrupt
 
     // Debug Interface
@@ -209,16 +221,15 @@ brq_core_top #(
 );
 
 // Debug module
-
-  rv_dm #(
+rv_dm #(
   .NrHarts(1),
-  .IdcodeValue(JTAG_ID),
-  .DirectDmiTap (DirectDmiTap)
-  ) debug_module (
+  .IdcodeValue(JTAG_IDCODE)
+ // .DirectDmiTap (DirectDmiTap)
+) debug_module (
   .clk_i(clk_i),       // clk_i
   .rst_ni(rst_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
-  .testmode_i(),
+  .testmode_i('0),
   .ndmreset_o(dbg_rst),  // non-debug module reset
   .dmactive_o(),  // debug module is active
   .debug_req_o(dbg_req), // async debug request
@@ -260,23 +271,23 @@ brq_core_top #(
   .tl_dccm_o          (xbar_to_dccm),
   .tl_dccm_i          (dccm_to_xbar),
   .tl_flash_ctrl_o    (),
-  .tl_flash_ctrl_i    (),
+  .tl_flash_ctrl_i    ('0),
   .tl_timer0_o        (xbar_to_timer),
   .tl_timer0_i        (timer_to_xbar),
   .tl_timer1_o        (),
-  .tl_timer1_i        (),
+  .tl_timer1_i        ('0),
   .tl_timer2_o        (),
-  .tl_timer2_i        (),
+  .tl_timer2_i        ('0),
   .tl_timer3_o        (),
-  .tl_timer3_i        (),
+  .tl_timer3_i        ('0),
   .tl_timer4_o        (),
-  .tl_timer4_i        (),
+  .tl_timer4_i        ('0),
   .tl_plic_o          (plic_req),
   .tl_plic_i          (plic_resp),
   .tl_xbar_peri_o     (xbarm_to_xbarp),
   .tl_xbar_peri_i     (xbarp_to_xbarm),
 
-  .scanmode_i         ()
+  .scanmode_i         ('0)
 );
 
 // dummy data memory
@@ -290,7 +301,7 @@ data_mem dccm(
   .tl_d_o   (dccm_to_xbar)
 );
 
-rv_timer timer0(
+rv_timer timer0( 
   .clk_i  (clk_i),
   .rst_ni (system_rst_ni),
 
@@ -315,13 +326,13 @@ xbar_periph periph_switch (
   .tl_uart0_o         (xbar_to_uart),
   .tl_uart0_i         (uart_to_xbar),
   .tl_uart1_o         (),
-  .tl_uart1_i         (),
+  .tl_uart1_i         ('0),
   .tl_spi0_o          (xbar_to_spi),
   .tl_spi0_i          (spi_to_xbar),
   .tl_spi1_o          (),
-  .tl_spi1_i          (),
+  .tl_spi1_i          ('0),
   .tl_spi2_o          (),
-  .tl_spi2_i          (),
+  .tl_spi2_i          ('0),
   .tl_pwm_o           (xbar_to_pwm),
   .tl_pwm_i           (pwm_to_xbar),
   .tl_gpio_o          (xbarp_to_gpio),
@@ -329,17 +340,17 @@ xbar_periph periph_switch (
   .tl_i2c0_o          (xbar_to_i2c),
   .tl_i2c0_i          (i2c_to_xbar),
   .tl_i2c1_o          (),
-  .tl_i2c1_i          (),
+  .tl_i2c1_i          ('0),
   .tl_can0_o          (),
-  .tl_can0_i          (),
+  .tl_can0_i          ('0),
   .tl_can1_o          (),
-  .tl_can1_i          (),
+  .tl_can1_i          ('0),
   .tl_adc_o           (),
-  .tl_adc_i           (),
+  .tl_adc_i           ('0),
   .tl_qspi_o          (),
-  .tl_qspi_i          (),
+  .tl_qspi_i          ('0),
 
-  .scanmode_i         ()
+  .scanmode_i         ('0)
 );
 
 
@@ -355,7 +366,9 @@ pwm_top u_pwm(
 
 
   .pwm_o   (pwm_o),
-  .pwm_o_2 (pwm_o_2)
+  .pwm_o_2 (pwm_o_2),
+  .pwm1_oe (pwm1_oe),
+  .pwm2_oe (pwm2_oe)
 );
 
 
@@ -374,13 +387,14 @@ spi_top u_spi_host(
   .intr_tx_o   (intr_stx),                   
   .ss_o        (ss_o),         
   .sclk_o      (sclk_o),       
-  .sd_o        (sd_o),       
+  .sd_o        (sd_o),
+  .sd_oe       (sd_oe),       
   .sd_i        (sd_i)
 );
 
 
 //GPIO module
- gpio GPIO (
+gpio GPIO (
   .clk_i          (clk_i),
   .rst_ni         (system_rst_ni),
 
@@ -394,18 +408,26 @@ spi_top u_spi_host(
 
   .intr_gpio_o    (intr_gpio )  
 );
-
+logic [31:0] iccm_cntrl_data;
+logic        iccm_cntrl_we;
+logic [11:0] addr_o;
+logic [11:0] instr_addr;
+//wire        prog_rst_n;
+logic iccm_wen;
+assign instr_addr = ( prog_rst_n ? tlul_addr : addr_o[11:0] ); 
+assign iccm_wen = ( prog_rst_n ? 1'b0 : iccm_cntrl_we );
 
 instr_mem_top iccm (
   .clk_i      (clk_i),
   .rst_ni      (system_rst_ni),
 
   .req        (req_i),
-  .addr       (tlul_addr),
-  .wdata      (),//iccm_cntrl_data
+  .addr       (instr_addr), // tlul_addr
+  .wdata      (iccm_cntrl_data), // todo - 32'b0
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         ()//iccm_cntrl_we
+  .we         (iccm_wen), // todo - partial done - 1'b0
+  .wmask      (4'b1111)
 );
 
  tlul_sram_adapter #(
@@ -436,9 +458,9 @@ rstmgr reset_manager(
   .clk_i(clk_i),
   .rst_ni(rst_ni),
   .ndmreset (dbg_rst),
+  .prog_rst_ni(prog_rst_n),
   .sys_rst_ni(system_rst_ni)
 );
-
 
 rv_plic intr_controller (
   .clk_i(clk_i),
@@ -469,7 +491,7 @@ uart u_uart0(
   // Generic IO
   .cio_rx_i                (uart_rx           ),
   .cio_tx_o                (uart_tx           ),
-  .cio_tx_en_o             (                  ),
+  .cio_tx_en_o             (tx_en_o           ),
 
   // Interrupts
   .intr_tx_watermark_o     (intr_uart0_tx_watermark ),
@@ -500,5 +522,31 @@ i2c_master_top I2C (
   .sda_pad_o       (sda_pad_o),
   .sda_padoen_o    (sda_padoen_o)
 );
+
+logic rx_dv_i;
+logic [7:0] rx_byte_i;
+	
+iccm_controller u_dut(
+    .clk_i      (~clk_i),
+	.rst_ni     (rst_ni),
+	.prog_i     (prog),
+	.rx_dv_i    (rx_dv_i),
+	.rx_byte_i  (rx_byte_i),
+	.we_o       (iccm_cntrl_we),
+	.addr_o     (addr_o),
+	.wdata_o    (iccm_cntrl_data),
+	.reset_o    (prog_rst_n)
+);
+	
+uart_rx_prog u_uart_rx_prog(
+	.clk_i(~clk_i),
+	.rst_ni(rst_ni),
+	.i_Rx_Serial(uart_rx),
+	.CLKS_PER_BIT(16'd1667),
+	.o_Rx_DV(rx_dv_i),
+	.o_Rx_Byte(rx_byte_i)
+);
+
+
 
 endmodule

@@ -299,12 +299,14 @@ module brq_cs_registers #(
   // Floating point
   always_comb begin
     unique case (frm_q)
-      000,
-      001,
-      010,
-      011,
-      100: illegal_dyn_mod =  1'b0;
-      default: illegal_dyn_mod =  1'b1;
+      3'b000,
+      3'b001,
+      3'b010,
+      3'b011,
+      3'b100: illegal_dyn_mod =  1'b0;
+      3'b101,
+      3'b110,
+      3'b111: illegal_dyn_mod =  1'b1;
     endcase 
     fp_frm_o = frm_q;
   end
@@ -523,7 +525,7 @@ module brq_cs_registers #(
     mtvec_en     = csr_mtvec_init_i;
     // mtvec.MODE set to vectored
     // mtvec.BASE must be 256-byte aligned
-    mtvec_d      = csr_mtvec_init_i ? {boot_addr_i[31:2],2'b00} :
+    mtvec_d      = csr_mtvec_init_i ? {boot_addr_i[31:2], 2'b00} :
                                       {csr_wdata_int[31:2], 2'b00};
     dcsr_en      = 1'b0;
     dcsr_d       = dcsr_q;
@@ -552,7 +554,7 @@ module brq_cs_registers #(
           fflags_en = 1'b1;
           frm_en    = 1'b1;
           fflags_d  = csr_wdata_int[4:0];
-          frm_d     = csr_wdata_int[7:5];  
+          frm_d     = roundmode_e'(csr_wdata_int[7:5]);  
         end
         
 
@@ -762,7 +764,7 @@ module brq_cs_registers #(
       CSR_OP_SET:   csr_wdata_int =  csr_wdata_i | csr_rdata_o;
       CSR_OP_CLEAR: csr_wdata_int = ~csr_wdata_i & csr_rdata_o;
       CSR_OP_READ:  csr_wdata_int = csr_wdata_i;
-      default:      csr_wdata_int = csr_wdata_i;
+    //  default:      csr_wdata_int = csr_wdata_i;
     endcase
   end
 
@@ -1329,20 +1331,12 @@ module brq_cs_registers #(
 
     // Write select
     assign tselect_we = csr_we_int & debug_mode_i & (csr_addr_i == CSR_TSELECT);
-    // for (genvar i = 0; i < DbgHwBreakNum; i++) begin : g_dbg_tmatch_we
-    //   assign tmatch_control_we[i] = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
-    //                                 (csr_addr_i == CSR_TDATA1);
-    //   assign tmatch_value_we[i]   = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
-    //                                 (csr_addr_i == CSR_TDATA2);
-    // end
-
-    //for (genvar i = 0; i < DbgHwBreakNum; i++) begin : g_dbg_tmatch_we
-      assign tmatch_control_we[0] = (1'b0 == tselect_q) & csr_we_int & debug_mode_i &
+    for (genvar i = 0; i < DbgHwBreakNum; i++) begin : g_dbg_tmatch_we
+      assign tmatch_control_we[i] = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
                                     (csr_addr_i == CSR_TDATA1);
-      assign tmatch_value_we[0]   = (1'b0 == tselect_q) & csr_we_int & debug_mode_i &
+      assign tmatch_value_we[i]   = (i[DbgHwNumLen-1:0] == tselect_q) & csr_we_int & debug_mode_i &
                                     (csr_addr_i == CSR_TDATA2);
-  //  end
-
+    end
 
     // Debug interface tests the available number of triggers by writing and reading the trigger
     // select register. Only allow changes to the register if it is within the supported region.

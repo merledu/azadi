@@ -26,8 +26,8 @@ module sram #(
   parameter RAM_DEPTH = 1 << ADDR_WIDTH,
   // FIXME: This delay is arbitrary.
   parameter DELAY = 3,
-  parameter IZERO   = 0 , // binary / Initial RAM with zeros (has priority over INITFILE)
-  parameter IFILE   = "" 
+  parameter IZERO   = 0 // binary / Initial RAM with zeros (has priority over INITFILE)
+//  parameter IFILE   = "program" 
 )
 (
 /*`ifdef USE_POWER_PINS
@@ -101,12 +101,11 @@ module sram #(
    end
 integer i;
 reg [DATA_WIDTH-1:0]    mem [0:RAM_DEPTH-1];
-initial
-    if (IZERO)
-      for (i=0; i<RAM_DEPTH; i=i+1) mem[i] = {DATA_WIDTH{1'b0}};
-    else
-      if (IFILE != "") $readmemh({IFILE,".hex"}, mem);
-
+//initial
+//    if (IZERO)
+//      for (i=0; i<RAM_DEPTH; i=i+1) mem[i] = {DATA_WIDTH{1'b0}};
+//    else
+//   $readmemh("program.hex", mem);
   // Memory Write Block Port 0
   // Write Operation : When web0 = 0, csb0 = 0
   always @ (negedge clk0)
@@ -128,7 +127,7 @@ initial
   always @ (negedge clk0)
   begin : MEM_READ0
     if (!csb0_reg && web0_reg)
-       dout0 <= #(DELAY) mem[addr0_reg];
+       dout0 <= mem[addr0_reg];
   end
 
   // Memory Read Block Port 1
@@ -136,7 +135,7 @@ initial
  always @ (negedge clk1)
   begin : MEM_READ1
    if (!csb1_reg)
-       dout1 <= #(DELAY) mem[addr1_reg];
+       dout1 <=  mem[addr1_reg];
   end
 
 endmodule

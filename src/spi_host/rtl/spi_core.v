@@ -1,5 +1,3 @@
-// `include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
-//`include "/home/zeeshan/fyp/azadi/src/spi_host/rtl/spi_defines.v"
 
 module spi_core
 (
@@ -12,15 +10,16 @@ module spi_core
   input  [3:0]  be_i,           
   input         we_i,       
   input         re_i,        
-  output        error_o,       
-  output        intr_rx_o,
-  output        intr_tx_o,         
+  output reg    error_o,       
+  output reg    intr_rx_o,
+  output reg    intr_tx_o,         
                                                      
   // SPI signals                                     
-  output          [`SPI_SS_NB-1:0] ss_o,         // slave select
-  output                           sclk_o,       // serial clock
-  output                           sd_o,       // master out slave in
-  input                            sd_i       // master in slave out
+  output     [`SPI_SS_NB-1:0] ss_o,         // slave select
+  output                      sclk_o,       // serial clock
+  output                      sd_o,
+  output     reg              sd_oe,       // master out slave in
+  input                       sd_i       // master in slave out
 );
 
                                                
@@ -58,16 +57,16 @@ module spi_core
   always @(addr_i or rx or ctrl or divider or ss)
   begin
     case (addr_i[`SPI_OFS_BITS])
-      `SPI_RX_0:    wb_dat = {{32-`SPI_MAX_CHAR{1'b0}}, rx[`SPI_MAX_CHAR-1:0]};
-      `SPI_CTRL:    wb_dat = {{32-`SPI_CTRL_BIT_NB{1'b0}}, ctrl};
-      `SPI_DEVIDE:  wb_dat = {{32-`SPI_DIVIDER_LEN{1'b0}}, divider};
-      `SPI_SS:      wb_dat = {{32-`SPI_SS_NB{1'b0}}, ss};
-      default:      wb_dat = 32'b0;
+      `SPI_RX_0:    wb_dat =  rx[`SPI_MAX_CHAR-1:0];
+      `SPI_CTRL:    wb_dat =  ctrl;
+      `SPI_DEVIDE:  wb_dat =  divider;
+      `SPI_SS:      wb_dat =  ss;
+      default:      wb_dat =  32'b0;
     endcase
   end
   
   // Wb data out
-  always @(posedge clk_i or posedge rst_ni)
+  always @(posedge clk_i)
   begin
     if (~rst_ni)
       rdata_o <=  32'b0;
@@ -80,7 +79,7 @@ module spi_core
   assign error_o = 1'b0;
   
   // Interrupt
-  always @(posedge clk_i or posedge rst_ni)
+  always @(posedge clk_i)
   begin
     if (~rst_ni)
       intr_tx_o <=  1'b0;
@@ -90,7 +89,7 @@ module spi_core
       intr_tx_o <=  1'b0;
   end
 
-  always @(posedge clk_i or posedge rst_ni)
+  always @(posedge clk_i )
   begin
     if (~rst_ni)
       intr_rx_o <=  1'b0;
@@ -101,45 +100,21 @@ module spi_core
   end
   
   // Divider register
-  always @(posedge clk_i or posedge rst_ni)
+  always @(posedge clk_i)
   begin
     if (~rst_ni)
         divider <=  {`SPI_DIVIDER_LEN{1'b0}};
     else if (spi_divider_sel && we_i && !tip)
       begin
-      `ifdef SPI_DIVIDER_LEN_8
-        if (be_i[0])
-          divider <=  wdata_i[`SPI_DIVIDER_LEN-1:0];
-      `endif
-      `ifdef SPI_DIVIDER_LEN_16
         if (be_i[0])
           divider[7:0] <=  wdata_i[7:0];
         if (be_i[1])
           divider[`SPI_DIVIDER_LEN-1:8] <=  wdata_i[`SPI_DIVIDER_LEN-1:8];
-      `endif
-      `ifdef SPI_DIVIDER_LEN_24
-        if (be_i[0])
-          divider[7:0] <=  wdata_i[7:0];
-        if (be_i[1])
-          divider[15:8] <=  wdata_i[15:8];
-        if (be_i[2])
-          divider[`SPI_DIVIDER_LEN-1:16] <=  wdata_i[`SPI_DIVIDER_LEN-1:16];
-      `endif
-      `ifdef SPI_DIVIDER_LEN_32
-        if (be_i[0])
-          divider[7:0] <=  wdata_i[7:0];
-        if (be_i[1])
-          divider[15:8] <=  wdata_i[15:8];
-        if (be_i[2])
-          divider[23:16] <=  wdata_i[23:16];
-        if (be_i[3])
-          divider[`SPI_DIVIDER_LEN-1:24] <=  wdata_i[`SPI_DIVIDER_LEN-1:24];
-      `endif
       end
   end
   
   // Ctrl register
-  always @(posedge clk_i or posedge rst_ni)
+  always @(posedge clk_i)
   begin
     if (~rst_ni)
       ctrl <=  {`SPI_CTRL_BIT_NB{1'b0}};
@@ -164,53 +139,32 @@ module spi_core
   assign rx_en      = ctrl[`SPI_RX_SEL];
   assign tx_en      = ctrl[`SPI_TX_SEL];
   
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(~rst_ni) begin
+        sd_oe <= 1'b0;
+    end else if (tx_en & !rx_en) begin
+        sd_oe <= 1'b1;
+    end else begin
+        sd_oe <= 1'b0;
+    end 
+  end
   // Slave select register
-  always @(posedge clk_i or posedge rst_ni)
+  always @(posedge clk_i)
   begin
     if (~rst_ni)
       ss <=  {`SPI_SS_NB{1'b0}};
     else if(spi_ss_sel && we_i && !tip)
       begin
-      `ifdef SPI_SS_NB_4
         if (be_i[0])
           ss <=  wdata_i[`SPI_SS_NB-1:0];
-      `endif
-      `ifdef SPI_SS_NB_8
-        if (be_i[0])
-          ss <=  wdata_i[`SPI_SS_NB-1:0];
-      `endif
-      `ifdef SPI_SS_NB_16
-        if (be_i[0])
-          ss[7:0] <=  wdata_i[7:0];
-        if (be_i[1])
-          ss[`SPI_SS_NB-1:8] <=  wdata_i[`SPI_SS_NB-1:8];
-      `endif
-      `ifdef SPI_SS_NB_24
-        if (be_i[0])
-          ss[7:0] <=  wdata_i[7:0];
-        if (be_i[1])
-          ss[15:8] <=  wdata_i[15:8];
-        if (be_i[2])
-          ss[`SPI_SS_NB-1:16] <=  wdata_i[`SPI_SS_NB-1:16];
-      `endif
-      `ifdef SPI_SS_NB_32
-        if (be_i[0])
-          ss[7:0] <=  wdata_i[7:0];
-        if (be_i[1])
-          ss[15:8] <=  wdata_i[15:8];
-        if (be_i[2])
-          ss[23:16] <=  wdata_i[23:16];
-        if (be_i[3])
-          ss[`SPI_SS_NB-1:24] <=  wdata_i[`SPI_SS_NB-1:24];
-      `endif
       end
   end
   
-  assign ss_pad_o = ~((ss & {`SPI_SS_NB{tip & ass}}) | (ss & {`SPI_SS_NB{!ass}}));
+  assign ss_o = ~((ss & {`SPI_SS_NB{tip & ass}}) | (ss & {`SPI_SS_NB{!ass}}));
   
   spi_clgen clgen (
-    .clk_i      (clk_i), 
-    .rst         (~rst_ni), 
+    .clk_i       (clk_i), 
+    .rst_ni      (rst_ni), 
     .go          (go), 
     .enable      (tip), 
     .last_clk    (last_bit),
@@ -221,8 +175,8 @@ module spi_core
     );
   
   spi_shift shift (
-    .clk_i          (clk_i), 
-    .rst          (~rst_ni), 
+    .clk_i        (clk_i), 
+    .rst_ni       (rst_ni), 
     .len          (char_len[`SPI_CHAR_LEN_BITS-1:0]),
     .latch        (spi_tx_sel & we_i), 
     .byte_sel     (be_i), 

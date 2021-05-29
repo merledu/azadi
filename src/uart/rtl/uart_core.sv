@@ -121,9 +121,9 @@ module uart_core (
           if (rx_in) break_st_q <= BRK_CHK;
         end
 
-        default: begin
-          break_st_q <= BRK_CHK;
-        end
+       // default: begin
+         // break_st_q <= BRK_CHK;
+        //end
       endcase
     end
   end

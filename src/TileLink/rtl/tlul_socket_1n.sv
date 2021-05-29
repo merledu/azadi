@@ -201,8 +201,8 @@ module tlul_socket_1n #(
   assign tl_u_o[N].a_mask      = tl_t_o.a_mask;
   assign tl_u_o[N].a_data      = tl_t_o.a_data;
   tlul_err_resp err_resp (
-    .clk_i,
-    .rst_ni,
+    .clk_i      (clk_i),
+    .rst_ni     (rst_ni),
     .tl_h_i     (tl_u_o[N]),
     .tl_h_o     (tl_u_i[N]));
 
