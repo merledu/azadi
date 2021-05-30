@@ -1,4 +1,4 @@
-`include "/home/merl/github_repos/azadi/src/i2c/rtl/verilog/i2c_master_defines.v"
+
 /////////////////////////////////////////////////////////////////////
 ////                                                             ////
 ////  WISHBONE rev.B2 compliant I2C Master bit-controller        ////
