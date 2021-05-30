@@ -38,7 +38,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   rv_plic_reg2hw_t reg2hw;
   rv_plic_hw2reg_t hw2reg;
 
-  localparam int MAX_PRIO    = 7;
+  localparam int MAX_PRIO    = 3;
   localparam int PRIOW = $clog2(MAX_PRIO+1);
 
   logic [NumSrc-1:0] le; // 0:level 1:edge
