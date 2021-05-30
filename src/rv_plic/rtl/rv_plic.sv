@@ -30,7 +30,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
 
   // Interrupt notification to targets
   output [NumTarget-1:0] irq_o,
-  output [SRCW-1:0]      irq_id_o [NumTarget],
+  output [SRCW:0]      irq_id_o [NumTarget],
 
   output logic [NumTarget-1:0] msip_o
 );
@@ -54,7 +54,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   logic [SRCW-1:0]      complete_id [NumTarget];
   logic [NumSrc-1:0]    complete; // Converted from complete_re/complete_id
 
-  logic [SRCW-1:0]      cc_id [NumTarget]; // Write ID
+  logic [SRCW:0]      cc_id [NumTarget]; // Write ID
 
   logic [PRIOW-1:0] prio [NumSrc];
 
