@@ -453,7 +453,6 @@ rv_plic intr_controller (
 
   // Interrupt notification to targets
   .irq_o (intr_req),
-  .irq_id_o(),
 
   .msip_o()
 );
