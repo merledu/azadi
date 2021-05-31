@@ -5710,7 +5710,7 @@ module rv_plic_reg_top (
 
   assign cc0_we = addr_hit[51] & reg_we & ~wr_err;
   assign cc0_wd = reg_wdata[7:0];
-  assign cc0_re = addr_hit[71] && reg_re;
+  assign cc0_re = addr_hit[51] && reg_re;
 
   assign msip0_we = addr_hit[52] & reg_we & ~wr_err;
   assign msip0_wd = reg_wdata[0];
