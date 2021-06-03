@@ -106,7 +106,7 @@ module azadi_soc_top #(
   tlul_pkg::tl_d2h_t i2c_to_xbar;
 
   // interrupt vector
-  logic [63:0] intr_vector;
+  logic [43:0] intr_vector;
 
   // Interrupt source list 
   logic [31:0] intr_gpio;
@@ -119,16 +119,13 @@ module azadi_soc_top #(
   logic        intr_uart0_rx_timeout;
   logic        intr_uart0_rx_parity_err;
   logic        intr_req;
- // logic        intr_spi;
-  logic        intr_i2c;
   logic        intr_srx;
   logic        intr_stx;
   logic        intr_timer;
 
   assign intr_vector = { 
       intr_srx,
-      intr_i2c, 
-      intr_gpio,
+      intr_stx,
       intr_uart0_rx_parity_err,
       intr_uart0_rx_timeout,
       intr_uart0_rx_break_err,
@@ -137,7 +134,7 @@ module azadi_soc_top #(
       intr_uart0_tx_empty,
       intr_uart0_rx_watermark,
       intr_uart0_tx_watermark,
-      intr_stx,
+      intr_gpio,
       1'b0
   };
 
@@ -481,23 +478,5 @@ uart u_uart0(
   .intr_rx_parity_err_o    (intr_uart0_rx_parity_err) 
 );
 
-i2c_master_top I2C (
-  .clk_i           (clk_i ),
-  .rst_ni          (system_rst_ni),
-
-  .tl_i            (xbar_to_i2c),
-  .tl_o            (i2c_to_xbar),
-
-  // i2c interface
-  .intr_o          (intr_i2c),
-
-  .scl_pad_i       (scl_pad_i),
-  .scl_pad_o       (scl_pad_o),
-  .scl_padoen_o    (scl_padoen_o),
-
-  .sda_pad_i       (sda_pad_i),
-  .sda_pad_o       (sda_pad_o),
-  .sda_padoen_o    (sda_padoen_o)
-);
 
 endmodule

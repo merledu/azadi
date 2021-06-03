@@ -55,7 +55,7 @@ int main (int argc, char **argv) {
         }
         if(main_time == 10000)
         {
-            top -> gpio_i = 1<<19;
+            top -> gpio_i = 1<<25;
         }
         top->eval(); 
 
