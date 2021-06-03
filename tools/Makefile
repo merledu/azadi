@@ -31,7 +31,6 @@ defines += $(AZADI_ROOT)/src/GPIO/rtl/gpio_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_dm/rtl/jtag_pkg.sv
 defines += $(AZADI_ROOT)/src/pulp_riscv_dbg/src/dm_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_plic/rtl/rv_plic_reg_pkg.sv
-defines += $(AZADI_ROOT)/src/uart/rtl/uart_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/rv_timer/rtl/rv_timer_reg_pkg.sv
 defines += $(AZADI_ROOT)/src/brq_core/rtl/prim_pkg.sv
 defines += $(AZADI_ROOT)/src/primitives/rtl/prim_util_pkg.sv

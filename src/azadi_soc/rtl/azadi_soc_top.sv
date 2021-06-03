@@ -110,30 +110,16 @@ module azadi_soc_top #(
 
   // Interrupt source list 
   logic [31:0] intr_gpio;
-  logic        intr_uart0_tx_watermark;
-  logic        intr_uart0_rx_watermark;
-  logic        intr_uart0_tx_empty;
-  logic        intr_uart0_rx_overflow;
-  logic        intr_uart0_rx_frame_err;
-  logic        intr_uart0_rx_break_err;
-  logic        intr_uart0_rx_timeout;
-  logic        intr_uart0_rx_parity_err;
   logic        intr_req;
   logic        intr_srx;
   logic        intr_stx;
   logic        intr_timer;
+  logic        intr_u_tx;
 
   assign intr_vector = { 
       intr_srx,
       intr_stx,
-      intr_uart0_rx_parity_err,
-      intr_uart0_rx_timeout,
-      intr_uart0_rx_break_err,
-      intr_uart0_rx_frame_err,
-      intr_uart0_rx_overflow,
-      intr_uart0_tx_empty,
-      intr_uart0_rx_watermark,
-      intr_uart0_tx_watermark,
+      intr_u_tx,
       intr_gpio,
       1'b0
   };
@@ -454,28 +440,18 @@ rv_plic intr_controller (
   .msip_o()
 );
 
-uart u_uart0(
-  .clk_i                   (clk_i             ),
-  .rst_ni                  (system_rst_ni     ),
+ uart_top  u_uart(
 
-  // Bus Interface
-  .tl_i                    (xbar_to_uart      ),
-  .tl_o                    (uart_to_xbar      ),
-
-  // Generic IO
-  .cio_rx_i                (uart_rx           ),
-  .cio_tx_o                (uart_tx           ),
-  .cio_tx_en_o             (                  ),
-
-  // Interrupts
-  .intr_tx_watermark_o     (intr_uart0_tx_watermark ),
-  .intr_rx_watermark_o     (intr_uart0_rx_watermark ),
-  .intr_tx_empty_o         (intr_uart0_tx_empty     ),
-  .intr_rx_overflow_o      (intr_uart0_rx_overflow  ),
-  .intr_rx_frame_err_o     (intr_uart0_rx_frame_err ),
-  .intr_rx_break_err_o     (intr_uart0_rx_break_err ),
-  .intr_rx_timeout_o       (intr_uart0_rx_timeout   ),
-  .intr_rx_parity_err_o    (intr_uart0_rx_parity_err) 
+    .clk_i  (clk_i),
+    .rst_ni (system_rst_ni),
+    
+    .tl_i   (xbar_to_uart),
+    .tl_o   (uart_to_xbar),
+    
+    .tx_o   (uart_tx),
+    .rx_i   (uart_rx),
+    
+    .intr_tx (intr_u_tx)
 );
 
 

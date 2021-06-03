@@ -105,11 +105,10 @@ $AZADI_ROOT/src/rv_plic/rtl/rv_plic_gateway.sv
 $AZADI_ROOT/src/rv_plic/rtl/rv_plic_reg_top.sv
 $AZADI_ROOT/src/rv_plic/rtl/rv_plic_target.sv
 $AZADI_ROOT/src/rv_plic/rtl/rv_plic.sv
-$AZADI_ROOT/src/uart/rtl/uart_rx.sv
-$AZADI_ROOT/src/uart/rtl/uart_tx.sv
-$AZADI_ROOT/src/uart/rtl/uart_core.sv
-$AZADI_ROOT/src/uart/rtl/uart_reg_top.sv
-$AZADI_ROOT/src/uart/rtl/uart.sv
+$AZADI_ROOT/src/uart/rtl/uart_rx.v
+$AZADI_ROOT/src/uart/rtl/uart_tx.v
+$AZADI_ROOT/src/uart/rtl/uart_core.v
+$AZADI_ROOT/src/uart/rtl/uart_top.sv
 $AZADI_ROOT/src/rv_timer/rtl/timer_core.sv
 $AZADI_ROOT/src/rv_timer/rtl/rv_timer.sv
 $AZADI_ROOT/src/rv_timer/rtl/rv_timer_reg_top.sv
