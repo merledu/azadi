@@ -65,21 +65,19 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   assign cc_id = irq_id_o;
 
   always_comb begin
+    claim = '0;
     for (int i = 0 ; i < NumTarget ; i++) begin
       if (claim_re[i]) begin 
          claim[claim_id[i]] = 1'b1;
-       end else begin 
-         claim = '0;
-       end
      end
   end
+  end
   always_comb begin
+    complete = '0;
     for (int i = 0 ; i < NumTarget ; i++) begin
       if (complete_we[i]) begin 
          complete[complete_id[i]] = 1'b1;
-      end else begin
-         complete = '0;
-      end
+      end 
     end
   end
 
@@ -127,18 +125,10 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   assign prio[33] = reg2hw.prio33.q;
   assign prio[34] = reg2hw.prio34.q;
   assign prio[35] = reg2hw.prio35.q;
-  assign prio[36] = reg2hw.prio36.q;
-  assign prio[37] = reg2hw.prio37.q;
-  assign prio[38] = reg2hw.prio38.q;
-  assign prio[39] = reg2hw.prio39.q;
-  assign prio[40] = reg2hw.prio40.q;
-  assign prio[41] = reg2hw.prio41.q;
-  assign prio[42] = reg2hw.prio42.q;
-  assign prio[43] = reg2hw.prio43.q;
   //////////////////////
   // Interrupt Enable //
   //////////////////////
-  for (genvar s = 0; s < 44; s++) begin : gen_ie0
+  for (genvar s = 0; s < 36; s++) begin : gen_ie0
     assign ie[0][s] = reg2hw.ie0[s].q;
   end
 
@@ -164,7 +154,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   ////////
   // IP //
   ////////
-  for (genvar s = 0; s < 44; s++) begin : gen_ip
+  for (genvar s = 0; s < 36; s++) begin : gen_ip
     assign hw2reg.ip[s].de = 1'b1; // Always write
     assign hw2reg.ip[s].d  = ip[s];
   end
@@ -172,7 +162,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   ///////////////////////////////////
   // Detection:: 0: Level, 1: Edge //
   ///////////////////////////////////
-  for (genvar s = 0; s < 44; s++) begin : gen_le
+  for (genvar s = 0; s < 36; s++) begin : gen_le
     assign le[s] = reg2hw.le[s].q;
   end
 

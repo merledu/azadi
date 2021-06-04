@@ -7,7 +7,7 @@
 package rv_plic_reg_pkg;
 
   // Param list
-  parameter int NumSrc = 44;
+  parameter int NumSrc = 36;
   parameter int NumTarget = 1;
   parameter int PrioWidth = 2;
 
@@ -166,38 +166,6 @@ package rv_plic_reg_pkg;
   } rv_plic_reg2hw_prio35_reg_t;
 
   typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio36_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio37_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio38_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio39_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio40_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio41_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio42_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } rv_plic_reg2hw_prio43_reg_t;
-
-  typedef struct packed {
     logic        q;
   } rv_plic_reg2hw_ie0_mreg_t;
 
@@ -206,7 +174,7 @@ package rv_plic_reg_pkg;
   } rv_plic_reg2hw_threshold0_reg_t;
 
   typedef struct packed {
-    logic [7:0]  q;
+    logic [5:0]  q;
     logic        qe;
     logic        re;
   } rv_plic_reg2hw_cc0_reg_t;
@@ -222,7 +190,7 @@ package rv_plic_reg_pkg;
   } rv_plic_hw2reg_ip_mreg_t;
 
   typedef struct packed {
-    logic [7:0]  d;
+    logic [5:0]  d;
   } rv_plic_hw2reg_cc0_reg_t;
 
 
@@ -230,7 +198,7 @@ package rv_plic_reg_pkg;
   // Register to internal design logic //
   ///////////////////////////////////////
   typedef struct packed {
-    rv_plic_reg2hw_le_mreg_t [43:0] le; // [700:529]
+    rv_plic_reg2hw_le_mreg_t [35:0] le; // [700:529]
     rv_plic_reg2hw_prio0_reg_t prio0; // [528:527]
     rv_plic_reg2hw_prio1_reg_t prio1; // [526:525]
     rv_plic_reg2hw_prio2_reg_t prio2; // [524:523]
@@ -267,15 +235,7 @@ package rv_plic_reg_pkg;
     rv_plic_reg2hw_prio33_reg_t prio33; // [462:461]
     rv_plic_reg2hw_prio34_reg_t prio34; // [460:459]
     rv_plic_reg2hw_prio35_reg_t prio35; // [458:457]
-    rv_plic_reg2hw_prio36_reg_t prio36; // [456:455]
-    rv_plic_reg2hw_prio37_reg_t prio37; // [454:453]
-    rv_plic_reg2hw_prio38_reg_t prio38; // [452:451]
-    rv_plic_reg2hw_prio39_reg_t prio39; // [450:449]
-    rv_plic_reg2hw_prio40_reg_t prio40; // [448:447]
-    rv_plic_reg2hw_prio41_reg_t prio41; // [446:445]
-    rv_plic_reg2hw_prio42_reg_t prio42; // [444:443]
-    rv_plic_reg2hw_prio43_reg_t prio43; // [442:441]
-    rv_plic_reg2hw_ie0_mreg_t [43:0] ie0; // [184:13]
+    rv_plic_reg2hw_ie0_mreg_t [35:0] ie0; // [184:13]
     rv_plic_reg2hw_threshold0_reg_t threshold0; // [12:11]
     rv_plic_reg2hw_cc0_reg_t cc0; // [10:1]
     rv_plic_reg2hw_msip0_reg_t msip0; // [0:0]
@@ -285,7 +245,7 @@ package rv_plic_reg_pkg;
   // Internal design logic to register //
   ///////////////////////////////////////
   typedef struct packed {
-    rv_plic_hw2reg_ip_mreg_t [43:0] ip; // [351:8]
+    rv_plic_hw2reg_ip_mreg_t [35:0] ip; // [351:8]
     rv_plic_hw2reg_cc0_reg_t cc0; // [7:0]
   } rv_plic_hw2reg_t;
 
@@ -330,19 +290,11 @@ package rv_plic_reg_pkg;
   parameter logic [BlockAw-1:0] RV_PLIC_PRIO33_OFFSET = 10'h 94;
   parameter logic [BlockAw-1:0] RV_PLIC_PRIO34_OFFSET = 10'h 98;
   parameter logic [BlockAw-1:0] RV_PLIC_PRIO35_OFFSET = 10'h 9c;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO36_OFFSET = 10'h a0;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO37_OFFSET = 10'h a4;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO38_OFFSET = 10'h a8;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO39_OFFSET = 10'h ac;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO40_OFFSET = 10'h b0;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO41_OFFSET = 10'h b4;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO42_OFFSET = 10'h b8;
-  parameter logic [BlockAw-1:0] RV_PLIC_PRIO43_OFFSET = 10'h bc;
-  parameter logic [BlockAw-1:0] RV_PLIC_IE0_0_OFFSET  = 10'h c0;
-  parameter logic [BlockAw-1:0] RV_PLIC_IE0_1_OFFSET  = 10'h c4;
-  parameter logic [BlockAw-1:0] RV_PLIC_THRESHOLD0_OFFSET = 10'h c8;
-  parameter logic [BlockAw-1:0] RV_PLIC_CC0_OFFSET = 10'h cc;
-  parameter logic [BlockAw-1:0] RV_PLIC_MSIP0_OFFSET = 10'h d0;
+  parameter logic [BlockAw-1:0] RV_PLIC_IE0_0_OFFSET  = 10'h a0;
+  parameter logic [BlockAw-1:0] RV_PLIC_IE0_1_OFFSET  = 10'h a4;
+  parameter logic [BlockAw-1:0] RV_PLIC_THRESHOLD0_OFFSET = 10'h a8;
+  parameter logic [BlockAw-1:0] RV_PLIC_CC0_OFFSET = 10'h ac;
+  parameter logic [BlockAw-1:0] RV_PLIC_MSIP0_OFFSET = 10'h b0;
 
 
   // Register Index
@@ -387,14 +339,6 @@ package rv_plic_reg_pkg;
     RV_PLIC_PRIO33,
     RV_PLIC_PRIO34,
     RV_PLIC_PRIO35,
-    RV_PLIC_PRIO36,
-    RV_PLIC_PRIO37,
-    RV_PLIC_PRIO38,
-    RV_PLIC_PRIO39,
-    RV_PLIC_PRIO40,
-    RV_PLIC_PRIO41,
-    RV_PLIC_PRIO42,
-    RV_PLIC_PRIO43,
     RV_PLIC_IE0_0,
     RV_PLIC_IE0_1,
     RV_PLIC_THRESHOLD0,
@@ -403,7 +347,7 @@ package rv_plic_reg_pkg;
   } rv_plic_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RV_PLIC_PERMIT [53] = '{
+  parameter logic [3:0] RV_PLIC_PERMIT [45] = '{
     4'b 1111, // index[  0] RV_PLIC_IP_0
     4'b 1111, // index[  1] RV_PLIC_IP_1
     4'b 1111, // index[  6] RV_PLIC_LE_0
@@ -444,14 +388,6 @@ package rv_plic_reg_pkg;
     4'b 0001, // index[ 45] RV_PLIC_PRIO33
     4'b 0001, // index[ 46] RV_PLIC_PRIO34
     4'b 0001, // index[ 47] RV_PLIC_PRIO35
-    4'b 0001, // index[ 48] RV_PLIC_PRIO36
-    4'b 0001, // index[ 49] RV_PLIC_PRIO37
-    4'b 0001, // index[ 50] RV_PLIC_PRIO38
-    4'b 0001, // index[ 51] RV_PLIC_PRIO39
-    4'b 0001, // index[ 52] RV_PLIC_PRIO40
-    4'b 0001, // index[ 53] RV_PLIC_PRIO41
-    4'b 0001, // index[ 54] RV_PLIC_PRIO42
-    4'b 0001, // index[ 55] RV_PLIC_PRIO43
     4'b 1111, // index[184] RV_PLIC_IE0_0
     4'b 1111, // index[185] RV_PLIC_IE0_1
     4'b 0001, // index[190] RV_PLIC_THRESHOLD0
