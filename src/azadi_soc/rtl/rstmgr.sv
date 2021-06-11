@@ -18,11 +18,11 @@ module rstmgr(
     if(!rst_ni) begin
       rst_d = 1'b0;
     end else 
-    if(ndmreset) begin
-      rst_d = 1'b0;
-    end else begin
+  //  if(ndmreset) begin
+   //   rst_d = 1'b0;
+   // end else begin
       rst_d = 1'b1;
-    end
+   // end
   end
   
   always_ff @(posedge clk_i ) begin
