@@ -26,7 +26,7 @@ module instr_mem_top
 sram #(
   .NUM_WMASKS  (4), 
   .DATA_WIDTH  (32),
-  .ADDR_WIDTH  (10),
+  .ADDR_WIDTH  (12),
   .DELAY       (0),
   .IZERO       (0),
   .IFILE       ("/home/merl/github_repos/azadi-sdk/program")
