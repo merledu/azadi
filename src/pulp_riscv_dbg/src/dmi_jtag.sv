@@ -131,8 +131,15 @@ module dmi_jtag #(
 
       Write: begin
         dmi_req_valid = 1'b1;
-        // got a valid answer go back to idle
+        // request sent, wait for response before going back to idle
         if (dmi_req_ready) begin
+          state_d = WaitWriteValid;
+        end
+      end
+
+      WaitWriteValid: begin
+        // got a valid answer go back to idle
+        if (dmi_resp_valid) begin
           state_d = Idle;
         end
       end
@@ -162,7 +169,7 @@ module dmi_jtag #(
       error_d = DMIBusy;
     end
     // clear sticky error flag
-    if (dmi_reset && dtmcs_select) begin
+    if (update_dr && dmi_reset && dtmcs_select) begin
       error_d = DMINoError;
     end
   end
@@ -218,13 +225,13 @@ module dmi_jtag #(
     .IrLength (5),
     .IdcodeValue(IdcodeValue)
   ) i_dmi_jtag_tap (
-    .tck_i (tck_i) ,
-    .tms_i (tms_i),
-    .trst_ni (trst_ni),
-    .td_i    (td_i),
-    .td_o    (td_o),
-    .tdo_oe_o(tdo_oe_o),
-    .testmode_i (testmode_i),
+    .tck_i,
+    .tms_i,
+    .trst_ni,
+    .td_i,
+    .td_o,
+    .tdo_oe_o,
+    .testmode_i,
     .test_logic_reset_o ( test_logic_reset ),
     .shift_dr_o         ( shift_dr         ),
     .update_dr_o        ( update_dr        ),
@@ -242,8 +249,8 @@ module dmi_jtag #(
   // ---------
   dmi_cdc i_dmi_cdc (
     // JTAG side (master side)
-    .tck_i  (tck_i),
-    .trst_ni (trst_ni),
+    .tck_i,
+    .trst_ni,
     .jtag_dmi_req_i    ( dmi_req          ),
     .jtag_dmi_ready_o  ( dmi_req_ready    ),
     .jtag_dmi_valid_i  ( dmi_req_valid    ),

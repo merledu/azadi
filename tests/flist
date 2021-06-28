@@ -223,3 +223,4 @@ $AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_byte_ctrl.v
 $AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_core.v
 $AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_top.sv
 $AZADI_ROOT/src/i2c/rtl/verilog/timescale.v
+$AZADI_ROOT/src/brq_core/rtl/brq_tracer.sv

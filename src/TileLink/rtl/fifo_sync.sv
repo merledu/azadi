@@ -1,6 +1,10 @@
-
+// Copyright lowRISC contributors.
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
 // Generic synchronous fifo for use in a variety of devices.
 
+//`include "prim_assert.sv"
 
 module fifo_sync #(
   parameter int unsigned Width       = 16,
@@ -8,7 +12,7 @@ module fifo_sync #(
   parameter int unsigned Depth       = 4,
   parameter bit OutputZeroIfEmpty    = 1'b1, // if == 1 always output 0 when FIFO is empty
   // derived parameter
-  localparam int          DepthW     = tlul_pkg::vbits(Depth+1)
+  localparam int          DepthW     = prim_util_pkg::vbits(Depth+1)
 ) (
   input                   clk_i,
   input                   rst_ni,
@@ -23,11 +27,14 @@ module fifo_sync #(
   input                   rready_i,
   output  [Width-1:0]     rdata_o,
   // occupancy
+  output                  full_o,
   output  [DepthW-1:0]    depth_o
 );
 
+
   // FIFO is in complete passthrough mode
   if (Depth == 0) begin : gen_passthru_fifo
+    
 
     assign depth_o = 1'b0; //output is meaningless
 
@@ -37,6 +44,7 @@ module fifo_sync #(
 
     // host facing
     assign wready_o = rready_i;
+    assign full_o = rready_i;
 
     // this avoids lint warnings
     logic unused_clr;
@@ -45,11 +53,21 @@ module fifo_sync #(
   // Normal FIFO construction
   end else begin : gen_normal_fifo
 
-    localparam int unsigned PTRV_W    = tlul_pkg::vbits(Depth);
+    localparam int unsigned PTRV_W    = prim_util_pkg::vbits(Depth);
     localparam int unsigned PTR_WIDTH = PTRV_W+1;
 
     logic [PTR_WIDTH-1:0] fifo_wptr, fifo_rptr;
     logic                 fifo_incr_wptr, fifo_incr_rptr, fifo_empty;
+
+    // module under reset flag
+    logic under_rst;
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) begin
+        under_rst <= 1'b1;
+      end else if (under_rst) begin
+        under_rst <= ~under_rst;
+      end
+    end
 
     // create the write and read pointers
     logic  full, empty;
@@ -66,11 +84,15 @@ module fifo_sync #(
                      (wptr_msb == rptr_msb) ? DepthW'(wptr_value) - DepthW'(rptr_value) :
                      (DepthW'(Depth) - DepthW'(rptr_value) + DepthW'(wptr_value)) ;
 
-    assign fifo_incr_wptr = wvalid_i & wready_o;
-    assign fifo_incr_rptr = rvalid_o & rready_i;
+    assign fifo_incr_wptr = wvalid_i & wready_o & ~under_rst;
+    assign fifo_incr_rptr = rvalid_o & rready_i & ~under_rst;
 
-    assign wready_o = ~full;
-    assign rvalid_o = ~empty;
+    // full and not ready for write are two different concepts.
+    // The latter can be '0' when under reset, while the former is an indication that no more
+    // entries can be written.
+    assign wready_o = ~full & ~under_rst;
+    assign full_o   = full;
+    assign rvalid_o = ~empty & ~under_rst;
 
     always_ff @(posedge clk_i or negedge rst_ni) begin
       if (!rst_ni) begin
@@ -143,5 +165,7 @@ module fifo_sync #(
   end // block: gen_normal_fifo
 
 
-
+  //////////////////////
+  // Known Assertions //
+  //////////////////////
 endmodule
