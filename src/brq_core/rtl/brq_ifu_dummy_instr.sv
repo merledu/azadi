@@ -5,7 +5,7 @@
  *
  * Provides pseudo-randomly inserted fake instructions for secure code obfuscation
  */
-
+//`timescale 1ns/1ps
 module brq_ifu_dummy_instr (
     // Clock and reset
     input  logic        clk_i,

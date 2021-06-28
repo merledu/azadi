@@ -43,6 +43,7 @@ defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/src/cf_math_pkg.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv
 defines += $(AZADI_ROOT)/src/fpnew/src/common_cells/include/common_cells/registers.svh
 defines += $(AZADI_ROOT)/src/i2c/rtl/verilog/i2c_master_defines.v
+defines += $(AZADI_ROOT)/src/brq_core/rtl/brq_tracer_pkg.sv
 
 
 # CFLAGS for verilator generated Makefiles. Without -std=c++11 it
@@ -65,8 +66,8 @@ clean:
 verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
-	  --trace --trace-structs --trace-fst --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-IMPLICIT -Wno-LITENDIAN -Wno-UNSIGNED -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
-	  -exe sim_main.cpp dmidpi.c jtagdpi.c tcp_server.c --autoflush --trace -DSYNTHESIS
+	  --trace --trace-structs --trace-fst --trace-params --trace-max-array 1024 --timescale 1ns/1ps -Wno-TIMESCALEMOD -CFLAGS -DVL_DEBUG -Wno-IMPLICIT -Wno-LITENDIAN -Wno-UNSIGNED -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
+	  -exe sim_main.cpp dmidpi.c jtagdpi.c tcp_server.c --autoflush --trace -DSYNTHESIS -DRVFI
 #	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f VAzadi_top_verilator.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build

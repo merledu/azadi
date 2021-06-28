@@ -5,7 +5,7 @@
  *
  * Provides an instruction cache along with cache management, instruction buffering and prefetching
  */
-
+//`timescale 1ns/1ps
 module brq_ifu_icache #(
   parameter bit          BranchPredictor = 1'b0,
   // Cache arrangement parameters

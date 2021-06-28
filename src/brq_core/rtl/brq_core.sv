@@ -1,3 +1,5 @@
+//`timescale 1ns/1ps
+
 `ifdef RISCV_FORMAL
   `define RVFI
 `endif

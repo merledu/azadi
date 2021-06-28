@@ -6,6 +6,7 @@
 /**
  * Package with constants used by Ibex
  */
+// `timescale 1ns/1ps
 package brq_pkg;
 
 /////////////////////
