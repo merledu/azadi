@@ -95,6 +95,7 @@ module brq_tracer (
   logic [4:0] data_accessed;
 
   logic trace_log_enable;
+  assign trace_log_enable = 1'b1;
   initial begin
     if ($value$plusargs("brq_tracer_enable=%b", trace_log_enable)) begin
       if (trace_log_enable == 1'b0) begin

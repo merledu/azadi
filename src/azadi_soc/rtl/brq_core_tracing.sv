@@ -2,7 +2,9 @@
 /**
  * Top level module of the brq RISC-V core with tracing enabled
  */
-
+`ifdef RISCV_FORMAL
+  `define RVFI
+`endif
 module brq_core_tracing #(
     parameter bit                 PMPEnable        = 1'b0,
     parameter int unsigned        PMPGranularity   = 0,
@@ -10,11 +12,11 @@ module brq_core_tracing #(
     parameter int unsigned        MHPMCounterNum   = 0,
     parameter int unsigned        MHPMCounterWidth = 40,
     parameter bit                 RV32E            = 1'b0,
-    parameter brq_pkg::rv32m_e   RV32M            = brq_pkg::RV32MFast,
+    parameter brq_pkg::rv32m_e   RV32M            = brq_pkg::RV32MSlow,
     parameter brq_pkg::rv32b_e   RV32B            = brq_pkg::RV32BNone,
     parameter brq_pkg::regfile_e RegFile          = brq_pkg::RegFileFF,
     parameter bit                 BranchTargetALU  = 1'b0,
-    parameter bit                 WritebackStage   = 1'b0,
+    parameter bit                 WritebackStage   = 1'b1,
     parameter bit                 ICache           = 1'b0,
     parameter bit                 ICacheECC        = 1'b0,
     parameter bit                 BranchPredictor  = 1'b0,

@@ -2,10 +2,10 @@
 #include <iostream>
 #include <utility>
 #include <string>
-#include "VAzadi_top_verilator.h"
+#include "Vtrace_top.h"
 #include "verilated.h"
 #include "verilated_fst_c.h"
-#include "VAzadi_top_verilator__Dpi.h"
+#include "Vtrace_top__Dpi.h"
 
 
 unsigned int main_time = 0;
@@ -22,7 +22,7 @@ int main (int argc, char **argv) {
 
     Verilated::commandArgs(argc, argv);
 
-    VAzadi_top_verilator* top = new VAzadi_top_verilator;
+    Vtrace_top* top = new Vtrace_top;
 
     // init trace dump
     //VerilatedVcdC* tfp = NULL;
@@ -37,26 +37,26 @@ int main (int argc, char **argv) {
     Verilated::mkdir("logs");
     tfp->open("logs/sim.vcd");
 
-    top -> clock_i = 0;
+    top -> clk_i = 0;
     
 
 //    top -> gpio_i = 8;
     while (!Verilated::gotFinish()) 
     { 
-        top->clock_i = top->clock_i ? 0 : 1; 
+        top->clk_i = top->clk_i ? 0 : 1; 
               // Toggle clock
         if(main_time == 4)
         {
-            top -> reset_ni = 0;
+            top -> rst_ni = 0;
         }
         else
         {
-            top -> reset_ni = 1;
+            top -> rst_ni = 1;
         }
-        if(main_time == 10000)
-        {
-            top -> gpio_i = 1<<25;
-        }
+        // if(main_time == 10000)
+        // {
+        //     top -> gpio_i = 1<<25;
+        // }
         top->eval(); 
 
         // redundant

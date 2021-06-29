@@ -15,7 +15,6 @@ $AZADI_ROOT/src/brq_core/rtl/brq_exu_multdiv_slow.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_ifu_fifo.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_exu_multdiv_fast.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_core.sv
-$AZADI_ROOT/src/brq_core/rtl/brq_core_tracing.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_cs_registers.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_idu.sv
 $AZADI_ROOT/src/azadi_soc/rtl/azadi_soc_top.sv
@@ -38,7 +37,6 @@ $AZADI_ROOT/src/brq_core/rtl/brq_exu_multdiv_slow.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_ifu_fifo.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_exu_multdiv_fast.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_core.sv
-$AZADI_ROOT/src/brq_core/rtl/brq_core_tracing.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_cs_registers.sv
 $AZADI_ROOT/src/brq_core/rtl/brq_idu.sv
 $AZADI_ROOT/src/azadi_soc/rtl/azadi_soc_top.sv
@@ -224,3 +222,5 @@ $AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_core.v
 $AZADI_ROOT/src/i2c/rtl/verilog/i2c_master_top.sv
 $AZADI_ROOT/src/i2c/rtl/verilog/timescale.v
 $AZADI_ROOT/src/brq_core/rtl/brq_tracer.sv
+$AZADI_ROOT/src/azadi_soc/rtl/brq_core_tracing.sv
+$AZADI_ROOT/src/azadi_soc/trace_top.sv

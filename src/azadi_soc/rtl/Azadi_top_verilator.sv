@@ -123,16 +123,16 @@ module Azadi_top_verilator #(
    // );
    //end else begin
      // jtag dpi for openocd
-    jtagdpi u_jtagdpi (
-      .clk_i(clock_i),
-      .rst_ni(reset_ni),
-      .jtag_tck    (cio_jtag_tck),
-      .jtag_tms    (cio_jtag_tms),
-      .jtag_tdi    (cio_jtag_tdi),
-      .jtag_tdo    (cio_jtag_tdo),
-      .jtag_trst_n (cio_jtag_trst_n),
-      .jtag_srst_n (cio_jtag_srst_n)
-    );
+    // jtagdpi u_jtagdpi (
+    //   .clk_i(clock_i),
+    //   .rst_ni(reset_ni),
+    //   .jtag_tck    (cio_jtag_tck),
+    //   .jtag_tms    (cio_jtag_tms),
+    //   .jtag_tdi    (cio_jtag_tdi),
+    //   .jtag_tdo    (cio_jtag_tdo),
+    //   .jtag_trst_n (cio_jtag_trst_n),
+    //   .jtag_srst_n (cio_jtag_srst_n)
+    // );
 
   // end
 
