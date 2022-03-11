@@ -25,6 +25,7 @@ TBFILES_XRUN = $(AZADI_ROOT)/testbench/tb_top.sv
 # Package imports
 
 
+
 defines =  $(AZADI_ROOT)/src/brq_core/rtl/brq_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tlul_pkg.sv
 defines += $(AZADI_ROOT)/src/TileLink/rtl/tl_periph_pkg.sv
@@ -70,7 +71,7 @@ verilator-build: ${TBFILES} sim_main.cpp
 	$(VERILATOR) --cc -CFLAGS ${CFLAGS} $(defines) \
 	  -I${AZADI_ROOT}/tests -f ${AZADI_ROOT}/tests/flist \
 	  --trace --trace-structs --trace-fst --trace-params --trace-max-array 1024 -CFLAGS -DVL_DEBUG -Wno-IMPLICIT -Wno-LITENDIAN -Wno-UNSIGNED -Wno-PINMISSING -Wno-UNOPTTHREADS -Wno-MODDUP -Wno-WIDTH -Wno-UNOPTFLAT -Wno-BLKANDNBLK --threads 4 -Wno-ALWCOMBORDER ${TBFILES} -LDFLAGS -lpthread --top-module Azadi_top_verilator \
-	  -exe sim_main.cpp dmidpi.c jtagdpi.c tcp_server.c --autoflush --trace -DSYNTHESIS
+	  -exe ../tests/sim_main.cpp dmidpi.c jtagdpi.c tcp_server.c --autoflush --trace -DSYNTHESIS
 #	cp ${AZADI_ROOT}/tests/sim_main.cpp obj_dir/
 	$(MAKE) -C obj_dir/ -f VAzadi_top_verilator.mk $(VERILATOR_MAKE_FLAGS)
 	touch verilator-build
